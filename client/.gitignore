@@ -2,8 +2,12 @@
 
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 .idea
-config/
+
+# testing
+/coverage
 
 # production
 /build
