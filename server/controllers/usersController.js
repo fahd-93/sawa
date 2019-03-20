@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const usersSchema = require('../models/Users');
 //const User = require('../models/Users');
-const User = mongoose.model('User', usersSchema)
+const User = mongoose.model('User', usersSchema);
 
 
 const userController = {};
 
 //List all users
 userController.list = (req, res) => {
-
     User.find({}).exec((error, users) => {
         if (error) {
             console.log('Error:', error);
