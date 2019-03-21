@@ -22,7 +22,7 @@ medicalController.create = (req, res) => {
         end_date: req.body.end_date,
         image: req.body.image,
         video: req.body.video
-    })
+    });
 
     medicalCampaign.save()
         .then(result => {
@@ -39,7 +39,7 @@ medicalController.create = (req, res) => {
             });
 
         })
-}
+};
 module.exports = medicalController;
 console.log(medicalController);
 
