@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import CampaignForm from './CampaignForm'
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>SAWA Project</h1>
+      <div className='container'>
+          <h1>sawa project</h1>
+          <div className='flex-position'>
+            <CampaignForm />
+          </div>
       </div>
     );
   }

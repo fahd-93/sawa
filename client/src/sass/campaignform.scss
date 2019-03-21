@@ -1,7 +1,8 @@
 body {
   background: white;
   flex-direction: column;
-  font-family: "Andale Mono"; }
+  font-family: "Andale Mono";
+}
 
 .container {
   display: flex;
@@ -9,7 +10,8 @@ body {
   padding: 30px 20px;
   justify-content: center;
   align-items: center;
-  height: 100vh; }
+  height: 100vh;
+}
 
 .flex-position {
   width: 600px;
@@ -18,51 +20,54 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .form-container {
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .camp-name {
-  font-size: 40px; }
-
+  font-size: 40px;
+}
 form {
   border-radius: 5px;
+  //background: lightgray;
   padding: 20px;
-  font-size: 20px; }
-
-input {
-  border: 1px solid white;
-  font-size: 15px;
-  border-radius: 1px;
-  padding: 10px 10px;
-  width: 500px; }
-
-textarea {
-  border: 1px solid white;
-  font-size: 14px;
-  border-radius: 1px;
-  padding: 20px 10px;
-  width: 500px; }
-
+  font-size: 20px;
+} input{
+    border: 1px solid white;
+    font-size: 15px;
+    border-radius: 1px;
+    padding: 10px 10px;
+    width: 500px;
+  }
+textarea{
+    border: 1px solid white;
+    font-size: 14px;
+    border-radius: 1px;
+    padding: 20px 10px;
+    width: 500px;
+      }
 label {
+  //border: 1px solid red;
   display: block;
   text-align: center;
-  margin: 15px 0; }
-
+  margin: 15px 0;
+}
 .submit-btn {
   display: block;
   font-size: 12px;
   padding: 5px 20px;
-  justify-content: right; }
+  justify-content: right;
+}
 
 select {
   display: block;
   padding: 50px;
-  width: 510px; }
-
-/*# sourceMappingURL=styles.css.map */
+  width: 510px;
+}
