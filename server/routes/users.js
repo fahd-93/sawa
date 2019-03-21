@@ -11,17 +11,17 @@ router.get('/users/list',  cors(), userController.list);
 router.post('/users/signup',  cors(),  userController.create);
 
 //signin 
-//router.post('/users/signin',  cors(), userController.check); 
+router.post('/users/signin',  cors(), userController.check); 
  
 //show a user
 //router.get('/users/:id', cors(), userController.show);
   
 //update a users in the DB
 
-//router.put('/users/:id', cors(), userController.update);
+router.put('/users/:id', cors(), userController.update);
 
 //delete a user in the DB
-//router.delete('/users/:id', cors(), userController.delete);
+router.delete('/users/:id', cors(), userController.delete);
 
 
 

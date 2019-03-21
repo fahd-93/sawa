@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const  usersSchema = new mongoose.Schema({
+const  usersSignInSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'name field is required'],
@@ -9,10 +9,6 @@ const  usersSchema = new mongoose.Schema({
     },
 
     last_name: {
-        type: String,
-        trim: true
-    },
-    username:{
         type: String,
         trim: true
     },
@@ -40,37 +36,6 @@ const  usersSchema = new mongoose.Schema({
     created_at: {
         type: Date,
         default: Date.now
-    },
-    user_location:{
-        type :String
-    },
-
-    role: {
-        type: String
-    },
-
-    profession_id:{
-        type: String
-    },
-
-    activity_id:{
-        type: String
-    },
-
-    created_campaign:{
-        type: String,
-    },
-
-    rating: {
-        type: Number
-    },
-
-    avatar: {
-        type: Object
-
-    } 
-
-
+    }
 });
-
-module.exports =  usersSchema;
+    module.exports =  usersSignInSchema;

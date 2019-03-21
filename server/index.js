@@ -15,11 +15,13 @@ app.get('/', (req, res) => {
 
 // connect to mLab
 const DB = require('./config/keys');
+
 console.log(DB.mongoURI);
+
 
 mongoose
 	.connect(DB.mongoURI, { useNewUrlParser: true })
-	.then( () => console.log("Successful connection to database"))
+	.then(() => console.log("Successful connection to database"))
 	.catch(error => {
 		console.log(`The following error occurred: ${error.message}`);
 	});
@@ -37,6 +39,6 @@ mongoose
 app.use('/api', require('./routes/users'));
 
 
-app.listen( port, () => {
+app.listen(port, () => {
 	console.log(`Listening at port ${port}`);
 });
