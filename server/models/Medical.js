@@ -35,6 +35,6 @@ const medicalSchema = new mongoose.Schema({
     },
     image: {},
     video: {},
-})
+});
 
-module.exports = medicalSchema
+module.exports = medicalSchema;

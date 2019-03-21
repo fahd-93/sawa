@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require("cors");
 const port = process.env.PORT || 4000;
 
 // body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 
 app.get('/', (req, res) => {
 	res.send('hi from server');
@@ -31,7 +33,6 @@ app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/medical'));
 app.use('/api', require('./routes/education'));
 app.use('/api', require('./routes/construction'));
-
 
 app.listen( port, () => {
 	console.log(`Listening at port ${port}`);

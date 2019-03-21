@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axiox';
+import axios from 'axios';
 
 class CampaignForm extends Component {
     constructor(props){
@@ -9,7 +9,6 @@ class CampaignForm extends Component {
             campaignDesc: '',
             campaignCategory: ''
         };
-
     }
 
     change = e => {
@@ -20,23 +19,29 @@ class CampaignForm extends Component {
     };
     handleOptions = e => {
         e.preventDefault();
-        console.log(e.target.value)
+        console.log(e.target.value);
+        this.setState({
+            campaignCategory: e.target.value
+        });
     };
     onSubmit = e => {
-        alert('Your favorite flavor is: ' + this.state.campaignCategory);
         e.preventDefault();
-
-        // this.setState({
-        //     campaignName: '',
-        //     campaignDesc: ''
-        // });
+        let category = this.state.campaignCategory.trim();
+        console.log(this.state);
+        axios.post(`http://localhost:4000/api/campaign/${category}`, this.state)
+            .then( response =>  {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
     render(){
         return(
             <div className="form-container">
                 <h1 className="camp-name">Campaign Form</h1>
-                <form >
+                <form method='post'>
                     <label >Campaign Name:</label>
                     <input type="text"
                            name="campaignName"
@@ -55,7 +60,7 @@ class CampaignForm extends Component {
                     <select
                             onChange={e => this.handleOptions(e)}>
                         <option >Choose One Category</option>
-                        <option value="medical" >Medical</option>
+                        <option value="medical">Medical</option>
                         <option value="construction">Construction</option>
                         <option value="education">Education</option>
                     </select>
