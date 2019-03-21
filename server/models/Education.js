@@ -38,6 +38,6 @@ const educationSchema = new mongoose.Schema({
     },
     image: {},
     video: {},
-});
+}, { collection: 'Campaigns' });
 
 module.exports = educationSchema;

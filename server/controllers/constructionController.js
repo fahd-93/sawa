@@ -9,6 +9,9 @@ const constructionController = {};
 //Create Construction campaign
 
 constructionController.create = (req, res) => {
+    console.log('req',req.body);
+    console.log('res',res.body);
+
     let constructionCampaign = new Construction({
         title: req.body.title,
         description: req.body.description,

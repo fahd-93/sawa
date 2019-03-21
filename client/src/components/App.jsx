@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CampaignForm from './CampaignForm'
+import CampaignType from './CampaignType'
 
 class App extends Component {
   render() {
@@ -7,7 +7,7 @@ class App extends Component {
       <div className='container'>
           <h1>sawa project</h1>
           <div className='flex-position'>
-            <CampaignForm />
+            <CampaignType />
           </div>
       </div>
     );
