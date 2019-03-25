@@ -4,43 +4,31 @@ import { connect } from "react-redux";
 import { getCategory } from "../redux/actions/actionCreator";
 
 class CampaignForm extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         category: ''
-    //     }
-    // }
+
     handleOptions = e => {
         e.preventDefault();
-        console.log(e.target.value);
-        this.setState({
-            category: e.target.value
-        });
-    };
-    onSubmit = e => {
-        e.preventDefault();
-        // let category = this.state.category;
-        console.log(this.props.getCategory, this.props.category);
+        this.props.getCategory(e.target.value);
     };
 
     render(){
         return(
             <div className="form-container">
                 <h1 className="camp-name">Campaign Form</h1>
-                <form action="/" method="post" encType="multipart/form-data">
-                    <select onChange={e => this.handleOptions(e)}>
-                        <option defaultValue>Choose One Category</option>
-                        <option value="medical">Medical</option>
-                        <option value="construction">Construction</option>
-                        <option value="education">Education</option>
-                    </select>
+                <form action="/"
+                      method="post"
+                      encType="multipart/form-data">
 
-                    <br/><br/>
-                    <button className='submit-btn'
-                            onClick={this.onSubmit}>
-                    <Link to={'/'}/>
-                    Next
-                    </button>
+                    <select onChange={e => this.handleOptions(e)}>
+                    <option defaultValue>Choose One Category</option>
+                    <option value="medical">Medical</option>
+                    <option value="construction">Construction</option>
+                    <option value="education">Education</option>
+                </select>
+
+                    <Link to={`${this.props.category}-form`}
+                          className="submit-btn">
+                        Next
+                    </Link>
 
                 </form>
             </div>

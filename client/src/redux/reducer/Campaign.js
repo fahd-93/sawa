@@ -5,10 +5,8 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-    console.log('Reducer', action.type);
     switch (action.type) {
         case GET_CATEGORY: {
-            console.log('Case: GET_Category');
             return {
                 ...state,
                 category: action.payload

@@ -54,11 +54,14 @@ label {
   text-align: center;
   margin: 15px 0; }
 
+select {
+  margin-bottom: 20px; }
+
 .submit-btn {
-  display: block;
-  font-size: 12px;
-  padding: 5px 20px;
-  justify-content: right; }
+  background: darkolivegreen;
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px; }
 
 select {
   display: block;

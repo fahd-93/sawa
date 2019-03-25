@@ -25,9 +25,6 @@ mongoose
 		console.log(`The following error occurred: ${error.message}`);
 	});
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 //routes
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/medical'));

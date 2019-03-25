@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
+
 import App from "./App";
+import EducationForm from "./EducationForm";
+import ConstructionForm from "./ConstructionForm";
+import MedicalForm from "./MedicalForm";
 
 class Router extends Component {
     render() {
@@ -12,6 +16,15 @@ class Router extends Component {
                         exact
                         path="/"
                         component={App} />}
+                    />
+                    <Route path="/construction-form"
+                           component={ConstructionForm}
+                    />
+                    <Route path="/education-form"
+                           component={EducationForm}
+                    />
+                    <Route path="/medical-form"
+                           component={MedicalForm}
                     />
                 </Switch>
             </BrowserRouter>

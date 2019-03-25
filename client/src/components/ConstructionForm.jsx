@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import {Link} from "react-router-dom";
 
-class EducationForm extends Component {
+class ConstructionForm extends Component {
     render(){
         return(
-            <div className="form-container">
+            <div className="container">
                 <div className='flex-position'>
                     <div className="form-container">
-                        <h1>Education Form</h1>
+                        <h1>Construction Form</h1>
                         <form action="/"
                               method="post"
                               encType="multipart/form-data">
@@ -20,14 +21,14 @@ class EducationForm extends Component {
                             <textarea name="campaignDesc"
                                       cols="50" rows="8"
                                       placeholder="Remember to give an overview of your campaign.
-                                           You better give some context why and for what your creating this campaign."
+                                   You better give some context why and for what your creating this campaign."
                             />
                             <label>Campaign Location:</label>
                             <select onChange={e => this.handleOptions(e)}>
                                 <option defaultValue>Choose Location</option>
-                                {/*  <option value="medical">Medical</option>
-                                        <option value="construction">Construction</option>
-                                        <option value="education">Education</option>*/}
+                              {/*  <option value="medical">Medical</option>
+                                <option value="construction">Construction</option>
+                                <option value="education">Education</option>*/}
                             </select>
 
                             <label>How Many volunteers the campaign needs?</label>
@@ -37,16 +38,16 @@ class EducationForm extends Component {
                             <select onChange={e => this.handleOptions(e)}>
                                 <option defaultValue>Choose Type of help your campaign needs:</option>
                                 {/*  <option value="medical">Medical</option>
-                                        <option value="construction">Construction</option>
-                                        <option value="education">Education</option>*/}
+                                <option value="construction">Construction</option>
+                                <option value="education">Education</option>*/}
                             </select>
 
                             <label> Campaign Date:</label>
                             <select onChange={e => this.handleOptions(e)}>
                                 <option defaultValue>When will your campaign start?</option>
                                 {/*  <option value="medical">Medical</option>
-                                        <option value="construction">Construction</option>
-                                        <option value="education">Education</option>*/}
+                                <option value="construction">Construction</option>
+                                <option value="education">Education</option>*/}
                             </select>
                             <div className="form-container">
                                 <label> Images and Video: </label>
@@ -64,6 +65,7 @@ class EducationForm extends Component {
                                     />
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -72,4 +74,4 @@ class EducationForm extends Component {
     }
 }
 
-export default EducationForm;
+export default ConstructionForm;

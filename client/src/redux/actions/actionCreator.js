@@ -1,11 +1,9 @@
 import axios from 'axios';
 
 export const getCategory = category => dispatch => {
-    console.log("action", category);
     axios
         .post(`http://localhost:4000/api/campaign/${category}`, category)
         .then( response => {
-            console.log(response);
             dispatch({
                 type: "GET_CATEGORY",
                 payload: category
