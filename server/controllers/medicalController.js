@@ -1,15 +1,23 @@
 const mongoose = require('mongoose');
 const medicalSchema = require('../models/Medical');
-
 const Medical = mongoose.model('Medical', medicalSchema);
-
-// console.log(Medical);
-
 const medicalController = {};
+const cloudinary = require("cloudinary");
+
+require("dotenv").config();
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+console.log(cloudinary);
 
 //Create Medical campaign
 
 medicalController.create = (req, res) => {
+    /////////////////////
+    const cloudUpload = cloudinary.v2.uploader.upload(req.file.path);
+    /////////////////
     let medicalCampaign = new Medical({
         title: req.body.title,
         description: req.body.description,
