@@ -33,3 +33,4 @@ class App extends Component {
 }
 
 export default App;
+   // "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 class SignUpForm extends Component {
   constructor() {
     super();
@@ -28,6 +28,24 @@ class SignUpForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+
+    };
+    axios({
+      method: 'post',
+      url: 'http://localhost:4000/api/users/signup',
+      data: newUser,
+    })
+      .then(response => {
+        console.log(response);
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
     console.log('The form was submitted with the following data:');
     console.log(this.state);

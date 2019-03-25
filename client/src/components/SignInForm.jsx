@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
 class SignInForm extends Component {
     constructor() {
         super();
 
         this.state = {
-            email: '',
+            username: '',
             password: ''
         };
 
@@ -26,6 +26,24 @@ class SignInForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const user = {
+            username: this.state.username,
+            password: this.state.password,
+
+
+        };
+        axios({
+            method: 'post',
+            url: 'http://localhost:4000/api/users/signin',
+            data: user,
+        })
+            .then(response => {
+                console.log(response);
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
@@ -36,8 +54,8 @@ class SignInForm extends Component {
             <div className="FormCenter">
                 <form onSubmit={this.handleSubmit} className="FormFields" >
                     <div className="FormField">
-                        <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <label className="FormField__Label" htmlFor="username">User Name</label>
+                        <input type="username" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.email} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">
