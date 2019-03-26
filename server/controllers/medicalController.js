@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
 const medicalSchema = require('../models/Medical');
-
 const Medical = mongoose.model('Medical', medicalSchema);
-
-// console.log(Medical);
-
 const medicalController = {};
 
+//Load images
 const { upload } = require('../handlers/multer');
 
 //Create Medical campaign
 
 medicalController.create = (req, res) => {
-    const image = upload.single('image')
+    const image = upload.single('medPic');
     image(req, res, function (err) {
 
         if (err) {
@@ -53,13 +50,9 @@ medicalController.create = (req, res) => {
                     res.status(500).json({
                         error: err
                     });
-
                 })
         }
-    })
-
-
+    });
 };
 module.exports = medicalController;
-// console.log(medicalController);
 
