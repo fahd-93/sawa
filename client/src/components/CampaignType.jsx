@@ -19,11 +19,11 @@ class CampaignForm extends Component {
                       encType="multipart/form-data">
 
                     <select onChange={e => this.handleOptions(e)}>
-                    <option defaultValue>Choose One Category</option>
-                    <option value="medical">Medical</option>
-                    <option value="construction">Construction</option>
-                    <option value="education">Education</option>
-                </select>
+                        <option defaultValue>Choose One Category</option>
+                        <option value="medical">Medical</option>
+                        <option value="construction">Construction</option>
+                        <option value="education">Education</option>
+                    </select>
 
                     <Link to={`${this.props.category}-form`}
                           className="submit-btn">
@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
     category: state.campaignReducer.category
 });
 
-export default connect( mapStateToProps, { getCategory } )(CampaignForm);
+export default connect( mapStateToProps, { getCategory } )( CampaignForm );

@@ -6,6 +6,7 @@ import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
+import CampaignConfirmation from "./CampaignConfirmation";
 
 class Router extends Component {
     render() {
@@ -25,6 +26,9 @@ class Router extends Component {
                     />
                     <Route path="/medical-form"
                            component={MedicalForm}
+                    />
+                    <Route path="/confirm-entery"
+                           component={CampaignConfirmation}
                     />
                 </Switch>
             </BrowserRouter>

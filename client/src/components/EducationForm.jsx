@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class EducationForm extends Component {
+
     render(){
         return(
             <div className="form-container">

@@ -5,7 +5,6 @@ class App extends Component {
   render() {
     return (
       <div className='container'>
-          <h1>sawa project</h1>
           <div className='flex-position'>
             <CampaignType />
           </div>
