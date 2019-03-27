@@ -60,8 +60,6 @@ class ConstructionForm extends Component {
             formData.append(index, this.state[index]);
         });
         this.props.saveCampaign( this.state.category, formData);
-
-
     };
 
     render(){
