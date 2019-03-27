@@ -27,7 +27,7 @@ class Router extends Component {
                     <Route path="/medical-form"
                            component={MedicalForm}
                     />
-                    <Route path="/confirm-entery"
+                    <Route path="/confirm-entry"
                            component={CampaignConfirmation}
                     />
                 </Switch>

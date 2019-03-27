@@ -8,7 +8,8 @@ const initialState = {
      num_of_volunteers: 0,
      type_of_volunteers: [],
      start_date: '',
-     end_date: ''
+     end_date: '',
+     image: []
 };
 
 export default function (state = initialState, action) {
@@ -29,7 +30,8 @@ export default function (state = initialState, action) {
                 num_of_volunteers: action.payload.num_of_volunteers,
                 type_of_volunteers: action.payload.type_of_volunteers,
                 start_date: action.payload.start_date,
-                end_date: action.payload.end_date
+                end_date: action.payload.end_date,
+                image: action.payload.image.name
             }
         }
         default:

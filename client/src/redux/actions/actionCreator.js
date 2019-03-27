@@ -1,28 +1,30 @@
+
 import axios from 'axios';
 
+// getCategory is to retrieve the chosen component form.
 export const getCategory = category => dispatch => {
-    console.log("action", category);
     dispatch({
         type: "GET_CATEGORY",
         payload: category
     })
 };
 
-export const saveCampaign = (category, data) => dispatch => {
-    console.log("action", data);
+
+// saveCampaign is to post, with axios, the campaign in the DB
+export const saveCampaign = (object, data) => dispatch => {
     axios
-        .post(`http://localhost:4000/api/campaign/${category}`,
+        .post(`http://localhost:4000/api/campaign/${object.category}`,
             data,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
-        .then( response => {
-            console.log(response);
+        .then( res => {
+            console.log(res.data);
             dispatch({
                 type: "SAVE_CAMPAIGN",
-                payload: data
+                payload: object
             })
         })
         .catch( error => {

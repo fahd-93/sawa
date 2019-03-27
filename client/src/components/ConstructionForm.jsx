@@ -37,29 +37,24 @@ class ConstructionForm extends Component {
         "Equipment Operators"
     ];
 
-    handelChanges = (e) => {
+    handelInputs = (e) => {
         e.preventDefault();
-        console.log(e.target.name);
-        if (e.target.name === 'image') {
-           this.setState({
-               image: e.target.files[0],
-           })
-        } else {
+        (e.target.name === 'image') ?
             this.setState({
-                [e.target.name]: e.target.value,
-            });
-        }
-
+            image: e.target.files[0],
+        }) :
+            this.setState({
+            [e.target.name]: e.target.value,
+        });
     };
 
     handelSubmit = (e) => {
-        e.preventDefault();
         let formData = new FormData();
         Object.keys(this.state).forEach( (index) => {
-            console.log( index, this.state[index]);
             formData.append(index, this.state[index]);
         });
-        this.props.saveCampaign( this.state.category, formData);
+        console.log(this.state, e);
+        this.props.saveCampaign( this.state, formData);
     };
 
     render(){
@@ -69,9 +64,9 @@ class ConstructionForm extends Component {
                     <div className="form-container">
                         <h1>Construction Form</h1>
                         <form id="form"
-                              onChange={ e => this.handelChanges(e)}>
+                              onChange={ e => this.handelInputs(e)}>
 
-                            <label >Campaign Name:</label>
+                            <label>Campaign Name:</label>
                             <input type="text"
                                    name="title"
                                    placeholder="Think of a good name for your campaign"/>
@@ -136,9 +131,9 @@ class ConstructionForm extends Component {
                                 />
                                 </div>
                             </div>
-                            <Link to={"/confirm-entery"}
+                            <Link to={"/confirm-entry"}
                                   className='submit-btn'
-                                  onClick={this.handelSubmit}>
+                                  onClick={ e => this.handelSubmit(e)}>
                                 Submit
                             </Link>
 
