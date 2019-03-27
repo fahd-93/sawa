@@ -1,17 +1,35 @@
-import { GET_CATEGORY } from "../actions/actionTypes";
+import { GET_CATEGORY, SAVE_CAMPAIGN } from "../actions/actionTypes";
 
 const initialState = {
-    category: ''
+     category: '',
+     title: '',
+     description: '',
+     location: '',
+     num_of_volunteers: 0,
+     type_of_volunteers: [],
+     start_date: '',
+     end_date: ''
 };
 
 export default function (state = initialState, action) {
-    console.log('Reducer', action.type);
     switch (action.type) {
         case GET_CATEGORY: {
-            console.log('Case: GET_Category');
             return {
                 ...state,
                 category: action.payload
+            }
+        }
+        case SAVE_CAMPAIGN: {
+            console.log('Reducer Action', action);
+            return {
+                ...state,
+                title: action.payload.title,
+                description: action.payload.description,
+                location: action.payload.location,
+                num_of_volunteers: action.payload.num_of_volunteers,
+                type_of_volunteers: action.payload.type_of_volunteers,
+                start_date: action.payload.start_date,
+                end_date: action.payload.end_date
             }
         }
         default:

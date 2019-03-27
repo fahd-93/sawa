@@ -25,12 +25,15 @@ mongoose
 		console.log(`The following error occurred: ${error.message}`);
 	});
 
+<<<<<<< HEAD
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Public folder -- Create a folder named Public
 
 app.use(express.static('./public'));
+=======
+>>>>>>> campaign-form
 //routes
 app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/medical'));
