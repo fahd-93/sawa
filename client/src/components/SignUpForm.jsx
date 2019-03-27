@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 class SignUpForm extends Component {
   constructor() {
@@ -53,6 +53,18 @@ class SignUpForm extends Component {
 
   render() {
     return (
+      <div className="App">
+      <div className="App__Aside"></div>
+      <div className="App__Form">
+        <div className="PageSwitcher">
+          <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+          <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+        </div>
+
+        {<div className="FormTitle">
+          <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+        </div>}
+      
       <div className="FormCenter">
         <form onSubmit={this.handleSubmit} className="FormFields">
           <div className="FormField">
@@ -78,6 +90,8 @@ class SignUpForm extends Component {
             <button className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
           </div>
         </form>
+      </div>
+      </div>
       </div>
     );
   }

@@ -8,11 +8,9 @@ class Router extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        component={App} />}
-                    />
+                    <Route exact path="/" component={App} />
+                    
+
                 </Switch>
             </BrowserRouter>
         );

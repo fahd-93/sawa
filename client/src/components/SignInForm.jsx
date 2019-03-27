@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
 class SignInForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             username: '',
@@ -30,15 +30,25 @@ class SignInForm extends Component {
             username: this.state.username,
             password: this.state.password,
 
-
         };
+
+
+
         axios({
             method: 'post',
             url: 'http://localhost:4000/api/users/signin',
             data: user,
         })
+        
             .then(response => {
-                console.log(response);
+                console.log('signin forrm callback respons', response.data);
+                this.props.history.push("/profilepage");
+
+
+                //await Auth.signIn(this.state.email, this.state.password);
+                //this.props.userHasAuthenticated(true);
+                
+
 
             })
             .catch(error => {
@@ -51,6 +61,19 @@ class SignInForm extends Component {
 
     render() {
         return (
+            <div className="App">
+            <div className="App__Aside"></div>
+            <div className="App__Form">
+              <div className="PageSwitcher">
+                <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
+                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+              </div>
+  
+              {<div className="FormTitle">
+                <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+              </div>}
+
+            
             <div className="FormCenter">
                 <form onSubmit={this.handleSubmit} className="FormFields" >
                     <div className="FormField">
@@ -67,6 +90,8 @@ class SignInForm extends Component {
                         <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
                     </div>
                 </form>
+            </div>
+            </div>
             </div>
         );
     }
