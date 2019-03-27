@@ -9,16 +9,15 @@ const { upload } = require('../handlers/multer');
 //Create Construction campaign
 
 constructionController.create = (req, res) => {
-    const image = upload.single('constrPic');
+    const image = upload.single('image');
     image(req, res, function (err) {
 
         if (err) {
-
             res.status(500).json({
                 msg: err
             });
         } else {
-            let imageUrl = null
+            let imageUrl = null;
             if (req.file !== undefined) {
                 imageUrl = `uploads/${req.file.filename}`;
             }
@@ -35,7 +34,7 @@ constructionController.create = (req, res) => {
                 end_date: req.body.end_date,
                 image: imageUrl,
                 video: req.body.video
-            })
+            });
 
             constructionCampaign.save()
                 .then(result => {

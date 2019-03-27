@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
-import { reviewCampaign } from "../redux/actions/actionCreator";
+import { saveCampaign } from "../redux/actions/actionCreator";
 
 class ConstructionForm extends Component {
     constructor(props) {
         super(props);
         this.state = {}
     }
+    componentDidMount() {
+        this.setState({
+            category: this.props.category
+        })
+    }
+
     ConstructionTypeList =[
         "General Helper",
         "Construction Carpenter",
@@ -30,11 +36,32 @@ class ConstructionForm extends Component {
         "Construction Engineer",
         "Equipment Operators"
     ];
+
+    handelChanges = (e) => {
+        e.preventDefault();
+        console.log(e.target.name);
+        if (e.target.name === 'image') {
+           this.setState({
+               image: e.target.files[0],
+           })
+        } else {
+            this.setState({
+                [e.target.name]: e.target.value,
+            });
+        }
+
+    };
+
     handelSubmit = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
+        e.preventDefault();
+        let formData = new FormData();
+        Object.keys(this.state).forEach( (index) => {
+            console.log( index, this.state[index]);
+            formData.append(index, this.state[index]);
         });
-        this.props.reviewCampaign(this.state);
+        this.props.saveCampaign( this.state.category, formData);
+
+
     };
 
     render(){
@@ -43,10 +70,8 @@ class ConstructionForm extends Component {
                 <div className='flex-position'>
                     <div className="form-container">
                         <h1>Construction Form</h1>
-                        <form action="/"
-                              method="post"
-                              encType="multipart/form-data"
-                              onChange={ e => this.handelSubmit(e)}>
+                        <form id="form"
+                              onChange={ e => this.handelChanges(e)}>
 
                             <label >Campaign Name:</label>
                             <input type="text"
@@ -106,11 +131,11 @@ class ConstructionForm extends Component {
                                     development of the campaign.
                                 </p>*/}
                                 <div className="form-group">
-                                    <label> Upload Image </label>
-                                    <input name="image" required
-                                           type="file"
-                                           id="image"
-                                    />
+                                <label> Upload Image </label>
+                                <input name="image" required
+                                       type="file"
+                                       id="image"
+                                />
                                 </div>
                             </div>
                             <Link to={"/confirm-entery"}
@@ -127,4 +152,8 @@ class ConstructionForm extends Component {
     }
 }
 
-export default connect( null, { reviewCampaign })( ConstructionForm );
+const mapStateToProps = state => ({
+   category: state.campaignReducer.category
+});
+
+export default connect( mapStateToProps, { saveCampaign })( ConstructionForm );
