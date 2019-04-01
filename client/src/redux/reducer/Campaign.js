@@ -1,4 +1,4 @@
-import { GET_CATEGORY, SAVE_CAMPAIGN } from "../actions/actionTypes";
+import { GET_CATEGORY,SAVE_CAMPAIGN } from "../actions/actionTypes";
 
 const initialState = {
      category: '',
@@ -12,7 +12,7 @@ const initialState = {
      image: []
 };
 
-export default function (state = initialState, action) {
+export default (state = initialState, action) => {
     switch (action.type) {
         case GET_CATEGORY: {
             return {
@@ -21,7 +21,6 @@ export default function (state = initialState, action) {
             }
         }
         case SAVE_CAMPAIGN: {
-            console.log('Reducer Action', action);
             return {
                 ...state,
                 title: action.payload.title,

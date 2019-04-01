@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CampaignType from './CampaignType'
+import CampaignType from './CampaignType';
+
 
 class App extends Component {
   render() {

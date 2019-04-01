@@ -14,9 +14,7 @@ class CampaignForm extends Component {
         return(
             <div className="form-container">
                 <h1 className="camp-name">Campaign Form</h1>
-                <form action="/"
-                      method="post"
-                      encType="multipart/form-data">
+                <form >
 
                     <select onChange={e => this.handleOptions(e)}>
                         <option defaultValue>Choose One Category</option>

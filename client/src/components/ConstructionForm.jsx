@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
 import { saveCampaign } from "../redux/actions/actionCreator";
 
+
 class ConstructionForm extends Component {
     constructor(props) {
         super(props);
@@ -39,22 +40,42 @@ class ConstructionForm extends Component {
 
     handelInputs = (e) => {
         e.preventDefault();
-        (e.target.name === 'image') ?
+        console.log(e.target.name);
+
+        if ( e.target.name === 'image') {
+            return this.setState({
+                image: e.target.files[0],
+            })
+        } else if(e.target.name === 'startDate' || e.target.name === 'endDate') {
+            console.log("Date");
+
+        } else {
             this.setState({
-            image: e.target.files[0],
-        }) :
-            this.setState({
-            [e.target.name]: e.target.value,
-        });
+                [e.target.name]: e.target.value,
+            });
+        }
+
+        // (e.target.name === 'image') ? this.setState({
+        //     image: e.target.files[0],
+        // })
+        //     // : (e.target.name === 'startDate') ? this.setState({
+        //     //     startDate: e.target.start_date
+        //     // })
+        //     : this.setState({
+        //     [e.target.name]: e.target.value,
+        // });
+
     };
 
     handelSubmit = (e) => {
+
         let formData = new FormData();
         Object.keys(this.state).forEach( (index) => {
             formData.append(index, this.state[index]);
         });
         console.log(this.state, e);
         this.props.saveCampaign( this.state, formData);
+
     };
 
     render(){
@@ -63,8 +84,7 @@ class ConstructionForm extends Component {
                 <div className='flex-position'>
                     <div className="form-container">
                         <h1>Construction Form</h1>
-                        <form id="form"
-                              onChange={ e => this.handelInputs(e)}>
+                        <form onChange={ e => this.handelInputs(e)}>
 
                             <label>Campaign Name:</label>
                             <input type="text"
@@ -75,7 +95,7 @@ class ConstructionForm extends Component {
                             <textarea name="description"
                                       cols="50" rows="8"
                                       placeholder="Remember to give an overview of your campaign.
-                                   You better give some context why and for what your creating this campaign."
+                                      You better give some context why and for what your creating this campaign."
                             />
                             <label>Campaign Location:</label>
                             <select name="location">
@@ -93,36 +113,25 @@ class ConstructionForm extends Component {
                             <select name="type_of_volunteers"
                                     type="number">
                                 <option defaultValue>Choose Type of help your campaign needs:</option>
-                                {this.ConstructionTypeList.map( (item, index) => {
+                                {this.ConstructionTypeList
+                                    .map( (item, index) => {
                                     return(
-                                        <option value={item} key={index}>{item}</option>
+                                        <option value={item}
+                                                key={index}>
+                                            {item}
+                                        </option>
                                     )
                                 })}
                             </select>
 
-                            <label> Campaign Date:</label>
                             <label> Start Date:</label>
-                            <select name="start_date">
-                                <option defaultValue>When will your campaign start?</option>
-                                <option value="1">1</option>
-                                <option value="1">1</option>
-                                <option value="1">1</option>
-                            </select>
+                            <input type="date" name="start_date"/>
+
                             <label> End Date:</label>
-                            <select name="end_date">
-                                <option defaultValue>When will your campaign start?</option>
-                                <option value="1">1</option>
-                                <option value="1">1</option>
-                                <option value="1">1</option>
-                            </select>
+                            <input type="date" name="end_date"/>
+
                             <div className="form-container">
                                 <label> Images and Video: </label>
-                               {/* <p>
-                                    It will be beneficial to your campaign to have images or a video message,
-                                    where you tell more about your ideas and intentions for what your to achieve.
-                                    Try to take pictures of the location and make a photo gallery with the
-                                    development of the campaign.
-                                </p>*/}
                                 <div className="form-group">
                                 <label> Upload Image </label>
                                 <input name="image" required
@@ -133,7 +142,7 @@ class ConstructionForm extends Component {
                             </div>
                             <Link to={"/confirm-entry"}
                                   className='submit-btn'
-                                  onClick={ e => this.handelSubmit(e)}>
+                                  onClick={ e => this.handelSubmit(e) }>
                                 Submit
                             </Link>
 

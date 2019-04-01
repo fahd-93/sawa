@@ -16,7 +16,8 @@ constructionController.create = (req, res) => {
             res.status(500).json({
                 msg: err
             });
-        } else {
+        }
+        else {
             let imageUrl = null;
             if (req.file !== undefined) {
                 imageUrl = `uploads/${req.file.filename}`;
@@ -26,7 +27,7 @@ constructionController.create = (req, res) => {
                 title: req.body.title,
                 description: req.body.description,
                 created_at: req.body.created_at,
-                campaign_location: req.body.campaign_location,
+                campaign_location: req.body.location,
                 country_code: req.body.country_code,
                 num_of_volunteers: req.body.num_of_volunteers,
                 type_of_volunteers: req.body.type_of_volunteers,
@@ -53,4 +54,27 @@ constructionController.create = (req, res) => {
         }
     });
 };
+
+constructionController.show = (req, res) => {
+    Construction
+        .findOne({ _id: req.params.id })
+        .exec((error, construction) => {
+        res.send({ construction })
+    });
+};
+
+constructionController.list = (req, res) => {
+    Construction
+        .find({})
+        .exec(( error, construction ) => {
+            if ( error ) {
+                console.log(error);
+            }
+            else {
+                res.send( construction );
+            }
+
+    });
+};
+
 module.exports = constructionController;

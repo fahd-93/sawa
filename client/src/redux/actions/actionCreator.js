@@ -9,7 +9,6 @@ export const getCategory = category => dispatch => {
     })
 };
 
-
 // saveCampaign is to post, with axios, the campaign in the DB
 export const saveCampaign = (object, data) => dispatch => {
     axios
@@ -29,6 +28,15 @@ export const saveCampaign = (object, data) => dispatch => {
         })
         .catch( error => {
             console.log(error);
+        })
+};
+
+export const editCampaign = () => dispatch => {
+    let id = '5c9cbf4b07dce90a6de3b9ea';
+    axios
+        .get(`http://localhost:4000/api/campaign/${id}`)
+        .then( res => {
+            console.log(res.data);
         })
 };
 

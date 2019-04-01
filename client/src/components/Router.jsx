@@ -7,6 +7,7 @@ import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
 import CampaignConfirmation from "./CampaignConfirmation";
+import DisplayCampaign from "./DisplayCampaign";
 
 class Router extends Component {
     render() {
@@ -30,6 +31,8 @@ class Router extends Component {
                     <Route path="/confirm-entry"
                            component={CampaignConfirmation}
                     />
+                    <Route path="/display-campaign"
+                            component={DisplayCampaign}/>
                 </Switch>
             </BrowserRouter>
         );
