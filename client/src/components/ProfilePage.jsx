@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {  Component } from 'react';
 import axios from 'axios';
 
 class ProfilePage extends Component {
@@ -12,7 +12,7 @@ class ProfilePage extends Component {
 
     }
 
-    
+
     componentDidMount() {
 
         axios.get(`http://localhost:4000/api/users`)
@@ -28,7 +28,8 @@ class ProfilePage extends Component {
 
             <div>
                 <h1>you are logged in</h1>
-            </div>);
+            </div>
+            );
     }
 }
 

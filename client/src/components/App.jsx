@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
 import SignInForm from './SignInForm';
 import ProfilePage from './ProfilePage';
@@ -22,7 +22,7 @@ class App extends Component {
         <Route path="/sign-in" component={SignInForm}>
         </Route>
         <Route exact path="/profilepage" component={ProfilePage} />
-      
+
       </Router>
     );
   }
@@ -31,7 +31,7 @@ class App extends Component {
 
 
 export default App;
-   
+
 
 
 
