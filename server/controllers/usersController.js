@@ -84,13 +84,9 @@ userController.create = (req, res) => {
 
 
 
-
-
-//create User signin
-
 userController.check = (req, res) => {
     User.find({
-        username: req.body.username
+        name: req.body.username
     })
         .exec()
         .then(user => {
