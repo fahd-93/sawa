@@ -4,6 +4,18 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
+//const authRoutes = require('./routes/auth-routes');
+//const profileRoutes = require('./routes/profile-routes');
+
+
+
+
+const morgan = require('morgan');
+
+
+
+
+
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -16,6 +28,8 @@ app.use(cors());
 app.get('/', (req, res) => {
 	res.send('Hi from server');
 });
+
+
 
 // connect to mLab
 const DB = require('./config');
@@ -36,7 +50,7 @@ mongoose
 // 	.then(data => console.log('Successful connection to database'))
 // 	.catch((error) => {
 // 		console.log(`The following error occurred: ${error.message}`);
-//     });
+// 	});
 
 
 //routes

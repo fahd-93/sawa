@@ -6,7 +6,7 @@ class SignInForm extends Component {
         super(props);
 
         this.state = {
-            username: '',
+            email: '',
             password: ''
         };
 
@@ -27,7 +27,7 @@ class SignInForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = {
-            username: this.state.username,
+            email: this.state.email,
             password: this.state.password,
 
         };
@@ -76,8 +76,8 @@ class SignInForm extends Component {
                     <div className="FormCenter">
                         <form onSubmit={this.handleSubmit} className="FormFields" >
                             <div className="FormField">
-                                <label className="FormField__Label" htmlFor="username">User Name</label>
-                                <input type="username" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.email} onChange={this.handleChange} />
+                                <label className="FormField__Label" htmlFor="email">User Email</label>
+                                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
                             </div>
 
                             <div className="FormField">
