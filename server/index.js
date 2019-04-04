@@ -37,6 +37,7 @@ app.use('/api', require('./routes/users'));
 app.use('/api', require('./routes/medical'));
 app.use('/api', require('./routes/education'));
 app.use('/api', require('./routes/construction'));
+app.use('/api', require('./routes/campaigns'));
 
 app.listen(port, () => {
 	console.log(`Listening at port ${port}`);

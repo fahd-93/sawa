@@ -54,4 +54,12 @@ constructionController.create = (req, res) => {
         }
     });
 };
-module.exports = constructionController;
+
+console.log(Construction.collection);
+constructionController.show = (req, res) => {
+    Construction.findOne({ _id: req.params.id }).exec((error, construction) => {
+        res.send({ construction })
+    });
+
+}
+module.exports = { constructionController, Construction };
