@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const medicalSchema = new mongoose.Schema({
 
+
+const  campaignSchema = new mongoose.Schema({
+      
+    created_by:{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    },
     title: {
         type: String
     },
     description: {
         type: String
-    },
-    created_by:{
-        type: Schema.Types.ObjectId,
-        ref: 'user'
     },
     created_at: {
         type: Date,
@@ -22,6 +24,9 @@ const medicalSchema = new mongoose.Schema({
     },
     country_code: {
         type: Number
+    },
+    subject: {
+        type: String
     },
     num_of_volunteers: {
         type: Number
@@ -40,7 +45,16 @@ const medicalSchema = new mongoose.Schema({
     },
     image: {},
     video: {},
-}, { collection: 'Campaigns'});
+    medical:{
+       
+    },
+})
+
+   
+
+   
+ 
 
 
-module.exports = medicalSchema;
+ const Campaign = mongoose.model('Campaign', campaignSchema);
+ module.exports = Campaign
