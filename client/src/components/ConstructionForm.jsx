@@ -45,27 +45,17 @@ class ConstructionForm extends Component {
         this.setState({
             [e.target.name]: e.target.value,
         });
+
         console.log(this.state);
-        // if ( e.target.name === 'image') {
-        //     return this.setState({
-        //         image: e.target.files[0],
-        //     })
-        // } else if(e.target.name === 'startDate' || e.target.name === 'endDate') {
-        //     console.log("Date");
-        //
-        // } else {
-        //     this.setState({
-        //         [e.target.name]: e.target.value,
-        //     });
-        // }
+
     };
 
     handelSubmit = ( ) => {
-        let formData = new FormData();
+       /* let formData = new FormData();
         Object.keys(this.state).forEach( (index) => {
             formData.append(index, this.state[index]);
         });
-        console.log(this.state);
+        console.log(this.state);*/
         this.props.addInputs(this.state);
     };
 
@@ -116,7 +106,7 @@ class ConstructionForm extends Component {
                             <Link to="/location-form"
                                   className='submit-btn'
                                   onClick={ e => this.handelSubmit(e) }>
-                                Submit
+                                Next
                             </Link>
                         </form>
                     </div>

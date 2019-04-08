@@ -1,54 +1,34 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
+
 class SignInForm extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            email: '',
-            password: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.state = {};
     }
 
     handleChange(e) {
-        let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
+        e.preventDefault();
+        let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 
         this.setState({
-            [name]: value
+            [e.target.name]: value
         });
+
+        console.log('handleChange',this.state);
+
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
-
-        };
-
-
-
-        axios({
-            method: 'post',
-            url: 'http://localhost:4000/api/users/signin',
-            data: user,
-        })
-
+        console.log('handleSubmit', this.state);
+        axios
+            .post( 'http://localhost:4000/api/users/signin', this.state)
             .then(response => {
-                console.log('signin forrm callback respons', response.data);
+                console.log(response);
+
                 this.props.history.push("/profilepage");
-
-
-                //await Auth.signIn(this.state.email, this.state.password);
-                //this.props.userHasAuthenticated(true);
-
-
 
             })
             .catch(error => {
@@ -64,8 +44,16 @@ class SignInForm extends Component {
                 <div className="App__Aside"></div>
                 <div className="App__Form">
                     <div className="PageSwitcher">
-                        <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                        <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+                        <NavLink to="/sign-in"
+                                 activeClassName="PageSwitcher__Item--Active"
+                                 className="PageSwitcher__Item">
+                            Sign In
+                        </NavLink>
+                        <NavLink exact to="/"
+                                 activeClassName="PageSwitcher__Item--Active"
+                                 className="PageSwitcher__Item">
+                            Sign Up
+                        </NavLink>
                     </div>
 
                     {<div className="FormTitle">
@@ -74,20 +62,40 @@ class SignInForm extends Component {
 
 
                     <div className="FormCenter">
-                        <form onSubmit={this.handleSubmit} className="FormFields" >
+                        <form  className="FormFields"
+                               onChange={ e => this.handleChange(e) }  >
                             <div className="FormField">
-                                <label className="FormField__Label" htmlFor="email">User Email</label>
-                                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                                <label className="FormField__Label" htmlFor="username">
+                                    User Name
+                                </label>
+                                <input type="username" id="username"
+                                       className="FormField__Input"
+                                       placeholder="Enter your username"
+                                       name="username"
+                                        />
                             </div>
 
                             <div className="FormField">
-                                <label className="FormField__Label" htmlFor="password">Password</label>
-                                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                                <label className="FormField__Label"
+                                       htmlFor="password">
+                                    Password
+                                </label>
+                                <input type="password" id="password"
+                                       className="FormField__Input"
+                                       placeholder="Enter your password"
+                                       name="password" />
                             </div>
 
                             <div className="FormField">
-                                <button className="FormField__Button mr-20">Sign In</button> <Link to="/" className="FormField__Link">Create an account</Link>
+                                <button onClick={ e => this.handleSubmit(e) }
+                                        className="FormField__Button mr-20">
+                                    Sign In
+                                </button>
+                                <Link to="/" className="FormField__Link">
+                                    Create an account
+                                </Link>
                             </div>
+
                         </form>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 mongoose.Promise = global.Promise;
 //connect to mLab
- const DB = require('./config/config');
+ const DB = require('./config/keys');
 
 //connect to mongodb
 // mongoose

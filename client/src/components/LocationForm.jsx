@@ -35,10 +35,7 @@ class LocationForm extends Component {
                     <div>
                         <h2>Here Geocoder Autocomplete Validation</h2>
                     </div>
-                    {/*<AddressForm />
-            <Link to="/multimedia-form">
-                Next
-            </Link>*/}
+                   {/* <AddressForm /> */}
 
                     <form onChange={ e => this.handelInputs(e)}>
                         <br/>
@@ -49,6 +46,7 @@ class LocationForm extends Component {
                         <br/>
                         <br/>
                         <Link to="/save-form"
+                              className="submit-btn"
                               onClick={ e => this.handelSubmit(e) }>
                             Next
                         </Link>

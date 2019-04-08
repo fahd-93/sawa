@@ -9,7 +9,9 @@ import MedicalForm from "./MedicalForm";
 import DisplayCampaign from "./DisplayCampaign";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./LocationForm";
-import SaveCampaignForm from './SaveCampaignForm'
+import SaveCampaignForm from './SaveCampaignForm';
+import CampaignType from "./CampaignType";
+import SignForm from "./SignForm";
 
 class Router extends Component {
     render() {
@@ -19,7 +21,13 @@ class Router extends Component {
                     <Route
                         exact
                         path="/"
-                        component={App} />}
+                        component={App}
+                    />
+                    <Route path="/sign-form"
+                            component={SignForm}
+                    />
+                    <Route path="/create-campaign"
+                            component={CampaignType}
                     />
                     <Route path="/construction-form"
                            component={ConstructionForm}

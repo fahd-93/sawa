@@ -46,5 +46,5 @@ const constructionSchema = new mongoose.Schema({
     image: {},
     video: {},
 }, { collection: 'Campaigns' });
-console.log(constructionSchema);
+
 module.exports = constructionSchema;
