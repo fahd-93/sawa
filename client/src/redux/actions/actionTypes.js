@@ -1,0 +1,3 @@
+export const GET_CATEGORY = "GET_CATEGORY";
+export const UPDATE_INPUTS = "UPDATE_INPUTS";
+export const SAVE_CAMPAIGN = "SAVE_CAMPAIGN";

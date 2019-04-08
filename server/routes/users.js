@@ -15,7 +15,9 @@ const passportGoogle = passport.authenticate('googleToken', {session:false});
 const passportFacebook = passport.authenticate('facebookToken',{session:false});
 
 //get a list of users
-router.get('/users', cors(), userController.list);
+//router.get('/users', cors(), userController.list);
+router.route('/users')
+.get(cors(), userController.list);
 
 
 //add a new users to DB

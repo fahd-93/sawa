@@ -82,9 +82,9 @@ userController.signup = async(req, res, next) => {
 
                        user
                             .save();
-
                             const token = signToken(user);
                             res.status(200).json({ token })
+                            console.log( req.value.body);
 
                             console.log(token);
                     }

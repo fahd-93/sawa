@@ -1,8 +1,71 @@
 body {
-  background: #313440; }
+  background: white;
+  flex-direction: column;
+  font-family: "Andale Mono"; }
 
-h1 {
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+
+.flex-position {
+  width: 600px;
+  background: beige;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.form-container {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.camp-name {
+  font-size: 40px; }
+
+form {
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 20px; }
+
+input {
+  border: 1px solid white;
+  font-size: 15px;
+  border-radius: 1px;
+  padding: 10px 10px;
+  width: 500px; }
+
+textarea {
+  border: 1px solid white;
+  font-size: 14px;
+  border-radius: 1px;
+  padding: 20px 10px;
+  width: 500px; }
+
+label {
+  display: block;
+  text-align: center;
+  margin: 15px 0; }
+
+select {
+  margin-bottom: 20px; }
+
+.submit-btn {
+  background: darkolivegreen;
   color: white;
-  text-align: center; }
+  font-size: 14px;
+  padding: 10px 20px; }
+
+select {
+  display: block;
+  padding: 50px;
+  width: 510px; }
 
 /*# sourceMappingURL=styles.css.map */
