@@ -26,7 +26,7 @@ module.exports = {
         email: Joi.string().required(),
         password: Joi.string().required()
     }),
-    profileSchema : Joi.object().keys({
+    campaignSchema : Joi.object().keys({
       name: Joi.string(), 
       lastName: Joi.string(),  
       email: Joi.string().email().required(),

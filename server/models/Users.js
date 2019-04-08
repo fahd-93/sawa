@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 
+
 const  usersSchema = new mongoose.Schema({
        method:{
         type:String,
@@ -86,9 +87,10 @@ const  usersSchema = new mongoose.Schema({
         type: String
     },
 
-    created_campaign:[
-        
-    ],
+    created_campaigns:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Campaigns'
+    }],
 
     rating: {
         type: Number
@@ -124,4 +126,7 @@ usersSchema.pre('save', async function(next){
 } 
 
 
-module.exports = mongoose.model('User', usersSchema);
+
+
+ const User = mongoose.model('User', usersSchema);
+ module.exports = User

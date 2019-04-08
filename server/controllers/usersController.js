@@ -1,4 +1,6 @@
 const User = require('../models/Users');
+const Campaign = require('../models/Campaign');
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
@@ -6,14 +8,14 @@ const { JWT_SECRET } = require('../config/jwt-config');
 
 
 const userController = {}
-userController.list = (req, res) => {
+userController.list = (req, res, next) => {
 
-    User.find({}).exec((error, users) => {
-        if (error) {
-            console.log('Error:', error)
-        } else {
-            res.send(users)
-        }
+    User.find({})
+    .then(users => {
+        res.status(200).json(users);
+    })
+    .catch(err =>{
+        next(err);
     })
 }
 
@@ -27,7 +29,7 @@ signToken = user => {
 }
 
 
-userController.signup = (req, res, next) => {
+userController.signup = async(req, res, next) => {
     // email & password
 
     //console.log( req.value.body);
@@ -45,11 +47,12 @@ userController.signup = (req, res, next) => {
     } = req.value.body;
 
 
-    User.find({ "local.email": email })
+   await User.find({ "local.email": email })
         .exec()
         .then(user => {
             if (user.length >= 1) {
                 return res.status(409).json({
+                    
                     message: 'Mail exists'
                 });
 
@@ -77,13 +80,13 @@ userController.signup = (req, res, next) => {
                         });
 
 
-                        user
+                       user
                             .save();
 
-                        const token = signToken(user);
-                        res.status(200).json({ token })
+                            const token = signToken(user);
+                            res.status(200).json({ token })
 
-
+                            console.log(token);
                     }
                 })
             }
@@ -125,6 +128,74 @@ userController.signin = async (req, res, next) => {
         });
 
     };
+
+
+// show user by id
+userController.show = async (req, res, next) =>{
+    console.log('req.params',req.params.Id); 
+    const { Id } = req.params;
+    const user = await User.findById(Id);
+    res.status(200).json(user);
+
+},
+
+//replace show user by id
+userController.replace= async(req, res, next)=>{
+    const { Id } = req.params;
+    const newUser = req.body;
+    const result = await User.findByIdAndUpdate(Id, newUser);
+    console.log(result);
+    res.status(200).json({success: true});
+    
+},
+
+//update show user by id
+userController.update= async(req, res, next)=>{
+    const { Id } = req.params;
+    const newUser = req.body;
+    const result = await User.findByIdAndUpdate(Id, newUser);
+    console.log(result);
+    res.status(200).json({success: true});
+
+},
+
+ //show existing campaigns
+userController.getUserCampaigns = async(req, res, next) =>{
+    const { Id } = req.params;
+    const user = await User.findById(Id).populate('campaigns');
+    console.log(user, 'campaigns');
+    
+    res.status(201).json(user.created_campaigns);
+
+    console.log('users', user);
+    
+},
+userController.createUserCampaign = async(req, res, next) =>{
+    const { Id } = req.params;
+    //create a new campaign
+    const campaign = new Campaign(req.body);
+    console.log('Campaign',campaign);
+
+
+    //get user
+    const user = await User.findById(Id);
+    //assign user as campaign creator
+    campaign.created_campaigns = user;
+    //save campaign
+    await campaign.save();
+    
+    console.log(req.body);
+    // add campaign to the users created_by array
+    user.created_campaigns.push(campaign);
+    //save the user
+    await user.save();
+    res.status(201).json({user, campaign});
+
+
+    
+} 
+
+
 
 //delete
 userController.delete = (req, res, next) => {

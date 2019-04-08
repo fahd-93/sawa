@@ -4,6 +4,16 @@ const mongoose = require('mongoose');
 
 const userProfileController = {};
 
+userProfileController.list = (req, res) => {
+
+    UserProfile.find({}).exec((error, users) => {
+        if (error) {
+            console.log('Error:', error)
+        } else {
+            res.send(users)
+        }
+    })
+}
 
 userProfileController.creat = (req, res) => {
     userProfile = new UserProfile({
