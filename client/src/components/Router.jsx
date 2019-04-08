@@ -6,8 +6,10 @@ import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
-import CampaignConfirmation from "./CampaignConfirmation";
 import DisplayCampaign from "./DisplayCampaign";
+import MultimediaForm from "./MultimediaForm";
+import LocationForm from "./LocationForm";
+import SaveCampaignForm from './SaveCampaignForm'
 
 class Router extends Component {
     render() {
@@ -28,11 +30,18 @@ class Router extends Component {
                     <Route path="/medical-form"
                            component={MedicalForm}
                     />
-                    <Route path="/confirm-entry"
+                  {/*  <Route path="/confirm-entry"
                            component={CampaignConfirmation}
-                    />
+                    />*/}
                     <Route path="/display-campaign"
                             component={DisplayCampaign}/>
+                    <Route path="/location-form"
+                            component={LocationForm}/>
+                    <Route path="/multimedia-form"
+                        component={MultimediaForm}/>
+                    <Route path="/save-form"
+                        component={SaveCampaignForm}/>
+
                 </Switch>
             </BrowserRouter>
         );

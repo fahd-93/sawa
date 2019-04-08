@@ -27,7 +27,10 @@ constructionController.create = (req, res) => {
                 title: req.body.title,
                 description: req.body.description,
                 created_at: req.body.created_at,
-                campaign_location: req.body.location,
+                campaign_location: {
+                    latitude: req.body.location.latitude,
+                    longitude: req.body.location.longitude
+                },
                 country_code: req.body.country_code,
                 num_of_volunteers: req.body.num_of_volunteers,
                 type_of_volunteers: req.body.type_of_volunteers,

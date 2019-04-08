@@ -13,7 +13,12 @@ const constructionSchema = new mongoose.Schema({
         default: Date.now
     },
     campaign_location: {
-        type: String
+        latitude: {
+            type: String
+        },
+        longitude: {
+            type: String
+        }
     },
     country_code: {
         type: Number
@@ -36,5 +41,5 @@ const constructionSchema = new mongoose.Schema({
     image: {},
     video: {},
 }, { collection: 'Campaigns' });
-
+console.log(constructionSchema);
 module.exports = constructionSchema;

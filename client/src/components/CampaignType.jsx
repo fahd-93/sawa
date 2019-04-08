@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { getCategory } from "../redux/actions/actionCreator";
+import { addCategory } from "../redux/actions/actionCreator";
 
 class CampaignForm extends Component {
 
     handleOptions = e => {
         e.preventDefault();
-        this.props.getCategory(e.target.value);
+        this.props.addCategory(e.target.value);
     };
 
     render(){
@@ -38,4 +38,7 @@ const mapStateToProps = state => ({
     category: state.campaignReducer.category
 });
 
-export default connect( mapStateToProps, { getCategory } )( CampaignForm );
+export default connect(
+    mapStateToProps,
+    { addCategory }
+    )( CampaignForm );
