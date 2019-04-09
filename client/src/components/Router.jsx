@@ -6,7 +6,7 @@ import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
-import DisplayCampaign from "./DisplayCampaign";
+//import DisplayCampaign from "./DisplayCampaign";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
@@ -24,31 +24,31 @@ class Router extends Component {
                         component={App}
                     />
                     <Route path="/sign-form"
-                            component={SignForm}
+                        component={SignForm}
                     />
                     <Route path="/create-campaign"
-                            component={CampaignType}
+                        component={CampaignType}
                     />
                     <Route path="/construction-form"
-                           component={ConstructionForm}
+                        component={ConstructionForm}
                     />
                     <Route path="/education-form"
-                           component={EducationForm}
+                        component={EducationForm}
                     />
                     <Route path="/medical-form"
-                           component={MedicalForm}
+                        component={MedicalForm}
                     />
-                  {/*  <Route path="/confirm-entry"
+                    {/*  <Route path="/confirm-entry"
                            component={CampaignConfirmation}
                     />*/}
-                    <Route path="/display-campaign"
-                            component={DisplayCampaign}/>
+                    {/* <Route path="/display-campaign"
+                        component={DisplayCampaign} /> */}
                     <Route path="/location-form"
-                            component={LocationForm}/>
+                        component={LocationForm} />
                     <Route path="/multimedia-form"
-                        component={MultimediaForm}/>
+                        component={MultimediaForm} />
                     <Route path="/save-form"
-                        component={SaveCampaignForm}/>
+                        component={SaveCampaignForm} />
 
                 </Switch>
             </BrowserRouter>

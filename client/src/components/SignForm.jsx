@@ -4,16 +4,16 @@ import SignUpForm from "./SignUpForm";
 import SignInForm from "./SignInForm";
 // import ProfilePage from "./ProfilePage";
 
-class SignForm extends Component{
+class SignForm extends Component {
     render() {
         return (
             <Router basename="/react-auth-ui">
                 <Route exact path="/"
-                       component={SignUpForm}>
+                    component={SignUpForm}>
                 </Route>
                 <Route path="/sign-in"
-                       component={SignInForm}>
-                    </Route>
+                    component={SignInForm}>
+                </Route>
                 {/*<Route exact path="/profilepage"
                        component={ProfilePage} />*/}
             </Router>
