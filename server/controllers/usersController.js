@@ -9,6 +9,7 @@ const { JWT_SECRET } = require('../config/jwt-config');
 
 const userController = {};
 userController.list = (req, res, next) => {
+    
 
     User.find({})
     .then(users => {
@@ -178,7 +179,28 @@ userController.getUserCampaigns = async(req, res, next) => {
     
 };
 
-userController.createUserCampaign = async(req, res, next) => {
+userController.getConstructionCampaigns = async(req, res, next) => {
+    User.find({}).populate('Construction')
+    .exec((err, construction)=>{
+        if(err){
+            console.log('err', err);
+            
+        } else{
+            console.log( 'printed',construction);
+            
+        }
+    })
+    // const { Id } = req.params;
+    // const user = await User.findById(Id).populate('campaigns');
+
+    // console.log(user, 'campaigns');
+    
+    res.status(201).json('user.created_campaigns');
+
+   
+    
+};
+userController.createConstructionCampaign = async(req, res, next) => {
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign(req.body);
@@ -188,6 +210,28 @@ userController.createUserCampaign = async(req, res, next) => {
     const user = await User.findById(Id);
     //assign user as campaign creator
     campaign.created_campaigns = user;
+    //save campaign
+    await campaign.save();
+    console.log(req.body);
+
+    // add campaign to the users created_by array
+    user.created_campaigns.push(campaign);
+    //save the user
+    await user.save();
+    res.status(201).json({user, campaign});
+
+};
+
+userController.createUserCampaign = async(req, res, next) => {
+    const { Id } = req.params;
+    //create a new campaign
+    const campaign = new Campaign(req.body);
+    console.log('Campaign',campaign);
+
+    //get user
+    const user = await User.findById(Id);
+    //assign user as campaign creator
+    campaign.created_by = user._id;
     //save campaign
     await campaign.save();
     console.log(req.body);

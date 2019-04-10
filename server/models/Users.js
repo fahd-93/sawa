@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
+require('./Construction');
 
 const  usersSchema = new mongoose.Schema({
        method:{
@@ -84,6 +85,10 @@ const  usersSchema = new mongoose.Schema({
     activity_id:{
         type: String
     },
+    construction:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Construction'
+    }],
 
     created_campaigns:[{
         type: Schema.Types.ObjectId,

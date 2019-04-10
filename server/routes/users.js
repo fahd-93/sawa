@@ -6,7 +6,7 @@ const passportConf = require('../passport.js')
 const passport = require('passport');
 const { validateBody, schemas } = require('../routeHelper/routeHelpers')
 const userController = require('../controllers/usersController.js');
-
+const userProfileController = require('../controllers/userProfileController')
 const campaignController = require('../controllers/campaignController.js')
 
 const passportSignin = passport.authenticate('local', {session: false});
@@ -41,9 +41,10 @@ router.route('/oauth/google')
 .post(passportFacebook, userController.facebookSignin);
 
 // //show user profile
-// router.route('/users/profile')
-// .get(cors(), userProfileController.list)
-// .post(cors(), userProfileController.creat);
+ router.route('/users/profile')
+.get(cors(), userProfileController.list)
+.post(cors(), userProfileController.creat);
+
  //show a user
  router.route('/users/:Id')
 .get(cors(), userController.show)
@@ -54,6 +55,10 @@ router.route('/oauth/google')
 router.route('/users/:Id/campaigns')
 .get(cors(), userController.getUserCampaigns)
 .post(cors(), userController.createUserCampaign)
+
+router.route('/campaigns')
+.get(cors(), userController.getConstructionCampaigns)
+//.post(cors(), userController.getConstructionCampaigns)
 
 //show user campaign
 router.route('/users/campaign/:Id')
