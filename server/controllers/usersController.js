@@ -11,12 +11,12 @@ const userController = {};
 userController.list = (req, res, next) => {
 
     User.find({})
-    .then(users => {
-        res.status(200).json(users);
-    })
-    .catch(err =>{
-        next(err);
-    })
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(err => {
+            next(err);
+        })
 
 };
 
@@ -30,7 +30,7 @@ signToken = user => {
 };
 
 
-userController.signup = async(req, res, next) => {
+userController.signup = async (req, res, next) => {
 
     console.log('usersController.signup() called!');
 
@@ -46,7 +46,7 @@ userController.signup = async(req, res, next) => {
     } = req.value.body;
 
 
-   await User.find({ "local.email": email })
+    await User.find({ "local.email": email })
         .exec()
         .then(user => {
             if (user.length >= 1) {
@@ -75,14 +75,14 @@ userController.signup = async(req, res, next) => {
                             }
                         });
 
-                       user
+                        user
                             .save();
-                            const token = signToken(user);
-                            res.status(200).json({ token });
+                        const token = signToken(user);
+                        res.status(200).json({ token });
 
-                            console.log( req.value.body);
+                        console.log(req.value.body);
 
-                            console.log(token);
+                        console.log(token);
                     }
                 })
             }
@@ -101,7 +101,7 @@ userController.googleSignin = async (req, res, next) => {
 };
 
 //FACEBOOK SIGN-IN
-userController.facebookSignin = async(req, res, next) => {
+userController.facebookSignin = async (req, res, next) => {
 
     console.log('got here facebook');
 
@@ -111,31 +111,33 @@ userController.facebookSignin = async(req, res, next) => {
 };
 
 
-userController.signin = async(req, res, next) => {
+userController.signin = async (req, res, next) => {
     //generate token
+    const user = req.user
     const token = signToken(req.user);
     return res.status(200).json({
         message: 'sign-in successful',
-        token: token
+        token: token,
+        user
     });
 
 };
 
-    userController.secret = (req, res, next) => {
+userController.secret = (req, res, next) => {
 
-        console.log('manage to get hier');
+    console.log('manage to get hier');
 
-        res.json({
-            message: 'secret resource'
-        });
+    res.json({
+        message: 'secret resource'
+    });
 
-    };
+};
 
 
 // show user by id
 userController.show = async (req, res, next) => {
 
-    console.log('req.params',req.params.Id); 
+    console.log('req.params', req.params.Id);
 
     const { Id } = req.params;
     const user = await User.findById(Id);
@@ -143,46 +145,46 @@ userController.show = async (req, res, next) => {
 
 },
 
-//replace show user by id
-userController.replace = async(req, res, next) => {
-    const { Id } = req.params;
-    const newUser = req.body;
-    const result = await User.findByIdAndUpdate(Id, newUser);
-    console.log(result);
-    res.status(200).json({success: true});
-    
-};
+    //replace show user by id
+    userController.replace = async (req, res, next) => {
+        const { Id } = req.params;
+        const newUser = req.body;
+        const result = await User.findByIdAndUpdate(Id, newUser);
+        console.log(result);
+        res.status(200).json({ success: true });
+
+    };
 
 //update show user by id
-userController.update = async(req, res, next) => {
+userController.update = async (req, res, next) => {
     const { Id } = req.params;
     const newUser = req.body;
     const result = await User.findByIdAndUpdate(Id, newUser);
 
     console.log(result);
 
-    res.status(200).json({success: true});
+    res.status(200).json({ success: true });
 
 };
 
- //show existing campaigns
-userController.getUserCampaigns = async(req, res, next) => {
+//show existing campaigns
+userController.getUserCampaigns = async (req, res, next) => {
     const { Id } = req.params;
     const user = await User.findById(Id).populate('campaigns');
 
     console.log(user, 'campaigns');
-    
+
     res.status(201).json(user.created_campaigns);
 
     console.log('users', user);
-    
+
 };
 
-userController.createUserCampaign = async(req, res, next) => {
+userController.createUserCampaign = async (req, res, next) => {
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign(req.body);
-    console.log('Campaign',campaign);
+    console.log('Campaign', campaign);
 
     //get user
     const user = await User.findById(Id);
@@ -196,7 +198,7 @@ userController.createUserCampaign = async(req, res, next) => {
     user.created_campaigns.push(campaign);
     //save the user
     await user.save();
-    res.status(201).json({user, campaign});
+    res.status(201).json({ user, campaign });
 
 };
 
