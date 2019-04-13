@@ -29,6 +29,7 @@ signToken = user => {
     }, JWT_SECRET);
 };
 
+// SignUp
 
 userController.signup = async (req, res, next) => {
 
@@ -110,7 +111,7 @@ userController.facebookSignin = async (req, res, next) => {
 
 };
 
-
+// Basic SignIn
 userController.signin = async (req, res, next) => {
     //generate token
     const user = req.user

@@ -30,10 +30,10 @@ class ProfilePage extends Component {
 
             <div>
 
-                <h1>you are logged in</h1>
-                <h3>Name:{this.props.loggedInUser.local.name}</h3>
+                <h1></h1>
+                <h3>Hello {this.props.loggedInUser.local.name}</h3>
                 <h3>email:{this.props.loggedInUser.local.email}</h3>
-                <h3>pass:{this.props.loggedInUser.local.password}</h3>
+
 
 
             </div>

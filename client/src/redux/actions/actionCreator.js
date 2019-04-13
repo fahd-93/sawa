@@ -13,9 +13,9 @@ export const addCategory = category => dispatch => {
 export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
     dispatch({
-          type: "ADD_INPUTS",
-          payload: inputs
-      })
+        type: "ADD_INPUTS",
+        payload: inputs
+    })
 };
 
 export const addLocation = location => dispatch => {
@@ -35,14 +35,14 @@ export const saveCampaign = (object, category) => dispatch => {
                     'Content-Type': 'multipart/form-data'
                 }
             }*/)
-        .then( res => {
+        .then(res => {
             console.log(res.data);
             dispatch({
                 type: "SAVE_CAMPAIGN",
                 payload: object
             })
         })
-        .catch( error => {
+        .catch(error => {
             console.log(error);
         })
 };
@@ -55,4 +55,5 @@ export const saveCampaign = (object, category) => dispatch => {
 //             console.log(res.data);
 //         })
 // };
+
 
