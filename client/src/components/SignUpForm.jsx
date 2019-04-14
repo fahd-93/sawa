@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import FacebookLogin from 'react-facebook-login';
+//import GoogleLogin from 'react-google-login';
 
 import * as actions from "../redux/actions/actionCreator";
 
@@ -16,9 +18,16 @@ class SignUpForm extends Component {
     console.log('onSubmit() has been called');
     console.log('form data', formData);
     //Call the ActionCreator
-    await this.props.signUp(formData)
+    await this.props.signUp(formData);
+  }
+  responseGoogle(res) {
+    console.log('responseGoogle', res);
+
   }
 
+  responseFacebook(res) {
+    console.log('responseFacebook', res);
+  }
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -43,6 +52,12 @@ class SignUpForm extends Component {
                 component={CustomInput} />
 
             </fieldset>
+            {this.props.errorMessage ?
+              <div className="alert alert-danger">
+                {this.props.errorMessage}
+              </div> : null}
+
+
 
 
 
@@ -54,7 +69,13 @@ class SignUpForm extends Component {
             <div className="alert alert-primary">
               or Signup with your Social Media Account
           </div>
-            <button className="btn btn-default">Facebook</button>
+            <FacebookLogin
+              appId="2241134356214829"
+              autoLoad={true}
+              fields="name,email,picture"
+              callback={this.responseFacebook}
+              cssClass="btn btn-outline-primary"
+            />
             <button className="btn btn-default">Google</button>
           </div>
         </div>
@@ -64,8 +85,15 @@ class SignUpForm extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    errorMessage: state.auth.errorMessage
+  }
+}
+
+
 export default compose(
-  connect(null, actions),
+  connect(mapStateToProps, actions),
   reduxForm({ form: 'signup' })
 
 )(SignUpForm);

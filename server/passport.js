@@ -116,45 +116,45 @@ passport.use(new LocalStrategy({
 
 //facebook strategy
 
-// passport.use('facebookToken', new FacebookStrategy({
-//   clientID: '',
-//   clientSecret: ''
-// },
-//   async (accessToken, refreshToken, profile, done) => {
-//     try {
+passport.use('facebookToken', new FacebookStrategy({
+  clientID: config.oauth.facebook.clientSecret,
+  clientSecret: config.oauth.facebook.clientSecret
+},
+  async (accessToken, refreshToken, profile, done) => {
+    try {
 
-//       console.log('accessToken', accessToken);
-//       console.log('refreshToken', refreshToken);
-//       console.log('profile', profile);
+      console.log('accessToken', accessToken);
+      console.log('refreshToken', refreshToken);
+      console.log('profile', profile);
 
-//       //check if user exists
-//       const existingUser = await User.findOne({ "facebook.id": profile.id });
-//       if (existingUser) {
+      //check if user exists
+      const existingUser = await User.findOne({ "facebook.id": profile.id });
+      if (existingUser) {
 
-//         console.log('user already exists in db');
+        console.log('user already exists in db');
 
-//         return done(null, existingUser);
+        return done(null, existingUser);
 
-//       }
-//       console.log('creating a new user in db');
+      }
+      console.log('creating a new user in db');
 
-//       //if new user
-//       const newUser = new User({
-//         method: 'facebook',
-//         facebook: {
-//           id: profile.id,
-//           email: profile.emails[0].value
-//         }
+      //if new user
+      const newUser = new User({
+        method: 'facebook',
+        facebook: {
+          id: profile.id,
+          email: profile.emails[0].value
+        }
 
-//       });
+      });
 
-//       await newUser.save();
-//       done(null, newUser);
+      await newUser.save();
+      done(null, newUser);
 
-//     } catch (error) {
-//       done(error, false, error.message);
-//     }
+    } catch (error) {
+      done(error, false, error.message);
+    }
 
 
 
-//   }));
+  }));

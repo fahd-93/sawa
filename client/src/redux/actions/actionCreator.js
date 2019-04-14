@@ -1,5 +1,5 @@
-
 import axios from 'axios';
+import { AUTH_SIGN_UP, AUTH_ERROR } from './actionTypes';
 
 // getCategory is to retrieve the chosen component form.
 export const addCategory = category => dispatch => {
@@ -59,11 +59,20 @@ export const saveCampaign = (object, category) => dispatch => {
 export const signUp = data => {
     return async dispatch => {
         try {
+            console.log('[ActionCreator] signUp called!')
             const res = await axios.post('http://localhost:4000/api/users/signup', data)
-            console.log('res', res);
-
+            console.log('[ActionCreator] signUp dispatched an action!')
+            dispatch({
+                type: AUTH_SIGN_UP,
+                payload: res.data.token
+            })
+            localStorage.setItem('JWT_TOKEN', res.data.token);
         } catch (err) {
-            console.log('err', err)
+            dispatch({
+                type: AUTH_ERROR,
+                payload: 'Email is already in use'
+            })
+            //console.log('err', err);
 
         }
 
