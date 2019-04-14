@@ -56,4 +56,16 @@ export const saveCampaign = (object, category) => dispatch => {
 //         })
 // };
 
+export const signUp = data => {
+    return async dispatch => {
+        try {
+            const res = await axios.post('http://localhost:4000/api/users/signup', data)
+            console.log('res', res);
 
+        } catch (err) {
+            console.log('err', err)
+
+        }
+
+    }
+}

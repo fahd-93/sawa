@@ -2,7 +2,7 @@
 const DEFAULT_STATE = {
     isAuthenticated: false,
     token: '',
-    error: ''
+    errorMessage: ''
 }
 
 export default (state = DEFAULT_STATE, action) => {
