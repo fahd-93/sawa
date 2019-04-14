@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_SIGN_UP, AUTH_ERROR } from './actionTypes';
+import { AUTH_SIGN_UP, AUTH_SIGN_OUT, AUTH_ERROR } from './actionTypes';
 
 // getCategory is to retrieve the chosen component form.
 export const addCategory = category => dispatch => {
@@ -56,6 +56,9 @@ export const saveCampaign = (object, category) => dispatch => {
 //         })
 // };
 
+
+
+
 export const signUp = data => {
     return async dispatch => {
         try {
@@ -77,4 +80,15 @@ export const signUp = data => {
         }
 
     }
+}
+
+export const signOut = () => {
+    return dispatch => {
+        localStorage.removeItem('jwt_token');
+        dispatch({
+            type: AUTH_SIGN_OUT,
+            payload: ''
+        })
+    };
+
 }
