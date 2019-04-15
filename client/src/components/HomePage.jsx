@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import NavigationBar from './NavigationBar';
+import CardCampaign from './CardCampaign';
+import { Row, Col } from 'react-bootstrap';
 
-class HomePage extends Component{
+class HomePage extends Component {
     render() {
-        return(
-            <div className={"App"}>
-                <div className={"App__Form"}>
-                    <button className="FormField__Button mr-20">
-                        <Link to={"/sign-form"}>
-                            Sign In
-                        </Link>
-                    </button>
-                    <button className="FormField__Button mr-20">
-                        <Link to={"/create-campaign"}>
-                            Create Form
-                        </Link>
-                    </button>
-                </div>
-            </div>
+        return (
+            <React.Fragment>
+            <NavigationBar />
+                    <Row>
+                        <Col><CardCampaign /></Col>
+                        <Col><CardCampaign /></Col>
+                        <Col><CardCampaign /></Col>
+                    </Row>
+            </React.Fragment>
         )
     }
 }
