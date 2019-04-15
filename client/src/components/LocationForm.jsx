@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-// import AddressForm from './AddressForm';
 import { connect } from 'react-redux';
+import AlgoliaPlaces from 'algolia-places-react';
+
 import { addLocation } from "../redux/actions/actionCreator";
 
 class LocationForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = { }
     }
 
-    handelInputs = e => {
-        e.preventDefault();
-        let coordinates = {
-            latitude: "34.8021",
-            longitude: "38.9968"
-        };
+    handleInput = suggestion => {
+        let location = suggestion.suggestion;
+        console.log(location);
         this.setState({
-            [e.target.name]: coordinates
+            city: location.name,
+            postcode: location.postcode,
+            country: location.country,
+            countryCode: location.countryCode,
+            type: location.type,
+            latlng: {
+                lat: location.latlng.lat,
+                lng: location.latlng.lng
+            }
         })
+
     };
 
-    handelSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         this.props.addLocation(this.state);
     };
 
@@ -32,25 +40,26 @@ class LocationForm extends Component {
             <div className="container">
                 <div className="flex-position">
                     <h1>Location Form</h1>
-                    <div>
-                        <h2>Here Geocoder Autocomplete Validation</h2>
-                    </div>
-                   {/* <AddressForm /> */}
 
-                    <form onChange={ e => this.handelInputs(e)}>
                         <br/>
                         <label>Campaign Location:</label>
-                        <input type="text"
-                               name="location"
-                               placeholder="Put Your Location"/>
+                        <AlgoliaPlaces
+                            name='AlgoliaPlaces'
+                            placeholder="Write an address here"
+                            options={{
+                                appId: 'pl48PRQJVY9X',
+                                apiKey: '976ae5509e3452dbc494dd1e9f390486'
+                            }}
+                            onChange={ (suggestion) => this.handleInput(suggestion) }
+                        />
                         <br/>
-                        <br/>
+
                         <Link to="/save-form"
                               className="submit-btn"
-                              onClick={ e => this.handelSubmit(e) }>
+                              onClick={ e => this.handleSubmit(e) }>
                             Next
                         </Link>
-                    </form>
+
                 </div>
             </div>
         )

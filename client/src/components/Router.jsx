@@ -12,6 +12,7 @@ import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
 import CampaignType from "./CampaignType";
 import SignForm from "./SignForm";
+import Geolocation from "./Geolocation";
 
 class Router extends Component {
     render() {
@@ -22,6 +23,9 @@ class Router extends Component {
                         exact
                         path="/"
                         component={App}
+                    />
+                    <Route path="/geolocation"
+                           component={Geolocation}
                     />
                     <Route path="/sign-form"
                         component={SignForm}

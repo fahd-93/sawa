@@ -1,6 +1,26 @@
 
 import axios from 'axios';
 
+export const getLocation = () => dispatch => {
+
+    const geolocation = navigator.geolocation;
+
+    new Promise((resolve, reject) => {
+        if (!geolocation) {
+            reject(new Error('Not Supported'));
+        }
+        geolocation.getCurrentPosition((position) => {
+            resolve(dispatch({
+                type: "GET_LOCATION",
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude
+            }));
+        }, () => {
+            reject (new Error('Permission denied'));
+        });
+    });
+};
+
 // getCategory is to retrieve the chosen component form.
 export const addCategory = category => dispatch => {
     dispatch({

@@ -10,7 +10,12 @@ const initialState = {
      end_date: '',
      location: {
          latitude: '',
-         longitude: ''
+         longitude: '',
+         city: '',
+         postcode: '',
+         country: '',
+         countryCode: '',
+         type: '',
      },
      image: []
 };
@@ -37,12 +42,17 @@ export default (state = initialState, action) => {
         }
 
         case ADD_LOCATION: {
-            console.log(action.payload);
+            console.log('Action',action.payload);
             return {
                 ...state,
                 location: {
-                    latitude: action.payload.location.latitude,
-                    longitude: action.payload.location.longitude,
+                    latitude: action.payload.latlng.lat,
+                    longitude: action.payload.latlng.lng,
+                    city: action.payload.city,
+                    postcode: action.payload.postalCode,
+                    country: action.payload.country,
+                    countryCode: action.payload.countryCode,
+                    type: action.payload.type,
                 }
             }
         }

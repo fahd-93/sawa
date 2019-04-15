@@ -12,7 +12,7 @@ class SaveCampaignForm extends Component {
         }
     }
 
-    handelInputs = e => {
+    handleInputs = e => {
         e.preventDefault();
         console.log(e.target.value);
         this.setState({
@@ -20,7 +20,7 @@ class SaveCampaignForm extends Component {
         })
     };
 
-    handelSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
         console.log(this.props.state);
         this.props.saveCampaign(this.props.state, this.props.category);
@@ -33,7 +33,7 @@ class SaveCampaignForm extends Component {
         return(
             <div className="form-container">
                 <div className="flex-position">
-                    <form onChange={ e => this.handelInputs(e)}>
+                    <form onChange={ e => this.handleInputs(e)}>
                         <br/>
                         <h2>Campaign Category: {category}</h2>
 
@@ -71,7 +71,7 @@ class SaveCampaignForm extends Component {
                                contentEditable
                                defaultValue={campaign.type_of_volunteers}/>
                         <Link to={'/display-campaign'}
-                              onClick={ e => this.handelSubmit(e) }>
+                              onClick={ e => this.handleSubmit(e) }>
                             Save
                         </Link>
 
