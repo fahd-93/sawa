@@ -48,13 +48,7 @@ const  campaignSchema = new mongoose.Schema({
     medical:{
        
     },
-})
-
-   
-
-   
- 
-
+});
 
  const Campaign = mongoose.model('Campaign', campaignSchema);
  module.exports = Campaign

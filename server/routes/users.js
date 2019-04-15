@@ -53,15 +53,15 @@ router.route('/oauth/google')
 
 router.route('/users/:Id/campaigns')
 .get(cors(), userController.getUserCampaigns)
-.post(cors(), userController.createUserCampaign)
+.post(cors(), userController.createUserCampaign);
 
 //show user campaign
 router.route('/users/campaign/:Id')
-.get(cors(), campaignController.getUserCampaigns)
+.get(cors(), campaignController.getUserCampaigns);
   
 //show user campaign
 router.route('/campaign')
-.get(cors(), campaignController.getAllCampaigns)
+.get(cors(), campaignController.getAllCampaigns);
   
 //update a users in the DB
 

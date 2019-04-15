@@ -29,15 +29,6 @@ export const addCategory = category => dispatch => {
     })
 };
 
-// updateInput is to update the redux Campaign Store with the the new inputs
-export const addInputs = inputs => dispatch => {
-    console.log('inputs', inputs);
-    dispatch({
-          type: "ADD_INPUTS",
-          payload: inputs
-      })
-};
-
 export const addLocation = location => dispatch => {
     console.log(location);
     dispatch({
@@ -45,16 +36,40 @@ export const addLocation = location => dispatch => {
         payload: location
     })
 };
-// saveCampaign is to post, with axios, the campaign in the DB
-export const saveCampaign = (object, category) => dispatch => {
-    console.log(object);
+
+// updateInput is to update the redux Campaign Store with the the new inputs
+export const addInputs = (inputs, formData) => dispatch => {
+    console.log('inputs', inputs);
+    console.log('FormData', formData);
     axios
-        .post(`http://localhost:4000/api/campaign/${category}`, object/*,
+        .post(`http://localhost:4000/api/users/5cb3a919354b1927d5a97775/campaigns`, inputs,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            }*/)
+            })
+        .then(res => {
+            console.log(res.data);
+            dispatch({
+                type: "ADD_INPUTS",
+                payload: inputs
+            })
+        })
+        .catch( error => {
+            console.log(error)
+        })
+
+};
+// saveCampaign is to post, with axios, the campaign in the DB
+export const saveCampaign = (object, category) => dispatch => {
+    console.log(object);
+    axios
+        .post(`http://localhost:4000/api/campaign/${category}`, object,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
         .then( res => {
             console.log(res.data);
             dispatch({

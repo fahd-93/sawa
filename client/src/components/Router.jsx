@@ -6,7 +6,7 @@ import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
-//import DisplayCampaign from "./DisplayCampaign";
+import CampaignForm from "./CampaignForm";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
@@ -29,6 +29,9 @@ class Router extends Component {
                     />
                     <Route path="/sign-form"
                         component={SignForm}
+                    />
+                    <Route path="/campaign-form"
+                           component={CampaignForm}
                     />
                     <Route path="/create-campaign"
                         component={CampaignType}

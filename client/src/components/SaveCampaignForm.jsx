@@ -7,39 +7,34 @@ import { saveCampaign } from "../redux/actions/actionCreator";
 class SaveCampaignForm extends Component {
     constructor(props){
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     handleInputs = e => {
         e.preventDefault();
-        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value,
         })
     };
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(this.props.state);
-        this.props.saveCampaign(this.props.state, this.props.category);
+    handleSubmit = () => {
+        this.props.saveCampaign(this.props.state, this.state);
     };
 
     render(){
         const campaign = this.props.state;
-        const category = this.props.category;
         console.log(campaign);
+
         return(
             <div className="form-container">
                 <div className="flex-position">
                     <form onChange={ e => this.handleInputs(e)}>
                         <br/>
-                        <h2>Campaign Category: {category}</h2>
+                        <h2>Campaign Category: {campaign.category}</h2>
 
                         <h3>Campaign Name:</h3>
                         <input name="title"
-                               defaultValue={campaign.title}
+                               defaultValue={campaign.title.toUpperCase()}
                                contentEditable/>
 
                         <h3>Campaign Description:</h3>
@@ -50,7 +45,7 @@ class SaveCampaignForm extends Component {
                         <h3> Location:</h3>
                         <input type="text" name="location"
                                contentEditable
-                               defaultValue={campaign.location}/>
+                               defaultValue={campaign.location.city}/>
                         <h3> Start Date:</h3>
                         <input type="date" name="start_date"
                                contentEditable
@@ -70,11 +65,17 @@ class SaveCampaignForm extends Component {
                         <input type="text" name="type_of_volunteers"
                                contentEditable
                                defaultValue={campaign.type_of_volunteers}/>
+
+
                         <Link to={'/display-campaign'}
+                              className="submit-btn"
                               onClick={ e => this.handleSubmit(e) }>
                             Save
                         </Link>
-
+                        <Link to={'/location-form'}
+                              className="submit-btn">
+                            Back
+                        </Link>
                     </form>
                 </div>
             </div>
@@ -84,7 +85,6 @@ class SaveCampaignForm extends Component {
 
 const mapStateToProps = state => ({
     state: state.campaignReducer,
-    category: state.campaignReducer.category
 });
 
 export default connect(
