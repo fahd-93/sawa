@@ -4,8 +4,8 @@ const router = require('express-promise-router')();
 const cors=require('cors');
 const passportConf = require('../passport.js')
 const passport = require('passport');
-const { validateBody, schemas } = require('../routeHelper/routeHelpers')
-const userController = require('../controllers/usersController.js');
+const { validateBody, schemas } = require('../routeHelper/routeHelpers.js')
+const userController = require('../controllers/usersController');
 const userProfileController = require('../controllers/userProfileController')
 const campaignController = require('../controllers/campaignController.js')
 
@@ -13,6 +13,7 @@ const passportSignin = passport.authenticate('local', {session: false});
 const passportjwt = passport.authenticate('jwt', {session: false});
 const passportGoogle = passport.authenticate('googleToken', {session:false});
 const passportFacebook = passport.authenticate('facebookToken',{session:false});
+const { upload } = require('../handlers/multer');
 
 //get a list of users
 //router.get('/users', cors(), userController.list);
@@ -22,7 +23,7 @@ router.route('/users')
 
 //add a new users to DB
 router.route('/users/signup')
-.post(validateBody(schemas.authSchema ), cors(), userController.signup);
+.post(validateBody(schemas.authSchema ), /* upload.single('image'), */ cors(), userController.signup);
 
 //signin
 router.route('/users/signin')
@@ -43,22 +44,21 @@ router.route('/oauth/google')
 // //show user profile
  router.route('/users/profile')
 .get(cors(), userProfileController.list)
-.post(cors(), userProfileController.creat);
+.post(cors(), upload.single('image'), userProfileController.creat);
 
  //show a user
  router.route('/users/:Id')
 .get(cors(), userController.show)
-.put(cors(),userController.replace) //replace user
-.patch(cors(),userController.update); //update user
+.put(cors(),upload.single('image'), userController.replace) //replace user
+.patch(cors(),upload.single('image'), userController.update); //update user
 
 
-router.route('/users/:Id/campaigns')
+router.route('/users/:Id/campaign')
 .get(cors(), userController.getUserCampaigns)
-.post(cors(), userController.createUserCampaign)
+.post(cors(),upload.single('image'), userController.createUserCampaign)
+//update campaign
 
-router.route('/campaigns')
-.get(cors(), userController.getConstructionCampaigns)
-//.post(cors(), userController.getConstructionCampaigns)
+
 
 //show user campaign
 router.route('/users/campaign/:Id')
@@ -68,9 +68,6 @@ router.route('/users/campaign/:Id')
 router.route('/campaign')
 .get(cors(), campaignController.getAllCampaigns)
   
-//update a users in the DB
-
-//.put('/users/:id', cors(), userController.update);
 
 //delete a user in the DB
 router.delete('/users/:id', cors(), userController.delete);

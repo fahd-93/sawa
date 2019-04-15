@@ -5,9 +5,13 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt-config');
+const { upload } = require('../handlers/multer');
+//const image = upload.single('image');
+
 
 
 const userController = {};
+
 userController.list = (req, res, next) => {
     
 
@@ -32,7 +36,8 @@ signToken = user => {
 
 
 userController.signup = async(req, res, next) => {
-
+    //imageUrl = `uploads/${req.file.filename}`
+    const image = upload.single('image');
     console.log('usersController.signup() called!');
 
     const {
@@ -43,8 +48,10 @@ userController.signup = async(req, res, next) => {
         password,
         date_of_birth,
         gender,
-        created_at
+        created_at,
+        
     } = req.value.body;
+
 
 
    await User.find({ "local.email": email })
@@ -72,7 +79,8 @@ userController.signup = async(req, res, next) => {
                                 password: hash,
                                 date_of_birth,
                                 gender,
-                                created_at
+                                created_at,
+                                image
                             }
                         });
 
@@ -114,17 +122,20 @@ userController.facebookSignin = async(req, res, next) => {
 
 userController.signin = async(req, res, next) => {
     //generate token
+    const user = req.user
     const token = signToken(req.user);
     return res.status(200).json({
         message: 'sign-in successful',
-        token: token
+        token: token,
+        user
     });
+   
 
 };
 
     userController.secret = (req, res, next) => {
 
-        console.log('manage to get hier');
+        console.log('manage to get here');
 
         res.json({
             message: 'secret resource'
@@ -150,28 +161,43 @@ userController.replace = async(req, res, next) => {
     const newUser = req.body;
     const result = await User.findByIdAndUpdate(Id, newUser);
     console.log(result);
+    console.log(newUser);
+    
     res.status(200).json({success: true});
     
 };
 
 //update show user by id
 userController.update = async(req, res, next) => {
-    const { Id } = req.params;
-    const newUser = req.body;
-    const result = await User.findByIdAndUpdate(Id, newUser);
+                const { Id } = req.params;
+                let newUser = new User ( {
 
-    console.log(result);
+                    name: req.body.name,
+                    last_name: req.body.last_name,
+                    date_of_birth:req.body.date_of_birth,
+                    gender: req.body.gender,
+                    image: req.file.path
 
-    res.status(200).json({success: true});
+                });
+                const result =  User.findByIdAndUpdate(Id, newUser);
 
+                console.log(result);
+
+                res.status(200).json({success: true});
+        
+    
 };
 
  //show existing campaigns
 userController.getUserCampaigns = async(req, res, next) => {
     const { Id } = req.params;
-    const user = await User.findById(Id).populate('campaigns');
+    const user = await User.findById(Id)
+    .populate({
+       path: 'campaign'
+       
+    });
 
-    console.log(user, 'campaigns');
+    console.log(user, 'campaign');
     
     res.status(201).json(user.created_campaigns);
 
@@ -179,53 +205,26 @@ userController.getUserCampaigns = async(req, res, next) => {
     
 };
 
-userController.getConstructionCampaigns = async(req, res, next) => {
-    User.find({}).populate('Construction')
-    .exec((err, construction)=>{
-        if(err){
-            console.log('err', err);
-            
-        } else{
-            console.log( 'printed',construction);
-            
-        }
-    })
-    // const { Id } = req.params;
-    // const user = await User.findById(Id).populate('campaigns');
-
-    // console.log(user, 'campaigns');
-    
-    res.status(201).json('user.created_campaigns');
-
-   
-    
-};
-userController.createConstructionCampaign = async(req, res, next) => {
-    const { Id } = req.params;
-    //create a new campaign
-    const campaign = new Campaign(req.body);
-    console.log('Campaign',campaign);
-
-    //get user
-    const user = await User.findById(Id);
-    //assign user as campaign creator
-    campaign.created_campaigns = user;
-    //save campaign
-    await campaign.save();
-    console.log(req.body);
-
-    // add campaign to the users created_by array
-    user.created_campaigns.push(campaign);
-    //save the user
-    await user.save();
-    res.status(201).json({user, campaign});
-
-};
-
 userController.createUserCampaign = async(req, res, next) => {
     const { Id } = req.params;
     //create a new campaign
-    const campaign = new Campaign(req.body);
+    const campaign = new Campaign({
+        categories: req.body.categories,
+        title: req.body.title,
+        description: req.body.description,
+        created_at: req.body.created_at,
+        // campaign_location: {
+        //     latitude: req.body.location.latitude,
+        //     longitude: req.body.location.longitude
+        // },
+        country_code: req.body.country_code,
+        num_of_volunteers: req.body.num_of_volunteers,
+        type_of_volunteers: req.body.type_of_volunteers,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        image: req.file.path,
+        video: req.body.video
+    });
     console.log('Campaign',campaign);
 
     //get user

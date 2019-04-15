@@ -52,8 +52,8 @@ app.use(express.static('./public'));
 
 //routes
 app.use('/api', require('./routes/users'));
-app.use('/api', require('./routes/medical'));
-app.use('/api', require('./routes/education'));
+//app.use('/api', require('./routes/campaign'));
+//app.use('/api', require('./routes/education'));
 app.use('/api', require('./routes/construction'));
 
 app.listen(port, () => {

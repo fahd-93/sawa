@@ -28,6 +28,7 @@ class ProfilePage extends Component {
 
             <div>
                 <h1>you are logged in</h1>
+                <h2>{}</h2>
             </div>
             );
     }

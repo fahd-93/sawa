@@ -20,28 +20,14 @@ module.exports = {
       name: Joi.string(),  
       email: Joi.string().email().required(),
       username: Joi.string(),
-      password: Joi.string().required()
+      password: Joi.string().required(),
+      //image: Joi.object()
+      
     }),
     signinSchema : Joi.object().keys({
         email: Joi.string().required(),
         password: Joi.string().required()
     }),
-    campaignSchema : Joi.object().keys({
-      name: Joi.string(), 
-      lastName: Joi.string(),  
-      email: Joi.string().email().required(),
-      username: Joi.string(),
-      date_of_birth: Joi.string().required(),
-      gender: Joi.string(),
-      created_at: Joi.date(),
-      userLocation: Joi.string(),
-      role: Joi.string(),
-      profession_id: Joi.string(),
-      activity_id: Joi.string(),
-      created_campaign:Joi.string(),
-      rating: Joi.number(),
-      avatar: Joi.object()
-    })
   }
 
 }
