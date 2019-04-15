@@ -119,7 +119,7 @@ usersSchema.pre('save', async function(next){
     } catch (error) {
         throw new Error(error);
     }
-} 
+};
 
 
 

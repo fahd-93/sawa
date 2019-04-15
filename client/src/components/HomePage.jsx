@@ -12,7 +12,7 @@ class HomePage extends Component{
                         </Link>
                     </button>
                     <button className="FormField__Button mr-20">
-                        <Link to={"/create-campaign"}>
+                        <Link to={"/campaign-form"}>
                             Create Form
                         </Link>
                     </button>

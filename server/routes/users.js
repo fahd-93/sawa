@@ -62,11 +62,11 @@ router.route('/users/:Id/campaign')
 
 //show user campaign
 router.route('/users/campaign/:Id')
-.get(cors(), campaignController.getUserCampaigns)
+.get(cors(), campaignController.getUserCampaigns);
   
 //show user campaign
 router.route('/campaign')
-.get(cors(), campaignController.getAllCampaigns)
+.get(cors(), campaignController.getAllCampaigns);
   
 
 //delete a user in the DB

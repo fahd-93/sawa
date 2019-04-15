@@ -6,12 +6,13 @@ import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
-//import DisplayCampaign from "./DisplayCampaign";
+import CampaignForm from "./CampaignForm";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
 import CampaignType from "./CampaignType";
 import SignForm from "./SignForm";
+import Geolocation from "./Geolocation";
 
 class Router extends Component {
     render() {
@@ -23,8 +24,14 @@ class Router extends Component {
                         path="/"
                         component={App}
                     />
+                    <Route path="/geolocation"
+                           component={Geolocation}
+                    />
                     <Route path="/sign-form"
                         component={SignForm}
+                    />
+                    <Route path="/campaign-form"
+                           component={CampaignForm}
                     />
                     <Route path="/create-campaign"
                         component={CampaignType}
