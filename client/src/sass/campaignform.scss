@@ -4,74 +4,76 @@ body {
   font-family: "Andale Mono";
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.flex-position {
-  width: 600px;
-  background: beige;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-container {
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.camp-name {
-  font-size: 40px;
-}
-form {
-  border-radius: 5px;
-  //background: lightgray;
-  padding: 20px;
-  font-size: 20px;
-} input{
-    border: 1px solid white;
-    font-size: 15px;
-    border-radius: 1px;
-    padding: 10px 10px;
-    width: 500px;
+#campaignForm {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
-textarea{
-    border: 1px solid white;
-    font-size: 14px;
-    border-radius: 1px;
-    padding: 20px 10px;
-    width: 500px;
-      }
-select{
-  margin-bottom: 20px;
-}
-.submit-btn {
-  background: darkolivegreen;
-  color: white;
-  font-size: 14px;
-  padding: 10px 20px;
 
-}
+  .flex-position {
+    width: 600px;
+    background: beige;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-em{
-  color: darkred;
-}
-select {
-  display: block;
-  font-size: 15px;
-  border: gold 2px solid;
-  font-family: "Andale Mono";
-  padding: 10px;
-  width: 510px;
-}
+  .form-container {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .camp-name {
+    font-size: 40px;
+  }
+  form {
+    border-radius: 5px;
+    //background: lightgray;
+    padding: 20px;
+    font-size: 20px;
+  } input{
+      border: 1px solid white;
+      font-size: 15px;
+      border-radius: 1px;
+      padding: 10px 10px;
+      width: 500px;
+    }
+    textarea{
+      border: 1px solid white;
+      font-size: 14px;
+      border-radius: 1px;
+      padding: 20px 10px;
+      width: 500px;
+    }
+    select{
+      margin-bottom: 20px;
+    }
+    .submit-btn {
+      background: darkolivegreen;
+      color: white;
+      font-size: 14px;
+      padding: 10px 20px;
+
+    }
+
+    em{
+      color: darkred;
+    }
+    select {
+      display: block;
+      font-size: 15px;
+      border: gold 2px solid;
+      font-family: "Andale Mono";
+      padding: 10px;
+      width: 510px;
+    }
+  }
