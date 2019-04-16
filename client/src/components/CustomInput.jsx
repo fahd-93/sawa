@@ -9,7 +9,7 @@ export default class CustomInput extends Component {
                 <input
                     name={this.props.name}
                     id={this.props.id}
-                    Placeholder={this.props.Placeholder}
+                    placeholder={this.props.Placeholder}
                     className="form-control"
                     type={this.props.type}
                     value={value}

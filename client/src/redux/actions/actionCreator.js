@@ -156,7 +156,8 @@ export const oauthFacebook = data => {
 
 export const signOut = () => {
     return dispatch => {
-        localStorage.removeItem('jwt_token');
+        localStorage.clear('jwt_token');
+        console.log(localStorage);
         axios.defaults.headers.common['Authorization'] = '';
         dispatch({
             type: AUTH_SIGN_OUT,
