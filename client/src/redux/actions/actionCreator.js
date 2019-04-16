@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { AUTH_SIGN_UP, AUTH_SIGN_OUT, AUTH_ERROR } from './actionTypes';
+import {
+    AUTH_SIGN_UP,
+    AUTH_SIGN_IN,
+    AUTH_SIGN_OUT,
+    AUTH_ERROR,
+} from './actionTypes';
+
 
 // getCategory is to retrieve the chosen component form.
 export const addCategory = category => dispatch => {
@@ -58,7 +64,7 @@ export const saveCampaign = (object, category) => dispatch => {
 
 
 
-
+// Sign up. save the Token & handle Error Message
 export const signUp = data => {
     return async dispatch => {
         try {
@@ -70,6 +76,9 @@ export const signUp = data => {
                 payload: res.data.token
             })
             localStorage.setItem('JWT_TOKEN', res.data.token);
+            axios.defaults.headers.common['Authorization'] = res.data.token;
+            dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
+
         } catch (err) {
             dispatch({
                 type: AUTH_ERROR,
@@ -82,9 +91,73 @@ export const signUp = data => {
     }
 }
 
+
+
+// SignIn. save the Token & handle Error Message 
+export const signIn = data => {
+    return async dispatch => {
+        try {
+            console.log('[ActionCreator] SignIn called!')
+            const res = await axios
+                .post('http://localhost:4000/api/users/signin', data)
+            console.log('[ActionCreator] signIn dispatched an action!')
+
+            dispatch({
+                type: AUTH_SIGN_IN,
+                payload: res.data.token
+            });
+            console.log(res.data);
+
+            localStorage.setItem('JWT_TOKEN', res.data.token);
+            // dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
+            axios.defaults.headers.common['Authorization'] = res.data.token;
+            dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
+
+        } catch (err) {
+            dispatch({
+                type: AUTH_ERROR,
+                payload: 'Email and password combination isn\'t valid'
+            })
+
+            //console.log('err', err);
+
+        }
+
+    };
+}
+
+
+
+
+// Facebook
+export const oauthFacebook = data => {
+    return async dispatch => {
+        const res = await axios.post('http://localhost:4000/api/oauth/facebook', {
+            access_token: data
+        });
+
+        dispatch({
+            type: AUTH_SIGN_UP,
+            payload: res.data.token
+        });
+
+        localStorage.setItem('JWT_TOKEN', res.data.token);
+        axios.defaults.headers.common['Authorization'] = res.data.token;
+    };
+}
+
+
+
+
+
+
+
+// SignOut
+
 export const signOut = () => {
     return dispatch => {
         localStorage.removeItem('jwt_token');
+        axios.defaults.headers.common['Authorization'] = '';
         dispatch({
             type: AUTH_SIGN_OUT,
             payload: ''
@@ -92,3 +165,6 @@ export const signOut = () => {
     };
 
 }
+
+
+

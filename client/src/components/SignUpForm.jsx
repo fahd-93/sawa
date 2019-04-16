@@ -13,27 +13,50 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+    this.responseFacebook = this.responseFacebook.bind(this);
+
   }
   async onSubmit(formData) {
     console.log('onSubmit() has been called');
     console.log('form data', formData);
     //Call the ActionCreator
     await this.props.signUp(formData);
+    if (!this.props.history.errorMessage) {
+      this.props.history.push('/profilepage')
+    }
   }
+
   responseGoogle(res) {
     console.log('responseGoogle', res);
 
   }
 
-  responseFacebook(res) {
+
+  async responseFacebook(res) {
     console.log('responseFacebook', res);
+    await this.props.oauthFacebook(res.accessToken);
+    if (!this.props.errorMessage) {
+      this.props.history.push('/profilepage')
+
+    }
   }
+
+
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="row">
         <div className="col">
           <form onSubmit={handleSubmit(this.onSubmit)}>
+            <fieldset>
+              <Field
+                name="name"
+                type="text"
+                id="name"
+                label="Enter your name"
+                placeholder="Enter Your name"
+                component={CustomInput} />
+            </fieldset>
             <fieldset>
               <Field
                 name="email"
@@ -71,7 +94,7 @@ class SignUpForm extends Component {
           </div>
             <FacebookLogin
               appId="2241134356214829"
-              autoLoad={true}
+              // autoLoad={true}
               fields="name,email,picture"
               callback={this.responseFacebook}
               cssClass="btn btn-outline-primary"

@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from "../redux/actions/actionCreator";
 
+
+import * as actions from "../redux/actions/actionCreator";
 
 class Header extends Component {
     constructor(props) {
         super(props);
-        this.signOut = this.signOut.bind(this)
+        this.signOut = this.signOut.bind(this);
+    }
 
-    }
     signOut() {
-        console.log('signout got called');
-        this.props.signOut()
+        this.props.signOut();
     }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ marginBottom: '30px' }}>
@@ -21,12 +22,12 @@ class Header extends Component {
 
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav mr-auto">
-                        <li classname="nav-item">
+                        <li className="nav-item">
                             <Link className="nav-link" to="/profilepage">Profile Page</Link>
                         </li>
                     </ul>
 
-                    <ul className="nav navbar-nav m1-auto">
+                    <ul className="nav navbar-nav ml-auto">
                         {!this.props.isAuth ?
                             [<li className="nav-item" key="signup">
                                 <Link className="nav-link" to="/signup">Sign Up</Link>
@@ -41,8 +42,6 @@ class Header extends Component {
                             </li> : null}
                     </ul>
                 </div>
-
-
             </nav>
         );
     }
@@ -53,7 +52,9 @@ function mapStateToProps(state) {
         isAuth: state.auth.isAuthenticated
     };
 }
+
 export default connect(mapStateToProps, actions)(Header);
+
 
 
 

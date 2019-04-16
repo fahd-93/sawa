@@ -12,7 +12,10 @@ import ProfilePage from './components/ProfilePage';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import axios from 'axios';
 import reducers from './redux/reducer/index';
+import authGuard from './components/HOCs/authGuard';
+
 // import store from './redux/store/index';
 
 import * as serviceWorker from './serviceWorker';
@@ -20,6 +23,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 const jwtToken = localStorage.getItem('JWT_TOKEN');
+axios.defaults.headers.common['Authorization'] = jwtToken;
 
 
 ReactDOM.render(
@@ -35,7 +39,7 @@ ReactDOM.render(
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/signup" component={SignUpForm} />
                 <Route exact path="/signin" component={SignInForm} />
-                <Route exact path="/profilepage" component={ProfilePage} />
+                <Route exact path="/profilepage" component={authGuard(ProfilePage)} />
 
 
             </App>
