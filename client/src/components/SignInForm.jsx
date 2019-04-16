@@ -43,7 +43,7 @@ class SignInForm extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div className="row">
+            <div className="col">
                 <div className="col">
                     <form onSubmit={handleSubmit(this.onSubmit)}>
                         <fieldset>
@@ -79,6 +79,7 @@ class SignInForm extends Component {
                 </div>
                 <div className="col">
                     <div className="text-center">
+                        <br />
                         <div className="alert alert-primary">
                             or SignIn with your Social Media Account
           </div>

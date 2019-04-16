@@ -45,7 +45,7 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="row">
+      <div className="col">
         <div className="col">
           <form onSubmit={handleSubmit(this.onSubmit)}>
             <fieldset>
@@ -71,6 +71,7 @@ class SignUpForm extends Component {
                 name="password"
                 type="password"
                 id="password"
+                label="Enter your Password"
                 placeholder="Your Password"
                 component={CustomInput} />
 
@@ -87,6 +88,7 @@ class SignUpForm extends Component {
             <button type="submit" className="btn btn-primary">Sign Up</button>
           </form>
         </div>
+        <br />
         <div className="col">
           <div className="text-center">
             <div className="alert alert-primary">
