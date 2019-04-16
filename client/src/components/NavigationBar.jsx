@@ -6,7 +6,7 @@ const NavigationBar = (props) => {
     return (
         <div>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href={"/"}>
                     <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" /> Sawa
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
