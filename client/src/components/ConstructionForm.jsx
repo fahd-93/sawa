@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
 import { connect } from 'react-redux';
-import { addInputs } from "../redux/actions/actionCreator";
+import { saveCampaign } from "../redux/actions/actionCreator";
+import VolunteerType from "./campaign/VolunteerType";
+import CampaignDate from './campaign/CampaignDate';
+import CampaignInput from './campaign/CampaignInput';
 
 
 class ConstructionForm extends Component {
@@ -10,89 +12,56 @@ class ConstructionForm extends Component {
         this.state = {}
     }
 
-    ConstructionTypeList =[
-        "General Helper",
-        "Construction Carpenter",
-        "Construction Electrician",
-        "Mason",
-        "Plumber",
-        "Welder",
-        "Glazier",
-        "Plasterer",
-        "Roofer",
-        "Site Superintendent",
-        "Construction Managers",
-        "Metal Fabricators",
-        "Site Engineers",
-        "Designers",
-        "Elevator Mechanic",
-        "Civil Engineer",
-        "Field Engineer",
-        "Planner",
-        "Construction Engineer",
-        "Equipment Operators"
-    ];
-
     handelInputs = (e) => {
         e.preventDefault();
         this.setState({
+            category: this.props.category,
             [e.target.name]: e.target.value,
         });
-        console.log({[e.target.name]: e.target.value})
+        console.log(this.state);
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log('Submit');
         let formData = new FormData();
-        Object.keys(this.state).forEach( (index) => {
-            formData.append(index, this.state[index]);
+        Object.keys(this.state).map( (inputs, index) => {
+            /*
+            formData.append(this.state);
+
+            this.props.saveCampaign(this.state, formData);*/
+           if(inputs === 'image'){
+               formData.append('image', this.state.image);
+               console.log('if',formData);
+           } else {
+               formData.set(inputs, this.state[inputs]);
+               console.log(formData)
+           }
         });
-        console.log(this.state);
-        this.props.addInputs(this.state, formData);
+
+        // formData.set("title", this.state.title);
+        // formData.set("description", this.state.description);
+        // formData.set("num_of_volunteers", this.state.num_of_volunteers);
+        // formData.set("type_of_volunteers", this.state.type_of_volunteers);
+        // formData.set("start_date", this.state.start_date);
+        // formData.set("end_date", this.state.end_date);
+        // formData.append("image", this.userImageRef.current.files[0]);
+        //formData.append("video", this.videoRef.current.files[0]);
+
+        this.props.saveCampaign(formData);
+        console.log(forData)
     };
 
     render(){
         return(
-            <div className="form-container">
-                <div className="flex-position">
+            <div>
+                <div >
                     <form onChange={ e => this.handelInputs(e)}>
-                        <br/>
-                        <label>Campaign Name:</label>
-                        <input type="text"
-                               name="title"
-                               placeholder="Think of a good name for your campaign"/>
+                        <CampaignInput/>
                         <br/><br/>
-                        <label>Campaign Description:</label>
-                        <textarea name="description"
-                                  cols="50" rows="8"
-                                  placeholder="Remember to give an overview of your campaign.
-                                  You better give some context why and for what your creating this campaign."
-                        />
+                        <VolunteerType />
                         <br/><br/>
-                        <label>How Many volunteers the campaign needs?</label>
-                        <input name="num_of_volunteers"
-                               type="number"/>
-                        <br/><br/>
-                        <label>What Type of help the campaign needs?</label>
-                        <select name="type_of_volunteers"
-                                type="number">
-                            <option defaultValue>Choose Type of help your campaign needs:</option>
-                            {this.ConstructionTypeList
-                                .map( (item, index) => {
-                                return(
-                                    <option value={item}
-                                            key={index}>
-                                        {item}
-                                    </option>
-                                )
-                            })}
-                        </select>
-                        <label> Start Date:</label>
-                        <input type="date" name="start_date"/>
-                        <br/><br/>
-                        <label> End Date:</label>
-                        <input type="date" name="end_date"/>
-                        <br/>
+                        <CampaignDate/>
 
                         <label> Upload Image:</label>
                         <input type="file" name="image"/>
@@ -108,7 +77,11 @@ class ConstructionForm extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    category: state.campaignReducer.category
+});
+
 export default connect(
-    null,
-    { addInputs })
+    mapStateToProps,
+    { saveCampaign })
 ( ConstructionForm );

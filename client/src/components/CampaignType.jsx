@@ -12,7 +12,6 @@ class CampaignForm extends Component {
     render(){
         return(
             <div className="form-container">
-                <h1 className="camp-name">Campaign Form</h1>
                 <form >
                     <select onChange={e => this.handleOptions(e)}>
                         <option defaultValue>Choose One Category</option>
@@ -26,11 +25,5 @@ class CampaignForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    category: state.campaignReducer.category
-});
 
-export default connect(
-    mapStateToProps,
-    { addCategory }
-    )( CampaignForm );
+export default connect( null, { addCategory })( CampaignForm );

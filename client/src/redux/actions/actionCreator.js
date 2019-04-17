@@ -23,6 +23,7 @@ export const getLocation = () => dispatch => {
 
 // getCategory is to retrieve the chosen component form.
 export const addCategory = category => dispatch => {
+    console.log('Action', category);
     dispatch({
         type: "ADD_CATEGORY",
         payload: category
@@ -37,19 +38,14 @@ export const addLocation = location => dispatch => {
     })
 };
 
-// updateInput is to update the redux Campaign Store with the the new inputs
-export const addInputs = (inputs, formData) => dispatch => {
+// saveCampaign is to post, with axios, the campaign in the DBs
+export const saveCampaign = (inputs, formData) => dispatch => {
     console.log('inputs', inputs);
     console.log('FormData', formData);
     axios
-        .post(`http://localhost:4000/api/users/5cb3a919354b1927d5a97775/campaigns`, inputs,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
+        .post(`http://localhost:4000/api/users/5cb3a919354b1927d5a97775/campaign`, inputs)
         .then(res => {
-            console.log(res.data);
+            console.log('axios', res.data);
             dispatch({
                 type: "ADD_INPUTS",
                 payload: inputs
@@ -60,27 +56,7 @@ export const addInputs = (inputs, formData) => dispatch => {
         })
 
 };
-// saveCampaign is to post, with axios, the campaign in the DB
-export const saveCampaign = (object, category) => dispatch => {
-    console.log(object);
-    axios
-        .post(`http://localhost:4000/api/campaign/${category}`, object,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-        .then( res => {
-            console.log(res.data);
-            dispatch({
-                type: "SAVE_CAMPAIGN",
-                payload: object
-            })
-        })
-        .catch( error => {
-            console.log(error);
-        })
-};
+
 
 // export const editCampaign = () => dispatch => {
 //     let id = '5c9cbf4b07dce90a6de3b9ea';

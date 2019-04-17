@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, SAVE_CAMPAIGN } from "../actions/actionTypes";
+import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION } from "../actions/actionTypes";
 
 const initialState = {
      category: '',
@@ -42,7 +42,6 @@ export default (state = initialState, action) => {
         }
 
         case ADD_LOCATION: {
-            console.log('Action',action.payload);
             return {
                 ...state,
                 location: {
@@ -57,12 +56,6 @@ export default (state = initialState, action) => {
             }
         }
 
-        case SAVE_CAMPAIGN: {
-            return {
-                ...state,
-
-            }
-        }
         default:
             return state;
 

@@ -2,9 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
-
-
 //const authRoutes = require('./routes/auth-routes');
 //const profileRoutes = require('./routes/profile-routes');
 
@@ -30,18 +27,18 @@ mongoose.Promise = global.Promise;
  const DB = require('./config/keys');
 
 //connect to mongodb
-mongoose
+/*mongoose
 	.connect(`mongodb://localhost:27017/sawa`, { useNewUrlParser: true })
 	.then(data => console.log('Successful connection to database'))
 	.catch((error) => {
 		console.log(`The following error occurred: ${error.message}`);
-	});
-/* mongoose
+	});*/
+ mongoose
 	.connect(DB.mongoURI, { useNewUrlParser: true })
 	.then(() => console.log("Successful connection to database"))
 	.catch(error => {
 		console.log(`The following error occurred: ${error.message}`);
-	}); */
+	});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -52,9 +49,6 @@ app.use(express.static('./public'));
 
 //routes
 app.use('/api', require('./routes/users'));
-//app.use('/api', require('./routes/campaign'));
-//app.use('/api', require('./routes/education'));
-app.use('/api', require('./routes/construction'));
 
 app.listen(port, () => {
 	console.log(`Listening at port ${port}`);
