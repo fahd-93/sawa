@@ -49,6 +49,7 @@ router.route('/oauth/facebook')
  //show a user
  router.route('/users/:Id')
 .get(cors(), userController.show)
+//.post(cors(), upload.single('image'),userController.create)
 .put(cors(), upload.single('image'), userController.replace) //replace user
 .patch(cors(), upload.single('image'), userController.update); //update user
 
@@ -63,12 +64,12 @@ router.route('/users/campaign/types')
 
 //show user campaign
 router.route('/users/campaign/:Id')
-    .get(cors(), campaignController.getUserCampaigns);
-
-//show user campaigns
+.get(cors(), campaignController.getUserCampaigns);
+  
+//show all campaigns
 router.route('/campaigns')
-    .get(cors(), campaignController.getAllCampaigns);
-
+.get(cors(), campaignController.getAllCampaigns);
+  
 
 //delete a user in the DB
 router.delete('/users/:id', cors(), userController.delete);

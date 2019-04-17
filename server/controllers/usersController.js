@@ -87,12 +87,13 @@ userController.signup = async(req, res) => {
                                 date_of_birth,
                                 gender,
                                 created_at,
-                                image
+                                image:req.imageFileName
+                                
                             }
                         });
 
                         user
-                            .save();
+                        .save();
                         const token = signToken(user);
                         res.status(200).json({ token });
 
@@ -156,16 +157,25 @@ userController.show = async (req, res) => {
 
 };
 
-//replace show user by id
+//replace show user by id put
     userController.replace = async(req, res) => {
 
         const { Id } = req.params;
-        const newUser = req.body;
-        const result = await User.findByIdAndUpdate(Id, newUser);
+    //const newUser = req.body;
+    let newUser =  {
 
-        console.log( result );
+             name: req.body.name,
+            last_name: req.body.last_name,
+            date_of_birth:req.body.date_of_birth,
+            gender: req.body.gender,
+            image:req.imageFileName
 
-        res.status(200).json({success: true});
+         };
+    const result = await User.findByIdAndUpdate(Id, newUser);
+   // console.log(result);
+    
+    
+    res.status(200).json({success: true});
 
     };
 
@@ -173,16 +183,16 @@ userController.show = async (req, res) => {
 userController.update = async(req, res, next) => {
     console.log('file from controller req.imageFileName', req.imageFileName);
                 const { Id } = req.params;
-                const newUser = req.body;
-                // let newUser = new User ( {
+                //const newUser = req.body;
+                let newUser = {
 
-                //     // name: req.body.name,
-                //     // last_name: req.body.last_name,
-                //     // date_of_birth:req.body.date_of_birth,
-                //     // gender: req.body.gender,
-                //      image:req.imageFileName
+                    name: req.body.name,
+                    last_name: req.body.last_name,
+                    date_of_birth:req.body.date_of_birth,
+                    gender: req.body.gender,
+                    image:req.imageFileName
 
-                // });
+                 };
                 const result = await User.findByIdAndUpdate(Id, newUser);
 
                 console.log(result);
