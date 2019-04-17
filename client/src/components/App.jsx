@@ -1,21 +1,30 @@
-import React from 'react';
+// import React from 'react';
+// import Header from './Header';
 
-import Header from './Header';
+// // export default (props) => {
+// //   return (
+// //     <div>
+// //       <Header />
+// //       {props.children}
+// //     </div>
+// //   );
+// // }
 
-export default (props) => {
-  return (
-    <div>
-      <Header />
-      <div className="container">
-        {props.children}
-      </div>
-    </div>
-  );
-};
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+
+//     return (
+//       <div>
+//         <Header />
+//       </div >
+
+//     )
+//   }
 
 
+// }
 
-
-
-
-
+// export default App;

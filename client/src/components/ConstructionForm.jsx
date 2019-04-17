@@ -118,5 +118,4 @@ class ConstructionForm extends Component {
 
 export default connect(
     null,
-    { addInputs })
-( ConstructionForm );
+    { addInputs })( ConstructionForm );

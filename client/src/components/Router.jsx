@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
-
-import App from "./App";
+import HomePage from "./HomePage";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./ConstructionForm";
 import MedicalForm from "./MedicalForm";
@@ -11,23 +10,44 @@ import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
 import CampaignType from "./CampaignType";
-import SignForm from "./SignForm";
+import SignInForm from "./SignInForm";
 import Notfound from "./Notfound";
+
+// import App from './components/App'
+
+import SignUpForm from './SignUpForm';
+import ProfilePage from './ProfilePage';
+import authGuard from './HOCs/authGuard';
+import Header from './Header';
+import Foot from './Foot';
+
+
+
 
 
 class Router extends Component {
     render() {
         return (
             <BrowserRouter>
+                <Header />
+
                 <Switch>
                     <Route
                         exact
                         path="/"
-                        component={App}
+                        component={HomePage}
                     />
-
-                    <Route path="/sign-form"
-                        component={SignForm}
+                    <Route exact
+                        path="/signup"
+                        component={SignUpForm}
+                    />
+                    <Route exact
+                        path="/signin"
+                        component={SignInForm}
+                    />
+                    <Route exact
+                        path="/profilepage"
+                        component={authGuard(ProfilePage)}
                     />
                     <Route path="/create-campaign"
                         component={CampaignType}
@@ -55,6 +75,7 @@ class Router extends Component {
                     <Route component={Notfound} />
 
                 </Switch>
+                <Foot />
             </BrowserRouter>
         );
     }
