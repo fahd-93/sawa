@@ -79,7 +79,7 @@ userController.signup = async(req, res, next) => {
                                 date_of_birth,
                                 gender,
                                 created_at,
-                                image:req.imageFileName
+                                //image:req.imageFileName
                             }
                         });
                         console.log(user);
@@ -155,7 +155,7 @@ userController.show = async (req, res, next) => {
 
 },
 
-//replace show user by id
+//replace show user by id put
 userController.replace = async(req, res, next) => {
     const { Id } = req.params;
     const newUser = req.body;
@@ -167,23 +167,25 @@ userController.replace = async(req, res, next) => {
     
 };
 
-//update show user by id
+//update show user by id patch
 userController.update = async(req, res, next) => {
+    console.log('file from controller req.imageFileName', req.imageFileName);
                 const { Id } = req.params;
-                let newUser = new User ( {
+                const newUser = req.body;
+                // let newUser = new User ( {
+                    
+                //     // name: req.body.name,
+                //     // last_name: req.body.last_name,
+                //     // date_of_birth:req.body.date_of_birth,
+                //     // gender: req.body.gender,
+                //      image:req.imageFileName
 
-                    name: req.body.name,
-                    last_name: req.body.last_name,
-                    date_of_birth:req.body.date_of_birth,
-                    gender: req.body.gender,
-                    image:req.imageFileName
-
-                });
-                const result =  User.findByIdAndUpdate(Id, newUser);
-
+                // });
+                const result = await User.findByIdAndUpdate(Id, newUser);
+                
                 console.log(result);
 
-                res.status(200).json({success: true});
+                res.status(200).json({newUser});
         
     
 };

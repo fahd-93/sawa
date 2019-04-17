@@ -97,7 +97,6 @@ const  usersSchema = new mongoose.Schema({
 
     image: {} 
 
-
 }, { collection: 'users' });
 
 usersSchema.pre('save', async function(next){
