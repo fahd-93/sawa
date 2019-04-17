@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION } from "../actions/actionTypes";
+import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, GET_ALL_CAMP} from "../actions/actionTypes";
 
 const initialState = {};
 
