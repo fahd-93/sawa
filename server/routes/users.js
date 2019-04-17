@@ -52,12 +52,10 @@ router.route('/oauth/google')
 .put(cors(),upload.single('image'), userController.replace) //replace user
 .patch(cors(),upload.single('image'), userController.update); //update user
 
-
 router.route('/users/:Id/campaign')
 .get(cors(), userController.getUserCampaigns)
 .post(cors(),upload.single('image'), userController.createUserCampaign)
 //update campaign
-
 
 
 //show user campaign

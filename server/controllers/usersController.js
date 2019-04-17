@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt-config');
 const { upload } = require('../handlers/multer');
-//const image = upload.single('image');
+
+const image = upload.single('image');
 
 
 
@@ -36,8 +37,6 @@ signToken = user => {
 
 
 userController.signup = async(req, res, next) => {
-    //imageUrl = `uploads/${req.file.filename}`
-    const image = upload.single('image');
     console.log('usersController.signup() called!');
 
     const {
@@ -80,10 +79,11 @@ userController.signup = async(req, res, next) => {
                                 date_of_birth,
                                 gender,
                                 created_at,
-                                image
+                                image:req.imageFileName
                             }
                         });
-
+                        console.log(user);
+                        
                        user
                             .save();
                             const token = signToken(user);
@@ -176,7 +176,7 @@ userController.update = async(req, res, next) => {
                     last_name: req.body.last_name,
                     date_of_birth:req.body.date_of_birth,
                     gender: req.body.gender,
-                    image: req.file.path
+                    image:req.imageFileName
 
                 });
                 const result =  User.findByIdAndUpdate(Id, newUser);
@@ -206,6 +206,10 @@ userController.getUserCampaigns = async(req, res, next) => {
 };
 
 userController.createUserCampaign = async(req, res, next) => {
+    console.log('file from controller req.imageFileName', req.imageFileName);
+
+    //const image = upload.single('image');
+    //let imageUrl = null; 
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign({
@@ -213,19 +217,19 @@ userController.createUserCampaign = async(req, res, next) => {
         title: req.body.title,
         description: req.body.description,
         created_at: req.body.created_at,
-        // campaign_location: {
-        //     latitude: req.body.location.latitude,
-        //     longitude: req.body.location.longitude
-        // },
+        campaign_location: {
+            latitude: req.body.latitude,
+            longitude: req.body.longitude
+        },
         country_code: req.body.country_code,
         num_of_volunteers: req.body.num_of_volunteers,
         type_of_volunteers: req.body.type_of_volunteers,
         start_date: req.body.start_date,
         end_date: req.body.end_date,
-        image: req.file.path,
+        image: req.imageFileName,
         video: req.body.video
     });
-    console.log('Campaign',campaign);
+    //console.log('Campaign',campaign);
 
     //get user
     const user = await User.findById(Id);
@@ -233,7 +237,7 @@ userController.createUserCampaign = async(req, res, next) => {
     campaign.created_by = user._id;
     //save campaign
     await campaign.save();
-    console.log(req.body);
+    //console.log('req.body from campaing.save',req.body);
 
     // add campaign to the users created_by array
     user.created_campaigns.push(campaign);

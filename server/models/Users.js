@@ -21,12 +21,12 @@ const  usersSchema = new mongoose.Schema({
         },
          email: {
                 type: String,
-                required: true,
+                //required: true,
                 match: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
             },
         password: {
                 type: String,
-                //required: [true, 'name field is required']
+               // required: [true, 'name field is required']
             },
             image: {}, 
     },
@@ -95,7 +95,7 @@ const  usersSchema = new mongoose.Schema({
         type: Number
     },
 
-    image: {}, 
+    image: {} 
 
 
 }, { collection: 'users' });
@@ -108,8 +108,6 @@ usersSchema.pre('save', async function(next){
      } catch(error) {
         next(error); 
      }
-     
-
 }); 
  
  usersSchema.methods.isValidPassword = async function(password) {

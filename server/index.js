@@ -45,10 +45,11 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/uploads", express.static("./public/uploads/"));
 
 // Public folder -- Create a folder named Public
 
-app.use(express.static('./public'));
+//app.use(express.static('./public'));
 
 //routes
 app.use('/api', require('./routes/users'));
