@@ -4,10 +4,10 @@ const router = require('express-promise-router')();
 const cors=require('cors');
 const passportConf = require('../passport.js')
 const passport = require('passport');
-const { validateBody, schemas } = require('../routeHelper/routeHelpers.js')
+const { validateBody, schemas } = require('../routeHelper/routeHelpers.js');
 const userController = require('../controllers/usersController');
-const userProfileController = require('../controllers/userProfileController')
-const campaignController = require('../controllers/campaignController.js')
+const userProfileController = require('../controllers/userProfileController');
+const campaignController = require('../controllers/campaignController.js');
 
 const passportSignin = passport.authenticate('local', {session: false});
 const passportjwt = passport.authenticate('jwt', {session: false});
@@ -57,6 +57,9 @@ router.route('/users/:Id/campaign')
 .post(cors(),upload.single('image'), userController.createUserCampaign)
 //update campaign
 
+//show volunteers types
+router.route('/users/campaign/types')
+    .get(cors(), userController.typeList);
 
 //show user campaign
 router.route('/users/campaign/:Id')
@@ -71,4 +74,4 @@ router.route('/campaign')
 router.delete('/users/:id', cors(), userController.delete);
  
 
-module.exports = router
+module.exports = router;

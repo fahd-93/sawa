@@ -87,7 +87,4 @@ const mapStateToProps = state => ({
     state: state.campaignReducer,
 });
 
-export default connect(
-    mapStateToProps,
-    { saveCampaign }  )
-( SaveCampaignForm );
+export default connect( mapStateToProps, { saveCampaign }  )( SaveCampaignForm );

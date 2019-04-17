@@ -4,13 +4,13 @@ import '../sass/styles.scss';
 
 import App from "./App";
 import EducationForm from "./EducationForm";
-import ConstructionForm from "./ConstructionForm";
+import ConstructionForm from "./campaign/ConstructionForm";
 import MedicalForm from "./MedicalForm";
-import CampaignForm from "./CampaignForm";
+import CampaignForm from "./campaign/CampaignForm";
 import MultimediaForm from "./MultimediaForm";
-import LocationForm from "./LocationForm";
+import LocationForm from "./campaign/LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
-import CampaignType from "./CampaignType";
+import CampaignType from "./campaign/CampaignType";
 import SignForm from "./SignForm";
 import Geolocation from "./Geolocation";
 

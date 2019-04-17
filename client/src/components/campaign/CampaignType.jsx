@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addCategory } from "../redux/actions/actionCreator";
+import { addCategory } from "../../redux/actions/actionCreator";
 
 class CampaignForm extends Component {
 
@@ -12,8 +12,7 @@ class CampaignForm extends Component {
     render(){
         return(
             <div className="form-container">
-                <h1 className="camp-name">Campaign Form</h1>
-                <form >
+                <form>
                     <select onChange={e => this.handleOptions(e)}>
                         <option defaultValue>Choose One Category</option>
                         <option value="medical">Medical</option>
@@ -26,11 +25,5 @@ class CampaignForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    category: state.campaignReducer.category
-});
 
-export default connect(
-    mapStateToProps,
-    { addCategory }
-    )( CampaignForm );
+export default connect( null, { addCategory })( CampaignForm );

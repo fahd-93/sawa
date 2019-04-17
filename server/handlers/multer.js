@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
         file.fieldname + Date.now() + file.originalname.match(/\.\w+$/);
         cb(null, req.imageFileName);
         console.log('req.imageFileName', req.imageFileName);
-        
+
     }
 });
 const upload = multer({
@@ -38,4 +38,4 @@ function checkFileType(file, cb) {
 }
 
 
-module.exports = { storage, upload }
+module.exports = { storage, upload };

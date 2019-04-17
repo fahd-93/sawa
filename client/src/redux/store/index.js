@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "../reducer/index";
 import thunk from 'redux-thunk';
 
-function promiseMiddleware({dispatch}) {
+/*function promiseMiddleware({dispatch}) {
     function isPromise(val) {
         return val && typeof val.then === 'function';
     }
@@ -14,7 +14,7 @@ function promiseMiddleware({dispatch}) {
             )
             : next(action);
     };
-}
+}*/
 
 export default createStore(
     rootReducer,

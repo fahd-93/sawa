@@ -14,7 +14,7 @@ campaignController.getAllCampaigns = (req, res, next) => {
     .catch(err =>{
         next(err);
     })
-}
+};
 
 campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;
@@ -22,7 +22,7 @@ campaignController.getUserCampaigns = async(req, res, next) =>{
     //console.log('campaign', campaign);
     res.status(201).json(campaign);
     
-},
+};
 /* 
 campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;

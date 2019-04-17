@@ -28,5 +28,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getLocation })
-(Geolocation);
+    { getLocation })(Geolocation);

@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 
 const  campaignSchema = new mongoose.Schema({
-    
     categories:{
-        type:String
+        type:String,
     },
-        title: {
+    title: {
             type: String
         },
         created_by:{
@@ -23,18 +22,17 @@ const  campaignSchema = new mongoose.Schema({
             default: Date.now
         },
         campaign_location: {
-            latitude: {
-                type: String
-            },
-            longitude: {
-                type: String
-            }
+            latitude: { String },
+            longitude: { String }
         },
         country_code: {
-            type: String
+            type: Number
         },
         num_of_volunteers: {
             type: Number
+        },
+        type_of_volunteers: {
+            type: String
         },
         materials: {
             type: String
@@ -47,9 +45,7 @@ const  campaignSchema = new mongoose.Schema({
         },
         image: {},
         video: {},
-    
-    }, { collection: 'Campaigns' });
-
+});
 
  const Campaign = mongoose.model('Campaign', campaignSchema);
- module.exports = Campaign
+ module.exports = Campaign;

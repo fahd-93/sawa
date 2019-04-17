@@ -1,28 +1,39 @@
+const mongoose = require('mongoose');
 const User = require('../models/Users');
 const Campaign = require('../models/Campaign');
-
-const mongoose = require('mongoose');
+const typesSchema = require('../models/Types');
+const Types = mongoose.model('Types', typesSchema);
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt-config');
 const { upload } = require('../handlers/multer');
-
-const image = upload.single('image');
+//const image = upload.single('image');
 
 
 
 const userController = {};
 
+userController.typeList = (req, res) => {
+    Types.find({}).exec((error, types) => {
+        if(error) {
+            console.log(`Error: ${error}`)
+        } else {
+            res.send(types)
+        }
+    })
+
+};
+
 userController.list = (req, res, next) => {
-    
+
 
     User.find({})
-    .then(users => {
-        res.status(200).json(users);
-    })
-    .catch(err =>{
-        next(err);
-    })
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(err =>{
+            next(err);
+        })
 
 };
 
@@ -36,9 +47,8 @@ signToken = user => {
 };
 
 
-userController.signup = async(req, res, next) => {
-    console.log('usersController.signup() called!');
-
+userController.signup = async(req, res) => {
+    const image = upload.single('image');
     const {
         name,
         last_name,
@@ -48,12 +58,12 @@ userController.signup = async(req, res, next) => {
         date_of_birth,
         gender,
         created_at,
-        
+
     } = req.value.body;
 
 
 
-   await User.find({ "local.email": email })
+    await User.find({ "local.email": email })
         .exec()
         .then(user => {
             if (user.length >= 1) {
@@ -79,19 +89,18 @@ userController.signup = async(req, res, next) => {
                                 date_of_birth,
                                 gender,
                                 created_at,
-                                //image:req.imageFileName
+                                image
                             }
                         });
-                        console.log(user);
-                        
-                       user
+
+                        user
                             .save();
-                            const token = signToken(user);
-                            res.status(200).json({ token });
+                        const token = signToken(user);
+                        res.status(200).json({ token });
 
-                            console.log( req.value.body);
+                        console.log( req.value.body);
 
-                            console.log(token);
+                        console.log(token);
                     }
                 })
             }
@@ -100,7 +109,7 @@ userController.signup = async(req, res, next) => {
 };
 
 //GOOGLE SIGN-IN
-userController.googleSignin = async (req, res, next) => {
+userController.googleSignin = async (req, res) => {
 
     console.log('got here');
 
@@ -110,62 +119,58 @@ userController.googleSignin = async (req, res, next) => {
 };
 
 //FACEBOOK SIGN-IN
-userController.facebookSignin = async(req, res, next) => {
-
-    console.log('got here facebook');
-
+userController.facebookSignin = async(req, res) => {
     const token = signToken(req.user);
     res.status(200).json({ token });
 
 };
 
 
-userController.signin = async(req, res, next) => {
+userController.signin = async(req, res) => {
     //generate token
-    const user = req.user
+    const user = req.user;
     const token = signToken(req.user);
     return res.status(200).json({
         message: 'sign-in successful',
         token: token,
         user
     });
-   
+
 
 };
 
-    userController.secret = (req, res, next) => {
+userController.secret = (req, res) => {
 
-        console.log('manage to get here');
+    console.log('manage to get here');
 
-        res.json({
-            message: 'secret resource'
-        });
+    res.json({
+        message: 'secret resource'
+    });
 
-    };
+};
 
 
 // show user by id
-userController.show = async (req, res, next) => {
-
-    console.log('req.params',req.params.Id); 
+userController.show = async (req, res) => {
 
     const { Id } = req.params;
     const user = await User.findById(Id);
     res.status(200).json(user);
 
-},
-
-//replace show user by id put
-userController.replace = async(req, res, next) => {
-    const { Id } = req.params;
-    const newUser = req.body;
-    const result = await User.findByIdAndUpdate(Id, newUser);
-    console.log(result);
-    console.log(newUser);
-    
-    res.status(200).json({success: true});
-    
 };
+
+//replace show user by id
+    userController.replace = async(req, res) => {
+
+        const { Id } = req.params;
+        const newUser = req.body;
+        const result = await User.findByIdAndUpdate(Id, newUser);
+
+        console.log( result );
+
+        res.status(200).json({success: true});
+
+    };
 
 //update show user by id patch
 userController.update = async(req, res, next) => {
@@ -173,7 +178,7 @@ userController.update = async(req, res, next) => {
                 const { Id } = req.params;
                 const newUser = req.body;
                 // let newUser = new User ( {
-                    
+
                 //     // name: req.body.name,
                 //     // last_name: req.body.last_name,
                 //     // date_of_birth:req.body.date_of_birth,
@@ -182,7 +187,7 @@ userController.update = async(req, res, next) => {
 
                 // });
                 const result = await User.findByIdAndUpdate(Id, newUser);
-                
+
                 console.log(result);
 
                 res.status(200).json({newUser});
@@ -190,28 +195,19 @@ userController.update = async(req, res, next) => {
     
 };
 
- //show existing campaigns
-userController.getUserCampaigns = async(req, res, next) => {
+//show existing campaigns
+userController.getUserCampaigns = async(req, res) => {
     const { Id } = req.params;
     const user = await User.findById(Id)
-    .populate({
-       path: 'campaign'
-       
-    });
+        .populate({
+            path: 'campaign'
+        });
 
-    console.log(user, 'campaign');
-    
     res.status(201).json(user.created_campaigns);
 
-    console.log('users', user);
-    
 };
 
-userController.createUserCampaign = async(req, res, next) => {
-    console.log('file from controller req.imageFileName', req.imageFileName);
-
-    //const image = upload.single('image');
-    //let imageUrl = null; 
+userController.createUserCampaign = async(req, res) => {
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign({
@@ -221,7 +217,7 @@ userController.createUserCampaign = async(req, res, next) => {
         created_at: req.body.created_at,
         campaign_location: {
             latitude: req.body.latitude,
-            longitude: req.body.longitude
+            longitude: req.body.longitude,
         },
         country_code: req.body.country_code,
         num_of_volunteers: req.body.num_of_volunteers,
@@ -229,9 +225,8 @@ userController.createUserCampaign = async(req, res, next) => {
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         image: req.imageFileName,
-        video: req.body.video
+        // video: req.body.video
     });
-    //console.log('Campaign',campaign);
 
     //get user
     const user = await User.findById(Id);
@@ -239,23 +234,20 @@ userController.createUserCampaign = async(req, res, next) => {
     campaign.created_by = user._id;
     //save campaign
     await campaign.save();
-    //console.log('req.body from campaing.save',req.body);
-
     // add campaign to the users created_by array
     user.created_campaigns.push(campaign);
     //save the user
     await user.save();
     res.status(201).json({user, campaign});
-
 };
 
 
 
 //delete
-userController.delete = (req, res, next) => {
+userController.delete = (req, res) => {
     User.deleteOne({
-        _id: req.params.id
-    },
+            _id: req.params.id
+        },
         (error) => {
             if (error) {
                 console.log(error);
