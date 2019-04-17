@@ -1,12 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import App from './components/App';
+// import HomePage from './components/HomePage';
+// import SignUpForm from './components/SignUpForm';
+// import SignInForm from './components/SignInForm';
+// import ProfilePage from './components/ProfilePage';
 import Router from './components/Router';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+import axios from 'axios';
+import reducers from './redux/reducer/index';
+// import authGuard from './components/HOCs/authGuard';
 
-ReactDOM.render(<Router />, document.getElementById('root'));
+// import store from './redux/store/index';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+
+const jwtToken = localStorage.getItem('JWT_TOKEN');
+axios.defaults.headers.common['Authorization'] = jwtToken;
+
+
+ReactDOM.render(
+    <Provider store={createStore(reducers, {
+        auth: {
+            token: jwtToken,
+            isAuthenticated: jwtToken ? true : false
+        }
+
+    }, applyMiddleware(reduxThunk))}>
+        <Router />
+    </Provider>,
+    document.getElementById('root')
+);

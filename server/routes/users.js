@@ -1,28 +1,77 @@
-const express = require ('express');
-const router = express.Router();
-const cors=require('cors');
+const express = require('express');
+const router = require('express-promise-router')();
+//const router = express.Router();
+const cors = require('cors');
+const passportConf = require('../passport.js');
+const passport = require('passport');
+const { validateBody, schemas } = require('../routeHelper/routeHelpers.js');
 const userController = require('../controllers/usersController');
+const userProfileController = require('../controllers/userProfileController');
+const campaignController = require('../controllers/campaignController.js');
 
+const passportSignin = passport.authenticate('local', {session: false});
+const passportjwt = passport.authenticate('jwt', {session: false});
+const passportGoogle = passport.authenticate('googleToken', {session:false});
+const passportFacebook = passport.authenticate('facebookToken',{session:false});
+const { upload } = require('../handlers/multer');
 
 //get a list of users
-router.get('/users/list',  cors(), userController.list);
+//router.get('/users', cors(), userController.list);
+router.route('/users')
+    .get(cors(), userController.list);
+
 
 //add a new users to DB
-router.post('/users/signup',  cors(),  userController.create);
+router.route('/users/signup')
+    .post(validateBody(schemas.authSchema), cors(), userController.signup);
 
-//signin 
-//router.post('/users/signin',  cors(), userController.check); 
- 
-//show a user
-//router.get('/users/:id', cors(), userController.show);
-  
-//update a users in the DB
+//signin
+router.route('/users/signin')
+    .post(validateBody(schemas.signinSchema), passportSignin, cors(), userController.signin);
 
-//router.put('/users/:id', cors(), userController.update);
+//secret
+router.route('/users/secret')
+    .get(passportjwt, cors(), userController.secret);
+
+//signin with google
+router.route('/oauth/google')
+    .post(passportGoogle, userController.googleSignin);
+
+//signin with facebook
+router.route('/oauth/facebook')
+    .post(passportFacebook, userController.facebookSignin);
+
+// //show user profile
+ router.route('/users/profile')
+.get(cors(), userProfileController.list)
+.post(cors(), upload.single('image'), userProfileController.creat);
+
+ //show a user
+ router.route('/users/:Id')
+.get(cors(), userController.show)
+.put(cors(), upload.single('image'), userController.replace) //replace user
+.patch(cors(), upload.single('image'), userController.update); //update user
+
+router.route('/users/:Id/campaign')
+.get(cors(), userController.getUserCampaigns)
+.post(cors(),upload.single('image'), userController.createUserCampaign);
+//update campaign
+
+//show volunteers types
+router.route('/users/campaign/types')
+    .get(cors(), userController.typeList);
+
+//show user campaign
+router.route('/users/campaign/:Id')
+    .get(cors(), campaignController.getUserCampaigns);
+
+//show user campaigns
+router.route('/campaigns')
+    .get(cors(), campaignController.getAllCampaigns);
+
 
 //delete a user in the DB
-//router.delete('/users/:id', cors(), userController.delete);
-
+router.delete('/users/:id', cors(), userController.delete);
 
 
 module.exports = router;

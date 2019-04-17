@@ -1,8 +1,4 @@
-body {
-  background: #313440;
-}
-
-h1 {
-  color: white;
-  text-align: center;
-}
+@import "./signupform.scss";
+@import "./campaignform.scss";
+@import "./navigationBar.scss";
+@import "./foot.scss";
