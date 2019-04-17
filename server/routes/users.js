@@ -2,7 +2,7 @@ const express = require('express');
 const router = require('express-promise-router')();
 //const router = express.Router();
 const cors = require('cors');
-const passportConf = require('../passport.js')
+const passportConf = require('../passport.js');
 const passport = require('passport');
 const { validateBody, schemas } = require('../routeHelper/routeHelpers.js');
 const userController = require('../controllers/usersController');
@@ -54,7 +54,7 @@ router.route('/oauth/facebook')
 
 router.route('/users/:Id/campaign')
 .get(cors(), userController.getUserCampaigns)
-.post(cors(),upload.single('image'), userController.createUserCampaign)
+.post(cors(),upload.single('image'), userController.createUserCampaign);
 //update campaign
 
 //show volunteers types
@@ -65,8 +65,8 @@ router.route('/users/campaign/types')
 router.route('/users/campaign/:Id')
     .get(cors(), campaignController.getUserCampaigns);
 
-//show user campaign
-router.route('/campaign')
+//show user campaigns
+router.route('/campaigns')
     .get(cors(), campaignController.getAllCampaigns);
 
 
