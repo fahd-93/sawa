@@ -1,13 +1,8 @@
-import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, SAVE_CAMPAIGN } from "../actions/actionTypes";
+import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, SAVE_CAMPAIGN, GET_ALL_CAMP } from "../actions/actionTypes";
 
 const initialState = {
-     category: '',
-     title: '',
-     description: '',
-     num_of_volunteers: 0,
-     type_of_volunteers: [],
-     start_date: '',
-     end_date: '',
+    campaign:[],
+    category:'',
      location: {
          latitude: '',
          longitude: '',
@@ -17,11 +12,19 @@ const initialState = {
          countryCode: '',
          type: '',
      },
-     image: []
+     image: ''
 };
 
 export default (state = initialState, action) => {
+    console.log('state from redux', state);
+    
     switch (action.type) {
+
+        case GET_ALL_CAMP: {
+            return {
+                campaign: action.payload
+            }
+        }
         case ADD_CATEGORY: {
             return {
                 ...state,
@@ -42,7 +45,7 @@ export default (state = initialState, action) => {
         }
 
         case ADD_LOCATION: {
-            console.log('Action',action.payload);
+            //console.log('Action',action.payload);
             return {
                 ...state,
                 location: {
@@ -58,8 +61,15 @@ export default (state = initialState, action) => {
         }
 
         case SAVE_CAMPAIGN: {
+            //console.log('state', state);
             return {
                 ...state,
+                title: action.payload.campaign.title,
+                description: action.payload.campaign.description,
+                num_of_volunteers: action.payload.campaign.num_of_volunteers,
+                type_of_volunteers: action.payload.campaign.type_of_volunteers,
+                start_date: action.payload.start_date,
+                end_date: action.payload.end_date,
 
             }
         }

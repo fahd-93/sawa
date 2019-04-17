@@ -29,6 +29,20 @@ export const addCategory = category => dispatch => {
     })
 };
 
+
+export const getAllCamp = () => dispatch => {    
+    axios
+        .get('http://localhost:4000/api/campaign')
+        .then( res => {
+            dispatch({
+                type: "GET_ALL_CAMP",
+                 payload: res.data
+                })
+        })
+};
+
+
+
 export const addLocation = location => dispatch => {
     console.log(location);
     dispatch({
@@ -38,38 +52,32 @@ export const addLocation = location => dispatch => {
 };
 
 // updateInput is to update the redux Campaign Store with the the new inputs
-export const addInputs = (inputs, formData) => dispatch => {
-    console.log('inputs', inputs);
-    console.log('FormData', formData);
-    axios
-        .post(`http://localhost:4000/api/users/5cb3a919354b1927d5a97775/campaigns`, inputs,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-        .then(res => {
-            console.log(res.data);
-            dispatch({
-                type: "ADD_INPUTS",
-                payload: inputs
+export const saveCampaign = object => dispatch => {
+    //console.log('inputs', inputs);
+    console.log('FormData from action', object);
+   axios({
+        method: "post",
+        url: 'http://localhost:4000/api/users/5cb6d786e6e28616783e9696/campaign',
+        data: object,
+        headers: {
+          "content-type": `multipart/form-data; boundary=${object._boundary}`
+        }
+    })
+    .then(res => 
+        {
+         console.log('res from savecampaing', res.data);
+         dispatch({
+            type: "SAVE_CAMPAIGN",
+             payload: res.data
             })
         })
-        .catch( error => {
-            console.log(error)
-        })
-
+    
 };
-// saveCampaign is to post, with axios, the campaign in the DB
-export const saveCampaign = (object, category) => dispatch => {
-    console.log(object);
+//saveCampaign is to post, with axios, the campaign in the DB
+/*export const saveCampaign = (object, category) => dispatch => {
+    console.log('category from axios', object);
     axios
-        .post(`http://localhost:4000/api/campaign/${category}`, object,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
+        .post( 'http://localhost:4000/api/users/5cb454bb07f8852dea1e2c7a/campaign', {object})
         .then( res => {
             console.log(res.data);
             dispatch({
@@ -80,14 +88,14 @@ export const saveCampaign = (object, category) => dispatch => {
         .catch( error => {
             console.log(error);
         })
-};
+};*/
 
-// export const editCampaign = () => dispatch => {
-//     let id = '5c9cbf4b07dce90a6de3b9ea';
-//     axios
-//         .get(`http://localhost:4000/api/campaign/${id}`)
-//         .then( res => {
-//             console.log(res.data);
-//         })
-// };
+export const editCampaign = () => dispatch => {
+    let id = '5c9cbf4b07dce90a6de3b9ea';
+    axios
+        .get(`http://localhost:4000/api/campaign/${id}`)
+        .then( res => {
+            console.log(res.data);
+        })
+};
 
