@@ -31,7 +31,6 @@ ReactDOM.render(
 
     }, applyMiddleware(reduxThunk))}>
         <Router />
-
     </Provider>,
     document.getElementById('root')
 );

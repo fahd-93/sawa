@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
+require('./Construction');
 
 const  usersSchema = new mongoose.Schema({
        method:{
@@ -20,13 +21,14 @@ const  usersSchema = new mongoose.Schema({
         },
          email: {
                 type: String,
-                
+                //required: true,
                 match: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
             },
         password: {
                 type: String,
-                //required: [true, 'name field is required']
+               // required: [true, 'name field is required']
             },
+            image: {}, 
     },
     google:{
         id:{
@@ -84,7 +86,6 @@ const  usersSchema = new mongoose.Schema({
     activity_id:{
         type: String
     },
-
     created_campaigns:[{
         type: Schema.Types.ObjectId,
         ref: 'Campaigns'
@@ -94,13 +95,9 @@ const  usersSchema = new mongoose.Schema({
         type: Number
     },
 
-    avatar: {
-        type: Object
+    image: {} 
 
-    } 
-
-
-});
+}, { collection: 'users' });
 
 usersSchema.pre('save', async function(next){
         try{
@@ -110,8 +107,6 @@ usersSchema.pre('save', async function(next){
      } catch(error) {
         next(error); 
      }
-     
-
 }); 
  
  usersSchema.methods.isValidPassword = async function(password) {
@@ -121,7 +116,7 @@ usersSchema.pre('save', async function(next){
     } catch (error) {
         throw new Error(error);
     }
-} 
+};
 
 
 

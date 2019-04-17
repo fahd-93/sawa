@@ -23,4 +23,3 @@ class HomePage extends Component {
 }
 
 export default HomePage;
-

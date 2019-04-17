@@ -1,22 +1,16 @@
-import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, SAVE_CAMPAIGN } from "../actions/actionTypes";
+import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, GET_ALL_CAMP} from "../actions/actionTypes";
 
-const initialState = {
-     category: '',
-     title: '',
-     description: '',
-     num_of_volunteers: 0,
-     type_of_volunteers: [],
-     start_date: '',
-     end_date: '',
-     location: {
-         latitude: '',
-         longitude: ''
-     },
-     image: []
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
+
     switch (action.type) {
+
+        case GET_ALL_CAMP: {
+            return {
+                campaign: action.payload
+            }
+        }
         case ADD_CATEGORY: {
             return {
                 ...state,
@@ -37,22 +31,12 @@ export default (state = initialState, action) => {
         }
 
         case ADD_LOCATION: {
-            console.log(action.payload);
             return {
                 ...state,
-                location: {
-                    latitude: action.payload.location.latitude,
-                    longitude: action.payload.location.longitude,
-                }
+                campaign_location: action.payload
             }
         }
 
-        case SAVE_CAMPAIGN: {
-            return {
-                ...state,
-
-            }
-        }
         default:
             return state;
 

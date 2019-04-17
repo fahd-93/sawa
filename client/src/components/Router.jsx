@@ -3,11 +3,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
 import HomePage from "./HomePage";
 import EducationForm from "./EducationForm";
-import ConstructionForm from "./ConstructionForm";
+import ConstructionForm from "./campaign/ConstructionForm";
 import MedicalForm from "./MedicalForm";
-//import DisplayCampaign from "./DisplayCampaign";
+import CampaignForm from "./campaign/CampaignForm";
 import MultimediaForm from "./MultimediaForm";
-import LocationForm from "./LocationForm";
+import LocationForm from "./campaign/LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
 import CampaignType from "./CampaignType";
 import SignInForm from "./SignInForm";
@@ -24,6 +24,9 @@ import Foot from './Foot';
 
 
 
+import CampaignType from "./campaign/CampaignType";
+import SignForm from "./SignForm";
+import Geolocation from "./Geolocation";
 
 class Router extends Component {
     render() {
@@ -48,6 +51,14 @@ class Router extends Component {
                     <Route exact
                         path="/profilepage"
                         component={authGuard(ProfilePage)}
+                    <Route path="/geolocation"
+                           component={Geolocation}
+                    />
+                    <Route path="/sign-form"
+                        component={SignForm}
+                    />
+                    <Route path="/campaign-form"
+                           component={CampaignForm}
                     />
                     <Route path="/create-campaign"
                         component={CampaignType}

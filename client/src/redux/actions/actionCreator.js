@@ -7,7 +7,27 @@ import {
 } from './actionTypes';
 
 
-// getCategory is to retrieve the chosen component form.
+export const getLocation = () => dispatch => {
+
+    const geolocation = navigator.geolocation;
+
+    new Promise((resolve, reject) => {
+
+        if (!geolocation) {
+            reject(new Error('Not Supported'));
+        }
+        geolocation.getCurrentPosition((position) => {
+            resolve(dispatch({
+                type: "GET_LOCATION",
+                longitude: position.coords.longitude,
+                latitude: position.coords.latitude
+            }));
+        }, () => {
+            reject (new Error('Permission Denied'));
+        });
+    });
+};
+
 export const addCategory = category => dispatch => {
     dispatch({
         type: "ADD_CATEGORY",
@@ -15,6 +35,16 @@ export const addCategory = category => dispatch => {
     })
 };
 
+
+export const getAllCamp = () => dispatch => {
+    axios
+        .get('http://localhost:4000/api/campaign')
+        .then( res => {
+            dispatch({
+                type: "GET_ALL_CAMP",
+                 payload: res.data
+                })
+        })
 // updateInput is to update the redux Campaign Store with the the new inputs
 export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
@@ -25,31 +55,30 @@ export const addInputs = inputs => dispatch => {
 };
 
 export const addLocation = location => dispatch => {
-    console.log(location);
     dispatch({
         type: "ADD_LOCATION",
         payload: location
     })
 };
-// saveCampaign is to post, with axios, the campaign in the DB
-export const saveCampaign = (object, category) => dispatch => {
-    console.log(object);
-    axios
-        .post(`http://localhost:4000/api/campaign/${category}`, object/*,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }*/)
-        .then(res => {
-            console.log(res.data);
+
+
+export const saveCampaign = (inputs, formData) => dispatch => {
+    axios({
+        method: "post",
+        url: 'http://localhost:4000/api/users/5cb5b36127c5b16de2aef22d/campaign',
+        data: formData,
+        headers: {
+            "content-type": `multipart/form-data; boundary=${formData._boundary}`
+        }
+    })
+        .then(() => {
             dispatch({
-                type: "SAVE_CAMPAIGN",
-                payload: object
-            })
+                type: "ADD_INPUTS",
+                payload: inputs
+            });
         })
-        .catch(error => {
-            console.log(error);
+        .catch( error => {
+            console.log(error)
         })
 };
 
@@ -93,7 +122,7 @@ export const signUp = data => {
 
 
 
-// SignIn. save the Token & handle Error Message 
+// SignIn. save the Token & handle Error Message
 export const signIn = data => {
     return async dispatch => {
         try {

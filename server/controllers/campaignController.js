@@ -14,15 +14,15 @@ campaignController.getAllCampaigns = (req, res, next) => {
     .catch(err =>{
         next(err);
     })
-}
+};
 
 campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;
     const campaign = await Campaign.findById(Id);
-    console.log('campaign', campaign);
+    //console.log('campaign', campaign);
     res.status(201).json(campaign);
     
-},
+};
 /* 
 campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;
