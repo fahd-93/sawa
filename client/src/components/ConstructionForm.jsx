@@ -61,7 +61,7 @@ class ConstructionForm extends Component {
 
     render(){
         return(
-            <div className="container">
+            <div className="container" id="campaignForm">
                 <div className='flex-position'>
                     <div className="form-container">
                         <h1>Construction Form</h1>

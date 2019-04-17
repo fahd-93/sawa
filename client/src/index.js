@@ -7,7 +7,6 @@ import HomePage from './components/HomePage';
 import SignUpForm from './components/SignUpForm';
 import SignInForm from './components/SignInForm';
 import ProfilePage from './components/ProfilePage';
-
 // import Router from './components/Router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -46,15 +45,4 @@ ReactDOM.render(
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')
-
-
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
-
-  // <Provider store={store}>
-    //     <Router />
-    // </Provider>

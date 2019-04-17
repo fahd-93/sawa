@@ -1,50 +1,27 @@
-import React from 'react';
-// import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 
+import React, { Component } from 'react';
+import NavigationBar from './NavigationBar';
+import CardCampaign from './CardCampaign';
+import Foot from './Foot';
 
-export default () => {
-    return (
-        <div>
-            welcome to our home page
-    </div>
-    )
+import { Row, Col } from 'react-bootstrap';
+
+class HomePage extends Component {
+    render() {
+        return (
+            <React.Fragment>
+                <NavigationBar />
+                <h5>Latest Campaigns</h5>
+                <Row>
+                    <Col><CardCampaign /></Col>
+                    <Col><CardCampaign /></Col>
+                    <Col><CardCampaign /></Col>
+                </Row>
+                <Foot />
+            </React.Fragment>
+        )
+    }
 }
 
+export default HomePage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class HomePage extends Component{
-//     render() {
-//         return(
-//             <div className={"App"}>
-//                 <div className={"App__Form"}>
-//                     <button className="FormField__Button mr-20">
-//                         <Link to={"/sign-form"}>
-//                             Sign In
-//                         </Link>
-//                     </button>
-//                     <button className="FormField__Button mr-20">
-//                         <Link to={"/create-campaign"}>
-//                             Create Form
-//                         </Link>
-//                     </button>
-//                 </div>
-//             </div>
-//         )
-//     }
-// }
-
-// export default HomePage;

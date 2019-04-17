@@ -12,6 +12,7 @@ import LocationForm from "./LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
 import CampaignType from "./CampaignType";
 import SignForm from "./SignForm";
+import Notfound from "./Notfound";
 
 
 class Router extends Component {
@@ -51,6 +52,7 @@ class Router extends Component {
                         component={MultimediaForm} />
                     <Route path="/save-form"
                         component={SaveCampaignForm} />
+                    <Route component={Notfound} />
 
                 </Switch>
             </BrowserRouter>
