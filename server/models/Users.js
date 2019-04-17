@@ -95,7 +95,7 @@ const  usersSchema = new mongoose.Schema({
         type: Number
     },
 
-    image: {} 
+    image: {}, 
 
 }, { collection: 'users' });
 

@@ -49,6 +49,7 @@ router.route('/oauth/google')
  //show a user
  router.route('/users/:Id')
 .get(cors(), userController.show)
+//.post(cors(), upload.single('image'),userController.create)
 .put(cors(), upload.single('image'), userController.replace) //replace user
 .patch(cors(), upload.single('image'), userController.update); //update user
 
@@ -62,8 +63,8 @@ router.route('/users/:Id/campaign')
 router.route('/users/campaign/:Id')
 .get(cors(), campaignController.getUserCampaigns);
   
-//show user campaign
-router.route('/campaign')
+//show all campaigns
+router.route('/campaigns')
 .get(cors(), campaignController.getAllCampaigns);
   
 

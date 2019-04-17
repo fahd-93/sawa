@@ -79,7 +79,8 @@ userController.signup = async(req, res, next) => {
                                 date_of_birth,
                                 gender,
                                 created_at,
-                                //image:req.imageFileName
+                                image:req.imageFileName
+                            
                             }
                         });
                         console.log(user);
@@ -158,10 +159,19 @@ userController.show = async (req, res, next) => {
 //replace show user by id put
 userController.replace = async(req, res, next) => {
     const { Id } = req.params;
-    const newUser = req.body;
+    //const newUser = req.body;
+    let newUser =  {
+
+             name: req.body.name,
+            last_name: req.body.last_name,
+            date_of_birth:req.body.date_of_birth,
+            gender: req.body.gender,
+            image:req.imageFileName
+
+         };
     const result = await User.findByIdAndUpdate(Id, newUser);
-    console.log(result);
-    console.log(newUser);
+   // console.log(result);
+    
     
     res.status(200).json({success: true});
     
@@ -169,23 +179,24 @@ userController.replace = async(req, res, next) => {
 
 //update show user by id patch
 userController.update = async(req, res, next) => {
-    console.log('file from controller req.imageFileName', req.imageFileName);
+    console.log('image check', req.imageFileName);
+    
                 const { Id } = req.params;
-                const newUser = req.body;
-                // let newUser = new User ( {
-                    
-                //     // name: req.body.name,
-                //     // last_name: req.body.last_name,
-                //     // date_of_birth:req.body.date_of_birth,
-                //     // gender: req.body.gender,
-                //      image:req.imageFileName
+                //const newUser = req.body;
+            let newUser = {
 
-                // });
-                const result = await User.findByIdAndUpdate(Id, newUser);
-                
+                    name: req.body.name,
+                    last_name: req.body.last_name,
+                    date_of_birth:req.body.date_of_birth,
+                    gender: req.body.gender,
+                    image:req.imageFileName
+
+                 };
+                const result =  User.findByIdAndUpdate(Id, newUser);
+
                 console.log(result);
 
-                res.status(200).json({newUser});
+                res.status(200).json({success: true});
         
     
 };
@@ -199,19 +210,16 @@ userController.getUserCampaigns = async(req, res, next) => {
        
     });
 
-    console.log(user, 'campaign');
+   // console.log(user, 'campaign');
     
     res.status(201).json(user.created_campaigns);
 
-    console.log('users', user);
+    //console.log('users', user);
     
 };
 
 userController.createUserCampaign = async(req, res, next) => {
-    console.log('file from controller req.imageFileName', req.imageFileName);
-
-    //const image = upload.single('image');
-    //let imageUrl = null; 
+     
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign({
