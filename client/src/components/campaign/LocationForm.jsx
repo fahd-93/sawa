@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import AlgoliaPlaces from 'algolia-places-react';
 
-import { addLocation } from "../redux/actions/actionCreator";
+import { addLocation } from "../../redux/actions/actionCreator";
 
 class LocationForm extends Component {
 
@@ -26,7 +26,6 @@ class LocationForm extends Component {
                 lng: location.latlng.lng
             }
         });
-
         this.props.addLocation(this.state);
     };
 

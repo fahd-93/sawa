@@ -47,11 +47,8 @@ signToken = user => {
 };
 
 
-userController.signup = async(req, res, next) => {
-    //imageUrl = `uploads/${req.file.filename}`
+userController.signup = async(req, res) => {
     const image = upload.single('image');
-    console.log('usersController.signup() called!');
-
     const {
         name,
         last_name,
@@ -112,7 +109,7 @@ userController.signup = async(req, res, next) => {
 };
 
 //GOOGLE SIGN-IN
-userController.googleSignin = async (req, res, next) => {
+userController.googleSignin = async (req, res) => {
 
     console.log('got here');
 
@@ -122,19 +119,16 @@ userController.googleSignin = async (req, res, next) => {
 };
 
 //FACEBOOK SIGN-IN
-userController.facebookSignin = async(req, res, next) => {
-
-    console.log('got here facebook');
-
+userController.facebookSignin = async(req, res) => {
     const token = signToken(req.user);
     res.status(200).json({ token });
 
 };
 
 
-userController.signin = async(req, res, next) => {
+userController.signin = async(req, res) => {
     //generate token
-    const user = req.user
+    const user = req.user;
     const token = signToken(req.user);
     return res.status(200).json({
         message: 'sign-in successful',
@@ -145,7 +139,7 @@ userController.signin = async(req, res, next) => {
 
 };
 
-userController.secret = (req, res, next) => {
+userController.secret = (req, res) => {
 
     console.log('manage to get here');
 
@@ -157,30 +151,29 @@ userController.secret = (req, res, next) => {
 
 
 // show user by id
-userController.show = async (req, res, next) => {
-
-    console.log('req.params',req.params.Id);
+userController.show = async (req, res) => {
 
     const { Id } = req.params;
     const user = await User.findById(Id);
     res.status(200).json(user);
 
-},
+};
 
 //replace show user by id
-    userController.replace = async(req, res, next) => {
+    userController.replace = async(req, res) => {
+
         const { Id } = req.params;
         const newUser = req.body;
         const result = await User.findByIdAndUpdate(Id, newUser);
-        console.log(result);
-        console.log(newUser);
+
+        console.log( result );
 
         res.status(200).json({success: true});
 
     };
 
 //update show user by id
-userController.update = async(req, res, next) => {
+userController.update = async(req, res) => {
     const { Id } = req.params;
     let newUser = new User ( {
 
@@ -201,23 +194,18 @@ userController.update = async(req, res, next) => {
 };
 
 //show existing campaigns
-userController.getUserCampaigns = async(req, res, next) => {
+userController.getUserCampaigns = async(req, res) => {
     const { Id } = req.params;
     const user = await User.findById(Id)
         .populate({
             path: 'campaign'
-
         });
-
-    console.log(user, 'campaign');
 
     res.status(201).json(user.created_campaigns);
 
-    console.log('users', user);
-
 };
 
-userController.createUserCampaign = async(req, res, next) => {
+userController.createUserCampaign = async(req, res) => {
     const { Id } = req.params;
     //create a new campaign
     const campaign = new Campaign({
@@ -227,39 +215,34 @@ userController.createUserCampaign = async(req, res, next) => {
         created_at: req.body.created_at,
         campaign_location: {
             latitude: req.body.latitude,
-            longitude: req.body.longitude
+            longitude: req.body.longitude,
         },
         country_code: req.body.country_code,
         num_of_volunteers: req.body.num_of_volunteers,
         type_of_volunteers: req.body.type_of_volunteers,
         start_date: req.body.start_date,
         end_date: req.body.end_date,
-        // image: req.file.path,
+        image: req.imageFileName,
         // video: req.body.video
     });
-    console.log('Campaign',campaign);
 
     //get user
     const user = await User.findById(Id);
     //assign user as campaign creator
     campaign.created_by = user._id;
-
     //save campaign
     await campaign.save();
-    console.log(req.body);
-
     // add campaign to the users created_by array
     user.created_campaigns.push(campaign);
     //save the user
     await user.save();
     res.status(201).json({user, campaign});
-
 };
 
 
 
 //delete
-userController.delete = (req, res, next) => {
+userController.delete = (req, res) => {
     User.deleteOne({
             _id: req.params.id
         },

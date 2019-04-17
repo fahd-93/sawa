@@ -1,26 +1,9 @@
 import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION } from "../actions/actionTypes";
 
-const initialState = {
-     category: '',
-     title: '',
-     description: '',
-     num_of_volunteers: 0,
-     type_of_volunteers: [],
-     start_date: '',
-     end_date: '',
-     location: {
-         latitude: '',
-         longitude: '',
-         city: '',
-         postcode: '',
-         country: '',
-         countryCode: '',
-         type: '',
-     },
-     image: []
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
+
     switch (action.type) {
         case ADD_CATEGORY: {
             return {
@@ -44,15 +27,7 @@ export default (state = initialState, action) => {
         case ADD_LOCATION: {
             return {
                 ...state,
-                location: {
-                    latitude: action.payload.latlng.lat,
-                    longitude: action.payload.latlng.lng,
-                    city: action.payload.city,
-                    postcode: action.payload.postalCode,
-                    country: action.payload.country,
-                    countryCode: action.payload.countryCode,
-                    type: action.payload.type,
-                }
+                campaign_location: action.payload
             }
         }
 

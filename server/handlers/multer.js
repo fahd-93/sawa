@@ -1,12 +1,16 @@
 const multer = require('multer');
 const path = require('path');
 
+
 const storage = multer.diskStorage({
-    destination: 'public/uploads',
+    destination: './public/uploads/',
     filename: function (req, file, cb) {
-        // null =error
-        //fieldname = whatever you put in name input
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        console.log('req form filename', file);
+        req["imageFileName"] =
+            file.fieldname + Date.now() + file.originalname.match(/\.\w+$/);
+        cb(null, req.imageFileName);
+        console.log('req.imageFileName', req.imageFileName);
+
     }
 });
 const upload = multer({
@@ -34,4 +38,4 @@ function checkFileType(file, cb) {
 }
 
 
-module.exports = { storage, upload }
+module.exports = { storage, upload };

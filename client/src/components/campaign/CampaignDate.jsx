@@ -7,10 +7,12 @@ class CampaignDate extends Component {
             <div>
                 <br/><br/>
                 <label> Start Date:</label>
-                <input type="date" name="start_date"/>
+                <input type="date" name="start_date"
+                       ref={this.startDateRef}/>
                 <br/><br/>
                 <label> End Date:</label>
-                <input type="date" name="end_date"/>
+                <input type="date" name="end_date"
+                       ref={this.endDateRef}/>
                 <br/>
             </div>
         )

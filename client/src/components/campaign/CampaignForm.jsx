@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { addCategory } from "../redux/actions/actionCreator";
+import { addCategory } from "../../redux/actions/actionCreator";
 import LocationForm from "./LocationForm";
 import CampaignType from './CampaignType';
 
