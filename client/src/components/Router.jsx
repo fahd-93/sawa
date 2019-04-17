@@ -9,7 +9,6 @@ import CampaignForm from "./campaign/CampaignForm";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./campaign/LocationForm";
 import SaveCampaignForm from './SaveCampaignForm';
-import CampaignType from "./CampaignType";
 import SignInForm from "./SignInForm";
 import Notfound from "./Notfound";
 
@@ -25,7 +24,6 @@ import Foot from './Foot';
 
 
 import CampaignType from "./campaign/CampaignType";
-import SignForm from "./SignForm";
 import Geolocation from "./Geolocation";
 
 class Router extends Component {
@@ -51,11 +49,9 @@ class Router extends Component {
                     <Route exact
                         path="/profilepage"
                         component={authGuard(ProfilePage)}
+                    />
                     <Route path="/geolocation"
                            component={Geolocation}
-                    />
-                    <Route path="/sign-form"
-                        component={SignForm}
                     />
                     <Route path="/campaign-form"
                            component={CampaignForm}

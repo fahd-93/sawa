@@ -39,20 +39,22 @@ export const addCategory = category => dispatch => {
 export const getAllCamp = () => dispatch => {
     axios
         .get('http://localhost:4000/api/campaign')
-        .then( res => {
+        .then(res => {
             dispatch({
                 type: "GET_ALL_CAMP",
-                 payload: res.data
-                })
+                payload: res.data
+            })
         })
+};
+
 // updateInput is to update the redux Campaign Store with the the new inputs
-export const addInputs = inputs => dispatch => {
+/*export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
     dispatch({
         type: "ADD_INPUTS",
         payload: inputs
     })
-};
+};*/
 
 export const addLocation = location => dispatch => {
     dispatch({
@@ -97,13 +99,13 @@ export const saveCampaign = (inputs, formData) => dispatch => {
 export const signUp = data => {
     return async dispatch => {
         try {
-            console.log('[ActionCreator] signUp called!')
-            const res = await axios.post('http://localhost:4000/api/users/signup', data)
-            console.log('[ActionCreator] signUp dispatched an action!')
+            console.log('[ActionCreator] signUp called!');
+            const res = await axios.post('http://localhost:4000/api/users/signup', data);
+            console.log('[ActionCreator] signUp dispatched an action!');
             dispatch({
                 type: AUTH_SIGN_UP,
                 payload: res.data.token
-            })
+            });
             localStorage.setItem('JWT_TOKEN', res.data.token);
             axios.defaults.headers.common['Authorization'] = res.data.token;
             dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
@@ -118,7 +120,7 @@ export const signUp = data => {
         }
 
     }
-}
+};
 
 
 
@@ -126,10 +128,10 @@ export const signUp = data => {
 export const signIn = data => {
     return async dispatch => {
         try {
-            console.log('[ActionCreator] SignIn called!')
+            console.log('[ActionCreator] SignIn called!');
             const res = await axios
-                .post('http://localhost:4000/api/users/signin', data)
-            console.log('[ActionCreator] signIn dispatched an action!')
+                .post('http://localhost:4000/api/users/signin', data);
+            console.log('[ActionCreator] signIn dispatched an action!');
 
             dispatch({
                 type: AUTH_SIGN_IN,
@@ -153,7 +155,7 @@ export const signIn = data => {
         }
 
     };
-}
+};
 
 
 
@@ -173,7 +175,7 @@ export const oauthFacebook = data => {
         localStorage.setItem('JWT_TOKEN', res.data.token);
         axios.defaults.headers.common['Authorization'] = res.data.token;
     };
-}
+};
 
 
 
@@ -194,7 +196,7 @@ export const signOut = () => {
         })
     };
 
-}
+};
 
 
 

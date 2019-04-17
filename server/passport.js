@@ -2,13 +2,13 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local').Strategy;
-const GooglePlusTokenStrategy = require('passport-google-plus-token');
-const FacebookStrategy = require('passport-facebook-token');
+// const GooglePlusTokenStrategy = require('passport-google-plus-token');
+// const FacebookStrategy = require('passport-facebook-token');
 const { JWT_SECRET } = require('./config/jwt-config');
-const config = require('./config/config');
+// const config = require('./config/config');
 
 const User = require('./models/Users');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 passport.use(new JwtStrategy({
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
@@ -115,6 +115,7 @@ passport.use(new LocalStrategy({
 
 
 //facebook strategy
+/*
 
 passport.use('facebookToken', new FacebookStrategy({
   clientID: config.oauth.facebook.clientSecret,
@@ -157,4 +158,4 @@ passport.use('facebookToken', new FacebookStrategy({
 
 
 
-  }));
+  }));*/
