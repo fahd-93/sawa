@@ -12,15 +12,17 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
-    "react-geolocated": "^2.4.1",
     "react-facebook-login": "^4.1.1",
+    "react-geolocated": "^2.4.1",
     "react-redux": "^6.0.1",
     "react-redux-form": "^1.16.12",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-slick": "^0.24.0",
     "redux": "^4.0.1",
     "redux-form": "^8.2.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/sass/ -o src/css/",
