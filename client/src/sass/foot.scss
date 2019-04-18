@@ -1,4 +1,8 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#root{
+  position: relative;
+}
+
 section {
   padding: 20px 0;
 }
@@ -11,6 +15,9 @@ section .section-title {
 }
 #footer {
   background: #007b5e !important;
+  position:absolute;
+  bottom:0;
+  width: 100%
 }
 
 #footer a {

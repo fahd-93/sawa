@@ -18,11 +18,9 @@
     "react-redux-form": "^1.16.12",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-slick": "^0.24.0",
     "redux": "^4.0.1",
     "redux-form": "^8.2.0",
-    "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/sass/ -o src/css/",
