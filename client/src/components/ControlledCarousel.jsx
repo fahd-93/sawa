@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import { Carousel, } from 'react-bootstrap';
+import React from "react";
+import { Carousel } from 'react-bootstrap';
 
 
 class ControlledCarousel extends React.Component {

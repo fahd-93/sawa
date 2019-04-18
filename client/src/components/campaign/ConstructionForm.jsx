@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { saveCampaign } from "../../redux/actions/actionCreator";
 import VolunteerType from "./VolunteerType";
 import CampaignDate from './CampaignDate';
@@ -13,7 +14,7 @@ class ConstructionForm extends Component {
         this.descriptionRef = React.createRef();
         this.numOfVolunteersRef = React.createRef();
         this.typeOfVolunteersRef = React.createRef();
-        // this.locationRef = React.createRef();
+        this.locationRef = React.createRef();
         this.startDateRef = React.createRef();
         this.endDateRef = React.createRef();
         this.userImageRef = React.createRef();
@@ -37,9 +38,7 @@ class ConstructionForm extends Component {
         e.preventDefault();
 
         let formData = new FormData();
-        // Object.keys(this.state).forEach( inputs => {
-        //     formData.append(inputs, this.state[inputs]);
-        // });
+
 
         formData.set("title", this.state.title);
         formData.set("description", this.state.description);
@@ -56,26 +55,31 @@ class ConstructionForm extends Component {
         this.props.saveCampaign(this.state, formData);
     };
 
-    render(){
-        return(
+    render() {
+        // console.log(this.props);
+        console.log('LOCATION', this.props.campaign.campaign_location.latlng)
+        return (
             <div>
                 <div >
-                    <form onChange={ e => this.handelInputs(e)}>
+                    <form onChange={e => this.handelInputs(e)}>
                         <CampaignInput />
-                        <br/><br/>
+                        <br /><br />
                         <VolunteerType />
-                        <br/><br/>
-                        <CampaignDate/>
+                        <br /><br />
+                        <CampaignDate />
 
                         <label> Upload Image:</label>
                         <input type="file" name="image"
-                               ref={this.userImageRef}/>
+                            ref={this.userImageRef} />
 
                         <label> Upload Video:</label>
                         <input type="file" name="video"
-                               ref={this.videoRef}/>
-                        <input type="submit"
-                                onClick={ e => this.handleSubmit(e)} />
+                            ref={this.videoRef} />
+
+                        <Link to='showcampaign'
+                            onClick={e => this.handleSubmit(e)}>
+                            Save
+                        </Link>
                     </form>
                 </div>
             </div>
@@ -84,7 +88,7 @@ class ConstructionForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    campaign: state.campaignReducer
+    campaign: state.campaign
 });
 
-export default connect(mapStateToProps, { saveCampaign })( ConstructionForm );
+export default connect(mapStateToProps, { saveCampaign })(ConstructionForm);

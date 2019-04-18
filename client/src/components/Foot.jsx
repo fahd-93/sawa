@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Foot = (props) => {
     return (
-        <div>
+       
             <section id="footer">
                 <Container>
                     <Row>
@@ -33,7 +33,7 @@ const Foot = (props) => {
                     </Row>
                 </Container>
             </section>
-        </div>
+      
     )
 };
 

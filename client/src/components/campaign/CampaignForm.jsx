@@ -26,7 +26,7 @@ class CampaignForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    category: state.campaignReducer.category
+    category: state.campaign.category
 });
 
 export default connect(

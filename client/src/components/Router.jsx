@@ -15,15 +15,12 @@ import Notfound from "./Notfound";
 // import App from './components/App'
 
 import SignUpForm from './SignUpForm';
+import ShowCampaign from './ShowCampaign';
 import ProfilePage from './ProfilePage';
 import authGuard from './HOCs/authGuard';
 import Header from './Header';
 import Foot from './Foot';
-
-
-
-
-import CampaignType from "./campaign/CampaignType";
+// import CampaignType from "./campaign/CampaignType";
 import Geolocation from "./Geolocation";
 
 class Router extends Component {
@@ -38,6 +35,11 @@ class Router extends Component {
                         path="/"
                         component={HomePage}
                     />
+                    <Route
+                        exact
+                        path="/showcampaign"
+                        component={ShowCampaign}
+                    />
                     <Route exact
                         path="/signup"
                         component={SignUpForm}
@@ -51,13 +53,13 @@ class Router extends Component {
                         component={authGuard(ProfilePage)}
                     />
                     <Route path="/geolocation"
-                           component={Geolocation}
+                        component={Geolocation}
                     />
                     <Route path="/campaign-form"
-                           component={CampaignForm}
+                    // component={CampaignForm}
                     />
                     <Route path="/create-campaign"
-                        component={CampaignType}
+                        component={CampaignForm}
                     />
                     <Route path="/construction-form"
                         component={ConstructionForm}

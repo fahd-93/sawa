@@ -28,8 +28,8 @@ class Header extends Component {
                             <Nav.Link href="#howworks">How does it work?</Nav.Link>
                             <Nav.Link href="#profilepage">Profile Page</Nav.Link>
 
-                            <Nav.Link href="#campaigns">Campaigns</Nav.Link>
-                            <Nav.Link href={"/create-campaign"}>Create Campaign</Nav.Link>
+                            <Nav.Link href="/campaigns">Campaigns</Nav.Link>
+                            <Nav.Link href="/create-campaign">Create Campaign</Nav.Link>
 
 
                             {!this.props.isAuth ?

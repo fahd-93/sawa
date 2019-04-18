@@ -9,15 +9,14 @@ class HomePage extends Component {
     render() {
         return (
             <React.Fragment>
-                <Container>
                     <ControlledCarousel />
+                <Container>
                     <h5>Latest Campaigns</h5>
                     <Row>
                         <Col><CardCampaign /></Col>
                         <Col><CardCampaign /></Col>
                         <Col><CardCampaign /></Col>
                     </Row>
-                    <Foot />
                 </Container>
             </React.Fragment>
         )

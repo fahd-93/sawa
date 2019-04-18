@@ -5,19 +5,13 @@
 
 section {
   padding: 20px 0;
+  display: block;
+  margin-top: auto;
 }
 
-section .section-title {
-  text-align: center;
-  color: #007b5e;
-  margin-bottom: 50px;
-  text-transform: uppercase;
-}
+
 #footer {
   background: #007b5e !important;
-  position:absolute;
-  bottom:0;
-  width: 100%
 }
 
 #footer a {
