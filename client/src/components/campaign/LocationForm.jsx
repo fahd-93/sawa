@@ -30,7 +30,7 @@ class LocationForm extends Component {
     };
 
     render() {
-        return(
+        return (
             <div>
                 <label>Campaign Location:</label>
                 <AlgoliaPlaces
@@ -40,17 +40,17 @@ class LocationForm extends Component {
                         appId: 'pl48PRQJVY9X',
                         apiKey: '976ae5509e3452dbc494dd1e9f390486'
                     }}
-                    onChange={ (suggestion) => this.handleInput(suggestion) }
+                    onChange={(suggestion) => this.handleInput(suggestion)}
                 />
             </div>
         )
     }
 }
 const mapStateToProps = state => ({
-    category: state.campaignReducer.category
+    category: state.campaign.category
 });
 
 export default connect(
     mapStateToProps,
     { addLocation }
-    )(LocationForm);
+)(LocationForm);

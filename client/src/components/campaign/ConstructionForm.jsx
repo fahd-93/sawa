@@ -56,26 +56,26 @@ class ConstructionForm extends Component {
         this.props.saveCampaign(this.state, formData);
     };
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div >
-                    <form onChange={ e => this.handelInputs(e)}>
+                    <form onChange={e => this.handelInputs(e)}>
                         <CampaignInput />
-                        <br/><br/>
+                        <br /><br />
                         <VolunteerType />
-                        <br/><br/>
-                        <CampaignDate/>
+                        <br /><br />
+                        <CampaignDate />
 
                         <label> Upload Image:</label>
                         <input type="file" name="image"
-                               ref={this.userImageRef}/>
+                            ref={this.userImageRef} />
 
                         <label> Upload Video:</label>
                         <input type="file" name="video"
-                               ref={this.videoRef}/>
+                            ref={this.videoRef} />
                         <input type="submit"
-                                onClick={ e => this.handleSubmit(e)} />
+                            onClick={e => this.handleSubmit(e)} />
                     </form>
                 </div>
             </div>
@@ -84,7 +84,7 @@ class ConstructionForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    campaign: state.campaignReducer
+    campaign: state.campaign
 });
 
-export default connect(mapStateToProps, { saveCampaign })( ConstructionForm );
+export default connect(mapStateToProps, { saveCampaign })(ConstructionForm);

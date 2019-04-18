@@ -23,7 +23,6 @@ import Foot from './Foot';
 
 
 
-import CampaignType from "./campaign/CampaignType";
 import Geolocation from "./Geolocation";
 
 class Router extends Component {
@@ -51,13 +50,11 @@ class Router extends Component {
                         component={authGuard(ProfilePage)}
                     />
                     <Route path="/geolocation"
-                           component={Geolocation}
+                        component={Geolocation}
                     />
-                    <Route path="/campaign-form"
-                           component={CampaignForm}
-                    />
+
                     <Route path="/create-campaign"
-                        component={CampaignType}
+                        component={CampaignForm}
                     />
                     <Route path="/construction-form"
                         component={ConstructionForm}

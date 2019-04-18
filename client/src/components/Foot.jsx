@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 const Foot = (props) => {
     return (
         <div>
-            <section id="footer" class="fixed-bottom">
+            <section id="footer" className="fixed-bottom">
                 <Container>
                     <Row>
                         <Col className="text-sm-left ">

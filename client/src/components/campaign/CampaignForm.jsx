@@ -7,14 +7,14 @@ import CampaignType from './CampaignType';
 
 
 class CampaignForm extends Component {
-    render(){
-        return(
+    render() {
+        return (
 
             <div className="form-container">
                 <div className="flex-position">
                     <h1> Campaign Form </h1>
-                    <CampaignType/>
-                    <LocationForm/>
+                    <CampaignType />
+                    <LocationForm />
                     <Link to={`${this.props.category}-form`}>
                         Next
                     </Link>
@@ -26,10 +26,10 @@ class CampaignForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    category: state.campaignReducer.category
+    category: state.campaign.category
 });
 
 export default connect(
     mapStateToProps,
     { addCategory }
-)( CampaignForm );
+)(CampaignForm);

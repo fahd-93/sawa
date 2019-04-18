@@ -12,6 +12,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import axios from 'axios';
 import reducers from './redux/reducer/index';
+import * as jwt_decode from "jwt-decode";
 // import authGuard from './components/HOCs/authGuard';
 
 // import store from './redux/store/index';
@@ -19,12 +20,22 @@ import reducers from './redux/reducer/index';
 
 
 const jwtToken = localStorage.getItem('JWT_TOKEN');
-axios.defaults.headers.common['Authorization'] = jwtToken;
+let userId = null;
 
+try {
+    let x = jwt_decode(jwtToken);
+    userId = x.sub;
+
+    axios.defaults.headers.common['Authorization'] = jwtToken;
+}
+catch (error) {
+    console.log(error);
+}
 
 ReactDOM.render(
     <Provider store={createStore(reducers, {
         auth: {
+            userId: userId,
             token: jwtToken,
             isAuthenticated: jwtToken ? true : false
         }

@@ -23,7 +23,7 @@ export const getLocation = () => dispatch => {
                 latitude: position.coords.latitude
             }));
         }, () => {
-            reject (new Error('Permission Denied'));
+            reject(new Error('Permission Denied'));
         });
     });
 };
@@ -79,7 +79,7 @@ export const saveCampaign = (inputs, formData) => dispatch => {
                 payload: inputs
             });
         })
-        .catch( error => {
+        .catch(error => {
             console.log(error)
         })
 };
@@ -142,7 +142,10 @@ export const signIn = data => {
             localStorage.setItem('JWT_TOKEN', res.data.token);
             // dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
             axios.defaults.headers.common['Authorization'] = res.data.token;
-            dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
+            dispatch({
+                type: 'SAVE_LOGGED_IN_USER',
+                payload: res.data.user
+            })
 
         } catch (err) {
             dispatch({
