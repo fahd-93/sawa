@@ -19,6 +19,7 @@ import ProfilePage from './ProfilePage';
 import authGuard from './HOCs/authGuard';
 import Header from './Header';
 import Foot from './Foot';
+import EditUserProfile from './EditUserProfile';
 
 
 
@@ -48,6 +49,10 @@ class Router extends Component {
                     <Route exact
                         path="/profilepage"
                         component={authGuard(ProfilePage)}
+                    />
+                    <Route exact
+                        path="/editprofile"
+                        component={EditUserProfile}
                     />
                     <Route path="/geolocation"
                         component={Geolocation}
