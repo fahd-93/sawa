@@ -1,7 +1,9 @@
 
 import React, { Component } from 'react';
 import CardCampaign from './CardCampaign';
-import Foot from './Foot';
+//import Foot from './Foot';
+import CampaignCards from './CampaignCards'
+
 // import Header from './Header';
 import { Row, Col } from 'react-bootstrap';
 
@@ -11,12 +13,14 @@ class HomePage extends Component {
             <React.Fragment>
                 {/* <Header /> */}
                 <h5>Latest Campaigns</h5>
-                <Row>
+                {/* <Row>
                     <Col><CardCampaign /></Col>
                     <Col><CardCampaign /></Col>
                     <Col><CardCampaign /></Col>
-                </Row>
-                <Foot />
+                </Row> */}
+                < CampaignCards />
+                
+                {/* <Foot /> */}
             </React.Fragment>
         )
     }

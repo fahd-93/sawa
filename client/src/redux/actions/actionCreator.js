@@ -38,8 +38,9 @@ export const addCategory = category => dispatch => {
 
 export const getAllCamp = () => dispatch => {
     axios
-        .get('http://localhost:4000/api/campaign')
+        .get('http://localhost:4000/api/campaigns')
         .then(res => {
+            console.log('Action Axios', res.data)
             dispatch({
                 type: "GET_ALL_CAMP",
                 payload: res.data

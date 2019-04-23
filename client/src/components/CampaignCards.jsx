@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import { getAllCamp } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import {  CardColumns, Card } from "react-bootstrap";
@@ -6,38 +7,70 @@ import {  CardColumns, Card } from "react-bootstrap";
 
 
 
+
 class CampaignCards extends Component{
+
 
     componentDidMount(){
         this.props.getAllCamp();
     }
+
+    getId = e => {
+        console.log('User Id', e.target.value);
+    }
+
+    
+
+
     render() {
 
-        const {campaign} = this.props.campaign;
+        if (this.props.campaigns === undefined) {
+            return <div>no data</div>
+        }
+       
+        
+
+        const campaigns = this.props.campaigns;
+        
         return(
     
                     
             <CardColumns >
 
 
-                            {campaign.map(user =>
+                            {campaigns.map(user =>
+
+                            <Link to='/' onClink={ e => this.getId(e)} >
                         
                             <Card key={user._id}>
                             <Card.Img variant="top"src={`http://localhost:4000/uploads/${user.image}`} />
                             <Card.Body>
-                                <Card.Title style={{ color: 'black' }}>{user.title}</Card.Title>
+                                <Card.Title style={{ color: 'black' }}>
+                                Title: {user.title}
+                                </Card.Title>
+
                                 <Card.Text style={{ color: 'black' }}>
-                                {user.description}
+                                Created by: {user.created_by}
                                 </Card.Text>
+
+                                <Card.Text style={{ color: 'black' }}>
+                                Description: {user.description}
+                                </Card.Text>
+
+                                <Card.Text style={{ color: 'black' }}>
+                                Starting:{user.start_date}
+                                </Card.Text>
+
                             </Card.Body>
                             <Card.Footer>
                                
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Last updated:</small>
                             </Card.Footer>
-                            <button>show</button>
+                           
                             </Card>
-
+                            </Link>
                             )}
+                            
             </CardColumns>
 
             
@@ -46,9 +79,9 @@ class CampaignCards extends Component{
 }
 
 function mapStateToProps(state){
-    console.log('state from props CampaignCards PAGE', state.campaignReducer);
+    console.log('state from props CampaignCards PAGE', state.campaign.campaign);
     return {
-        campaign:  state.campaignReducer
+        campaigns:  state.campaign.campaign
       };
 }
 

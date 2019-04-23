@@ -25,6 +25,7 @@ import Foot from './Foot';
 
 import CampaignType from "./campaign/CampaignType";
 import Geolocation from "./Geolocation";
+import ShowSingleCampaign from "./ShowSingleCampaign";
 
 class Router extends Component {
     render() {
@@ -79,10 +80,11 @@ class Router extends Component {
                         component={MultimediaForm} />
                     <Route path="/save-form"
                         component={SaveCampaignForm} />
-                    <Route component={Notfound} />
+                    <Route path="/show-single-campaign"
+                    component={ShowSingleCampaign} />
+                     <Route component={Notfound} />
 
                 </Switch>
-                <Foot />
             </BrowserRouter>
         );
     }

@@ -3,9 +3,8 @@ import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, GET_ALL_CAMP} from "../actions/
 const initialState = {};
 
 export default (state = initialState, action) => {
-
+  
     switch (action.type) {
-
         case GET_ALL_CAMP: {
             return {
                 campaign: action.payload
