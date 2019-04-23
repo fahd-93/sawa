@@ -17,6 +17,7 @@ import Notfound from "./Notfound";
 import SignUpForm from './SignUpForm';
 import ShowCampaign from './ShowCampaign';
 import ProfilePage from './ProfilePage';
+import ShowSingleCampaign from './ShowSingleCampaign';
 import authGuard from './HOCs/authGuard';
 import Header from './Header';
 import Foot from './Foot';
@@ -39,6 +40,11 @@ class Router extends Component {
                         exact
                         path="/showcampaign"
                         component={ShowCampaign}
+                    />
+                    <Route
+                        exact
+                        path="/showsinglecampaign"
+                        component={ShowSingleCampaign}
                     />
                     <Route exact
                         path="/signup"

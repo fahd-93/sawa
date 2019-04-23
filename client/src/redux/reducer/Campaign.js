@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, GET_ALL_CAMP} from "../actions/actionTypes";
+import { ADD_CATEGORY, ADD_INPUTS, ADD_LOCATION, GET_ALL_CAMP, GET_CAMP_ID } from "../actions/actionTypes";
 
 const initialState = {};
 
@@ -34,6 +34,13 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 campaign_location: action.payload
+            }
+        }
+
+        case GET_CAMP_ID: {
+            return {
+                ...state,
+                campaign_id: action.payload
             }
         }
 

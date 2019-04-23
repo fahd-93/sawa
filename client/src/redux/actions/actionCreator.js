@@ -48,6 +48,13 @@ export const getAllCamp = () => dispatch => {
         })
 };
 
+export const getCampId = id => dispatch => {
+    console.log(id)
+    dispatch({
+        type: "GET_CAMP_ID",
+        payload: id,
+    })
+};
 // updateInput is to update the redux Campaign Store with the the new inputs
 /*export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
