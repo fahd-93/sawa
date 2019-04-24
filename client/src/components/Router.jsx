@@ -43,7 +43,7 @@ class Router extends Component {
                     />
                     <Route
                         exact
-                        path="/showsinglecampaign"
+                        path="/users/campaign/:Id"
                         component={ShowSingleCampaign}
                     />
                     <Route exact
