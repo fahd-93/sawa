@@ -31,7 +31,6 @@ class ProfilePage extends Component {
         if (this.userId) {
             axios.get(`http://localhost:4000/api/users/${this.userId}`)
                 .then(res => {
-                    console.log(res.data)
                     this.setState({
                         email: res.data.local.email,
                         name: res.data.local.name,
@@ -71,9 +70,6 @@ class ProfilePage extends Component {
                             className="btn btn-default">
                             Join Campaign
                         </Link>
-
-
-
                     </div>
 
                 </div>

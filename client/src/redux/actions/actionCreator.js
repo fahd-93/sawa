@@ -169,7 +169,6 @@ export const oauthFacebook = data => {
         const res = await axios.post('http://localhost:4000/api/oauth/facebook', {
             access_token: data
         });
-
         dispatch({
             type: AUTH_SIGN_UP,
             payload: res.data.token
@@ -180,18 +179,11 @@ export const oauthFacebook = data => {
     };
 };
 
-
-
-
-
-
-
 // SignOut
 
 export const signOut = () => {
     return dispatch => {
         localStorage.clear('jwt_token');
-        console.log(localStorage);
         axios.defaults.headers.common['Authorization'] = '';
         dispatch({
             type: AUTH_SIGN_OUT,

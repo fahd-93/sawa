@@ -74,8 +74,8 @@ class ConstructionForm extends Component {
                         <label> Upload Video:</label>
                         <input type="file" name="video"
                             ref={this.videoRef} />
-                        <input type="submit"
-                            onClick={e => this.handleSubmit(e)} />
+                        {<input type="submit"
+                            onClick={e => this.handleSubmit(e)} />}
                     </form>
                 </div>
             </div>

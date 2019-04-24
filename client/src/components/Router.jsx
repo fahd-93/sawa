@@ -3,12 +3,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
 import HomePage from "./HomePage";
 import EducationForm from "./EducationForm";
-import ConstructionForm from "./campaign/ConstructionForm";
 import MedicalForm from "./MedicalForm";
 import CampaignForm from "./campaign/CampaignForm";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./campaign/LocationForm";
-import SaveCampaignForm from './SaveCampaignForm';
 import SignInForm from "./SignInForm";
 import Notfound from "./Notfound";
 
@@ -18,6 +16,7 @@ import SignUpForm from './SignUpForm';
 import ProfilePage from './ProfilePage';
 import authGuard from './HOCs/authGuard';
 import EditUserProfile from './EditUserProfile';
+import HowPage from './HomePage';
 
 
 
@@ -57,9 +56,9 @@ class Router extends Component {
                     <Route path="/create-campaign"
                         component={authGuard(CampaignForm)}
                     />
-                    <Route path="/construction-form"
+                 {/*   <Route path="/construction-form"
                         component={ConstructionForm}
-                    />
+                    />*/}
                     <Route path="/education-form"
                         component={EducationForm}
                     />
@@ -75,8 +74,10 @@ class Router extends Component {
                         component={LocationForm} />
                     <Route path="/multimedia-form"
                         component={MultimediaForm} />
-                    <Route path="/save-form"
-                        component={SaveCampaignForm} />
+                   {/* <Route path="/save-form"
+                        component={SaveCampaignForm} />*/}
+                        <Route path="/how-page"
+                        component={HowPage} />
                     <Route component={Notfound} />
 
                 </Switch>
