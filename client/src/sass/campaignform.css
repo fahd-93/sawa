@@ -1,0 +1,49 @@
+body {
+  background: white;
+  flex-direction: column;
+  font-family: "Andale Mono"; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+
+.flex-position {
+  width: 600px;
+  background: beige;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.form-container {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+form {
+  border-radius: 5px;
+  background: lightgray;
+  padding: 20px;
+  font-size: 20px; }
+
+input {
+  border: 1px solid white;
+  border-radius: 1px;
+  padding: 10px 5px; }
+
+label {
+  margin-right: 10px; }
+
+.submit-btn {
+  font-size: 12px;
+  padding: 5px 20px;
+  justify-content: right; }
+
+/*# sourceMappingURL=campaignform.css.map */

@@ -1,0 +1,10 @@
+.home-container {
+  height: 100vh;
+  display: flex;
+  color: white; }
+
+.userCards {
+  display: flex;
+  flex-direction: row; }
+
+/*# sourceMappingURL=homepage.css.map */
