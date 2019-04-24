@@ -49,7 +49,6 @@ export const getAllCamp = () => dispatch => {
 };
 
 export const getCampId = id => dispatch => {
-    console.log(id)
     dispatch({
         type: "GET_CAMP_ID",
         payload: id,

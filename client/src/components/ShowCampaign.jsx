@@ -13,10 +13,11 @@ class ShowCampaign extends Component {
     }
 
     getId = (e) => {
+
         this.setState({
             campaignId: e
         })
-        this.props.getCampId(this.state)
+        this.props.getCampId(e)
     }
 
     render() {
@@ -31,7 +32,7 @@ class ShowCampaign extends Component {
             <CardColumns >
 
                 {campaign.map(user =>
-                    <Link to="showsinglecampaign" onClick={() => this.getId(user._id)} >
+                    <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
                         <Card key={user._id}>
                             <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
                             <Card.Body>
@@ -46,7 +47,8 @@ class ShowCampaign extends Component {
                         </Card>
                     </Link>
 
-                )}
+                )
+                }
             </CardColumns>
 
 
@@ -54,6 +56,11 @@ class ShowCampaign extends Component {
     }
 }
 function mapStateToProps(state) {
+    // if (state.campaign.campaign === undefined) { return null }
+    // let arrayCampaign = state.campaign.campaign;
+    // const campaignID = arrayCampaign.map(x => x._id);
+    // console.log(campaignID);
+
     // console.log('state from props CampaignCards PAGE', state.campaign.campaign);
     return {
         campaign: state.campaign.campaign
@@ -61,4 +68,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { getAllCamp, getCampId })( ShowCampaign);
+export default connect(mapStateToProps, { getAllCamp, getCampId })(ShowCampaign);
