@@ -4,7 +4,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { signOut, signIn, signUp } from "../redux/actions/actionCreator";
 
-class Header extends Component {
+class NavigationBar extends Component {
     constructor(props) {
         super(props);
         this.signOut = this.signOut.bind(this);
@@ -76,7 +76,7 @@ const mapStateToProps = state => ({
     isAuth: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {signOut, signIn, signUp})(Header);
+export default connect(mapStateToProps, {signOut, signIn, signUp})(NavigationBar);
 
 
 

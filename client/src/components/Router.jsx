@@ -18,7 +18,7 @@ import ShowCampaign from './ShowCampaign';
 import ProfilePage from './ProfilePage';
 import ShowSingleCampaign from './ShowSingleCampaign';
 import authGuard from './HOCs/authGuard';
-import Header from './Header';
+import NavigationBar from './NavigationBar';
 import Foot from './Foot';
 // import CampaignType from "./campaign/CampaignType";
 import EditUserProfile from './EditUserProfile';
@@ -33,7 +33,7 @@ class Router extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Header />
+                <NavigationBar />
 
                 <Switch>
                     <Route
