@@ -45,19 +45,19 @@ class ShowSingleCampaign extends Component {
 
         return (
             <div>
-                {this.props.campaign_id}
-                <h1> Title: {this.state.title} </h1>
-                <p> type_of_volunteers: {this.state.type_of_volunteers} </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
-                <p> type_of_volunteers: {this.state.type_of_volunteers}rrrrr </p>
+                <p>Category: {this.state.categories} </p>
+                <h1>Title: {this.state.title} </h1>
+                <p>Created by: {this.state.created_by} </p>
+                <p>Description: {this.state.description} </p>
+                <p>Created the {this.state.created_at}</p>
+                <p>Located: {this.state.campaign_location}</p>
+                <p>Country code: {this.state.country_code}</p>
+                <p>Number of volunteers: {this.state.num_of_volunteers}</p>
+                <p>Type of volunteers: {this.state.type_of_volunteers}</p>
+                <p>Start date: {this.state.start_date}</p>
+                <p>Materials: {this.state.materials}</p>
+                <p>End date: {this.state.end_date}</p>
+                <p>Image: {this.state.image}</p>
             </div>
         )
     }
