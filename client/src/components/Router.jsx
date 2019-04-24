@@ -69,6 +69,8 @@ class Router extends Component {
                     <Route path="/medical-form"
                         component={MedicalForm}
                     />
+                     <Route path="/show-single-campaign"
+                    component={ShowSingleCampaign} />
                     {/*  <Route path="/confirm-entry"
                            component={CampaignConfirmation}
                     />*/}
@@ -80,8 +82,7 @@ class Router extends Component {
                         component={MultimediaForm} />
                     <Route path="/save-form"
                         component={SaveCampaignForm} />
-                    <Route path="/show-single-campaign"
-                    component={ShowSingleCampaign} />
+                   
                      <Route component={Notfound} />
 
                 </Switch>

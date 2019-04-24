@@ -3,10 +3,12 @@ import { reducer as formReducer } from 'redux-form';
 import campaignReducer from "./Campaign";
 import authReducer from './auth';
 import userReducer from './userReducer';
+import usersReducer from './Users'
 
 export default combineReducers({
     campaign: campaignReducer,
     form: formReducer,
     auth: authReducer,
-    userReducer: userReducer
+    userReducer: userReducer,
+    users:usersReducer
 });

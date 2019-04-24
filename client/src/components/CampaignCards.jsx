@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import { getAllCamp } from "../redux/actions/actionCreator";
+
+
 import { connect } from "react-redux";
 import {  CardColumns, Card } from "react-bootstrap";
 
@@ -13,12 +15,8 @@ class CampaignCards extends Component{
 
     componentDidMount(){
         this.props.getAllCamp();
+        
     }
-
-    getId = e => {
-        console.log('User Id', e.target.value);
-    }
-
     
 
 
@@ -40,7 +38,7 @@ class CampaignCards extends Component{
 
                             {campaigns.map(user =>
 
-                            <Link to='/' onClink={ e => this.getId(e)} >
+                            <Link to="showsinglecampaign" onClick={() => this.getId(campaigns._id)} >
                         
                             <Card key={user._id}>
                             <Card.Img variant="top"src={`http://localhost:4000/uploads/${user.image}`} />

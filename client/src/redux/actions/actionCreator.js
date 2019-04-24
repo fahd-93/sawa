@@ -48,6 +48,27 @@ export const getAllCamp = () => dispatch => {
         })
 };
 
+export const getCampId = id => dispatch => {
+    console.log(id);
+     dispatch({
+        type: "GET_CAMP_ID",
+        payload: id,
+    }) 
+    
+};
+
+export const getAllUsers = () => dispatch => {
+    axios
+        .get('http://localhost:4000/api/users')
+        .then(res => {
+            console.log('Action all users', res.data)
+            dispatch({
+                type: "GET_ALL_USERS",
+                payload: res.data
+            })
+        })
+};
+
 // updateInput is to update the redux Campaign Store with the the new inputs
 /*export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
