@@ -1,3 +1,6 @@
+
 module.exports = {
-    JWT_SECRET: 'sawaauthorisation'
+    JWT_SECRET: 'sawaauthorisation',
+
 };
+

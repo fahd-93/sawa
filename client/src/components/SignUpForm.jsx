@@ -66,6 +66,7 @@ class SignUpForm extends Component {
                 placeholder="example@example.com"
                 component={CustomInput} />
             </fieldset>
+
             <fieldset>
               <Field
                 name="password"

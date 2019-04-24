@@ -149,7 +149,10 @@ export const signIn = data => {
             localStorage.setItem('JWT_TOKEN', res.data.token);
             // dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
             axios.defaults.headers.common['Authorization'] = res.data.token;
-            dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
+            dispatch({
+                type: 'SAVE_LOGGED_IN_USER',
+                payload: res.data.user
+            })
 
         } catch (err) {
             dispatch({
@@ -173,7 +176,6 @@ export const oauthFacebook = data => {
         const res = await axios.post('http://localhost:4000/api/oauth/facebook', {
             access_token: data
         });
-
         dispatch({
             type: AUTH_SIGN_UP,
             payload: res.data.token
@@ -184,18 +186,11 @@ export const oauthFacebook = data => {
     };
 };
 
-
-
-
-
-
-
 // SignOut
 
 export const signOut = () => {
     return dispatch => {
         localStorage.clear('jwt_token');
-        console.log(localStorage);
         axios.defaults.headers.common['Authorization'] = '';
         dispatch({
             type: AUTH_SIGN_OUT,

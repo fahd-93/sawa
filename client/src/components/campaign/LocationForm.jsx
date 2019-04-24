@@ -30,7 +30,6 @@ class LocationForm extends Component {
     };
 
     render() {
-        
         return (
             <div>
                 <label>Campaign Location:</label>

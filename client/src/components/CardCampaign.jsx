@@ -21,6 +21,10 @@ const CardCampaign = (props) => {
                     <Card.Footer className="text-muted">2 days ago</Card.Footer>
                 </Card>
             </CardDeck>
+                    <Card.Link to="">Card Link</Card.Link>
+                </Card.Body>
+                <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            </Card>
         </div>
     )
 }

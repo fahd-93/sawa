@@ -39,7 +39,6 @@ class ConstructionForm extends Component {
 
         let formData = new FormData();
 
-
         formData.set("title", this.state.title);
         formData.set("description", this.state.description);
         formData.set("num_of_volunteers", this.state.num_of_volunteers);
@@ -56,12 +55,10 @@ class ConstructionForm extends Component {
     };
 
     render() {
-        // console.log(this.props);
-        console.log('LOCATION', this.props.campaign.campaign_location.latlng)
         return (
             <div>
                 <div >
-                    <form onChange={e => this.handelInputs(e)}>
+                    <form onChange={ e => this.handelInputs(e)}>
                         <CampaignInput />
                         <br /><br />
                         <VolunteerType />

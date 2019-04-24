@@ -22,6 +22,12 @@ import authGuard from './HOCs/authGuard';
 import Header from './Header';
 import Foot from './Foot';
 // import CampaignType from "./campaign/CampaignType";
+import EditUserProfile from './EditUserProfile';
+import HowPage from './HomePage';
+
+
+
+
 import Geolocation from "./Geolocation";
 
 class Router extends Component {
@@ -58,16 +64,18 @@ class Router extends Component {
                         path="/profilepage"
                         component={authGuard(ProfilePage)}
                     />
+                    <Route exact
+                        path="/editprofile"
+                        component={EditUserProfile}
+                    />
                     <Route path="/geolocation"
                         component={Geolocation}
                     />
-                    <Route path="/campaign-form"
-                    // component={CampaignForm}
-                    />
+
                     <Route path="/create-campaign"
-                        component={CampaignForm}
+                        component={authGuard(CampaignForm)}
                     />
-                    <Route path="/construction-form"
+                 {/*   <Route path="/construction-form"
                         component={ConstructionForm}
                     />
                     <Route path="/education-form"
@@ -85,8 +93,10 @@ class Router extends Component {
                         component={LocationForm} />
                     <Route path="/multimedia-form"
                         component={MultimediaForm} />
-                    <Route path="/save-form"
-                        component={SaveCampaignForm} />
+                   {/* <Route path="/save-form"
+                        component={SaveCampaignForm} />*/}
+                        <Route path="/how-page"
+                        component={HowPage} />
                     <Route component={Notfound} />
 
                 </Switch>

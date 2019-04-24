@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { signOut } from '../../redux/actions/actionCreator';
+
 
 export default (OriginalComponent) => {
     class MixedComponent extends Component {
@@ -8,6 +10,7 @@ export default (OriginalComponent) => {
             if (!this.props.isAuth && !this.props.jwtToken) {
                 this.props.history.push('/');
             }
+
         }
 
         componentDidMount() {
@@ -32,5 +35,5 @@ export default (OriginalComponent) => {
         }
     }
 
-    return connect(mapStateToProps)(MixedComponent);
+    return connect(mapStateToProps, { signOut })(MixedComponent);
 };
