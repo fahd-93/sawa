@@ -2,7 +2,7 @@ import React from 'react';
 import { CardDeck, Card } from 'react-bootstrap';
 
 
-const CardCampaign = (props) => {
+const CardCampaign = () => {
     return (
         <div>
             <CardDeck>
@@ -16,17 +16,13 @@ const CardCampaign = (props) => {
                             Some quick example text to build on the card title and make up the bulk of
                             the card's content.
                         </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                    </Card.Body>
-                    <Card.Footer className="text-muted">2 days ago</Card.Footer>
-                </Card>
-            </CardDeck>
                     <Card.Link to="">Card Link</Card.Link>
                 </Card.Body>
                 <Card.Footer className="text-muted">2 days ago</Card.Footer>
             </Card>
+        </CardDeck>
         </div>
     )
-}
+};
 
 export default CardCampaign;

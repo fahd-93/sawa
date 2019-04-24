@@ -27,8 +27,8 @@ class ConstructionForm extends Component {
 
         this.setState({
             category: this.props.campaign.category,
-            latitude: this.props.campaign.campaign_location.latlng.lat,
-            longitude: this.props.campaign.campaign_location.latlng.lng,
+            /*latitude: this.props.campaign.campaign_location.latlng.lat,
+            longitude: this.props.campaign.campaign_location.latlng.lng,*/
             [e.target.name]: e.target.value,
         });
 
@@ -49,7 +49,6 @@ class ConstructionForm extends Component {
         formData.set("longitude", this.state.longitude);
         formData.set("category", this.state.category);
         formData.append("image", this.userImageRef.current.files[0]);
-        //formData.append("video", this.videoRef.current.files[0]);
 
         this.props.saveCampaign(this.state, formData);
     };
@@ -69,14 +68,11 @@ class ConstructionForm extends Component {
                         <input type="file" name="image"
                             ref={this.userImageRef} />
 
-                        <label> Upload Video:</label>
-                        <input type="file" name="video"
-                            ref={this.videoRef} />
-
-                        <Link to='showcampaign'
-                            onClick={e => this.handleSubmit(e)}>
-                            Save
-                        </Link>
+                        <button onClick={e => this.handleSubmit(e)}>
+                            <Link to='/showcampaign'>
+                                Save
+                            </Link>
+                        </button>
                     </form>
                 </div>
             </div>

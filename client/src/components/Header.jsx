@@ -25,36 +25,16 @@ class Header extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
                         <Nav>
-                            <Nav.Link href="#howworks">How does it work?</Nav.Link>
-                            <Nav.Link href="#profilepage">Profile Page</Nav.Link>
+                            <Nav.Link href="/how-page">How does it work?</Nav.Link>
+
 
                             <Nav.Link href="/showcampaign">Campaigns</Nav.Link>
-                            <Nav.Link href="/create-campaign">Create Campaign</Nav.Link>
-                            <li className="nav-item">
-                                <Link to="how-page"
-                                      className="nav-link">
-                                    How does it work?
-                                </Link>
-                            </li>
-                           { this.props.isAuth ? <li className="nav-item">
-                                <Link className="nav-link"
-                                      to={"profilepage"}>
-                                    Profile Page
-                                </Link>
-                            </li> : null}
-                            <li className="nav-item">
-                                <Link className="nav-link"
-                                      to={"campaigns"}>
-                                    Campaigns
-                                </Link>
-                            </li>
+
+
+                           { this.props.isAuth ?
+                               <Nav.Link href="profilepage">Profile Page</Nav.Link> : null}
                             {this.props.isAuth ?
-                            <li className="nav-item">
-                                <Link className="nav-link"
-                                      to={"create-campaign"}>
-                                    Create Campaign
-                                </Link>
-                            </li> : null }
+                                <Nav.Link href="/create-campaign">Create Campaign</Nav.Link> : null }
 
 
                             {!this.props.isAuth ?
