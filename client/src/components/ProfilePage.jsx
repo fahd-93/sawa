@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as jwt_decode from "jwt-decode";
-import Campaign from '../redux/reducer/Campaign';
 import { Link } from 'react-router-dom';
 
 class ProfilePage extends Component {
-    constructor() {
-        super();
-        this.state = {}
+    constructor(props) {
+        super(props);
+        this.state = {};
         this.userId = this.getUserId()
     }
 
@@ -23,13 +22,10 @@ class ProfilePage extends Component {
 
                 return x.sub
             }
-            catch (error) {
-                console.log(error);
-            }
-
+            catch (error) {console.log(error)}
         }
         return null;
-    }
+    };
 
     componentDidMount() {
         if (this.userId) {
@@ -52,12 +48,8 @@ class ProfilePage extends Component {
 
 
     render() {
-
-        console.log(this.state)
+        console.log("Profile", this.props.isAuth);
         if (this.props.isAuth === true && this.state.name !== '') {
-
-            console.log('state', this.userId);
-
             return (
                 <div>
 

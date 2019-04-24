@@ -25,24 +25,55 @@ class Header extends Component {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
                         <Nav>
-                            <Nav.Link href="#howworks">How does it work?</Nav.Link>
-                            <Nav.Link href="#profilepage">Profile Page</Nav.Link>
-
-                            <Nav.Link href="#campaigns">Campaigns</Nav.Link>
-                            <Nav.Link href={"/create-campaign"}>Create Campaign</Nav.Link>
+                            <li className="nav-item">
+                                <Link className="nav-link"
+                                      to={"howworks"}>
+                                    How does it work?
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link"
+                                      to={"profilepage"}>
+                                    Profile Page
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link"
+                                      to={"campaigns"}>
+                                    Campaigns
+                                </Link>
+                            </li>
+                            {this.props.isAuth ?
+                            <li className="nav-item">
+                                <Link className="nav-link"
+                                      to={"create-campaign"}>
+                                    Create Campaign
+                                </Link>
+                            </li> : null }
 
 
                             {!this.props.isAuth ?
-                                [<li className="nav-item" key="signup">
-                                    <Link className="nav-link" to="/signup">Sign Up</Link>
+                                [<li className="nav-item"
+                                     key="signup">
+                                    <Link className="nav-link" to="/signup">
+                                        Sign Up
+                                    </Link>
                                 </li>,
-                                <li className="nav-item" key="signin">
-                                    <Link className="nav-link" to="/signin">Sign In</Link>
+                                <li className="nav-item"
+                                    key="signin">
+                                    <Link className="nav-link"
+                                          to="/signin">
+                                        Sign In
+                                    </Link>
                                 </li>] : null}
 
                             {this.props.isAuth ?
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/signout" onClick={this.signOut}>Sign Out</Link>
+                                    <Link className="nav-link"
+                                          to="signout"
+                                          onClick={this.signOut}>
+                                        Sign Out
+                                    </Link>
                                 </li> : null}
                         </Nav>
 

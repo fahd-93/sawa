@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as jwt_decode from "jwt-decode";
-import AlgoliaPlaces from 'algolia-places-react';
+// import AlgoliaPlaces from 'algolia-places-react';
 import axios from 'axios';
 
 class EditUserProfile extends Component {
@@ -54,7 +54,7 @@ class EditUserProfile extends Component {
             [e.target.name]: e.target.value
         });
 
-    }
+    };
 
     updateUserInput = async e => {
         e.preventDefault();
@@ -62,14 +62,14 @@ class EditUserProfile extends Component {
         await axios
             .put(`http://localhost:4000/api/users/${this.userId}`, this.state)
 
-    }
+    };
 
     deleteUser = async e => {
         console.log('LOCAL Storage', localStorage)
         await axios.delete(`http://localhost:4000/api/users/${this.userId}`);
         localStorage.clear('jwt_token');
 
-    }
+    };
 
     render() {
         console.log(this.state)
@@ -142,9 +142,9 @@ class EditUserProfile extends Component {
 
 }
 
-const mapStateToProps = state => ({
+/*const mapStateToProps = state => ({
     loggedInUser: state.userReducer.loggedInUser,
     userId: state.auth.userId
-})
+});*/
 
 export default connect(null, null)(EditUserProfile);

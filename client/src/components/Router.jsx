@@ -17,8 +17,6 @@ import Notfound from "./Notfound";
 import SignUpForm from './SignUpForm';
 import ProfilePage from './ProfilePage';
 import authGuard from './HOCs/authGuard';
-import Header from './Header';
-import Foot from './Foot';
 import EditUserProfile from './EditUserProfile';
 
 
@@ -30,8 +28,6 @@ class Router extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Header />
-
                 <Switch>
                     <Route
                         exact
@@ -59,7 +55,7 @@ class Router extends Component {
                     />
 
                     <Route path="/create-campaign"
-                        component={CampaignForm}
+                        component={authGuard(CampaignForm)}
                     />
                     <Route path="/construction-form"
                         component={ConstructionForm}
@@ -84,7 +80,6 @@ class Router extends Component {
                     <Route component={Notfound} />
 
                 </Switch>
-                <Foot />
             </BrowserRouter>
         );
     }

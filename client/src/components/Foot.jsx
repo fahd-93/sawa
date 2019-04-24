@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
@@ -10,19 +11,19 @@ const Foot = (props) => {
                     <Row>
                         <Col className="text-sm-left ">
                             <ul className="list-unstyled quick-links">
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-angle-double-right"></i>Home</a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-angle-double-right"></i>About</a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-angle-double-right"></i>FAQ</a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-angle-double-right"></i>How it works</a></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-angle-double-right"></i>Home</Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-angle-double-right"></i>About</Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-angle-double-right"></i>FAQ</Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-angle-double-right"></i>How it works</Link></li>
                             </ul>
                         </Col>
                         <Col>
                             <ul className="list-unstyled list-inline social text-center">
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-facebook"></i></a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-twitter"></i></a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-instagram"></i></a></li>
-                                <li className="list-inline-item"><a href="#"><i className="fa fa-google-plus"></i></a></li>
-                                <li className="list-inline-item"><a href="#" target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope"></i></a></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-facebook"></i></Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-twitter"></i></Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-instagram"></i></Link></li>
+                                <li className="list-inline-item"><Link to=''><i className="fa fa-google-plus"></i></Link></li>
+                                <li className="list-inline-item"><Link to='' target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope"></i></Link></li>
                             </ul>
                         </Col>
                     </Row>
