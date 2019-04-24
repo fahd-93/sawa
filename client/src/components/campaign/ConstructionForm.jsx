@@ -26,8 +26,8 @@ class ConstructionForm extends Component {
 
         this.setState({
             category: this.props.campaign.category,
-            latitude: this.props.campaign.campaign_location.latlng.lat,
-            longitude: this.props.campaign.campaign_location.latlng.lng,
+            // latitude: this.props.campaign.campaign_location.latlng.lat,
+            // longitude: this.props.campaign.campaign_location.latlng.lng,
             [e.target.name]: e.target.value,
         });
 
@@ -35,7 +35,6 @@ class ConstructionForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         let formData = new FormData();
         // Object.keys(this.state).forEach( inputs => {
         //     formData.append(inputs, this.state[inputs]);
@@ -84,7 +83,7 @@ class ConstructionForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    campaign: state.campaignReducer
+    campaign: state.campaign
 });
 
 export default connect(mapStateToProps, { saveCampaign })( ConstructionForm );

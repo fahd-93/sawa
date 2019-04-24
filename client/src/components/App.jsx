@@ -1,30 +1,26 @@
-// import React from 'react';
-// import Header from './Header';
-
-// // export default (props) => {
-// //   return (
-// //     <div>
-// //       <Header />
-// //       {props.children}
-// //     </div>
-// //   );
-// // }
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props)
-//   }
-//   render() {
-
-//     return (
-//       <div>
-//         <Header />
-//       </div >
-
-//     )
-//   }
+import React from 'react';
+import HomePage from './HomePage'
 
 
+class App extends React.Component {
+  render() {
+
+    return (
+      <div>
+        <HomePage/>
+      </div >
+
+    )
+  }
+}
+
+// export default (props) => {
+//   return (
+//     <div>
+//       <Header />
+//       {props.children}
+//     </div>
+//   );
 // }
 
-// export default App;
+export default App;

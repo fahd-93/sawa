@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
-import HomePage from "./HomePage";
+import App from "./App";
 import EducationForm from "./EducationForm";
 import ConstructionForm from "./campaign/ConstructionForm";
 import MedicalForm from "./MedicalForm";
@@ -18,12 +18,6 @@ import SignUpForm from './SignUpForm';
 import ProfilePage from './ProfilePage';
 import authGuard from './HOCs/authGuard';
 import Header from './Header';
-import Foot from './Foot';
-
-
-
-
-import CampaignType from "./campaign/CampaignType";
 import Geolocation from "./Geolocation";
 
 class Router extends Component {
@@ -31,12 +25,11 @@ class Router extends Component {
         return (
             <BrowserRouter>
                 <Header />
-
                 <Switch>
                     <Route
                         exact
                         path="/"
-                        component={HomePage}
+                        component={App}
                     />
                     <Route exact
                         path="/signup"
@@ -57,7 +50,7 @@ class Router extends Component {
                            component={CampaignForm}
                     />
                     <Route path="/create-campaign"
-                        component={CampaignType}
+                        component={CampaignForm}
                     />
                     <Route path="/construction-form"
                         component={ConstructionForm}
@@ -68,11 +61,6 @@ class Router extends Component {
                     <Route path="/medical-form"
                         component={MedicalForm}
                     />
-                    {/*  <Route path="/confirm-entry"
-                           component={CampaignConfirmation}
-                    />*/}
-                    {/* <Route path="/display-campaign"
-                        component={DisplayCampaign} /> */}
                     <Route path="/location-form"
                         component={LocationForm} />
                     <Route path="/multimedia-form"
@@ -82,7 +70,6 @@ class Router extends Component {
                     <Route component={Notfound} />
 
                 </Switch>
-                <Foot />
             </BrowserRouter>
         );
     }

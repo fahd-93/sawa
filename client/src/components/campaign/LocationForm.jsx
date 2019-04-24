@@ -27,9 +27,11 @@ class LocationForm extends Component {
             }
         });
         this.props.addLocation(this.state);
+        console.log(this.state);
     };
 
     render() {
+        console.log(this.props.category);
         return(
             <div>
                 <label>Campaign Location:</label>
@@ -47,10 +49,7 @@ class LocationForm extends Component {
     }
 }
 const mapStateToProps = state => ({
-    category: state.campaignReducer.category
+    category: state.campaign.category
 });
 
-export default connect(
-    mapStateToProps,
-    { addLocation }
-    )(LocationForm);
+export default connect(mapStateToProps, { addLocation })(LocationForm);

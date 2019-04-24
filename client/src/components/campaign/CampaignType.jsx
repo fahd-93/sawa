@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { addCategory } from "../../redux/actions/actionCreator";
 
-class CampaignForm extends Component {
+class CampaignType extends Component {
 
     handleOptions = e => {
         e.preventDefault();
@@ -26,4 +26,4 @@ class CampaignForm extends Component {
 }
 
 
-export default connect( null, { addCategory })( CampaignForm );
+export default connect( null, { addCategory })( CampaignType );
