@@ -55,8 +55,9 @@ class ConstructionForm extends Component {
 
     render() {
         return (
-            <div>
-                <div >
+            <div className="camp-form-container">
+                <div className="margin-center">
+                    <h3>Construction Campaign</h3>
                     <form onChange={ e => this.handelInputs(e)}>
                         <CampaignInput />
                         <br /><br />

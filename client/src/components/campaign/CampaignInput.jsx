@@ -4,7 +4,7 @@ class CampaignInput extends Component{
 
     render() {
         return(
-            <React.Fragment>
+            <div >
                 <label>Campaign Name:</label>
                 <input type="text"
                        name="title"
@@ -25,7 +25,7 @@ class CampaignInput extends Component{
                 <input name="num_of_volunteers"
                        ref={this.numOfVolunteersRef}
                        type="number"/>
-            </React.Fragment>
+            </div>
         )
     }
 

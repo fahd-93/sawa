@@ -11,9 +11,10 @@ class CampaignForm extends Component {
 
     render(){
         return(
-            <div className="form-container">
+            <div >
                 <form>
-                    <select onChange={e => this.handleOptions(e)}>
+                    <label> Choose a Category for your Campaign</label>
+                    <select className="custom-select" onChange={e => this.handleOptions(e)}>
                         <option defaultValue>Choose One Category</option>
                         <option value="medical">Medical</option>
                         <option value="construction">Construction</option>

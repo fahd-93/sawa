@@ -119,65 +119,53 @@
   margin-left: 5px; }
 
 body {
-  background: white;
-  flex-direction: column;
-  font-family: "Andale Mono"; }
+  background: #dfdcdb;
+  font-family: Andale Mono, serif; }
 
-#campaignForm .container {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; }
-#campaignForm .flex-position {
-  width: 600px;
-  background: beige;
+.camp-form-container {
+  background: white;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-#campaignForm .form-container {
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-#campaignForm .camp-name {
-  font-size: 40px; }
-#campaignForm form {
-  border-radius: 5px;
+  max-width: 700px;
+  margin: auto;
+  padding: 40px; }
+
+.margin-center {
+  margin: auto; }
+
+h3 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 40px;
   padding: 20px;
-  font-size: 20px; }
-#campaignForm input {
-  border: 1px solid white;
-  font-size: 15px;
-  border-radius: 1px;
-  padding: 10px 10px;
-  width: 500px; }
-#campaignForm textarea {
-  border: 1px solid white;
-  font-size: 14px;
-  border-radius: 1px;
-  padding: 20px 10px;
-  width: 500px; }
-#campaignForm select {
-  margin-bottom: 20px; }
-#campaignForm .submit-btn {
-  background: darkolivegreen;
-  color: white;
-  font-size: 14px;
-  padding: 10px 20px; }
-#campaignForm em {
-  color: darkred; }
-#campaignForm select {
-  display: block;
-  font-size: 15px;
-  border: gold 2px solid;
-  font-family: "Andale Mono";
-  padding: 10px;
-  width: 510px; }
+  font-family: Andale Mono, serif; }
+
+label {
+  font-family: Andale Mono, serif;
+  margin-top: 15px;
+  font-weight: bold; }
+
+.custom-select {
+  position: relative;
+  font-family: Andale Mono, serif;
+  background-color: #168d7e;
+  color: white; }
+
+.btn-style {
+  margin-top: 15px;
+  float: right; }
+
+input {
+  font-family: Andale Mono, serif; }
+
+.date-container {
+  display: flex; }
+
+.date {
+  margin-right: 20px; }
+
+.location-form {
+  padding: 10px 0; }
 
 #root {
   position: relative; }

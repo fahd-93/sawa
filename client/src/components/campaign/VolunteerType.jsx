@@ -27,6 +27,7 @@ class VolunteerType extends Component {
             <React.Fragment>
                 <label>What Type of help the campaign needs?</label>
                 <select name="type_of_volunteers"
+                        className="custom-select"
                         ref={this.typeOfVolunteersRef}>
                     <option defaultValue>
                         Choose Type of Volunteer you need for your Campaign:
