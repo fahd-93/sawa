@@ -23,7 +23,7 @@ export const getLocation = () => dispatch => {
                 latitude: position.coords.latitude
             }));
         }, () => {
-            reject (new Error('Permission Denied'));
+            reject(new Error('Permission Denied'));
         });
     });
 };
@@ -38,8 +38,9 @@ export const addCategory = category => dispatch => {
 
 export const getAllCamp = () => dispatch => {
     axios
-        .get('http://localhost:4000/api/campaign')
+        .get('http://localhost:4000/api/campaigns')
         .then(res => {
+
             dispatch({
                 type: "GET_ALL_CAMP",
                 payload: res.data
@@ -47,6 +48,13 @@ export const getAllCamp = () => dispatch => {
         })
 };
 
+export const getCampId = id => dispatch => {
+    console.log(id)
+    dispatch({
+        type: "GET_CAMP_ID",
+        payload: id,
+    })
+};
 // updateInput is to update the redux Campaign Store with the the new inputs
 /*export const addInputs = inputs => dispatch => {
     console.log('inputs', inputs);
@@ -79,7 +87,7 @@ export const saveCampaign = (inputs, formData) => dispatch => {
                 payload: inputs
             });
         })
-        .catch( error => {
+        .catch(error => {
             console.log(error)
         })
 };

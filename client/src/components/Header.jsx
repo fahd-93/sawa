@@ -17,7 +17,7 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Navbar bg="light" expand="lg">
+                <Navbar bg="dark" variant="dark" expand="lg">
                     <Navbar.Brand href={"/"}>
                         <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" width="30"
                         /> Sawa
@@ -28,8 +28,8 @@ class Header extends Component {
                             <Nav.Link href="#howworks">How does it work?</Nav.Link>
                             <Nav.Link href="#profilepage">Profile Page</Nav.Link>
 
-                            <Nav.Link href="#campaigns">Campaigns</Nav.Link>
-                            <Nav.Link href={"/create-campaign"}>Create Campaign</Nav.Link>
+                            <Nav.Link href="/showcampaign">Campaigns</Nav.Link>
+                            <Nav.Link href="/create-campaign">Create Campaign</Nav.Link>
 
 
                             {!this.props.isAuth ?
