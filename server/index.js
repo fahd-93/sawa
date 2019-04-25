@@ -30,12 +30,12 @@ mongoose
 		console.log(`The following error occurred: ${error.message}`);
 	});
 
-/* mongoose
-	.connect(DB.mongoURI, { useNewUrlParser: true })
-	.then(() => console.log("Successful connection to database"))
-	.catch(error => {
-		console.log(`The following error occurred: ${error.message}`);
-	}); */
+//  mongoose
+// 	.connect(DB.mongoURI, { useNewUrlParser: true })
+// 	.then(() => console.log("Successful connection to database"))
+// 	.catch(error => {
+// 		console.log(`The following error occurred: ${error.message}`);
+// 	}); 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

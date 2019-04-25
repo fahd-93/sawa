@@ -18,7 +18,7 @@ class HomePage extends Component {
 
 
     render() {
-    
+      
 
         if (this.props.campaign === undefined) {
             return <div>loading...</div>
@@ -28,41 +28,50 @@ class HomePage extends Component {
         const campaignArray = campaign.slice(0, 3)
         return (
 
-<React.Fragment>
+            <React.Fragment>
                 <ControlledCarousel />
 
-            <div className = "cam-container">
-            <Row>
-                        <Col>
-                            <h5 className="text-center p-2 m-3">Latest Campaigns</h5>
-                        </Col>
-                    </Row>
-           <CardColumns>   
-          { campaignArray.map(item =>
+                <div className = "cam-container">
+                <Row>
+                    <Col>
+                         <h5 className="text-center p-2 m-3">Latest Campaigns</h5>
+                    </Col>
+                </Row>
+                <CardColumns>
+                { 
+                    
+                
+                    campaignArray.map(item =>
 
-          <Link to={`/users/campaign/${item._id}`} onClick={() => this.getId(item._id)}>
-          <Card key={item._id}>
-              <Card.Img variant="top" src={`http://localhost:4000/uploads/${item.image}`} />
-              <Card.Body>
-                  <Card.Title>Title: {item.title}</Card.Title>
-                  <Card.Text>Description: {item.description}</Card.Text>
-                  <Card.Text>Categories: {item.categories}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
+                <Link to={`/users/campaign/${item._id}`} onClick={() => this.getId(item._id)}>
+                    <Card key={item._id}>
+                    <Card.Img variant="top" src={`http://localhost:4000/uploads/${item.image}`} />
+                    <Card.Body>
+                        <Card.Title>Title: {item.title}</Card.Title>
+                        <Card.Text>Description: {item.description}</Card.Text>
+                        <Card.Text>Categories: {item.categories}</Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
 
-                  <small className="text-muted">Created at: {item.created_at}</small>
-                  
-              </Card.Footer>
-              {/* <button>show</button> */}
-          </Card>
-      </Link>
-          
-            )}
-            </CardColumns> 
-            <div className="text-right p-2 m-2">
-                        <a href="/showcampaign" target="_blank" rel="noopener noreferrer">See more...</a>
+                    <small className="text-muted">Created at: {item.created_at}</small>
+
+                    </Card.Footer>
+                    {/* <button>show</button> */}
+                    </Card>
+                </Link>
+
+                )}
+
+                </CardColumns>
+                
+                    <div className="text-right p-2 m-2">
+                        <a href="/showcampaign"
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                            See more...
+                        </a>
                     </div>
-                    </div>
+                </div>
 
             </React.Fragment> 
         )
