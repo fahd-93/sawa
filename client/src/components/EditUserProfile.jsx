@@ -76,7 +76,8 @@ class EditUserProfile extends Component {
         return (
             <div className="camp-form-container">
                 <h3><span>Edit Profile</span></h3>
-                <form  className="container" onChange={e => this.handleInput(e)}>
+                <form  className="container"
+                       onChange={e => this.handleInput(e)}>
 
                     <label>First Name:</label>
                     <input type="text"
