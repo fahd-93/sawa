@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './sass/styles.scss';
 // import App from './components/App';
 // import HomePage from './components/HomePage';
 // import SignUpForm from './components/SignUpForm';
