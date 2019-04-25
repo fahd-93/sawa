@@ -1,0 +1,46 @@
+body {
+    background-color: #FBF8F6;
+}
+
+.cam-container{
+    max-width: 850px !important;
+    margin: 80px auto;
+    
+}
+
+
+.card-columns {
+    max-width: 850px !important;
+    margin: 30 auto;
+    padding: 0;
+    
+  }
+  .card-body {
+      margin: 0px;
+      padding: 10px 10px 0px 0px
+  }
+  .card{
+      border: none;
+      background-color: white;
+  }
+  .card-title {
+   color: #00B964;
+   }
+   .card-text {
+    margin-bottom: 30px;
+    color: rgb(5, 5, 5);
+    font-size: 0.9em;
+   }
+   .cam-header{
+    margin-bottom: 50px;
+   }
+
+   .card-img-top {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    display: block;
+    padding-top: 0;
+    width: 100%;
+   }
