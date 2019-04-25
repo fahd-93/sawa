@@ -31,7 +31,7 @@ class LocationForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="location-form">
                 <label>Campaign Location:</label>
                 <AlgoliaPlaces
                     name='AlgoliaPlaces'

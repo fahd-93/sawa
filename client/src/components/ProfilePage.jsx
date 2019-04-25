@@ -36,6 +36,7 @@ class ProfilePage extends Component {
                         name: res.data.local.name,
                         lastName: res.data.last_name,
                         campaigns: res.data.created_campaigns,
+                        volunteerType: res.data.type_of_volunteers,
 
                     })
                 })
@@ -50,28 +51,27 @@ class ProfilePage extends Component {
         console.log("Profile", this.props.isAuth);
         if (this.props.isAuth === true && this.state.name !== '') {
             return (
-                <div>
-
-                    <h1>your id {this.userId}</h1>
-
-                    <div>
-                        <h3>Name: {this.state.name}</h3>
-                        <h3>email: {this.state.email}</h3>
-                        <h3>Last Name: {this.state.lastName}</h3>
-                        <Link to='editprofile'
-                            className="btn btn-default">
-                            Edit Profile
-                        </Link>
-                        <Link to=''
-                            className="btn btn-default">
-                            Create Campaign
-                        </Link>
-                        <Link to=''
-                            className="btn btn-default">
-                            Join Campaign
-                        </Link>
+                <div className="camp-form-container">
+                    <h3>
+                        <img src="/png/1.png" alt="Avatar" className="avatar"/>
+                    </h3>
+                    <h3><span>{this.state.name} {this.state.lastName}</span></h3>
+                   <div className="text">
+                        <span>Volunteer Type: {this.state.volunteerType}</span>
+                   </div>
+                    <div className='wrapper text-center'>
+                        <div className="btn-group">
+                            <Link to='editprofile' className="btn-profile">
+                                Edit Profile
+                            </Link>
+                            <Link to='create-campaign' className="btn-profile">
+                                Create Campaign
+                            </Link>
+                            <Link to='showcampaign' className="btn-profile">
+                                Join Campaign
+                            </Link>
+                        </div>
                     </div>
-
                 </div>
             );
         }

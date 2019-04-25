@@ -4,28 +4,42 @@ class CampaignInput extends Component{
 
     render() {
         return(
-            <React.Fragment>
-                <label>Campaign Name:</label>
-                <input type="text"
-                       name="title"
-                       ref={this.titleRef}
-                       placeholder="Think of a good name for your campaign"/>
-                <br/><br/>
-                <label>Campaign Description:</label>
-                <br/><br/>
-                <textarea name="description"
-                          ref={this.descriptionRef}
-                          cols="50" rows="8"
-                          placeholder="Remember to give an overview of your campaign.
-                                  You better give some context why and for what your creating this campaign."
-                />
-                <br/><br/>
-                <label>How Many volunteers the campaign needs?</label>
-                <br/><br/>
-                <input name="num_of_volunteers"
-                       ref={this.numOfVolunteersRef}
-                       type="number"/>
-            </React.Fragment>
+            <div>
+                <div className="row">
+                    <div className="col-25">
+                        <label>Campaign Name:</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text"
+                               name="title"
+                               ref={this.titleRef}
+                               placeholder="Think of a good name for your campaign"/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-25">
+                        <label>Campaign Description:</label>
+                    </div>
+                    <div className="col-75">
+                        <textarea name="description"
+                                  ref={this.descriptionRef}
+                                  placeholder="Remember to give an overview of your campaign.
+                                          You better give some context why and for what your creating this campaign."
+                        />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-25">
+                        <label>Number Of Volunteers:</label>
+                    </div>
+                    <div className="col-75">
+                        <input name="num_of_volunteers"
+                               placeholder="Add How Many Volunteers Your Campaign Needs"
+                               ref={this.numOfVolunteersRef}
+                               type="number"/>
+                    </div>
+                </div>
+            </div>
         )
     }
 

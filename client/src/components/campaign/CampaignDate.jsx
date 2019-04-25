@@ -4,16 +4,25 @@ class CampaignDate extends Component {
 
     render(){
         return(
-            <div>
-                <br/><br/>
-                <label> Start Date:</label>
-                <input type="date" name="start_date"
-                       ref={this.startDateRef}/>
-                <br/><br/>
-                <label> End Date:</label>
-                <input type="date" name="end_date"
-                       ref={this.endDateRef}/>
-                <br/>
+            <div className="row">
+                <div className="col-25">
+                    <label> Start Date:</label>
+                </div>
+                <div className="col-75">
+                    <input type="date" name="start_date"
+                           className="date"
+                           ref={this.startDateRef}/>
+                </div>
+
+                <div className="col-25">
+                    <label> End Date:</label>
+                </div>
+                <div className="col-75">
+                    <input type="date" name="end_date"
+                           className="date"
+                           ref={this.endDateRef}/>
+                </div>
+
             </div>
         )
     }

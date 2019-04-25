@@ -9,13 +9,13 @@ class CampaignForm extends Component {
     render() {
         if (this.props.isAuth) {
             return (
-
-                <div className="form-container">
-                    <div className="flex-position">
-                        <h1> Campaign Form </h1>
+                <div className="camp-form-container">
+                    <div className="container">
+                        <h3><span>Campaign Form</span></h3>
                         <CampaignType/>
                         <LocationForm/>
-                        <Link to={`${this.props.category}-form`}>
+                       <Link to={`${this.props.category}-form`}
+                             className="btn-style">
                             Next
                         </Link>
                     </div>

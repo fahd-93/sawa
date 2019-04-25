@@ -24,18 +24,23 @@ class VolunteerType extends Component {
 
     render() {
         return(
-            <React.Fragment>
-                <label>What Type of help the campaign needs?</label>
-                <select name="type_of_volunteers"
-                        ref={this.typeOfVolunteersRef}>
-                    <option defaultValue>
-                        Choose Type of Volunteer you need for your Campaign:
-                    </option>
-                    {this.state.volunteerType.map(( item, i ) => (
-                        <option key={i}>{item}</option>
-                    ))}
-                </select>
-            </React.Fragment>
+            <div className="row">
+                <div className="col-25">
+                    <label>Type of Volunteers:</label>
+                </div>
+                <div className="col-75">
+                    <select name="type_of_volunteers"
+                            className="custom-select"
+                            ref={this.typeOfVolunteersRef}>
+                        <option defaultValue>
+                            Choose Type of Volunteer Your Campaign Needs
+                        </option>
+                        {this.state.volunteerType.map(( item, i ) => (
+                            <option key={i}>{item}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
         )
     }
 }
