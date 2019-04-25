@@ -29,14 +29,16 @@ class ControlledCarousel extends React.Component {
                 activeIndex={index}
                 direction={direction}
                 onSelect={this.handleSelect}
+                className="carousel-fade"
             >
-                <Carousel.Item>
+                <Carousel.Item
+                >
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 carousel-control"
                         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
                         alt="First slide"
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption >
                         <Button href="/education-form">Get some Help</Button>
                         <h3>Educational Campaign</h3>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -44,8 +46,8 @@ class ControlledCarousel extends React.Component {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
+                        className="d-block w-100 carousel-control"
+                        src="https://www.rescue.org/sites/default/files/styles/window_width_breakpoints_theme_rescue_large_1x/public/slideshow/3087/slideshow-images/slideshow-images-image/greece4.jpg?itok=A_iFnje-&timestamp=1471616940"
                         alt="Third slide"
                     />
 
@@ -57,7 +59,7 @@ class ControlledCarousel extends React.Component {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 carousel-control"
                         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
                         alt="Third slide"
                     />
