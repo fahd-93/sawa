@@ -43,7 +43,7 @@ class ShowCampaign extends Component {
                             </Card.Body>
                             <Card.Footer>
 
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Created at: {user.created_at}</small>
                             </Card.Footer>
                             {/* <button>show</button> */}
                         </Card>
