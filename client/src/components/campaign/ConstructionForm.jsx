@@ -74,7 +74,8 @@ class ConstructionForm extends Component {
                                        ref={this.userImageRef} />
                             </div>
 
-                            <div onClick={e => this.handleSubmit(e)} className="btn-div">
+                            <div onClick={e => this.handleSubmit(e)}
+                                 className="btn-div">
                                 <Link to='/showcampaign'
                                       className="btn-style">
                                     Next
