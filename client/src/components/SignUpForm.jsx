@@ -48,27 +48,27 @@ class SignUpForm extends Component {
       <div className="container-col-md">
         <div className="col">
           <div className="text-center">
-            <div className="alert alert-secondary">
-              Continue with your Facebook Account
-                            <br /> <br />
+            <div className="">
+
 
               <FacebookLogin
                 appId="2241134356214829"
                 // autoLoad={true}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
-                cssClass="btn btn-outline-primary"
+                cssClass="btnFacebook"
+                icon={< i className="fa fa-facebook" style={{ marginLeft: '5px' }} ></i>}
               />
 
             </div>
-            <h5>OR</h5>
+            <div class="divider-text">or</div>
 
           </div>
         </div>
         <div className="col">
           <div className="col">
             <form onSubmit={handleSubmit(this.onSubmit)}>
-              <fieldset>
+              <fieldset className="field">
                 <Field
                   name="name"
                   type="text"
@@ -77,7 +77,7 @@ class SignUpForm extends Component {
                   placeholder="Enter Your name"
                   component={CustomInput} />
               </fieldset>
-              <fieldset>
+              <fieldset className="field">
                 <Field
                   name="email"
                   type="text"
@@ -87,7 +87,7 @@ class SignUpForm extends Component {
                   component={CustomInput} />
               </fieldset>
 
-              <fieldset>
+              <fieldset className="field">
                 <Field
                   name="password"
                   type="password"
@@ -106,7 +106,7 @@ class SignUpForm extends Component {
 
 
 
-              <button type="submit" className="btn btn-lg btn-primary btn-block">Sign Up</button>
+              <button type="submit" className="continue-btn">Sign up</button>
             </form>
           </div>
           <br />

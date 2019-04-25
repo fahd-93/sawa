@@ -50,24 +50,26 @@ class SignInForm extends Component {
                 <div className="col">
                     <div className="text-center">
                         <br />
-                        <div className="alert alert-secondary">
-                            Continue with your Facebook Account
-                            <br /> <br />
+                        <div >
+
 
                             <FacebookLogin
+
                                 appId="2241134356214829"
                                 // autoLoad={true}
                                 fields="name,email,picture"
                                 callback={this.responseFacebook}
-                                cssClass="btn btn-outline-primary"
+                                cssClass="btnFacebook"
+                                icon={< i className="fa fa-facebook" ></i>}
+
                             />
 
                         </div>
-                        <h5>OR</h5>
+                        <div class="divider-text">or</div>
                     </div>
                 </div>
 
-                <div className="col">
+                <div className="col-md">
                     <form onSubmit={handleSubmit(this.onSubmit)}>
                         <fieldset className="field">
                             <Field
@@ -100,10 +102,12 @@ class SignInForm extends Component {
 
 
                         <div className="col text-center">
-                            <button type="submit" className="btn btn-lg btn-primary btn-block">Continue</button>
+                            <button type="submit" className="continue-btn">Continue</button>
+                            {/* <button type="submit" className="btn btn-outline-lg btn-success btn-block">Continue</button> */}
                             <br />
                             <Link>Forgot Password?</Link>
                         </div>
+
                     </form>
 
                 </div>
