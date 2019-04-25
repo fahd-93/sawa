@@ -11,15 +11,13 @@ class CampaignForm extends Component {
             return (
                 <div className="camp-form-container">
                     <div className="container">
-                        <h3>Campaign Form</h3>
+                        <h3><span>Campaign Form</span></h3>
                         <CampaignType/>
                         <LocationForm/>
-                       <div className="btn-style">
-                           <Link to={`${this.props.category}-form`}
-                                className="btn btn-warning">
-                                Next
-                            </Link>
-                       </div>
+                       <Link to={`${this.props.category}-form`}
+                             className="btn-style">
+                            Next
+                        </Link>
                     </div>
                 </div>
 
