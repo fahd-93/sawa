@@ -3,6 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
+import { Link } from 'react-router-dom';
 //import GoogleLogin from 'react-google-login';
 
 import * as actions from "../redux/actions/actionCreator";
@@ -43,10 +44,32 @@ class SignInForm extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div className="col">
+
+            <div className="container-col-md">
+                <h2 className="form-signin-heading">Please Login</h2>
+                <div className="col">
+                    <div className="text-center">
+                        <br />
+                        <div className="alert alert-secondary">
+                            Continue with your Facebook Account
+                            <br /> <br />
+
+                            <FacebookLogin
+                                appId="2241134356214829"
+                                // autoLoad={true}
+                                fields="name,email,picture"
+                                callback={this.responseFacebook}
+                                cssClass="btn btn-outline-primary"
+                            />
+
+                        </div>
+                        <h5>OR</h5>
+                    </div>
+                </div>
+
                 <div className="col">
                     <form onSubmit={handleSubmit(this.onSubmit)}>
-                        <fieldset>
+                        <fieldset className="field">
                             <Field
                                 name="email"
                                 type="text"
@@ -54,9 +77,11 @@ class SignInForm extends Component {
                                 label="Enter your email"
                                 placeholder="example@example.com"
                                 component={CustomInput} />
+
                         </fieldset>
-                        <fieldset>
+                        <fieldset className="field" >
                             <Field
+
                                 name="password"
                                 type="password"
                                 id="password"
@@ -65,6 +90,7 @@ class SignInForm extends Component {
                                 component={CustomInput} />
 
                         </fieldset>
+
                         {this.props.errorMessage ?
                             <div className="alert alert-danger">
                                 {this.props.errorMessage}
@@ -73,27 +99,17 @@ class SignInForm extends Component {
 
 
 
-
-                        <button type="submit" className="btn btn-primary">Sign In</button>
+                        <div className="col text-center">
+                            <button type="submit" className="btn btn-lg btn-primary btn-block">Continue</button>
+                            <br />
+                            <Link>Forgot Password?</Link>
+                        </div>
                     </form>
+
                 </div>
-                <div className="col">
-                    <div className="text-center">
-                        <br />
-                        <div className="alert alert-primary">
-                            or SignIn with your Social Media Account
-          </div>
-                        <FacebookLogin
-                            appId="2241134356214829"
-                            // autoLoad={true}
-                            fields="name,email,picture"
-                            callback={this.responseFacebook}
-                            cssClass="btn btn-outline-primary"
-                        />
-                        <button className="btn btn-default">Google</button>
-                    </div>
-                </div>
+
             </div>
+
 
         )
     }
