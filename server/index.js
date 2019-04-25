@@ -22,12 +22,20 @@ mongoose.Promise = global.Promise;
 const DB = require('./config/keys');
 
 //connect to mongodb
+//connect to mongodb
 mongoose
+	.connect(`mongodb://localhost:27017/sawa`, { useNewUrlParser: true })
+	.then(data => console.log('Successful connection to database'))
+	.catch((error) => {
+		console.log(`The following error occurred: ${error.message}`);
+	});
+
+/* mongoose
 	.connect(DB.mongoURI, { useNewUrlParser: true })
 	.then(() => console.log("Successful connection to database"))
 	.catch(error => {
 		console.log(`The following error occurred: ${error.message}`);
-	});
+	}); */
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

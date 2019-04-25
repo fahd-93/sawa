@@ -21,6 +21,7 @@ class ShowCampaign extends Component {
     }
 
     render() {
+        
 
         if (this.props.campaign === undefined) {
             return <div>no data</div>
@@ -28,28 +29,34 @@ class ShowCampaign extends Component {
 
         const campaign = this.props.campaign;
         return (
-
+           
+            <div className = "cam-container">
+                <h1 className= "cam-header">Existing Campaingns</h1>
             <CardColumns >
 
                 {campaign.map(user =>
+                
                     <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
                         <Card key={user._id}>
                             <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
                             <Card.Body>
-                                <Card.Title style={{ color: 'black' }}>{user.title}</Card.Title>
-                                <Card.Text style={{ color: 'black' }}>{user.description}</Card.Text>
+                                <Card.Title>Title: {user.title}</Card.Title>
+                                <Card.Text>Description: {user.description}</Card.Text>
+                                <Card.Text>Categories: {user.categories}</Card.Text>
                             </Card.Body>
                             <Card.Footer>
 
-                                <small className="text-muted">Last updated 3 mins ago</small>
+                                <small className="text-muted">Created at: {user.created_at}</small>
+                                
                             </Card.Footer>
-                            <button>show</button>
+                            {/* <button>show</button> */}
                         </Card>
                     </Link>
 
                 )
                 }
             </CardColumns>
+            </div>
 
 
         )

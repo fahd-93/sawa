@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as jwt_decode from "jwt-decode";
-// import AlgoliaPlaces from 'algolia-places-react';
+import AlgoliaPlaces from 'algolia-places-react';
 import axios from 'axios';
 
 class EditUserProfile extends Component {
@@ -29,7 +29,7 @@ class EditUserProfile extends Component {
 
         }
         return null;
-    }
+    };
 
 
     componentDidMount() {
@@ -72,68 +72,93 @@ class EditUserProfile extends Component {
     };
 
     render() {
-        console.log(this.state)
+        console.log(this.state);
         return (
-            <div>
-
-                <form className='container'
-                    onChange={e => this.handleInput(e)}>
-
+            <div className="camp-form-container">
+                <h3><span>Edit Profile</span></h3>
+                <form  className="container"
+                       onChange={e => this.handleInput(e)}>
 
                     <label>First Name:</label>
                     <input type="text"
                         name="name" readOnly
                         defaultValue={this.state.name} />
-                    <br />
-                    <label >Last Name:</label>
+
+                    <label>Last Name:</label>
                     <input type="text"
                         name="last_name"
                         defaultValue={this.state.lastName} />
-                    <br />
+
                     <label> Email:</label>
                     <input type="email"
                         name="email" readOnly
                         defaultValue={this.state.email} />
-                    <br />
+
                     <label >Profession:</label>
                     <input type="text"
                         name="profession"
                         defaultValue={this.state.profession} />
-                    <br />
-                    <label >Date of Birth:</label>
-                    <input type="date" name={this.state.dateBirth} />
-                    <br />
-                    <label >Gender:</label>
+                    <br/><br/>
+                    <div className="row">
+                        <div className="col-25">
+                            <label> Date of Birth:</label>
+                        </div>
+                        <div className="col-75">
+                            <input type="date" name={this.state.dateBirth} />
+                        </div>
 
-                    <select name="gender" >
-                        <option defaultValue>Choose Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Unknown">Unknown</option>
-                    </select>
+                    </div>
+                    <div className="row">
+                        <div className="col-25">
+                            <label><span>Gender:</span></label>
+                        </div>
+                        <div className="col-75">
+                            <select name="gender"
+                                    className="custom-select">
+                                <option defaultValue>Choose Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Unknown">Unknown</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <br />
-                    <label>Location:</label>
-                    {/* <AlgoliaPlaces
-                        name='AlgoliaPlaces'
-                        placeholder="Write an address here"
-                        options={{
-                            appId: 'pl48PRQJVY9X',
-                            apiKey: '976ae5509e3452dbc494dd1e9f390486'
-                        }}
-                        onChange={(suggestion) => this.handleInput(suggestion)}
-                    /> */}
-                    <br />
-                    <button onClick={e => this.deleteUser(e)}>
-                        <Link to=''>Delete Account</Link>
-                    </button>
+                    <div className="row">
+                        <div className="col-25">
+                            <label>Your Location:</label>
+                        </div>
+                        <div className="col-75">
+                             <AlgoliaPlaces
+                                name='AlgoliaPlaces'
+                                placeholder="Write an address here"
+                                options={{
+                                    appId: 'pl48PRQJVY9X',
+                                    apiKey: '976ae5509e3452dbc494dd1e9f390486'
+                                }}
+                                onChange={(suggestion) => this.handleInput(suggestion)}
+                            />
 
-                    <br />
-                    <button onClick={e => this.updateUserInput(e)}>
-                        <Link to='profilepage'>
+                        </div>
+                    </div>
+
+
+                    <div onClick={e => this.updateUserInput(e)}
+                         className="btn-div">
+                        <Link to='profilepage'
+                              className="btn-style">
                             Save Changes
-                    </Link>
-                    </button>
+                        </Link>
+                    </div>
+
+                    <div onClick={e => this.deleteUser(e)}
+                         className="btn-div">
+                        <Link to=''
+                              className="btn-delete">
+                            Delete Account
+                        </Link>
+                    </div>
+
+
                 </form>
 
             </div>

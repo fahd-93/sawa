@@ -28,7 +28,7 @@ const Foot = (props) => {
                 </Row>
                 <Row>
                     <Col className="text-center text-white">
-                        <p className="h6"> All right Reversed.<a className=" ml-2" href="https://www.linkedin.com/in/fabriziomusa" rel="noopener noreferrer" target="_blank">Fabrizio Musa</a></p>
+                        <p className="h6"> All right Reversed.<a className="ml-2" href="https://www.linkedin.com/in/fabriziomusa" rel="noopener noreferrer" target="_blank">Fabrizio Musa</a></p>
                     </Col>
                 </Row>
             </Container>

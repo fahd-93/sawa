@@ -119,65 +119,106 @@
   margin-left: 5px; }
 
 body {
-  background: white;
-  flex-direction: column;
-  font-family: "Andale Mono"; }
+  background: #fbf8f6;
+  font-family: "Andale Mono", serif; }
 
-#campaignForm .container {
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; }
-#campaignForm .flex-position {
-  width: 600px;
-  background: beige;
+.camp-form-container {
+  background: white;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-#campaignForm .form-container {
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-#campaignForm .camp-name {
-  font-size: 40px; }
-#campaignForm form {
-  border-radius: 5px;
+  max-width: 800px;
+  margin: 50px 400px;
+  padding: 40px; }
+
+.margin-center {
+  margin: auto; }
+
+h3 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 40px;
   padding: 20px;
-  font-size: 20px; }
-#campaignForm input {
-  border: 1px solid white;
-  font-size: 15px;
-  border-radius: 1px;
-  padding: 10px 10px;
-  width: 500px; }
-#campaignForm textarea {
-  border: 1px solid white;
-  font-size: 14px;
-  border-radius: 1px;
-  padding: 20px 10px;
-  width: 500px; }
-#campaignForm select {
-  margin-bottom: 20px; }
-#campaignForm .submit-btn {
-  background: darkolivegreen;
+  font-family: Andale Mono, serif;
+  text-decoration: underline;
+  color: #168d7e; }
+  h3 span {
+    color: #14103B; }
+
+label {
+  font-family: Andale Mono, serif;
+  margin-top: 15px; }
+
+input {
+  width: 100%; }
+
+.btn-div {
+  width: 100%;
+  text-align: center; }
+
+.btn-style {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: #168d7e;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  float: right; }
+
+.btn-style:hover {
   color: white;
-  font-size: 14px;
-  padding: 10px 20px; }
-#campaignForm em {
-  color: darkred; }
-#campaignForm select {
-  display: block;
-  font-size: 15px;
-  border: gold 2px solid;
-  font-family: "Andale Mono";
-  padding: 10px;
-  width: 510px; }
+  background: #168d7e;
+  font-weight: bolder;
+  text-decoration: none; }
+
+.custom-select {
+  position: relative;
+  font-family: Andale Mono, serif;
+  background-color: #168d7e;
+  color: white; }
+
+input {
+  font-family: Andale Mono, serif;
+  padding: 15px; }
+
+.row {
+  margin-bottom: 5px; }
+
+.col-25 {
+  margin-left: 15px;
+  float: left;
+  width: 30%;
+  margin-top: 6px; }
+
+.col-75 {
+  float: left;
+  width: 65%;
+  margin-top: 6px; }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+textarea {
+  width: 490px;
+  height: 300px;
+  font-family: "Andale Mono", serif;
+  padding: 15px; }
+
+.date-container {
+  display: flex; }
+
+.date {
+  margin-right: 30px; }
+
+.location-form {
+  padding: 10px 0; }
 
 #root {
   position: relative; }
@@ -243,5 +284,64 @@ section {
     border-left: transparent;
     padding-bottom: 0px;
     margin-bottom: 10px; } }
+.avatar {
+  vertical-align: middle;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; }
+
+.btn-profile {
+  text-align: center;
+  background-color: #168d7e;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: bold;
+  float: right;
+  margin: 15px 0 0 15px; }
+  .btn-profile:hover {
+    text-decoration: none;
+    color: #168d7e;
+    background: white;
+    border: solid #168d7e 1px;
+    margin: 14px 0 0 14px; }
+
+.text {
+  margin: 0;
+  width: 720px;
+  align-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Andale Mono, serif;
+  text-decoration: underline;
+  color: #168d7e; }
+  .text span {
+    color: black; }
+
+.btn-delete {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: red;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  float: right; }
+  .btn-delete:hover {
+    color: white;
+    background: red;
+    font-weight: bolder;
+    text-decoration: none; }
 
 /*# sourceMappingURL=styles.css.map */

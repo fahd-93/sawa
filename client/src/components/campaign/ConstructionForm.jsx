@@ -55,24 +55,34 @@ class ConstructionForm extends Component {
 
     render() {
         return (
-            <div>
-                <div >
+            <div className="camp-form-container">
+                <div className="margin-center">
+                    <h3><span>Construction Campaign</span></h3>
                     <form onChange={ e => this.handelInputs(e)}>
                         <CampaignInput />
-                        <br /><br />
+
                         <VolunteerType />
-                        <br /><br />
+
                         <CampaignDate />
+                        <div className="row">
+                            <div className="col-25">
+                                <label> Upload Image:</label>
+                            </div>
+                            <div className="col-75">
+                                <input type="file"
+                                       name="image"
+                                       ref={this.userImageRef} />
+                            </div>
 
-                        <label> Upload Image:</label>
-                        <input type="file" name="image"
-                            ref={this.userImageRef} />
+                            <div onClick={e => this.handleSubmit(e)}
+                                 className="btn-div">
+                                <Link to='/showcampaign'
+                                      className="btn-style">
+                                    Next
+                                </Link>
+                            </div>
 
-                        <button onClick={e => this.handleSubmit(e)}>
-                            <Link to='/showcampaign'>
-                                Save
-                            </Link>
-                        </button>
+                        </div>
                     </form>
                 </div>
             </div>
