@@ -6,7 +6,7 @@ import { CardColumns, Card } from "react-bootstrap";
 
 class ShowCampaign extends Component {
 
-    state = {}
+    state = {};
 
     componentDidMount() {
         this.props.getAllCamp();
@@ -16,11 +16,12 @@ class ShowCampaign extends Component {
 
         this.setState({
             campaignId: e
-        })
+        });
         this.props.getCampId(e)
-    }
+    };
 
     render() {
+        
 
         if (this.props.campaign === undefined) {
             return <div>no data</div>
@@ -28,11 +29,13 @@ class ShowCampaign extends Component {
 
         const campaign = this.props.campaign;
         return (
+           
             <div className = "cam-container">
                 <h1 className= "cam-header">Existing Campaingns</h1>
             <CardColumns >
 
                 {campaign.map(user =>
+                
                     <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
                         <Card key={user._id}>
                             <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
@@ -44,6 +47,7 @@ class ShowCampaign extends Component {
                             <Card.Footer>
 
                                 <small className="text-muted">Created at: {user.created_at}</small>
+                                
                             </Card.Footer>
                             {/* <button>show</button> */}
                         </Card>

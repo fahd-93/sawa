@@ -50,8 +50,6 @@ const usersSchema = new mongoose.Schema({
         }
 
     },
-
-
     last_name: {
         type: String,
         trim: true
@@ -81,7 +79,9 @@ const usersSchema = new mongoose.Schema({
     profession_id: {
         type: String
     },
-
+    type_of_volunteers: {
+        type: [String]
+    },
     activity_id: {
         type: String
     },

@@ -26,10 +26,10 @@ class SignUpForm extends Component {
     }
   }
 
-  responseGoogle(res) {
+ /* responseGoogle(res) {
     console.log('responseGoogle', res);
 
-  }
+  }*/
 
 
   async responseFacebook(res) {
@@ -45,65 +45,72 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="col">
-        <div className="col">
-          <form onSubmit={handleSubmit(this.onSubmit)}>
-            <fieldset>
-              <Field
-                name="name"
-                type="text"
-                id="name"
-                label="Enter your name"
-                placeholder="Enter Your name"
-                component={CustomInput} />
-            </fieldset>
-            <fieldset>
-              <Field
-                name="email"
-                type="text"
-                id="email"
-                label="Enter your email"
-                placeholder="example@example.com"
-                component={CustomInput} />
-            </fieldset>
-
-            <fieldset>
-              <Field
-                name="password"
-                type="password"
-                id="password"
-                label="Enter your Password"
-                placeholder="Your Password"
-                component={CustomInput} />
-
-            </fieldset>
-            {this.props.errorMessage ?
-              <div className="alert alert-danger">
-                {this.props.errorMessage}
-              </div> : null}
-
-
-
-
-
-            <button type="submit" className="btn btn-primary">Sign Up</button>
-          </form>
-        </div>
-        <br />
+      <div className="container-col-md">
         <div className="col">
           <div className="text-center">
-            <div className="alert alert-primary">
-              or Signup with your Social Media Account
+            <div className="">
+
+
+              <FacebookLogin
+                appId="2241134356214829"
+                // autoLoad={true}
+                fields="name,email,picture"
+                callback={this.responseFacebook}
+                cssClass="btnFacebook"
+                icon={<i className="fa fa-facebook"/>}
+              />
+
+            </div>
+            <div className="divider-text">or</div>
+
           </div>
-            <FacebookLogin
-              appId="2241134356214829"
-              // autoLoad={true}
-              fields="name,email,picture"
-              callback={this.responseFacebook}
-              cssClass="btn btn-outline-primary"
-            />
-            <button className="btn btn-default">Google</button>
+        </div>
+        <div className="col">
+          <div className="col">
+            <form onSubmit={handleSubmit(this.onSubmit)}>
+              <fieldset className="field">
+                <Field
+                  name="name"
+                  type="text"
+                  id="name"
+                  label="Enter your name"
+                  placeholder="Enter Your name"
+                  component={CustomInput} />
+              </fieldset>
+              <fieldset className="field">
+                <Field
+                  name="email"
+                  type="text"
+                  id="email"
+                  label="Enter your email"
+                  placeholder="example@example.com"
+                  component={CustomInput} />
+              </fieldset>
+
+              <fieldset className="field">
+                <Field
+                  name="password"
+                  type="password"
+                  id="password"
+                  label="Enter your Password"
+                  placeholder="Your Password"
+                  component={CustomInput} />
+
+              </fieldset>
+              {this.props.errorMessage ?
+                <div className="alert alert-danger">
+                  {this.props.errorMessage}
+                </div> : null}
+
+
+
+
+
+              <button type="submit" className="continue-btn">Sign up</button>
+            </form>
           </div>
+          <br />
+
         </div>
       </div>
 

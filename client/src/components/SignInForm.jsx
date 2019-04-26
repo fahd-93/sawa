@@ -43,10 +43,34 @@ class SignInForm extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div className="col">
+
+            <div className="container-col-md">
+                <h2 className="form-signin-heading">Please Login</h2>
                 <div className="col">
+                    <div className="text-center">
+                        <br />
+                        <div >
+
+
+                            <FacebookLogin
+
+                                appId="2241134356214829"
+                                // autoLoad={true}
+                                fields="name,email,picture"
+                                callback={this.responseFacebook}
+                                cssClass="btnFacebook"
+                                icon={< i className="fa fa-facebook" />}
+
+                            />
+
+                        </div>
+                        <div className="divider-text">or</div>
+                    </div>
+                </div>
+
+                <div className="col-md">
                     <form onSubmit={handleSubmit(this.onSubmit)}>
-                        <fieldset>
+                        <fieldset className="field">
                             <Field
                                 name="email"
                                 type="text"
@@ -54,9 +78,11 @@ class SignInForm extends Component {
                                 label="Enter your email"
                                 placeholder="example@example.com"
                                 component={CustomInput} />
+
                         </fieldset>
-                        <fieldset>
+                        <fieldset className="field" >
                             <Field
+
                                 name="password"
                                 type="password"
                                 id="password"
@@ -65,6 +91,7 @@ class SignInForm extends Component {
                                 component={CustomInput} />
 
                         </fieldset>
+
                         {this.props.errorMessage ?
                             <div className="alert alert-danger">
                                 {this.props.errorMessage}
@@ -73,27 +100,19 @@ class SignInForm extends Component {
 
 
 
+                        <div className="col text-center">
+                            <button type="submit" className="continue-btn">Continue</button>
+                            {/* <button type="submit" className="btn btn-outline-lg btn-success btn-block">Continue</button> */}
+                            <br />
+                            <div>Forgot Password?</div>
+                        </div>
 
-                        <button type="submit" className="btn btn-primary">Sign In</button>
                     </form>
+
                 </div>
-                <div className="col">
-                    <div className="text-center">
-                        <br />
-                        <div className="alert alert-primary">
-                            or SignIn with your Social Media Account
-          </div>
-                        <FacebookLogin
-                            appId="2241134356214829"
-                            // autoLoad={true}
-                            fields="name,email,picture"
-                            callback={this.responseFacebook}
-                            cssClass="btn btn-outline-primary"
-                        />
-                        <button className="btn btn-default">Google</button>
-                    </div>
-                </div>
+
             </div>
+
 
         )
     }

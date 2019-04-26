@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as jwt_decode from "jwt-decode";
 import AlgoliaPlaces from 'algolia-places-react';
+import VolunteerType from './campaign/VolunteerType';
 import axios from 'axios';
 
 class EditUserProfile extends Component {
-    constructor() {
-        super();
-        this.state = {}
+    constructor(props) {
+        super(props);
+        this.state = {};
         this.userId = this.getUserId()
     }
 
     getUserId = () => {
         const jwtToken = localStorage.getItem('JWT_TOKEN');
-
         if (jwtToken) {
             try {
                 let x = jwt_decode(jwtToken);
@@ -26,7 +26,6 @@ class EditUserProfile extends Component {
             catch (error) {
                 console.log(error);
             }
-
         }
         return null;
     };
@@ -34,9 +33,10 @@ class EditUserProfile extends Component {
 
     componentDidMount() {
         if (this.userId) {
-            axios.get(`http://localhost:4000/api/users/${this.userId}`)
+            axios
+                .get(`http://localhost:4000/api/users/${this.userId}`)
                 .then(res => {
-                    console.log('ResData', res.data)
+                    console.log('ResData', res.data);
                     this.setState({
                         email: res.data.local.email,
                         name: res.data.local.name.toUpperCase(),
@@ -49,23 +49,39 @@ class EditUserProfile extends Component {
     }
 
     handleInput = e => {
-        console.log(e.target.name, e.target.value);
+        if(e.target.name === "AlgoliaPlaces") {
+            return null;
+        }
         this.setState({
             [e.target.name]: e.target.value
         });
 
     };
 
+    handleSuggest = suggestion => {
+        let location = suggestion.suggestion;
+
+        this.setState({
+            city: location.name,
+            postcode: location.postcode,
+            country: location.country,
+            countryCode: location.countryCode,
+            type: location.type,
+            latlng: {
+                lat: location.latlng.lat,
+                lng: location.latlng.lng
+            }
+        });
+    };
     updateUserInput = async e => {
         e.preventDefault();
-
         await axios
             .put(`http://localhost:4000/api/users/${this.userId}`, this.state)
 
     };
 
     deleteUser = async e => {
-        console.log('LOCAL Storage', localStorage)
+        console.log(e);
         await axios.delete(`http://localhost:4000/api/users/${this.userId}`);
         localStorage.clear('jwt_token');
 
@@ -74,7 +90,7 @@ class EditUserProfile extends Component {
     render() {
         console.log(this.state);
         return (
-            <div className="camp-form-container">
+            <form className="camp-form-container">
                 <h3><span>Edit Profile</span></h3>
                 <form  className="container"
                        onChange={e => this.handleInput(e)}>
@@ -93,7 +109,6 @@ class EditUserProfile extends Component {
                     <input type="email"
                         name="email" readOnly
                         defaultValue={this.state.email} />
-
                     <label >Profession:</label>
                     <input type="text"
                         name="profession"
@@ -104,10 +119,12 @@ class EditUserProfile extends Component {
                             <label> Date of Birth:</label>
                         </div>
                         <div className="col-75">
-                            <input type="date" name={this.state.dateBirth} />
+                            <input type="date" name="birth-date" />
                         </div>
-
                     </div>
+
+                    <VolunteerType/>
+
                     <div className="row">
                         <div className="col-25">
                             <label><span>Gender:</span></label>
@@ -135,7 +152,7 @@ class EditUserProfile extends Component {
                                     appId: 'pl48PRQJVY9X',
                                     apiKey: '976ae5509e3452dbc494dd1e9f390486'
                                 }}
-                                onChange={(suggestion) => this.handleInput(suggestion)}
+                                onChange={(suggestion) => this.handleSuggest(suggestion)}
                             />
 
                         </div>
@@ -157,19 +174,17 @@ class EditUserProfile extends Component {
                             Delete Account
                         </Link>
                     </div>
-
-
                 </form>
 
-            </div>
+            </form>
         );
     }
 
 }
 
-/*const mapStateToProps = state => ({
+const mapStateToProps = state => ({
     loggedInUser: state.userReducer.loggedInUser,
     userId: state.auth.userId
-});*/
+});
 
-export default connect(null, null)(EditUserProfile);
+export default connect(mapStateToProps, null)(EditUserProfile);

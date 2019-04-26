@@ -6,7 +6,7 @@ const Types = mongoose.model('Types', typesSchema);
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt-config');
-const { upload } = require('../handlers/multer');
+// const { upload } = require('../handlers/multer');
 //const image = upload.single('image');
 
 const userController = {};
@@ -138,6 +138,7 @@ userController.replace = async (req, res) => {
 		gender: req.body.gender,
 		role: req.body.role,
 		profession_id: req.body.profession_id,
+		type_of_volunteers: req.body.type_of_volunteers,
 		activity_id: req.body.activity_id,
 		rating: req.body.rating,
 		image: req.imageFileName
@@ -150,7 +151,7 @@ userController.replace = async (req, res) => {
 };
 
 //update show user by id patch
-userController.update = async (req, res, next) => {
+userController.update = async (req, res) => {
 	console.log('file from controller req.imageFileName', req.imageFileName);
 	const { Id } = req.params;
 	//const newUser = req.body;
