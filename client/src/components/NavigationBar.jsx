@@ -16,7 +16,7 @@ class NavigationBar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="border-bottom">
                 <Navbar bg="light" expand="lg">
                     <Navbar.Brand href={"/"}>
                         <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" width="30"
