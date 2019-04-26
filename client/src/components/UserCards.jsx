@@ -3,9 +3,6 @@ import { getAllUsers } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import {  CardColumns, Card } from "react-bootstrap";
 
-
-
-
 class UserCards extends Component {
     state = {};
 

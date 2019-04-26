@@ -10,6 +10,7 @@ import CampaignInput from './CampaignInput';
 class ConstructionForm extends Component {
     constructor(props) {
         super(props);
+        this.state = {};
         this.titleRef = React.createRef();
         this.descriptionRef = React.createRef();
         this.numOfVolunteersRef = React.createRef();
@@ -18,8 +19,8 @@ class ConstructionForm extends Component {
         this.startDateRef = React.createRef();
         this.endDateRef = React.createRef();
         this.userImageRef = React.createRef();
-        this.videoRef = React.createRef();
-        this.state = {}
+        // this.videoRef = React.createRef();
+        this.userId = this.getUserId();
     }
 
     handelInputs = (e) => {

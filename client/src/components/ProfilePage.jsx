@@ -31,6 +31,7 @@ class ProfilePage extends Component {
         if (this.userId) {
             axios.get(`http://localhost:4000/api/users/${this.userId}`)
                 .then(res => {
+                    console.log("Axios",res.data);
                     this.setState({
                         email: res.data.local.email,
                         name: res.data.local.name,
@@ -45,10 +46,8 @@ class ProfilePage extends Component {
         return null;
     }
 
-
-
     render() {
-        console.log("Profile", this.props.isAuth);
+        console.log(this.state.volunteerType);
         let path = "/png/1.png";
         if (this.props.isAuth === true && this.state.name !== '') {
             return (

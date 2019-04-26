@@ -3,9 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
-
 import * as actions from "../redux/actions/actionCreator";
-
 import CustomInput from './CustomInput';
 
 class SignInForm extends Component {
@@ -15,6 +13,7 @@ class SignInForm extends Component {
         this.responseFacebook = this.responseFacebook.bind(this);
 
     }
+
     async onSubmit(formData, ) {
 
         // console.log('onSubmit() has been called');
