@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getAllCamp, getCampId } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { CardColumns, Card } from "react-bootstrap";
+import { CardColumns, Card, Spinner } from "react-bootstrap";
 
 class ShowCampaign extends Component {
 
@@ -24,7 +24,12 @@ class ShowCampaign extends Component {
         
 
         if (this.props.campaign === undefined) {
-            return <div>no data</div>
+            return (
+                 <div className="d-flex mx-auto m-5">
+                    <Spinner animation="border" variant="success" size="lg"/>
+                    <h3 className="ml-3 spinner-sawa">loading...</h3>
+                </div>
+            )
         }
 
         const campaign = this.props.campaign;
