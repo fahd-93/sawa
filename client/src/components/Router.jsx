@@ -23,11 +23,13 @@ import Foot from './Foot';
 // import CampaignType from "./campaign/CampaignType";
 import EditUserProfile from './EditUserProfile';
 import HowPage from './HowPage';
+import About from './About';
 
 
 
 
 import Geolocation from "./Geolocation";
+;
 
 class Router extends Component {
     render() {
@@ -40,6 +42,11 @@ class Router extends Component {
                         exact
                         path="/"
                         component={HomePage}
+                    />
+                    <Route
+                        exact
+                        path="/about"
+                        component={About}
                     />
                     <Route
                         exact
@@ -89,7 +96,7 @@ class Router extends Component {
                         component={LocationForm} />
                     <Route path="/multimedia-form"
                         component={MultimediaForm} />
-                        <Route path="/how-page"
+                    <Route path="/how-page"
                         component={HowPage} />
                     <Route component={Notfound} />
 

@@ -11,7 +11,7 @@ const Foot = (props) => {
                     <Col className="text-sm-left ">
                         <ul className="list-unstyled quick-links">
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>Home</a></li>
-                            <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>About</a></li>
+                            <li className="list-inline-item"><a href="about"><i className="fa fa-angle-double-right"></i>About</a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>FAQ</a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>How it works</a></li>
                         </ul>
