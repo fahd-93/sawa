@@ -49,11 +49,12 @@ class ProfilePage extends Component {
 
     render() {
         console.log("Profile", this.props.isAuth);
+        let path = "/png/1.png";
         if (this.props.isAuth === true && this.state.name !== '') {
             return (
-                <div className="camp-form-container">
-                    <h3>
-                        <img src="/png/1.png" alt="Avatar" className="avatar"/>
+                <div className="profile camp-form-container">
+                    <h3 className='text'>
+                        <img src={path} alt="Avatar" className="avatar"/>
                     </h3>
                     <h3><span>{this.state.name} {this.state.lastName}</span></h3>
                    <div className="text">
@@ -71,8 +72,8 @@ class ProfilePage extends Component {
                                 Join Campaign
                             </Link>
                         </div>
-                    </div>
                 </div>
+               </div>
             );
         }
 
