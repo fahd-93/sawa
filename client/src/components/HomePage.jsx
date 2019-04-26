@@ -19,7 +19,6 @@ class HomePage extends Component {
 
     render() {
 
-
         if (this.props.campaign === undefined) {
             return (
                 <div className="d-flex mx-auto m-5">
@@ -28,12 +27,12 @@ class HomePage extends Component {
                 </div>
                 )
         }
-
         const campaign = this.props.campaign;
         const campaignArray = campaign.slice(0, 3);
         return (
 
             <React.Fragment>
+
                         <ControlledCarousel />
 
                         <div className="cam-container">
@@ -43,10 +42,7 @@ class HomePage extends Component {
                                 </Col>
                             </Row>
                             <CardColumns>
-                                {
-
-
-                                    campaignArray.map(item =>
+                                {campaignArray.map(item =>
 
                                         <Link to={`/users/campaign/${item._id}`} onClick={() => this.getId(item._id)}>
                                             <Card key={item._id}>
@@ -61,7 +57,6 @@ class HomePage extends Component {
                                                     <small className="text-muted">Created at: {item.created_at}</small>
 
                                                 </Card.Footer>
-                                                {/* <button>show</button> */}
                                             </Card>
                                         </Link>
 
@@ -84,10 +79,8 @@ class HomePage extends Component {
             
             
             }
-function mapStateToProps(state) {
-    
-    return {
-                        campaign: state.campaign.campaign
-                };
-            }
+const mapStateToProps = state => ({
+    campaign: state.campaign.campaign
+});
+
 export default connect(mapStateToProps, {getAllCamp}) (HomePage);

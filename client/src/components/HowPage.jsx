@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class HowPage extends Component {
 
     render() {

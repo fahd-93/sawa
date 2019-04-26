@@ -20,7 +20,6 @@ class ConstructionForm extends Component {
         this.endDateRef = React.createRef();
         this.userImageRef = React.createRef();
         // this.videoRef = React.createRef();
-        this.userId = this.getUserId();
     }
 
     handelInputs = (e) => {
@@ -55,38 +54,42 @@ class ConstructionForm extends Component {
     };
 
     render() {
-        return (
-            <div className="camp-form-container">
-                <div className="margin-center">
-                    <h3><span>Construction Campaign</span></h3>
-                    <form onChange={ e => this.handelInputs(e)}>
-                        <CampaignInput />
+        if (this.props.isAuth) {
+            return (
+                <div className="camp-form-container">
+                    <div className="margin-center">
+                        <h3 className='text'><span>Construction Campaign</span></h3>
+                        <form onChange={e => this.handelInputs(e)}>
+                            <CampaignInput/>
 
-                        <VolunteerType />
+                            <VolunteerType/>
 
-                        <CampaignDate />
-                        <div className="row">
-                            <div className="col-25">
-                                <label> Upload Image:</label>
+                            <CampaignDate/>
+                            <div className="row">
+                                <div className="col-25">
+                                    <label> Upload Image:</label>
+                                </div>
+                                <div className="col-75">
+                                    <input type="file"
+                                           name="image"
+                                           ref={this.userImageRef}/>
+                                </div>
+
+                                <div onClick={e => this.handleSubmit(e)}
+                                     className="btn-div">
+                                    <Link to='/showcampaign'
+                                          className="btn-style">
+                                        Next
+                                    </Link>
+                                </div>
                             </div>
-                            <div className="col-75">
-                                <input type="file"
-                                       name="image"
-                                       ref={this.userImageRef} />
-                            </div>
-
-                            <div onClick={e => this.handleSubmit(e)}
-                                 className="btn-div">
-                                <Link to='/showcampaign'
-                                      className="btn-style">
-                                    Next
-                                </Link>
-                            </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            )
+        }
+        return (
+            <div>Unauthorized User, Please LogIn or Sign up to be able to create a campaign</div>
         )
     }
 }

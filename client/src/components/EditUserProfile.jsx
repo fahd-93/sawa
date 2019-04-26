@@ -34,9 +34,13 @@ class EditUserProfile extends Component {
         formData.set('profession', this.state.professionRef);
         formData.set('location', this.state.locationRef);
         formData.append("image", this.userImageRef.current.files[0]);
-        
+
         await axios
-            .put(`http://localhost:4000/api/users/${this.userId}`, this.state);
+            .put( `http://localhost:4000/api/users/${this.userId}`, this.state)
+            .then(res => console.log("res.data", res.data))
+            .catch( error => {
+                console.log(error);
+            });
     };
 
     componentDidMount() {

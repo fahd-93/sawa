@@ -51,11 +51,11 @@ class ProfilePage extends Component {
         let path = "/png/1.png";
         if (this.props.isAuth === true && this.state.name !== '') {
             return (
-                <div className="profile camp-form-container">
+                <div className="camp-form-container">
                     <h3 className='text'>
                         <img src={path} alt="Avatar" className="avatar"/>
                     </h3>
-                    <h3><span>{this.state.name} {this.state.lastName}</span></h3>
+                    <h3 className='text'><span>{this.state.name} {this.state.lastName}</span></h3>
                    <div className="text">
                         <span>Volunteer Type: {this.state.volunteerType}</span>
                    </div>

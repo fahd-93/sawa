@@ -28,7 +28,7 @@ body {
 .margin-center {
   margin: auto; }
 
-.text {
+h3 {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -37,8 +37,10 @@ body {
   font-family: Andale Mono, serif;
   text-decoration: underline;
   color: #168d7e; }
-  .text span {
+  h3 span {
     color: #14103B; }
+  h3 strong {
+    color: white; }
 
 label {
   font-family: Andale Mono, serif;
