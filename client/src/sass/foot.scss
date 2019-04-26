@@ -62,11 +62,6 @@ section {
 #footer .container{
   height: 10vh;
 }
-@media (max-width:767px){
-  #footer h5 {
-    padding-left: 0;
-    border-left: transparent;
-    padding-bottom: 0px;
-    margin-bottom: 10px;
-  }
+#footer .list-inline-item:not(:last-child) {
+    margin-right: 1rem;
 }

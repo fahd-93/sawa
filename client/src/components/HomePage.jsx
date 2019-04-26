@@ -21,9 +21,9 @@ class HomePage extends Component {
 
         if (this.props.campaign === undefined) {
             return (
-                <div className="d-flex mx-auto m-5">
+                <div className="d-flex mx-auto m-5 align-baseline">
                     <Spinner animation="border" variant="success" size="lg"/>
-                    <h3 className="ml-3 spinner-sawa">loading...</h3>
+                    <h2 className="ml-3 spinner-sawa">loading...</h2>
                 </div>
                 )
         }
@@ -64,12 +64,13 @@ class HomePage extends Component {
 
                             </CardColumns>
 
-                            <div className="text-right p-2 m-2">
-                                <Link to="showcampaign"
+                            <div className="text-right p-2 m-2 ">
+                                <a href="showcampaign"
                                     target="_blank"
-                                    rel="noopener noreferrer">
+                                    rel="noopener noreferrer"
+                                    >
                                     See more...
-                        </Link>
+                        </a>
                             </div>
                         </div>
 

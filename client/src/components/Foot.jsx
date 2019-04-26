@@ -8,8 +8,8 @@ const Foot = (props) => {
         <section id="footer">
             <Container>
                 <Row>
-                    <Col className="text-sm-left ">
-                        <ul className="list-unstyled quick-links">
+                    <Col>
+                        <ul className="list-unstyled quick-links justify-content-between">
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>Home</a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>About</a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>FAQ</a></li>
@@ -18,7 +18,7 @@ const Foot = (props) => {
                     </Col>
 
                     <Col>
-                        <ul className="list-unstyled list-inline social text-center">
+                        <ul className="list-unstyled list-inline social text-right">
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-facebook"></i></a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-twitter"></i></a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-instagram"></i></a></li>

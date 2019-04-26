@@ -21,46 +21,46 @@ class ShowCampaign extends Component {
     };
 
     render() {
-        
+
 
         if (this.props.campaign === undefined) {
             return (
-                 <div className="d-flex mx-auto m-5">
-                    <Spinner animation="border" variant="success" size="lg"/>
-                    <h3 className="ml-3 spinner-sawa">loading...</h3>
+                <div className="d-flex mx-auto m-5 align-baseline">
+                    <Spinner animation="border" variant="success" size="lg" />
+                    <h2 className="ml-3 spinner-sawa">loading...</h2>
                 </div>
             )
         }
 
         const campaign = this.props.campaign;
         return (
-           
-            <div className = "cam-container">
-                <h1 className= "cam-header">Existing Campaingns</h1>
-            <CardColumns >
 
-                {campaign.map(user =>
-                
-                    <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
-                        <Card key={user._id}>
-                            <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
-                            <Card.Body>
-                                <Card.Title>Title: {user.title}</Card.Title>
-                                <Card.Text>Description: {user.description}</Card.Text>
-                                <Card.Text>Categories: {user.categories}</Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
+            <div className="cam-container">
+                <h1 className="cam-header">Existing Campaingns</h1>
+                <CardColumns >
 
-                                <small className="text-muted">Created at: {user.created_at}</small>
-                                
-                            </Card.Footer>
-                            {/* <button>show</button> */}
-                        </Card>
-                    </Link>
+                    {campaign.map(user =>
 
-                )
-                }
-            </CardColumns>
+                        <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
+                            <Card key={user._id}>
+                                <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
+                                <Card.Body>
+                                    <Card.Title>Title: {user.title}</Card.Title>
+                                    <Card.Text>Description: {user.description}</Card.Text>
+                                    <Card.Text>Categories: {user.categories}</Card.Text>
+                                </Card.Body>
+                                <Card.Footer>
+
+                                    <small className="text-muted">Created at: {user.created_at}</small>
+
+                                </Card.Footer>
+                                {/* <button>show</button> */}
+                            </Card>
+                        </Link>
+
+                    )
+                    }
+                </CardColumns>
             </div>
 
 
