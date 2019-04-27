@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Avatar from './Avatar';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as jwt_decode from "jwt-decode";
@@ -47,14 +48,10 @@ class ProfilePage extends Component {
     }
 
     render() {
-        console.log(this.state.volunteerType);
-        let path = "/png/1.png";
         if (this.props.isAuth === true && this.state.name !== '') {
             return (
                 <div className="camp-form-container">
-                    <h3 className='text'>
-                        <img src={path} alt="Avatar" className="avatar"/>
-                    </h3>
+                    <Avatar/>
                     <h3 className='text'><span>{this.state.name} {this.state.lastName}</span></h3>
                    <div className="text">
                         <span>Volunteer Type: {this.state.volunteerType}</span>

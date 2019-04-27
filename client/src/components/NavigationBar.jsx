@@ -19,11 +19,10 @@ class NavigationBar extends Component {
             <div className="border-bottom">
                 <Navbar bg="light" expand="lg">
                     <Container>
-
                         <Navbar.Brand href={"/"}>
-                            <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" width="30"
-                            /> Sawa
-                    </Navbar.Brand>
+                            <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" width="30"/>
+                            Sawa
+                        </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
                             <Nav>

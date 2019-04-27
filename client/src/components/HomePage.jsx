@@ -34,7 +34,6 @@ class HomePage extends Component {
             <React.Fragment>
 
                         <ControlledCarousel />
-
                         <div className="cam-container">
                             <Row>
                                 <Col>
@@ -65,12 +64,10 @@ class HomePage extends Component {
                             </CardColumns>
 
                             <div className="text-right p-2 m-2 ">
-                                <a href="showcampaign"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    >
+                                <Link to="showcampaign"
+                                    rel="noopener noreferrer">
                                     See more...
-                        </a>
+                                </Link>
                             </div>
                         </div>
 

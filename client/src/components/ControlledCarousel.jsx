@@ -29,15 +29,14 @@ class ControlledCarousel extends React.Component {
                 activeIndex={index}
                 direction={direction}
                 onSelect={this.handleSelect}
-                className="carousel-fade"
-            >
-                <Carousel.Item
-                >
+                className="carousel-fade">
+
+                <Carousel.Item>
                     <img
                         className="d-block w-100 carousel-control"
                         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
-                        alt="First slide"
-                    />
+                        alt="First slide"/>
+
                     <Carousel.Caption >
                         <Button href="/create-campaign">Get Some Help</Button>
                         <h1>Educational Campaign</h1>
@@ -48,8 +47,7 @@ class ControlledCarousel extends React.Component {
                     <img
                         className="d-block w-100 carousel-control"
                         src="https://www.rescue.org/sites/default/files/styles/window_width_breakpoints_theme_rescue_large_1x/public/slideshow/3087/slideshow-images/slideshow-images-image/greece4.jpg?itok=A_iFnje-&timestamp=1471616940"
-                        alt="Third slide"
-                    />
+                        alt="Third slide"/>
 
                     <Carousel.Caption>
                         <Button href="/create-campaign">Get Some Help</Button>

@@ -5,9 +5,9 @@ import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
 //import GoogleLogin from 'react-google-login';
 
-import * as actions from "../redux/actions/actionCreator";
+import * as actions from "../../redux/actions/actionCreator";
 
-import CustomInput from './CustomInput';
+import CustomInput from '../CustomInput';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -45,12 +45,11 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container-col-md">
-        <div className="col">
-          <div className="text-center">
-            <div className="">
-
-
+      <div className="camp-form-container">
+        <h3><span>Sign Up</span></h3>
+        <div>
+          <div>
+            <div className="text-center">
               <FacebookLogin
                 appId="2241134356214829"
                 // autoLoad={true}
@@ -59,40 +58,38 @@ class SignUpForm extends Component {
                 cssClass="btnFacebook"
                 icon={< i className="fa fa-facebook"/>}
               />
-
             </div>
             <div className="divider-text">or</div>
-
           </div>
         </div>
-        <div className="col">
-          <div className="col">
+
+        <div>
             <form onSubmit={handleSubmit(this.onSubmit)}>
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="name"
                   type="text"
                   id="name"
-                  label="Enter your name"
+                  label="Enter your name:"
                   placeholder="Enter Your name"
                   component={CustomInput} />
               </fieldset>
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="email"
                   type="text"
                   id="email"
-                  label="Enter your email"
+                  label="Enter your email:"
                   placeholder="example@example.com"
                   component={CustomInput} />
               </fieldset>
 
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="password"
                   type="password"
                   id="password"
-                  label="Enter your Password"
+                  label="Enter your Password:"
                   placeholder="Your Password"
                   component={CustomInput} />
 
@@ -111,7 +108,7 @@ class SignUpForm extends Component {
           </div>
           <br />
 
-        </div>
+
       </div>
 
     )
