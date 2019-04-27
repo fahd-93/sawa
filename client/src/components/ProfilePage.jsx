@@ -31,6 +31,7 @@ class ProfilePage extends Component {
         if (this.userId) {
             axios.get(`http://localhost:4000/api/users/${this.userId}`)
                 .then(res => {
+                    console.log("Axios",res.data);
                     this.setState({
                         email: res.data.local.email,
                         name: res.data.local.name,
@@ -45,17 +46,16 @@ class ProfilePage extends Component {
         return null;
     }
 
-
-
     render() {
-        console.log("Profile", this.props.isAuth);
+        console.log(this.state.volunteerType);
+        let path = "/png/1.png";
         if (this.props.isAuth === true && this.state.name !== '') {
             return (
-                <div className="profile camp-form-container">
+                <div className="camp-form-container">
                     <h3 className='text'>
-                        <img src="/png/1.png" alt="Avatar" className="avatar"/>
+                        <img src={path} alt="Avatar" className="avatar"/>
                     </h3>
-                    <h3><span>{this.state.name} {this.state.lastName}</span></h3>
+                    <h3 className='text'><span>{this.state.name} {this.state.lastName}</span></h3>
                    <div className="text">
                         <span>Volunteer Type: {this.state.volunteerType}</span>
                    </div>

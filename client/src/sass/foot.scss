@@ -4,7 +4,7 @@
 }
 
 section {
-  padding: 20px 0;
+  padding-top: 10px;
   display: block;
   margin-top: auto;
 }
@@ -60,13 +60,8 @@ section {
   font-weight: 700;
 }
 #footer .container{
-  height: 15vh;
+  height: 10vh;
 }
-@media (max-width:767px){
-  #footer h5 {
-    padding-left: 0;
-    border-left: transparent;
-    padding-bottom: 0px;
-    margin-bottom: 10px;
-  }
+#footer .list-inline-item:not(:last-child) {
+    margin-right: 1rem;
 }

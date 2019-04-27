@@ -26,10 +26,10 @@ class SignUpForm extends Component {
     }
   }
 
-  responseGoogle(res) {
+/*  responseGoogle(res) {
     console.log('responseGoogle', res);
 
-  }
+  }*/
 
 
   async responseFacebook(res) {
@@ -57,11 +57,11 @@ class SignUpForm extends Component {
                 fields="name,email,picture"
                 callback={this.responseFacebook}
                 cssClass="btnFacebook"
-                icon={< i className="fa fa-facebook" style={{ marginLeft: '5px' }} ></i>}
+                icon={< i className="fa fa-facebook"/>}
               />
 
             </div>
-            <div class="divider-text">or</div>
+            <div className="divider-text">or</div>
 
           </div>
         </div>

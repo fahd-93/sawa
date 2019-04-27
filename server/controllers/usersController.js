@@ -6,7 +6,7 @@ const Types = mongoose.model('Types', typesSchema);
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../config/jwt-config');
-const { upload } = require('../handlers/multer');
+// const { upload } = require('../handlers/multer');
 //const image = upload.single('image');
 
 const userController = {};
@@ -134,10 +134,12 @@ userController.replace = async (req, res) => {
 	let newUser = {
 		name: req.body.name,
 		last_name: req.body.last_name,
-		date_of_birth: req.body.date_of_birth,
+		date_of_birth: req.body.dateBirth,
 		gender: req.body.gender,
 		role: req.body.role,
 		profession_id: req.body.profession_id,
+		type_of_volunteers: req.body.type_of_volunteers,
+		profession: req.body.profession,
 		activity_id: req.body.activity_id,
 		rating: req.body.rating,
 		image: req.imageFileName

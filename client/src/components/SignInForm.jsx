@@ -3,11 +3,7 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
-import { Link } from 'react-router-dom';
-//import GoogleLogin from 'react-google-login';
-
 import * as actions from "../redux/actions/actionCreator";
-
 import CustomInput from './CustomInput';
 
 class SignInForm extends Component {
@@ -17,6 +13,7 @@ class SignInForm extends Component {
         this.responseFacebook = this.responseFacebook.bind(this);
 
     }
+
     async onSubmit(formData, ) {
 
         // console.log('onSubmit() has been called');
@@ -60,12 +57,12 @@ class SignInForm extends Component {
                                 fields="name,email,picture"
                                 callback={this.responseFacebook}
                                 cssClass="btnFacebook"
-                                icon={< i className="fa fa-facebook" ></i>}
+                                icon={< i className="fa fa-facebook"/>}
 
                             />
 
                         </div>
-                        <div class="divider-text">or</div>
+                        <div className="divider-text">or</div>
                     </div>
                 </div>
 
@@ -105,7 +102,7 @@ class SignInForm extends Component {
                             <button type="submit" className="continue-btn">Continue</button>
                             {/* <button type="submit" className="btn btn-outline-lg btn-success btn-block">Continue</button> */}
                             <br />
-                            <Link>Forgot Password?</Link>
+                            <div>Forgot Password?</div>
                         </div>
 
                     </form>

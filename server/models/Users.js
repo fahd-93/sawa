@@ -50,14 +50,10 @@ const usersSchema = new mongoose.Schema({
         }
 
     },
-
-
     last_name: {
         type: String,
         trim: true
     },
-
-
     date_of_birth: {
         type: String
     },
@@ -78,10 +74,12 @@ const usersSchema = new mongoose.Schema({
         type: String
     },
 
-    profession_id: {
+    profession: {
         type: String
     },
-
+    type_of_volunteers: {
+        type: String
+    },
     activity_id: {
         type: String
     },

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { getAllCamp, getCampId } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { CardColumns, Card } from "react-bootstrap";
+import { CardColumns, Card, Spinner } from "react-bootstrap";
 
 
 class ShowCampaign extends Component {
 
-    state = {}
+    state = {};
 
     componentDidMount() {
         this.props.getAllCamp();
@@ -17,15 +17,20 @@ class ShowCampaign extends Component {
 
         this.setState({
             campaignId: e
-        })
+        });
         this.props.getCampId(e)
-    }
+    };
 
     render() {
         
         //window.location.reload(true);
         if (this.props.campaign === undefined) {
-            return <div>no data</div>
+            return (
+                <div className="d-flex mx-auto m-5 align-baseline">
+                    <Spinner animation="border" variant="success" size="lg" />
+                    <h2 className="ml-3 spinner-sawa">loading...</h2>
+                </div>
+            )
         }
 
         const campaign = this.props.campaign;

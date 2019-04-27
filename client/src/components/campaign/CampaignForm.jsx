@@ -11,7 +11,7 @@ class CampaignForm extends Component {
             return (
                 <div className="camp-form-container">
                     <div className="container">
-                        <h3><span>Campaign Form</span></h3>
+                        <h3 className='text'><span>Campaign Form</span></h3>
                         <CampaignType/>
                         <LocationForm/>
                        <Link to={`${this.props.category}-form`}
@@ -32,7 +32,4 @@ const mapStateToProps = state => ({
     loggedInUser: state.userReducer.loggedInUser
 });
 
-export default connect(
-    mapStateToProps,
-    { addCategory }
-)(CampaignForm);
+export default connect(mapStateToProps, { addCategory })(CampaignForm);

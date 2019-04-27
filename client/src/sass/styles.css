@@ -107,21 +107,21 @@
   color: #646F7D;
   font-size: .9em; }
 
-.FormField__Checkbox {
-  position: relative;
-  top: 1.5px; }
+.container-col-md {
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 380px; }
 
-.FormField__TermsLink {
-  color: white;
-  border-bottom: 1px solid #199087;
-  text-decoration: none;
-  display: inline-block;
-  padding-bottom: 2px;
-  margin-left: 5px; }
+.field {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif; }
 
 body {
   background: #fbf8f6;
-  font-family: "Andale Mono", serif; }
+  font-family: Andale Mono, serif; }
 
 .camp-form-container {
   background: white;
@@ -144,6 +144,8 @@ h3 {
   color: #168d7e; }
   h3 span {
     color: #14103B; }
+  h3 strong {
+    color: white; }
 
 label {
   font-family: Andale Mono, serif;
@@ -225,12 +227,12 @@ textarea {
   position: relative; }
 
 section {
-  padding: 20px 0;
+  padding-top: 10px;
   display: block;
   margin-top: auto; }
 
 #footer {
-  background: #007b5e !important; }
+  background: #00b964 !important; }
 
 #footer a {
   color: #ffffff;
@@ -277,7 +279,7 @@ section {
   font-weight: 700; }
 
 #footer .container {
-  height: 15vh; }
+  height: 10vh; }
 
 @media (max-width: 767px) {
   #footer h5 {
@@ -285,6 +287,92 @@ section {
     border-left: transparent;
     padding-bottom: 0px;
     margin-bottom: 10px; } }
+body {
+  background: #eee; }
+
+.container-col-md {
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  max-width: 420px;
+  margin-top: 50px; }
+
+.field {
+  text-align: center;
+  font-size: 16px; }
+
+.form-signin-heading {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: Roboto, serif; }
+
+label {
+  font-family: Roboto, serif; }
+
+.continue-btn {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: #168d7e;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+  float: right;
+  font-family: Roboto, serif; }
+
+.continue-btn:hover {
+  color: white;
+  background: #168d7e;
+  font-weight: bolder;
+  text-decoration: none; }
+
+.divider-text {
+  position: relative;
+  text-align: center; }
+
+.divider-text::after, .divider-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  max-width: calc(50% - 25px);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); }
+
+.divider-text::before {
+  right: calc(50% + 25px);
+  width: 100%; }
+
+.divider-text::after {
+  left: calc(50% + 25px);
+  width: 100%; }
+
+.btnFacebook {
+  border-radius: 4px;
+  background: #3b5998;
+  color: white;
+  border: 0 transparent;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  padding: 5px 15px; }
+  .btnFacebook i {
+    margin-right: 5px; }
+
+.btnFacebook:hover {
+  background: #3b5998;
+  opacity: 0.6; }
+
+@media only screen and (max-width: 399px) {
+  .btnFacebook, .btnGoogle {
+    width: 100%; } }
+.form-control-sm {
+  color: black; }
+
 .avatar {
   vertical-align: middle;
   width: 250px;
@@ -344,5 +432,69 @@ section {
     background: red;
     font-weight: bolder;
     text-decoration: none; }
+
+body {
+  background-color: #FBF8F6; }
+
+.cam-container {
+  max-width: 980px !important;
+  margin: 80px auto; }
+
+.card-columns {
+  max-width: 850px !important;
+  margin: 30px auto;
+  padding: 0; }
+
+.card-body {
+  margin: 0;
+  padding: 10px 10px 0 0; }
+
+.card {
+  border: none;
+  background-color: white; }
+
+.card-title {
+  color: #00B964; }
+
+.card-text {
+  margin-bottom: 30px;
+  color: #050505;
+  font-size: 0.9em; }
+
+.cam-header {
+  margin-bottom: 50px; }
+
+.card-img-top {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  display: block;
+  padding-top: 0;
+  width: 100%; }
+
+.description {
+  max-width: 640px; }
+
+.singlecampimage {
+  max-width: 640px;
+  max-height: 440px; }
+
+.cam-singleheader {
+  margin-top: 100px;
+  margin-bottom: 100px; }
+
+.carousel-control {
+  max-height: 550px; }
+
+.jumbotron {
+  margin: 2rem !important;
+  background-color: #fbf8f6 !important; }
+
+.btn-outline-success {
+  border-color: #00b964 !important; }
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.9); }
 
 /*# sourceMappingURL=styles.css.map */

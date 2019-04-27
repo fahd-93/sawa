@@ -5,11 +5,8 @@ import { connect } from "react-redux";
 import {  CardColumns, Card, Button } from "react-bootstrap";
 import Avatar from 'react-avatar';
 
-
-
-
 class UserCards extends Component {
-    state = {}
+    state = {};
 
     componentDidMount(){
         this.props.getAllUsers();

@@ -13,7 +13,7 @@ body {
 .margin-center {
   margin: auto;
 }
-.text {
+h3 {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
@@ -25,12 +25,14 @@ body {
   span {
     color: #14103B;
   }
+  strong{
+    color: white;
+  }
 }
 
 label{
   font-family: Andale Mono, serif;
   margin-top: 15px;
-  //font-weight: bold;
 }
 
 input {

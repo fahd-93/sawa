@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import ControlledCarousel from './ControlledCarousel';
 import { getAllCamp, getCampId } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
-import { Row, Col, Card,CardColumns } from 'react-bootstrap';
+import { Row, Col, Card, CardColumns, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 
 
 class HomePage extends Component {
-    state = {}
+    state = {};
 
     componentDidMount() {
         this.props.getAllCamp();
@@ -25,70 +25,70 @@ class HomePage extends Component {
 
 
     render() {
-      
 
         if (this.props.campaign === undefined) {
-            return <div>loading...</div>
+            return (
+                <div className="d-flex mx-auto m-5 align-baseline">
+                    <Spinner animation="border" variant="success" size="lg"/>
+                    <h2 className="ml-3 spinner-sawa">loading...</h2>
+                </div>
+                )
         }
-
         const campaign = this.props.campaign;
-        const campaignArray = campaign.slice(0, 3)
+        const campaignArray = campaign.slice(0, 3);
         return (
 
             <React.Fragment>
-                <ControlledCarousel />
 
-                <div className = "cam-container">
-                <Row>
-                    <Col>
-                         <h5 className="cam-header">Latest Campaigns</h5>
-                    </Col>
-                </Row>
-                <CardColumns>
+                        <ControlledCarousel />
 
-                { campaignArray.map(user =>
+                        <div className="cam-container">
+                            <Row>
+                                <Col>
+                                    <h5 className="text-center p-2 m-3">Latest Campaigns</h5>
+                                </Col>
+                            </Row>
+                            <CardColumns>
+                                {campaignArray.map(item =>
 
-                <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
-                    <Card key={user._id}>
-                    <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
-                    <Card.Body>
-                        <Card.Title>{user.title}</Card.Title>
-                        {/* <Card.Text>Description: {user.description}</Card.Text> */}
-                        <Card.Text>Category: {user.categories}</Card.Text>
-                        <Card.Text>Created by: {user.created_by}</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
+                                        <Link to={`/users/campaign/${item._id}`} onClick={() => this.getId(item._id)}>
+                                            <Card key={item._id}>
+                                                <Card.Img variant="top" src={`http://localhost:4000/uploads/${item.image}`} />
+                                                <Card.Body>
+                                                    <Card.Title>Title: {item.title}</Card.Title>
+                                                    <Card.Text>Description: {item.description}</Card.Text>
+                                                    <Card.Text>Categories: {item.categories}</Card.Text>
+                                                </Card.Body>
+                                                <Card.Footer>
 
-                    <small className="text-muted">Created at: {user.created_at}</small>
+                                                    <small className="text-muted">Created at: {item.created_at}</small>
 
-                    </Card.Footer>
-                  
-                    </Card>
-                </Link>
+                                                </Card.Footer>
+                                            </Card>
+                                        </Link>
 
-                )}
+                                    )}
 
-                </CardColumns>
-                
-                    <div className="text-right p-2 m-2">
-                        <a href="/showcampaign"
-                            target="_blank" 
-                            rel="noopener noreferrer">
-                            See more...
+                            </CardColumns>
+
+                            <div className="text-right p-2 m-2 ">
+                                <a href="showcampaign"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >
+                                    See more...
                         </a>
-                    </div>
-                </div>
+                            </div>
+                        </div>
 
-            </React.Fragment> 
-        )
-    }
+                    </React.Fragment>
+                    )
+                }
+            
+            
+            }
+const mapStateToProps = state => ({
+    campaign: state.campaign.campaign
+});
 
-
-}
-function mapStateToProps(state) {
-    
-    return {
-        campaign: state.campaign.campaign
-    };
-}
-export default connect(mapStateToProps, { getAllCamp, getCampId }) (HomePage);
+export default connect(mapStateToProps, {getAllCamp}) (HomePage);

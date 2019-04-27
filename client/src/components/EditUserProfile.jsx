@@ -1,16 +1,66 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import VolunteerType from './campaign/VolunteerType';
 import * as jwt_decode from "jwt-decode";
 import AlgoliaPlaces from 'algolia-places-react';
 import axios from 'axios';
 
 class EditUserProfile extends Component {
-    constructor() {
-        super();
-        this.state = {}
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.nameRef = React.createRef();
+        this.last_nameRef = React.createRef();
+        this.emailRef = React.createRef();
+        this.genderRef = React.createRef();
+        this.dateBirthRef = React.createRef();
+        this.professionRef = React.createRef();
+        this.locationRef = React.createRef();
+        this.userImageRef = React.createRef();
         this.userId = this.getUserId()
     }
+
+    updateUserInput = async e => {
+        e.preventDefault();
+
+        let formData = new FormData();
+
+        formData.set('name', this.state.nameRef);
+        formData.set('last_name', this.state.last_nameRef);
+        formData.set('email', this.state.emailRef);
+        formData.set('gender', this.state.genderRef);
+        formData.set('dateBirth', this.state.dateBirthRef);
+        formData.set('profession', this.state.professionRef);
+        formData.set('location', this.state.locationRef);
+        formData.append("image", this.userImageRef.current.files[0]);
+
+        await axios
+            .put( `http://localhost:4000/api/users/${this.userId}`, this.state)
+            .then(res => console.log("res.data", res.data))
+            .catch( error => {
+                console.log(error);
+            });
+    };
+
+    componentDidMount() {
+        if (this.userId) {
+            axios.get(`http://localhost:4000/api/users/${this.userId}`)
+                .then(res => {
+                    console.log('ResData', res.data);
+                    this.setState({
+                        email: res.data.local.email,
+                        name: res.data.local.name.toUpperCase(),
+                        last_name: res.data.last_name,
+                        profession: res.data.profession,
+                        gender: res.data.gender,
+                        dateBirth: res.data.date_of_birth
+                    })
+                })
+                .catch(err => console.log('Error', err))
+        }
+        return null;
+    };
 
     getUserId = () => {
         const jwtToken = localStorage.getItem('JWT_TOKEN');
@@ -31,48 +81,37 @@ class EditUserProfile extends Component {
         return null;
     };
 
-
-    componentDidMount() {
-        if (this.userId) {
-            axios.get(`http://localhost:4000/api/users/${this.userId}`)
-                .then(res => {
-                    console.log('ResData', res.data)
-                    this.setState({
-                        email: res.data.local.email,
-                        name: res.data.local.name.toUpperCase(),
-                        lastName: res.data.last_name
-                    })
-                })
-                .catch(err => console.log('Error', err))
-        }
-        return null;
-    }
-
     handleInput = e => {
-        console.log(e.target.name, e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         });
 
     };
 
-    updateUserInput = async e => {
-        e.preventDefault();
+    handleLocation = suggestion => {
 
-        await axios
-            .put(`http://localhost:4000/api/users/${this.userId}`, this.state)
+        let location = suggestion.suggestion;
 
+        this.setState({
+            city: location.name,
+            postcode: location.postcode,
+            country: location.country,
+            countryCode: location.countryCode,
+            type: location.type,
+            latlng: {
+                lat: location.latlng.lat,
+                lng: location.latlng.lng
+            }
+        });
     };
 
     deleteUser = async e => {
-        console.log('LOCAL Storage', localStorage)
+        e.preventDefault();
         await axios.delete(`http://localhost:4000/api/users/${this.userId}`);
         localStorage.clear('jwt_token');
-
     };
 
     render() {
-        console.log(this.state);
         return (
             <div className="camp-form-container">
                 <h3><span>Edit Profile</span></h3>
@@ -81,30 +120,36 @@ class EditUserProfile extends Component {
 
                     <label>First Name:</label>
                     <input type="text"
-                        name="name" readOnly
-                        defaultValue={this.state.name} />
+                           name="name" readOnly
+                           ref={this.nameRef}
+                           defaultValue={this.state.name} />
 
                     <label>Last Name:</label>
                     <input type="text"
-                        name="last_name"
-                        defaultValue={this.state.lastName} />
+                           name="last_name"
+                           ref={this.last_nameRef}
+                           defaultValue={this.state.last_name} />
 
                     <label> Email:</label>
                     <input type="email"
-                        name="email" readOnly
-                        defaultValue={this.state.email} />
+                           name="email" readOnly
+                           ref={this.emailRef}
+                           defaultValue={this.state.email} />
 
                     <label >Profession:</label>
                     <input type="text"
-                        name="profession"
-                        defaultValue={this.state.profession} />
+                           name="profession"
+                           ref={this.professionRef}
+                           defaultValue={this.state.profession} />
                     <br/><br/>
                     <div className="row">
                         <div className="col-25">
                             <label> Date of Birth:</label>
                         </div>
                         <div className="col-75">
-                            <input type="date" name={this.state.dateBirth} />
+                            <input type="date" name="dateBirth"
+                                   ref={this.dateBirthRef}
+                                   defaultValue={this.state.dateBirth} />
                         </div>
 
                     </div>
@@ -114,14 +159,17 @@ class EditUserProfile extends Component {
                         </div>
                         <div className="col-75">
                             <select name="gender"
+                                    ref={this.genderRef}
                                     className="custom-select">
-                                <option defaultValue>Choose Gender</option>
+                                <option defaultValue>{this.state.gender}</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Unknown">Unknown</option>
                             </select>
                         </div>
                     </div>
+
+                    <VolunteerType defaultValue={this.state.volunteerType}/>
 
                     <div className="row">
                         <div className="col-25">
@@ -130,14 +178,25 @@ class EditUserProfile extends Component {
                         <div className="col-75">
                              <AlgoliaPlaces
                                 name='AlgoliaPlaces'
+                                ref={this.locationRef}
                                 placeholder="Write an address here"
                                 options={{
                                     appId: 'pl48PRQJVY9X',
                                     apiKey: '976ae5509e3452dbc494dd1e9f390486'
                                 }}
-                                onChange={(suggestion) => this.handleInput(suggestion)}
+                                onChange={(suggestion) => this.handleLocation(suggestion)}
                             />
 
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-25">
+                            <label> Upload Image:</label>
+                        </div>
+                        <div className="col-75">
+                            <input type="file"
+                                   name="image"
+                                   ref={this.userImageRef} />
                         </div>
                     </div>
 

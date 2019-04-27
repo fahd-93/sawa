@@ -29,7 +29,7 @@ body {
 .form-signin-heading {
     padding: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.1);  
-    font-family: serif;
+    font-family: Roboto, serif;
       
      
 }
@@ -39,7 +39,7 @@ body {
    
 
 label {
- font-family: serif;
+ font-family: Roboto, serif;
       
 }
 
@@ -57,7 +57,7 @@ label {
  font-weight: bold;
  margin-top: 15px;
  float: right;
- font-family: serif;
+ font-family: Roboto, serif;
  
 }
 
@@ -90,8 +90,8 @@ label {
 .btnFacebook { 
     border-radius: 4px;
     background: #3b5998;
-    color:white;
-    border:0px transparent;  
+    color: white;
+    border: 0 transparent;
     text-align: center;
     margin:5px;
     display: inline-block;
