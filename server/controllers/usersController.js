@@ -151,7 +151,7 @@ userController.replace = async (req, res) => {
 
 //update show user by id patch
 userController.update = async (req, res, next) => {
-	console.log('file from controller req.imageFileName', req.imageFileName);
+	//console.log('file from controller req.imageFileName', req.imageFileName);
 	const { Id } = req.params;
 	//const newUser = req.body;
 	let newUser = {
@@ -204,6 +204,8 @@ userController.createUserCampaign = async (req, res) => {
 	//assign user as campaign creator
 	campaign.created_by = user._id;
 	//save campaign
+	console.log(user);
+	
 	await campaign.save();
 	// add campaign to the users created_by array
 	user.created_campaigns.push(campaign);

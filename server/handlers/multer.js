@@ -5,11 +5,10 @@ const path = require('path');
 const storage = multer.diskStorage({
     destination: './public/uploads/',
     filename: function (req, file, cb) {
-        console.log('req form filename', file);
         req["imageFileName"] =
         file.fieldname + Date.now() + file.originalname.match(/\.\w+$/);
         cb(null, req.imageFileName);
-        console.log('req.imageFileName', req.imageFileName);
+        
 
     }
 });

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { CardColumns, Card } from "react-bootstrap";
 
+
 class ShowCampaign extends Component {
 
     state = {}
@@ -22,7 +23,7 @@ class ShowCampaign extends Component {
 
     render() {
         
-
+        //window.location.reload(true);
         if (this.props.campaign === undefined) {
             return <div>no data</div>
         }
@@ -38,24 +39,28 @@ class ShowCampaign extends Component {
                 
                     <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
                         <Card key={user._id}>
-                            <Card.Img variant="top" src={`http://localhost:4000/uploads/${user.image}`} />
+                        <div className="element">
+                            <Card.Img variant="top" style={{width: '100%', height: "100%"}} src={`http://localhost:4000/uploads/${user.image}`} />
+                            </div>
                             <Card.Body>
-                                <Card.Title>Title: {user.title}</Card.Title>
+                                <Card.Title> {user.title}</Card.Title>
+                                <Card.Text>Created by: {user.created_by}</Card.Text>
                                 <Card.Text>Description: {user.description}</Card.Text>
-                                <Card.Text>Categories: {user.categories}</Card.Text>
+                                <Card.Text>Category: {user.categories}</Card.Text>
                             </Card.Body>
                             <Card.Footer>
 
                                 <small className="text-muted">Created at: {user.created_at}</small>
                                 
                             </Card.Footer>
-                            {/* <button>show</button> */}
+                           
                         </Card>
                     </Link>
 
                 )
                 }
             </CardColumns>
+          <hr/>
             </div>
 
 
@@ -63,12 +68,7 @@ class ShowCampaign extends Component {
     }
 }
 function mapStateToProps(state) {
-    // if (state.campaign.campaign === undefined) { return null }
-    // let arrayCampaign = state.campaign.campaign;
-    // const campaignID = arrayCampaign.map(x => x._id);
-    // console.log(campaignID);
-
-    // console.log('state from props CampaignCards PAGE', state.campaign.campaign);
+   
     return {
         campaign: state.campaign.campaign
     };

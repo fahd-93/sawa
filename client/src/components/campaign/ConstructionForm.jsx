@@ -5,6 +5,8 @@ import { saveCampaign } from "../../redux/actions/actionCreator";
 import VolunteerType from "./VolunteerType";
 import CampaignDate from './CampaignDate';
 import CampaignInput from './CampaignInput';
+import * as jwt_decode from "jwt-decode";
+import axios from 'axios';
 
 
 class ConstructionForm extends Component {
@@ -19,8 +21,26 @@ class ConstructionForm extends Component {
         this.endDateRef = React.createRef();
         this.userImageRef = React.createRef();
         this.videoRef = React.createRef();
-        this.state = {}
+        this.state = {};
+        this.userId = this.getUserId();
     }
+
+    getUserId = () => {
+        const jwtToken = localStorage.getItem('JWT_TOKEN');
+
+        if (jwtToken) {
+            try {
+                let x = jwt_decode(jwtToken);
+
+                axios.defaults.headers.common['Authorization'] = jwtToken;
+
+                return x.sub
+            }
+            catch (error) {console.log(error)}
+        }
+        return null;
+    };
+
 
     handelInputs = (e) => {
         e.preventDefault();
@@ -50,10 +70,11 @@ class ConstructionForm extends Component {
         formData.set("category", this.state.category);
         formData.append("image", this.userImageRef.current.files[0]);
 
-        this.props.saveCampaign(this.state, formData);
+        this.props.saveCampaign(this.userId, formData);
     };
 
     render() {
+        console.log(this.userId);
         return (
             <div className="camp-form-container">
                 <div className="margin-center">
@@ -91,7 +112,8 @@ class ConstructionForm extends Component {
 }
 
 const mapStateToProps = state => ({
-    campaign: state.campaign
+    campaign: state.campaign,
+    userId: state.userId,
 });
 
 export default connect(mapStateToProps, { saveCampaign })(ConstructionForm);

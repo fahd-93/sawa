@@ -61,7 +61,7 @@ export const getAllUsers = () => dispatch => {
     axios
         .get('http://localhost:4000/api/users')
         .then(res => {
-            console.log('Action all users', res.data)
+            // console.log('Action all users', res.data)
             dispatch({
                 type: "GET_ALL_USERS",
                 payload: res.data
@@ -76,21 +76,17 @@ export const addLocation = (location) => (dispatch) => {
 	});
 };
 
-export const saveCampaign = (inputs, formData) => (dispatch) => {
+export const saveCampaign = (id, formData) => (dispatch) => {
+	console.log(id);
 	axios({
 		method: 'post',
-		url: 'http://localhost:4000/api/users/5cb5b36127c5b16de2aef22d/campaign',
+		url: `http://localhost:4000/api/users/${id}/campaign`,
 		data: formData,
 		headers: {
 			'content-type': `multipart/form-data; boundary=${formData._boundary}`
 		}
 	})
-		.then(() => {
-			dispatch({
-				type: 'ADD_INPUTS',
-				payload: inputs
-			});
-		})
+		.then()
 		.catch((error) => {
 			console.log(error);
 		});
