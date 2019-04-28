@@ -5,7 +5,7 @@ class HowPage extends Component {
     render() {
         return (
             <div className="camp-form-container">
-                <h3><span>HOW DOES IT WORK?</span></h3>
+                <div className='text'><span>HOW DOES IT WORK?</span></div>
                 <h4>Step 1</h4>
                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

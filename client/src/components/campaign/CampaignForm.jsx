@@ -10,8 +10,12 @@ class CampaignForm extends Component {
         if (this.props.isAuth) {
             return (
                 <div className="camp-form-container">
-                    <div className="container">
-                        <h3 className='text'><span>Campaign Form</span></h3>
+                    <div>
+                        <div className='text'>
+                            <span>
+                                Campaign Form
+                            </span>
+                        </div>
                         <CampaignType/>
                         <LocationForm/>
                        <Link to={`${this.props.category}-form`}
@@ -23,7 +27,7 @@ class CampaignForm extends Component {
 
             )
         }
-        return <div>Hello</div>
+        return null;
     }
 }
 

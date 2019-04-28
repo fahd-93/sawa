@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Avatar from './Avatar';
+// import Avatar from './Avatar';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as jwt_decode from "jwt-decode";
@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 class ProfilePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            campaigns: [''],
+            joined: [''],
+        };
         this.userId = this.getUserId()
     }
 
@@ -32,14 +35,13 @@ class ProfilePage extends Component {
         if (this.userId) {
             axios.get(`http://localhost:4000/api/users/${this.userId}`)
                 .then(res => {
-                    console.log("Axios",res.data);
                     this.setState({
                         email: res.data.local.email,
                         name: res.data.local.name,
                         lastName: res.data.last_name,
                         campaigns: res.data.created_campaigns,
+                        joined: res.data.created_campaigns,
                         volunteerType: res.data.type_of_volunteers,
-
                     })
                 })
                 .catch(err => console.log('Error', err))
@@ -49,14 +51,29 @@ class ProfilePage extends Component {
 
     render() {
         if (this.props.isAuth === true && this.state.name !== '') {
+
             return (
+
                 <div className="camp-form-container">
-                    <Avatar/>
-                    <h3 className='text'><span>{this.state.name} {this.state.lastName}</span></h3>
-                   <div className="text">
-                        <span>Volunteer Type: {this.state.volunteerType}</span>
+                    {/*<Avatar/>*/}
+                    <div className='text-style'>
+                        <span>{this.state.name} {this.state.lastName}</span>
+                    </div>
+                    <div className="data-container">
+                        <div className="col-left">Campaigns Created:
+                            <strong> {this.state.campaigns.length}</strong>
+                        </div>
+                        <div className="col-right">Joined Campaigns:
+                            <strong> {this.state.joined.length}</strong>
+                        </div>
+                    </div>
+                   <div className="type-style">
+                        <span>
+                            Volunteer Type:
+                            <b>[</b> <strong> {this.state.volunteerType} </strong> <b>]</b>
+                        </span>
                    </div>
-                    <div className='wrapper text-center'>
+                    <div className='text-center'>
                         <div className="btn-group">
                             <Link to='editprofile' className="btn-profile">
                                 Edit Profile
@@ -70,64 +87,18 @@ class ProfilePage extends Component {
                         </div>
                 </div>
                </div>
+
             );
         }
 
-        return (
-            <div>Bad</div>
-        )
+        return null;
 
     }
 }
-
-
 
 const mapStateToProps = (state) => ({
     loggedInUser: state.userReducer.loggedInUser,
     userId: state.auth.userId
 });
+
 export default connect(mapStateToProps, null)(ProfilePage);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

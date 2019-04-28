@@ -30,23 +30,18 @@ class SignUpForm extends Component {
     console.log('responseGoogle', res);
 
   }*/
-
-
   async responseFacebook(res) {
-    console.log('responseFacebook', res);
     await this.props.oauthFacebook(res.accessToken);
     if (!this.props.errorMessage) {
       this.props.history.push('/profilepage')
-
     }
   }
-
 
   render() {
     const { handleSubmit } = this.props;
     return (
       <div className="camp-form-container">
-        <h3><span>Sign Up</span></h3>
+        <div className="text"><span>Sign Up</span></div>
         <div>
           <div>
             <div className="text-center">

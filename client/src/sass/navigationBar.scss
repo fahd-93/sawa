@@ -1,3 +1,29 @@
 .navbar-light .navbar-nav .nav-link {
     color: rgba(0, 0, 0, 0.9);
+    font-family: "Andale Mono", sans-serif;
+    text-transform: uppercase ;
 }
+/* Logo sawa design*/
+.font-style {
+    position: relative;
+    font-family: "Andale Mono", sans-serif;
+    color: cadetblue;
+    font-weight: bold;
+
+    span {
+        position: absolute;
+        top: -23px;
+        left: -12px;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        padding: 35px;
+        border: 2px solid #666;
+        color: #666;
+        text-align: center;
+    }
+}
+
+.nav-link:hover {
+    border-bottom: 1px solid #666666;
+ }
