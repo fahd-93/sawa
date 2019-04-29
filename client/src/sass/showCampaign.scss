@@ -47,12 +47,26 @@ body {
        position: relative;
    }
    .card-img-top {
-      
-       position: relative !important;
-       width: 100% !important;
-       height: 100% !important;
-       border-radius: 0px !important;
-       background-size: cover !important;
-    
- 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    display: block;
+    padding-top: 0;
+    width: 100%;
    }
+   .form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.btn-success {
+    color: #fff;
+    background-color: #00b964;
+    border-color: #00b964;
+}
+

@@ -15,6 +15,8 @@ const passportGoogle = passport.authenticate('googleToken', { session: false });
 const passportFacebook = passport.authenticate('facebookToken', { session: false });
 const { upload } = require('../handlers/multer');
 
+//search
+router.route('/campaigns/search').get( campaignController.search);
 //get a list of users
 //router.get('/users', cors(), userController.list);
 router.route('/users').get(cors(), userController.list);

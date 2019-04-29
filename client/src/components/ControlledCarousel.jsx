@@ -35,39 +35,36 @@ class ControlledCarousel extends React.Component {
                 >
                     <img
                         className="d-block w-100 carousel-control"
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
+                        src="http://res.cloudinary.com/ddrvpl4zh/image/upload/v1556404639/srzkeg4hnnkiqkvdfsgb.jpg"
                         alt="First slide"
                     />
                     <Carousel.Caption >
-                        <Button href="/create-campaign">Get Some Help</Button>
-                        <h1>Educational Campaign</h1>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 carousel-control"
-                        src="https://www.rescue.org/sites/default/files/styles/window_width_breakpoints_theme_rescue_large_1x/public/slideshow/3087/slideshow-images/slideshow-images-image/greece4.jpg?itok=A_iFnje-&timestamp=1471616940"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <Button href="/create-campaign">Get Some Help</Button>
-                        <h1>Construction Campaign</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100 carousel-control"
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/14179/image.png"
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <Button href="/create-campaign">Get Some Help</Button>
+                        <Button href="/signin">Get Some Help</Button>
                         <h1>Medical Campaign</h1>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100 carousel-control"
+                        src="http://res.cloudinary.com/ddrvpl4zh/image/upload/v1556403796/clu9bjmosfgrayipm4it.jpg"
+                        alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                        <Button href="/signin">Get Some Help</Button>
+                        <h1>Educational Campaign</h1>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100 carousel-control"
+                        src="http://res.cloudinary.com/ddrvpl4zh/image/upload/v1556403697/x4lwggyhdi5om2unhtw7.jpg"
+                        alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                        <Button href="/signin">Get Some Help</Button>
+                        <h1>Construction Campaign</h1>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
