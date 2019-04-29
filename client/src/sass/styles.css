@@ -6,26 +6,23 @@ body {
 .camp-form-container {
   background: white;
   border-radius: 5px;
-  max-width: 800px;
-  margin: 50px 400px;
+  margin: auto;
+  width: 800px;
   padding: 40px; }
 
 .margin-center {
   margin: auto; }
 
-h3 {
+.text {
   text-align: center;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 40px;
   padding: 20px;
   font-family: Andale Mono, serif;
   text-decoration: underline;
   color: #168d7e; }
-  h3 span {
-    color: #14103B; }
-  h3 strong {
-    color: white; }
+  .text span {
+    color: #14103B;
+    font-size: 3rem; }
 
 label {
   font-family: Andale Mono, serif;
@@ -91,8 +88,8 @@ input {
 textarea {
   width: 490px;
   height: 300px;
-  font-family: "Andale Mono", serif;
-  padding: 15px; }
+  padding: 15px;
+  font-family: "Andale Mono", serif; }
 
 .date-container {
   display: flex; }
@@ -106,13 +103,8 @@ textarea {
 #root {
   position: relative; }
 
-section {
-  padding-top: 10px;
-  display: block;
-  margin-top: auto; }
-
 #footer {
-  background: #00b964 !important; }
+  background: #168d7e; }
 
 #footer a {
   color: #ffffff;
@@ -131,8 +123,7 @@ section {
   transition: .5s all ease; }
 
 #footer ul.social li:hover a i {
-  font-size: 30px;
-  margin-top: -10px; }
+  font-size: 30px; }
 
 #footer ul.social li a,
 #footer ul.quick-links li a {
@@ -142,14 +133,11 @@ section {
   color: #eeeeee; }
 
 #footer ul.quick-links li {
-  padding: 3px 0;
   -webkit-transition: .5s all ease;
   -moz-transition: .5s all ease;
   transition: .5s all ease; }
 
 #footer ul.quick-links li:hover {
-  padding: 3px 0;
-  margin-left: 5px;
   font-weight: 700; }
 
 #footer ul.quick-links li a i {
@@ -157,12 +145,6 @@ section {
 
 #footer ul.quick-links li:hover a i {
   font-weight: 700; }
-
-#footer .container {
-  height: 10vh; }
-
-#footer .list-inline-item:not(:last-child) {
-  margin-right: 1rem; }
 
 body {
   background: #eee;
@@ -252,11 +234,49 @@ body {
 .form-control-sm {
   color: black; }
 
-.avatar {
-  vertical-align: middle;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%; }
+.data-container {
+  display: flex;
+  width: 100%;
+  justify-content: center; }
+
+.col-left {
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background: lightblue; }
+
+.col-right {
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  background: lightsteelblue; }
+
+.type-style {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 20px 0; }
+  .type-style span {
+    color: black; }
+  .type-style b {
+    color: #000; }
+  .type-style strong {
+    text-decoration: underline;
+    color: #168d7e; }
+
+.text-style {
+  width: 720px;
+  font-size: 3.4rem;
+  align-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: Andale Mono, serif;
+  text-decoration: underline;
+  color: #168d7e; }
+  .text-style span {
+    color: black; }
 
 .btn-profile {
   text-align: center;
@@ -270,27 +290,13 @@ body {
   text-decoration: none;
   font-weight: bold;
   float: right;
-  margin: 15px 0 0 15px; }
+  margin: 5px; }
   .btn-profile:hover {
     text-decoration: none;
     color: #168d7e;
     background: white;
     border: solid #168d7e 1px;
-    margin: 14px 0 0 14px; }
-
-.text {
-  margin: 0;
-  width: 720px;
-  align-content: center;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
-  font-family: Andale Mono, serif;
-  text-decoration: underline;
-  color: #168d7e; }
-  .text span {
-    color: black; }
+    margin: 4px; }
 
 .btn-delete {
   width: 100%;
@@ -315,17 +321,17 @@ body {
 body {
   background-color: #FBF8F6; }
 
-.cam-container {
-  max-width: 980px !important;
-  margin: 80px auto; }
+.campaigns-container {
+  margin: 0 auto;
+  padding: 40px;
+  max-width: 900px; }
 
 .card-columns {
-  max-width: 850px !important;
-  margin: 30px auto;
+  max-width: 900px;
   padding: 0; }
 
 .card-body {
-  margin: 0;
+  margin: auto;
   padding: 10px 10px 0 0; }
 
 .card {
@@ -345,8 +351,8 @@ body {
 
 .card-img-top {
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 2px;
   display: block;
   padding-top: 0;
@@ -374,11 +380,30 @@ body {
   border-color: #00b964 !important; }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.9); }
+  color: rgba(0, 0, 0, 0.9);
+  font-family: "Andale Mono", sans-serif;
+  text-transform: uppercase; }
 
-.logo {
-  font-family: "Andale Mono", serif;
-  font-size: large; }
+/* Logo sawa design*/
+.font-style {
+  position: relative;
+  font-family: "Andale Mono", sans-serif;
+  color: cadetblue;
+  font-weight: bold; }
+  .font-style span {
+    position: absolute;
+    top: -23px;
+    left: -12px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    padding: 35px;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center; }
+
+.nav-link:hover {
+  border-bottom: 1px solid #666666; }
 
 body {
   background: whitesmoke;
@@ -388,16 +413,6 @@ body {
   max-width: 960px;
   margin: 30px auto;
   padding: 20px; }
-
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin: 20px 0 20px; }
-  h1 small {
-    display: block;
-    font-size: 15px;
-    padding-top: 8px;
-    color: gray; }
 
 .avatar-upload {
   position: relative;
