@@ -22,27 +22,6 @@ class UserCards extends Component {
 
 		return (
 			<div>
-				{/* <CardColumns >
-
-			
-			{users.map(user =>
-			<div>
-				  
-			<Card key={user._id}>
-			<Avatar className="avatar" src={`http://localhost:4000/uploads/${user.image}`} /> 
-			 
-			  <Card.Body>
-				<Card.Title style={{ color: 'black' }}>{user.local.name}</Card.Title>
-				<Card.Subtitle>Rating: {user.rating} *</Card.Subtitle>
-				<Button>Button</Button>
-			  </Card.Body>
-			</Card>
-		  </div>
-
-            
-            )}
-            
-            </CardColumns> */}
 
 				<div>
 					{this.props.volunteers.map((user) => (
