@@ -45,17 +45,17 @@ class UserCards extends Component {
             </CardColumns> */}
 
 				<div>
-					{users.map((user) => (
+					{this.props.volunteers.map((user) => (
 						<ul className="list-unstyled">
 							<li className="">
 								<Avatar className="avatar" src={`http://localhost:4000/uploads/${user.image}`} />
 
 								<div className="singlemedia-body">
 									<h5 className="mt-0 mb-1">{user.local.name}</h5>
-									<span>Rating: {user.rating}</span> <br />
-									Created Campaigns: <li className="cr-camp">{user.created_campaigns}</li>
-									<br />
-									<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante</p>
+									{/* <span>Rating: {user.rating}</span> <br />
+									Created Campaigns: <li className="cr-camp">{user.created_campaigns}</li> */}
+									
+							
 								</div>
 							</li>
 						</ul>

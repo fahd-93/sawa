@@ -14,7 +14,7 @@ const campaignSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
-    volunteer:[{
+    volunteers:[{
         type: Schema.Types.ObjectId,
         ref: 'user'
     }],

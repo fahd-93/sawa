@@ -214,32 +214,7 @@ userController.createUserCampaign = async (req, res) => {
 	res.status(201).json({  campaign });
 };
 
-//join campaign
-userController.createCampaignVolunteer = async (req, res) => {
-	const { Id } = req.params;
-	const campaign = await Campaign.findById(Id);
 
-	 /* let user = new User ({
-		name: req.body.name,
-		last_name: req.body.last_name,
-		date_of_birth: req.body.date_of_birth,
-		gender: req.body.gender,
-		image: req.imageFileName
-	}); */ 
-	//get user
-	const user = await User.findById(Id);
-	//assign user as campaign volunteer
-	campaign.volunteer = user;
-	//save volunteer
-	console.log(user);
-
-	await campaign.save();
-	user.joined_campaign.push(campaign);
-
-	await user.save();
-	res.status(201).json({ campaign });
-
-}
 
 //update user campaign
 userController.updateUserCampaign = async (req, res) => {

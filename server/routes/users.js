@@ -56,10 +56,8 @@ router
 //show volunteers types
 router.route('/users/campaign/types').get(cors(), userController.typeList);
 
-//join Campaign
-router.route('/users/:Id/campaign/:Id/volunteer')
-.post(cors(), userController.createCampaignVolunteer);
-//show user campaign
+
+//show user campaign 
 router
 	.route('/users/campaign/:Id')
 	.get(cors(), campaignController.getUserCampaigns)

@@ -20,9 +20,15 @@ campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;
     const campaign = await Campaign.findById(Id);
     //console.log('campaign', campaign);
-    res.status(201).json(campaign);
-    
+
+			User.find({
+				'_id': { $in: campaign.volunteers}
+			}, function(err, volunteers){
+				 console.log(volunteers);
+                 res.status(201).send({campaign:campaign , volunteers:volunteers});
+			});
 };
+
 /* 
 campaignController.getUserCampaigns = async(req, res, next) =>{
     const { Id } = req.params;

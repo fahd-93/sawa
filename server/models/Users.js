@@ -80,7 +80,7 @@ const usersSchema = new mongoose.Schema({
     type_of_volunteers: {
         type: String
     },
-    joined_campaign:[{
+    joined_campaigns:[{
         type: Schema.Types.ObjectId,
         ref: 'Campaign'
     }],

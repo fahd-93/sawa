@@ -14,9 +14,18 @@ export default (state = initialState, action) => {
                 users: action.payload,
                 
                      
+            }
+        }    
+        case "JOIN_VOLUNTEER": {
+      
+            return {
+                ...state,
+                volunteers: action.payload,
+            }
         }
         
-    }
+        
+    
     default:
             return state;
     }

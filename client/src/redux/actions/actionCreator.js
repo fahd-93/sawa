@@ -32,6 +32,30 @@ export const addCategory = (category) => (dispatch) => {
 	});
 };
 
+export const joinCampaign = (userId, campaignId) => (dispatch) => {
+	console.log(userId,'  ' , campaignId);
+	let newVolunteer ={
+			userId,
+			campaignId
+	}
+	
+	axios({
+		method: 'post',
+		url: `http://localhost:4000/api/users/join/campaign`,
+		data:newVolunteer,
+	})
+		.then( (res)=>{
+			console.log(res.data);
+			dispatch({
+				type: "JOIN_VOLUNTEER",
+				payload: res.data.volunteers
+			});
+		} )
+		.catch((error) => {
+			console.log(error);
+		});
+};
+
 export const getAllCamp = () => (dispatch) => {
 	axios.get('http://localhost:4000/api/campaigns').then((res) => {
 		dispatch({
