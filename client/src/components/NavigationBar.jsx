@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { signOut, signIn, signUp } from "../redux/actions/actionCreator";
 
@@ -16,12 +16,10 @@ class NavigationBar extends Component {
 
     render() {
         return (
-            <div className="border-bottom">
-                <Navbar bg="light" expand="lg">
-                    <Container>
+            <div>
+                <Navbar className="nav-flex">
+                    <div className={"flex-container"}>
                         <Navbar.Brand href={"/"}>
-                     {/*       <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png"
-                                 alt="logo" width="30"/>*/}
                             <h5 className="font-style"><span/>sawa</h5>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -72,7 +70,7 @@ class NavigationBar extends Component {
                                     </li> : null}
                             </Nav>
                         </Navbar.Collapse>
-                    </Container>
+                    </div>
                 </Navbar>
             </div>
         );

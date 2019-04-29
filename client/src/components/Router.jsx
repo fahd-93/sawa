@@ -7,7 +7,6 @@ import ConstructionForm from "./campaign/ConstructionForm";
 import EducationForm from "./campaign/EducationForm";
 import MedicalForm from "./campaign/MedicalForm";
 import CampaignForm from "./campaign/CampaignForm";
-import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./campaign/LocationForm";
 import SignInForm from "./User Registration/SignInForm";
 import Notfound from "./Notfound";
@@ -83,10 +82,10 @@ class Router extends Component {
                     />
                     <Route path="/location-form"
                         component={LocationForm} />
-                    <Route path="/multimedia-form"
-                        component={MultimediaForm} />
-                        <Route path="/how-page"
+
+                    <Route path="/how-page"
                         component={HowPage} />
+
                     <Route component={Notfound} />
 
                 </Switch>

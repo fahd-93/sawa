@@ -1,6 +1,12 @@
+.profile-form-container{
+  background: white;
+  border-radius: 5px;
+  margin: auto;
+  width: 600px;
+  padding: 40px;
+}
 .data-container{
   display: flex;
-  width: 100%;
   justify-content: center;
 }
 .col-left {
@@ -33,10 +39,8 @@
   }
 }
 
-.text-style {
-  width: 720px;
-  font-size: 3.4rem;
-
+.text {
+  width: 100%;
   align-content: center;
   text-align: center;
   text-transform: uppercase;

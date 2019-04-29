@@ -3,8 +3,6 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
-//import GoogleLogin from 'react-google-login';
-
 import * as actions from "../../redux/actions/actionCreator";
 
 import CustomInput from '../CustomInput';
@@ -17,19 +15,12 @@ class SignUpForm extends Component {
 
   }
   async onSubmit(formData) {
-    console.log('onSubmit() has been called');
-    console.log('form data', formData);
-    //Call the ActionCreator
     await this.props.signUp(formData);
     if (!this.props.history.errorMessage) {
       this.props.history.push('/profilepage')
     }
   }
 
-/*  responseGoogle(res) {
-    console.log('responseGoogle', res);
-
-  }*/
   async responseFacebook(res) {
     await this.props.oauthFacebook(res.accessToken);
     if (!this.props.errorMessage) {
@@ -40,14 +31,13 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="camp-form-container">
+      <div className="registration-form-container">
         <div className="text"><span>Sign Up</span></div>
         <div>
           <div>
             <div className="text-center">
               <FacebookLogin
                 appId="2241134356214829"
-                // autoLoad={true}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
                 cssClass="btnFacebook"
@@ -97,9 +87,7 @@ class SignUpForm extends Component {
               <button type="submit" className="continue-btn">Sign up</button>
             </form>
           </div>
-
       </div>
-
     )
   }
 }
@@ -113,8 +101,7 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, actions),
-  reduxForm({ form: 'signup' })
-
+    reduxForm({ form: 'signup' })
 )(SignUpForm);
 
 

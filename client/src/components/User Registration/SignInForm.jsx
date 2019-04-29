@@ -11,25 +11,16 @@ class SignInForm extends Component {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
         this.responseFacebook = this.responseFacebook.bind(this);
-
     }
 
     async onSubmit(formData, ) {
-
-        // console.log('onSubmit() has been called');
-        console.log('form data', formData);
-
-        //Call the ActionCreator
         await this.props.signIn(formData);
         if (!this.props.history.errorMessage) {
             this.props.history.push('/profilepage')
         }
     }
 
-
-
     async responseFacebook(res) {
-        console.log('responseFacebook', res);
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
             this.props.history.push('/profilepage')
@@ -37,12 +28,11 @@ class SignInForm extends Component {
         }
     }
 
-
     render() {
         const { handleSubmit } = this.props;
         return (
 
-            <div className="camp-form-container">
+            <div className="registration-form-container">
                 <div className="text"><span>Login</span></div>
                 <div>
                     <div >
@@ -96,7 +86,6 @@ class SignInForm extends Component {
                                     className="continue-btn">
                                 CONTINUE
                             </button>
-                            {/*<div>Forgot Password?</div>*/}
                         </div>
 
                     </form>
@@ -118,9 +107,6 @@ function mapStateToProps(state) {
 
     }
 }
-
-
-
 
 export default compose(
     connect(mapStateToProps, actions),

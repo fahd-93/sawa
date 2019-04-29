@@ -16,10 +16,9 @@ campaignController.getAllCampaigns = (req, res, next) => {
     })
 };
 
-campaignController.getUserCampaigns = async(req, res, next) =>{
+campaignController.getUserCampaigns = async(req, res) =>{
     const { Id } = req.params;
     const campaign = await Campaign.findById(Id);
-    //console.log('campaign', campaign);
     res.status(201).json(campaign);
     
 };

@@ -34,7 +34,8 @@ class EditUserProfile extends Component {
                         last_name: res.data.last_name,
                         profession: res.data.profession,
                         gender: res.data.gender,
-                        dateBirth: res.data.date_of_birth
+                        dateBirth: res.data.date_of_birth,
+                        volunteerType: res.data.type_of_volunteers
                     })
                 })
                 .catch(err => console.log('Error', err))
@@ -138,7 +139,7 @@ class EditUserProfile extends Component {
                         </div>
                     </div>
 
-                    <VolunteerType defaultValue={this.state.volunteerType}/>
+                    <VolunteerType/>
 
                     <div className="row">
                         <div className="col-25">
@@ -156,17 +157,6 @@ class EditUserProfile extends Component {
                             />
                         </div>
                     </div>
-{/*                    <div className="row">
-                        <div className="col-25">
-                            <label> Upload Image:</label>
-                        </div>
-                        <div className="col-75">
-                            <input type="file"
-                                   name="image"
-                                   ref={this.userImageRef} />
-                        </div>
-                    </div>
-*/}
 
                     <div onClick={e => this.updateUserInput(e)}
                          className="btn-div">

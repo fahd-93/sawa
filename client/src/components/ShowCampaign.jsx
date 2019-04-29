@@ -8,12 +8,11 @@ class ShowCampaign extends Component {
 
     state = {};
 
-    componentDidMount() {
-        this.props.getAllCamp();
+     componentDidMount() {
+         this.props.getAllCamp();
     }
 
     getId = (e) => {
-
         this.setState({ campaignId: e });
         this.props.getCampId(e);
     };
@@ -29,16 +28,14 @@ class ShowCampaign extends Component {
             )
         }
 
-        const campaign = this.props.campaign;
-
         return (
-            <div className="campaigns-container">
+            <div className="camp-form-container">
                 <div className="text">
                     <span>Existing Campaigns</span>
                 </div>
                 <CardColumns >
 
-                    {campaign.map(user =>
+                    {this.props.campaign.map(user =>
 
                         <Link to={`/users/campaign/${user._id}`}
                               onClick={() => this.getId(user._id)}>

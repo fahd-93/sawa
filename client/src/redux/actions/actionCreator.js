@@ -36,6 +36,7 @@ export const getAllCamp = () => (dispatch) => {
 	axios
 		.get('http://localhost:4000/api/campaigns')
 		.then((res) => {
+			console.log('Action Res', res.data);
 		dispatch({
 			type: 'GET_ALL_CAMP',
 			payload: res.data
@@ -79,10 +80,11 @@ export const saveCampaign = (inputs, formData) => (dispatch) => {
 			'content-type': `multipart/form-data; boundary=${formData._boundary}`
 		}
 		})
-		.then(() => {
+		.then((res) => {
+			console.log('res save camp',res.data);
 			dispatch({
-				type: 'ADD_INPUTS',
-				payload: inputs
+				type: 'ADD_NEW_CAMP',
+				payload: res.data.campaign
 			});
 			})
 		.catch((error) => {

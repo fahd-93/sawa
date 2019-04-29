@@ -5,6 +5,8 @@ import { saveCampaign } from "../../redux/actions/actionCreator";
 import VolunteerType from "./VolunteerType";
 import CampaignDate from './CampaignDate';
 import CampaignInput from './CampaignInput';
+import * as jwt_decode from "jwt-decode";
+import axios from "axios";
 
 
 class EducationForm extends Component {
@@ -24,6 +26,18 @@ class EducationForm extends Component {
 
     handelInputs = (e) => {
         e.preventDefault();
+        const jwtToken = localStorage.getItem('JWT_TOKEN');
+
+        if (jwtToken) {
+            try {
+                let x = jwt_decode(jwtToken);
+
+                axios.defaults.headers.common['Authorization'] = jwtToken;
+
+                this.setState({id: x.sub})
+            }
+            catch (error) {console.log(error)}
+        }
 
         this.setState({
             category: this.props.campaign.category,

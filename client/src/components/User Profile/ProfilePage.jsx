@@ -54,9 +54,9 @@ class ProfilePage extends Component {
 
             return (
 
-                <div className="camp-form-container">
+                <div className="profile-form-container">
                     <Avatar/>
-                    <div className='text-style'>
+                    <div className='text'>
                         <span>{this.state.name} {this.state.lastName}</span>
                     </div>
                     <div className="data-container">

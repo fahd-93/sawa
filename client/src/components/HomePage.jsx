@@ -12,7 +12,6 @@ class HomePage extends Component {
         this.props.getAllCamp();
     }
 
-
     render() {
 
         if (this.props.campaign === undefined) {
