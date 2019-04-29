@@ -8,12 +8,12 @@ import ConstructionForm from "./campaign/ConstructionForm";
 import CampaignForm from "./campaign/CampaignForm";
 import MultimediaForm from "./MultimediaForm";
 import LocationForm from "./campaign/LocationForm";
-import SignInForm from "./User Profile/SignInForm";
+import SignInForm from "./User Registration/SignInForm";
 import Notfound from "./Notfound";
 
 // import App from './components/App'
 
-import SignUpForm from './User Profile/SignUpForm';
+import SignUpForm from './User Registration/SignUpForm';
 import ShowCampaign from './ShowCampaign';
 import ProfilePage from './User Profile/ProfilePage';
 import ShowSingleCampaign from './ShowSingleCampaign';

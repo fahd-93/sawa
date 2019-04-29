@@ -99,15 +99,9 @@ class SignUpForm extends Component {
                   {this.props.errorMessage}
                 </div> : null}
 
-
-
-
-
               <button type="submit" className="continue-btn">Sign up</button>
             </form>
           </div>
-          <br />
-
 
       </div>
 
