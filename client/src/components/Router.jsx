@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import '../sass/styles.scss';
-
 import HomePage from "./HomePage";
 import ConstructionForm from "./campaign/ConstructionForm";
 import EducationForm from "./campaign/EducationForm";
@@ -19,9 +18,10 @@ import NavigationBar from './NavigationBar';
 import Foot from './Foot';
 import EditUserProfile from './User Profile/EditUserProfile';
 import HowPage from './HowPage';
+import About from './About';
 
 import Geolocation from "./Geolocation";
-import UserCards from "./UserCards";
+//import UserCards from "./UserCards";
 
 class Router extends Component {
     render() {
@@ -34,6 +34,11 @@ class Router extends Component {
                         exact
                         path="/"
                         component={HomePage}
+                    />
+                    <Route
+                        exact
+                        path="/about"
+                        component={About}
                     />
                     <Route
                         exact
@@ -66,10 +71,6 @@ class Router extends Component {
                         path="/editprofile"
                         component={EditUserProfile}
                     />
-                    {/* <Route exact
-                        path="/users"
-                        component={UserCards}
-                    /> */}
 
                     <Route path="/geolocation"
                         component={Geolocation}
