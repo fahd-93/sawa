@@ -20,18 +20,31 @@ class NavigationBar extends Component {
                 <Navbar bg="light" expand="lg">
                     <Container>
                         <Navbar.Brand href={"/"}>
-                            {/*<img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png" alt="logo" width="30"/>*/}
-                            <h4 className="logo">SAWA</h4>
+                     {/*       <img src="https://cdn.pixabay.com/photo/2013/07/12/15/35/community-150125_960_720.png"
+                                 alt="logo" width="30"/>*/}
+                            <h5 className="font-style"><span/>sawa</h5>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
                             <Nav>
-                                <Nav.Link href="how-page">How does it work?</Nav.Link>
-                                <Nav.Link href="showcampaign">Campaigns</Nav.Link>
+                                <Nav.Link href="how-page"
+                                          className="nav-link">
+                                    How does it work?
+                                </Nav.Link>
+                                <Nav.Link href="showcampaign"
+                                          className="nav-link" >
+                                    Campaigns
+                                </Nav.Link>
                                 {this.props.isAuth ?
-                                    <Nav.Link href="profilepage">Profile Page</Nav.Link> : null}
+                                    <Nav.Link href="profilepage"
+                                              className="nav-link">
+                                        Profile Page
+                                    </Nav.Link> : null}
                                 {this.props.isAuth ?
-                                    <Nav.Link href="create-campaign">Create Campaign</Nav.Link> : null}
+                                    <Nav.Link href="create-campaign"
+                                              className="nav-link">
+                                        Create Campaign
+                                    </Nav.Link> : null}
 
 
                                 {!this.props.isAuth ?

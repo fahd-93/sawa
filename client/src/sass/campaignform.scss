@@ -6,27 +6,24 @@ body {
 .camp-form-container{
   background: white;
   border-radius: 5px;
-  max-width: 800px;
-  margin: 50px 400px;
+  margin: auto;
+  width: 800px;
   padding: 40px;
 }
 .margin-center {
   margin: auto;
 }
-h3 {
+
+.text {
   text-align: center;
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 40px;
   padding: 20px;
   font-family: Andale Mono, serif;
   text-decoration: underline;
   color: #168d7e;
   span {
     color: #14103B;
-  }
-  strong{
-    color: white;
+    font-size: 3rem;
   }
 }
 
@@ -38,10 +35,12 @@ label{
 input {
   width: 100%;
 }
+
 .btn-div {
   width: 100%;
   text-align: center;
 }
+
 .btn-style {
   width: 100%;
   text-align: center;
@@ -57,6 +56,7 @@ input {
   margin-top: 15px;
   float: right;
 }
+
 .btn-style:hover {
   color: white;
   background: #168d7e;
@@ -75,30 +75,35 @@ input {
   font-family: Andale Mono, serif;
   padding: 15px;
 }
+
 .row {
   margin-bottom: 5px;
 }
+
 .col-25 {
   margin-left: 15px ;
   float: left;
   width: 30%;
   margin-top: 6px;
 }
+
 .col-75 {
   float: left;
   width: 65%;
   margin-top: 6px;
 }
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
 textarea {
   width: 490px;
   height: 300px;
-  font-family: "Andale Mono", serif;
   padding: 15px;
+  font-family: "Andale Mono", serif;
 }
 .date-container {
   display: flex;

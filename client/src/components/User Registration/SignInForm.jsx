@@ -43,7 +43,7 @@ class SignInForm extends Component {
         return (
 
             <div className="camp-form-container">
-                <h3><span>Login</span></h3>
+                <div className="text"><span>Login</span></div>
                 <div>
                     <div >
                         <div className="text-center">
@@ -96,8 +96,6 @@ class SignInForm extends Component {
                                     className="continue-btn">
                                 CONTINUE
                             </button>
-                            {/* <button type="submit" className="btn btn-outline-lg btn-success btn-block">Continue</button> */}
-                            <br />
                             {/*<div>Forgot Password?</div>*/}
                         </div>
 
