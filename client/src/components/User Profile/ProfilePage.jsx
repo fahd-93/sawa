@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Avatar from './Avatar';
+import Avatar from './Avatar';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as jwt_decode from "jwt-decode";
@@ -55,7 +55,7 @@ class ProfilePage extends Component {
             return (
 
                 <div className="camp-form-container">
-                    {/*<Avatar/>*/}
+                    <Avatar/>
                     <div className='text-style'>
                         <span>{this.state.name} {this.state.lastName}</span>
                     </div>

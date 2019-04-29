@@ -22,8 +22,8 @@ const campaignSchema = new mongoose.Schema({
         default: Date.now
     },
     campaign_location: {
-        latitude: { String },
-        longitude: { String }
+        latitude: String,
+        longitude: String
     },
     country_code: {
         type: Number

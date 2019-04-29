@@ -27,8 +27,8 @@ class EducationForm extends Component {
 
         this.setState({
             category: this.props.campaign.category,
-            /*latitude: this.props.campaign.campaign_location.latlng.lat,
-            longitude: this.props.campaign.campaign_location.latlng.lng,*/
+            latitude: this.props.campaign.campaign_location.latlng.lat,
+            longitude: this.props.campaign.campaign_location.latlng.lng,
             [e.target.name]: e.target.value,
         });
 

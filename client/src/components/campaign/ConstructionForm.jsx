@@ -5,7 +5,8 @@ import { saveCampaign } from "../../redux/actions/actionCreator";
 import VolunteerType from "./VolunteerType";
 import CampaignDate from './CampaignDate';
 import CampaignInput from './CampaignInput';
-
+import * as jwt_decode from "jwt-decode";
+import axios from "axios";
 
 class ConstructionForm extends Component {
     constructor(props) {
@@ -24,11 +25,23 @@ class ConstructionForm extends Component {
 
     handelInputs = (e) => {
         e.preventDefault();
+        const jwtToken = localStorage.getItem('JWT_TOKEN');
+
+        if (jwtToken) {
+            try {
+                let x = jwt_decode(jwtToken);
+
+                axios.defaults.headers.common['Authorization'] = jwtToken;
+
+                this.setState({id: x.sub})
+            }
+            catch (error) {console.log(error)}
+        }
 
         this.setState({
             category: this.props.campaign.category,
-            /*latitude: this.props.campaign.campaign_location.latlng.lat,
-            longitude: this.props.campaign.campaign_location.latlng.lng,*/
+            latitude: this.props.campaign.campaign_location.latlng.lat,
+            longitude: this.props.campaign.campaign_location.latlng.lng,
             [e.target.name]: e.target.value,
         });
 
