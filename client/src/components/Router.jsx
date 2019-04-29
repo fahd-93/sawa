@@ -89,7 +89,7 @@ class Router extends Component {
                         component={LocationForm} />
                     <Route path="/multimedia-form"
                         component={MultimediaForm} />
-                        <Route path="/how-page"
+                    <Route path="/how-page"
                         component={HowPage} />
                     <Route component={Notfound} />
 
