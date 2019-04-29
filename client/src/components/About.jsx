@@ -20,8 +20,9 @@ class About extends Component {
 
                 </div>
                 <div className="section1">
-                    <h2 className="first-section-title">Volunteer opportunities</h2>
+
                     <Image src="photos/men.jpg" className="section1-image" />
+                    <h2 className="first-section-title">Volunteer opportunities</h2>
                     <p className="section1-content" >With our platform mission always in mind, we strive to find new startegies for dealing<br /> with this challenge.
                         <br />volunteer opportunities is something that we take very seriously </p>
 
@@ -29,8 +30,9 @@ class About extends Component {
 
 
                 <div className="section2">
-                    <h2 className="second-section-title">Help Rebuilding The community</h2>
+
                     <Image src="photos/workers.jpg" className="section2-image" />
+                    <h2 className="second-section-title">Help Rebuilding The community</h2>
                     <p className="section2-content" >Furthering our cause is the most important goal of our platform.
                      We seek to bring people who wants to help others to restore basic rights of living.<br />
                         Our success isn’t measured in terms of any wealth or profit, but by the value we provide to those we serve
