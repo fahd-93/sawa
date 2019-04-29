@@ -40,6 +40,11 @@ class Router extends Component {
                         path="/showcampaign"
                         component={ShowCampaign}
                     />
+                     <Route
+                        exact
+                        path="/users/campaign/showcampaign"
+                        component={ShowCampaign}
+                    />
                     <Route
                         exact
                         path="/users/campaign/:Id"

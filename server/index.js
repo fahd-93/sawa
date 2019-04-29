@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require("cors");
+const Campaign = require('./models/Campaign');
+const User = require('./models/Users');
+
 const port = process.env.PORT || 4000;
 
 
@@ -40,6 +43,36 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Public folder -- Create a folder named Public
 app.use("/uploads", express.static("./public/uploads/"));
+
+//join campaign
+app.post('/api/users/join/campaign',   (req, res) => {
+	const campaignId = req.body.campaignId; //CAMPAIN ID
+	const userId = req.body.userId;
+	console.log(req.body);
+
+	var id = mongoose.Types.ObjectId(userId);
+	
+		Campaign.findById(campaignId, (err, doc)=>{
+			console.log(doc);
+			let index = doc.volunteers.indexOf(id);
+			if(index !== -1) return res.send('you already joind')
+			console.log('user',index);
+
+			let volunteers = [];
+			volunteers = [...doc.volunteers, id];
+			doc.volunteers = volunteers;
+			console.log(doc);
+			doc.save();
+			User.find({
+				'_id': { $in: doc.volunteers}
+			}, function(err, volunteers){
+				 console.log(volunteers);
+				 res.send({error:0, message:'joined successfully', volunteers:volunteers});
+			});
+
+			})
+		} 
+);
 
 //Routes
 app.use('/api', require('./routes/users'));

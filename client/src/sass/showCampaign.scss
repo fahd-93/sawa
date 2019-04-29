@@ -1,7 +1,10 @@
 body {
-    background-color: #FBF8F6;
+	background-color: #fbf8f6;
 }
 
+.cam-container {
+	max-width: 950px;
+	margin: 40px auto;
 .campaigns-container {
   margin: 0 auto;
   padding: 40px;
@@ -12,6 +15,34 @@ body {
     max-width: 900px;
     padding: 0;
   }
+
+// .card-columns{
+//     column-count: 4;
+// }
+
+//   .card-body {
+//       margin: 0;
+//       padding: 10px 10px 0px 0px;
+//   }
+.card {
+	border: none;
+	background-color: white !important;
+
+	width: 100%;
+}
+.card-title {
+	color: #00b964;
+	padding: 10px 0px;
+}
+.card-text {
+	margin-bottom: 30px;
+	color: rgb(5, 5, 5);
+	font-size: 0.9em;
+}
+.cam-header {
+	color: #00b964;
+	margin-bottom: 50px;
+}
 
   .card-body {
       margin: auto;
