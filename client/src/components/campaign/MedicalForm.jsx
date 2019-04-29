@@ -8,7 +8,7 @@ import CampaignInput from './CampaignInput';
 import * as jwt_decode from "jwt-decode";
 import axios from "axios";
 
-class ConstructionForm extends Component {
+class MedicalForm extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -37,7 +37,6 @@ class ConstructionForm extends Component {
             }
             catch (error) {console.log(error)}
         }
-
         this.setState({
             category: this.props.campaign.category,
             latitude: this.props.campaign.campaign_location.latlng.lat,
@@ -63,7 +62,7 @@ class ConstructionForm extends Component {
         formData.set("category", this.state.category);
         formData.append("image", this.userImageRef.current.files[0]);
 
-        this.props.saveCampaign(this.userId, formData);
+        this.props.saveCampaign(this.state, formData);
     };
 
     render() {
@@ -71,13 +70,8 @@ class ConstructionForm extends Component {
             return (
                 <div className="camp-form-container">
                     <div className="margin-center">
-                        <h3 className='text'>
-                            <span>
-                                Construction Campaign
-                            </span>
-                        </h3>
+                        <h3 className='text'><span>Medical Campaign</span></h3>
                         <form onChange={e => this.handelInputs(e)}>
-
                             <CampaignInput/>
 
                             <VolunteerType/>
@@ -85,9 +79,8 @@ class ConstructionForm extends Component {
                             <CampaignDate/>
                             <div className="row">
                                 <div className="col-25">
-                                    <label>Upload Image:</label>
+                                    <label> Upload Image:</label>
                                 </div>
-
                                 <div className="col-75">
                                     <input type="file"
                                            name="image"
@@ -107,13 +100,14 @@ class ConstructionForm extends Component {
                 </div>
             )
         }
-        return null;
+        return (
+            <div>Unauthorized User, Please LogIn or Sign up to be able to create a campaign</div>
+        )
     }
 }
 
 const mapStateToProps = state => ({
-    campaign: state.campaign,
-    userId: state.userId,
+    campaign: state.campaign
 });
 
-export default connect(mapStateToProps, { saveCampaign })(ConstructionForm);
+export default connect(mapStateToProps, { saveCampaign })(MedicalForm);

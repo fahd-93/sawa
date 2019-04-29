@@ -1,3 +1,26 @@
+.nav-flex {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: $sawa-background;
+}
 .navbar-light .navbar-nav .nav-link {
     color: rgba(0, 0, 0, 0.9);
+    font-family: "Andale Mono", sans-serif;
+    text-transform: uppercase ;
 }
+
+.flex-container {
+    display: flex;
+    width: 800px;
+}
+.font-style {
+    position: relative;
+    font-family: "Andale Mono", sans-serif;
+    color: cadetblue;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    border-bottom: 1px solid #666666;
+ }

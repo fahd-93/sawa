@@ -3,11 +3,9 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
-//import GoogleLogin from 'react-google-login';
+import * as actions from "../../redux/actions/actionCreator";
 
-import * as actions from "../redux/actions/actionCreator";
-
-import CustomInput from './CustomInput';
+import CustomInput from '../CustomInput';
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -17,82 +15,66 @@ class SignUpForm extends Component {
 
   }
   async onSubmit(formData) {
-    console.log('onSubmit() has been called');
-    console.log('form data', formData);
-    //Call the ActionCreator
     await this.props.signUp(formData);
     if (!this.props.history.errorMessage) {
       this.props.history.push('/profilepage')
     }
   }
 
-/*  responseGoogle(res) {
-    console.log('responseGoogle', res);
-
-  }*/
-
-
   async responseFacebook(res) {
-    console.log('responseFacebook', res);
     await this.props.oauthFacebook(res.accessToken);
     if (!this.props.errorMessage) {
       this.props.history.push('/profilepage')
-
     }
   }
-
 
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="container-col-md">
-        <div className="col">
-          <div className="text-center">
-            <div className="">
-
-
+      <div className="registration-form-container">
+        <div className="text"><span>Sign Up</span></div>
+        <div>
+          <div>
+            <div className="text-center">
               <FacebookLogin
                 appId="2241134356214829"
-                // autoLoad={true}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
                 cssClass="btnFacebook"
                 icon={< i className="fa fa-facebook"/>}
               />
-
             </div>
             <div className="divider-text">or</div>
-
           </div>
         </div>
-        <div className="col">
-          <div className="col">
+
+        <div>
             <form onSubmit={handleSubmit(this.onSubmit)}>
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="name"
                   type="text"
                   id="name"
-                  label="Enter your name"
+                  label="Enter your name:"
                   placeholder="Enter Your name"
                   component={CustomInput} />
               </fieldset>
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="email"
                   type="text"
                   id="email"
-                  label="Enter your email"
+                  label="Enter your email:"
                   placeholder="example@example.com"
                   component={CustomInput} />
               </fieldset>
 
-              <fieldset className="field">
+              <fieldset>
                 <Field
                   name="password"
                   type="password"
                   id="password"
-                  label="Enter your Password"
+                  label="Enter your Password:"
                   placeholder="Your Password"
                   component={CustomInput} />
 
@@ -102,18 +84,10 @@ class SignUpForm extends Component {
                   {this.props.errorMessage}
                 </div> : null}
 
-
-
-
-
               <button type="submit" className="continue-btn">Sign up</button>
             </form>
           </div>
-          <br />
-
-        </div>
       </div>
-
     )
   }
 }
@@ -127,8 +101,7 @@ function mapStateToProps(state) {
 
 export default compose(
   connect(mapStateToProps, actions),
-  reduxForm({ form: 'signup' })
-
+    reduxForm({ form: 'signup' })
 )(SignUpForm);
 
 

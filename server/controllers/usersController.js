@@ -182,9 +182,9 @@ userController.getUserCampaigns = async (req, res) => {
 
 userController.createUserCampaign = async (req, res) => {
 	const { Id } = req.params;
-	//create a new campaign
+	console.log(req.body.category);
 	const campaign = new Campaign({
-		categories: req.body.categories,
+		categories: req.body.category,
 		title: req.body.title,
 		description: req.body.description,
 		created_at: req.body.created_at,

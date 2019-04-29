@@ -32,7 +32,7 @@ class VolunteerType extends Component {
                     <select name="type_of_volunteers"
                             className="custom-select"
                             ref={this.typeOfVolunteersRef}>
-                        <option defaultValue>
+                        <option >
                             Choose Type of Volunteer Your Campaign Needs
                         </option>
                         {this.state.volunteerType.map(( item, i ) => (

@@ -1,14 +1,14 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 
-const Foot = (props) => {
+const Foot = () => {
     return (
 
         <section id="footer">
-            <Container>
+            <div className="container">
                 <Row>
-                    <Col>
+                    <Col >
                         <ul className="list-unstyled quick-links justify-content-between">
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>Home</a></li>
                             <li className="list-inline-item"><a href="https://example.com"><i className="fa fa-angle-double-right"></i>About</a></li>
@@ -27,7 +27,7 @@ const Foot = (props) => {
                         </ul>
                     </Col>
                 </Row>
-            </Container>
+            </div>
         </section>
 
     )

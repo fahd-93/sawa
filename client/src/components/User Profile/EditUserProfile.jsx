@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import VolunteerType from './campaign/VolunteerType';
+import VolunteerType from '../campaign/VolunteerType';
 import * as jwt_decode from "jwt-decode";
 import AlgoliaPlaces from 'algolia-places-react';
 import axios from 'axios';
@@ -10,31 +10,11 @@ class EditUserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.nameRef = React.createRef();
-        this.last_nameRef = React.createRef();
-        this.emailRef = React.createRef();
-        this.genderRef = React.createRef();
-        this.dateBirthRef = React.createRef();
-        this.professionRef = React.createRef();
-        this.locationRef = React.createRef();
-        this.userImageRef = React.createRef();
         this.userId = this.getUserId()
     }
 
     updateUserInput = async e => {
         e.preventDefault();
-
-        let formData = new FormData();
-
-        formData.set('name', this.state.nameRef);
-        formData.set('last_name', this.state.last_nameRef);
-        formData.set('email', this.state.emailRef);
-        formData.set('gender', this.state.genderRef);
-        formData.set('dateBirth', this.state.dateBirthRef);
-        formData.set('profession', this.state.professionRef);
-        formData.set('location', this.state.locationRef);
-        formData.append("image", this.userImageRef.current.files[0]);
-
         await axios
             .put( `http://localhost:4000/api/users/${this.userId}`, this.state)
             .then(res => console.log("res.data", res.data))
@@ -54,7 +34,8 @@ class EditUserProfile extends Component {
                         last_name: res.data.last_name,
                         profession: res.data.profession,
                         gender: res.data.gender,
-                        dateBirth: res.data.date_of_birth
+                        dateBirth: res.data.date_of_birth,
+                        volunteerType: res.data.type_of_volunteers
                     })
                 })
                 .catch(err => console.log('Error', err))
@@ -68,15 +49,12 @@ class EditUserProfile extends Component {
         if (jwtToken) {
             try {
                 let x = jwt_decode(jwtToken);
-
                 axios.defaults.headers.common['Authorization'] = jwtToken;
-
                 return x.sub
             }
             catch (error) {
                 console.log(error);
             }
-
         }
         return null;
     };
@@ -89,9 +67,7 @@ class EditUserProfile extends Component {
     };
 
     handleLocation = suggestion => {
-
         let location = suggestion.suggestion;
-
         this.setState({
             city: location.name,
             postcode: location.postcode,
@@ -121,25 +97,21 @@ class EditUserProfile extends Component {
                     <label>First Name:</label>
                     <input type="text"
                            name="name" readOnly
-                           ref={this.nameRef}
                            defaultValue={this.state.name} />
 
                     <label>Last Name:</label>
                     <input type="text"
                            name="last_name"
-                           ref={this.last_nameRef}
                            defaultValue={this.state.last_name} />
 
                     <label> Email:</label>
                     <input type="email"
                            name="email" readOnly
-                           ref={this.emailRef}
                            defaultValue={this.state.email} />
 
                     <label >Profession:</label>
                     <input type="text"
                            name="profession"
-                           ref={this.professionRef}
                            defaultValue={this.state.profession} />
                     <br/><br/>
                     <div className="row">
@@ -148,7 +120,6 @@ class EditUserProfile extends Component {
                         </div>
                         <div className="col-75">
                             <input type="date" name="dateBirth"
-                                   ref={this.dateBirthRef}
                                    defaultValue={this.state.dateBirth} />
                         </div>
 
@@ -159,7 +130,6 @@ class EditUserProfile extends Component {
                         </div>
                         <div className="col-75">
                             <select name="gender"
-                                    ref={this.genderRef}
                                     className="custom-select">
                                 <option defaultValue>{this.state.gender}</option>
                                 <option value="Male">Male</option>
@@ -169,7 +139,7 @@ class EditUserProfile extends Component {
                         </div>
                     </div>
 
-                    <VolunteerType defaultValue={this.state.volunteerType}/>
+                    <VolunteerType/>
 
                     <div className="row">
                         <div className="col-25">
@@ -178,7 +148,6 @@ class EditUserProfile extends Component {
                         <div className="col-75">
                              <AlgoliaPlaces
                                 name='AlgoliaPlaces'
-                                ref={this.locationRef}
                                 placeholder="Write an address here"
                                 options={{
                                     appId: 'pl48PRQJVY9X',
@@ -186,20 +155,8 @@ class EditUserProfile extends Component {
                                 }}
                                 onChange={(suggestion) => this.handleLocation(suggestion)}
                             />
-
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-25">
-                            <label> Upload Image:</label>
-                        </div>
-                        <div className="col-75">
-                            <input type="file"
-                                   name="image"
-                                   ref={this.userImageRef} />
-                        </div>
-                    </div>
-
 
                     <div onClick={e => this.updateUserInput(e)}
                          className="btn-div">

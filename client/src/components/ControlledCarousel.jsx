@@ -29,10 +29,9 @@ class ControlledCarousel extends React.Component {
                 activeIndex={index}
                 direction={direction}
                 onSelect={this.handleSelect}
-                className="carousel-fade"
-            >
-                <Carousel.Item
-                >
+                className="carousel-fade">
+
+                <Carousel.Item>
                     <img
                         className="d-block w-100 carousel-control"
                         src="http://res.cloudinary.com/ddrvpl4zh/image/upload/v1556404639/srzkeg4hnnkiqkvdfsgb.jpg"

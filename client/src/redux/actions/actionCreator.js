@@ -33,7 +33,10 @@ export const addCategory = (category) => (dispatch) => {
 };
 
 export const getAllCamp = () => (dispatch) => {
-	axios.get('http://localhost:4000/api/campaigns').then((res) => {
+	axios
+		.get('http://localhost:4000/api/campaigns')
+		.then((res) => {
+			console.log('Action Res', res.data);
 		dispatch({
 			type: 'GET_ALL_CAMP',
 			payload: res.data
@@ -47,15 +50,6 @@ export const getCampId = (id) => (dispatch) => {
 		payload: id
 	});
 };
-// updateInput is to update the redux Campaign Store with the the new inputs
-/*export const addInputs = inputs => dispatch => {
-    console.log('inputs', inputs);
-    dispatch({
-        type: "ADD_INPUTS",
-        payload: inputs
-    })
-};*/
-
 
 export const getAllUsers = () => dispatch => {
     axios
@@ -76,30 +70,27 @@ export const addLocation = (location) => (dispatch) => {
 	});
 };
 
-export const saveCampaign = (id, formData) => (dispatch) => {
-	console.log(id);
+export const saveCampaign = (inputs, formData) => (dispatch) => {
+	console.log('Inputs', inputs);
 	axios({
 		method: 'post',
-		url: `http://localhost:4000/api/users/${id}/campaign`,
+		url: `http://localhost:4000/api/users/${inputs.id}/campaign`,
 		data: formData,
 		headers: {
 			'content-type': `multipart/form-data; boundary=${formData._boundary}`
 		}
-	})
-		.then()
+		})
+		.then((res) => {
+			console.log('res save camp',res.data);
+			dispatch({
+				type: 'ADD_NEW_CAMP',
+				payload: res.data.campaign
+			});
+			})
 		.catch((error) => {
 			console.log(error);
 		});
 };
-
-// export const editCampaign = () => dispatch => {
-//     let id = '5c9cbf4b07dce90a6de3b9ea';
-//     axios
-//         .get(`http://localhost:4000/api/campaign/${id}`)
-//         .then( res => {
-//             console.log(res.data);
-//         })
-// };
 
 // Sign up. save the Token & handle Error Message
 export const signUp = (data) => {

@@ -3,33 +3,24 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import FacebookLogin from 'react-facebook-login';
-import * as actions from "../redux/actions/actionCreator";
-import CustomInput from './CustomInput';
+import * as actions from "../../redux/actions/actionCreator";
+import CustomInput from '../CustomInput';
 
 class SignInForm extends Component {
     constructor(props) {
         super(props);
         this.onSubmit = this.onSubmit.bind(this);
         this.responseFacebook = this.responseFacebook.bind(this);
-
     }
 
     async onSubmit(formData, ) {
-
-        // console.log('onSubmit() has been called');
-        console.log('form data', formData);
-
-        //Call the ActionCreator
         await this.props.signIn(formData);
         if (!this.props.history.errorMessage) {
             this.props.history.push('/profilepage')
         }
     }
 
-
-
     async responseFacebook(res) {
-        console.log('responseFacebook', res);
         await this.props.oauthFacebook(res.accessToken);
         if (!this.props.errorMessage) {
             this.props.history.push('/profilepage')
@@ -37,38 +28,32 @@ class SignInForm extends Component {
         }
     }
 
-
     render() {
         const { handleSubmit } = this.props;
         return (
 
-            <div className="container-col-md">
-                <h2 className="form-signin-heading">Please Login</h2>
-                <div className="col">
-                    <div className="text-center">
-                        <br />
-                        <div >
-
-
+            <div className="registration-form-container">
+                <div className="text"><span>Login</span></div>
+                <div>
+                    <div >
+                        <div className="text-center">
                             <FacebookLogin
-
                                 appId="2241134356214829"
-                                // autoLoad={true}
+                                autoLoad={true}
                                 fields="name,email,picture"
                                 callback={this.responseFacebook}
                                 cssClass="btnFacebook"
                                 icon={< i className="fa fa-facebook"/>}
-
                             />
-
                         </div>
                         <div className="divider-text">or</div>
                     </div>
                 </div>
 
-                <div className="col-md">
-                    <form onSubmit={handleSubmit(this.onSubmit)}>
-                        <fieldset className="field">
+                <div>
+                    <form onSubmit={handleSubmit(this.onSubmit)}
+                          className="container">
+                        <fieldset>
                             <Field
                                 name="email"
                                 type="text"
@@ -78,9 +63,9 @@ class SignInForm extends Component {
                                 component={CustomInput} />
 
                         </fieldset>
-                        <fieldset className="field" >
-                            <Field
 
+                        <fieldset>
+                            <Field
                                 name="password"
                                 type="password"
                                 id="password"
@@ -96,13 +81,11 @@ class SignInForm extends Component {
                             </div> : null}
 
 
-
-
-                        <div className="col text-center">
-                            <button type="submit" className="continue-btn">Continue</button>
-                            {/* <button type="submit" className="btn btn-outline-lg btn-success btn-block">Continue</button> */}
-                            <br />
-                            <div>Forgot Password?</div>
+                        <div className="text-center">
+                            <button type="submit"
+                                    className="continue-btn">
+                                CONTINUE
+                            </button>
                         </div>
 
                     </form>
@@ -124,9 +107,6 @@ function mapStateToProps(state) {
 
     }
 }
-
-
-
 
 export default compose(
     connect(mapStateToProps, actions),

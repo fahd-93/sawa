@@ -7,8 +7,19 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case GET_ALL_CAMP: {
+            console.log('action get all campaign', action.payload);
             return {
+                ...state,
                 campaign: action.payload
+            }
+        }
+        case "ADD_NEW_CAMP": {
+           let campaign= state.campaign;
+           campaign.push(action.payload);
+           console.log('redux',campaign);
+            return {
+                ...state,
+                campaign: campaign
             }
         }
         case ADD_CATEGORY: {
