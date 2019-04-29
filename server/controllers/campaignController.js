@@ -76,7 +76,7 @@ campaignController.createUserCampaign = async(req, res, next) =>{
     await user.save();
     res.status(201).json(campaign);
 
-};
+}; */
 
 module.exports = campaignController;
 
