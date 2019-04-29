@@ -1,11 +1,55 @@
-.description {
+/* .description {
     max-width: 640px;
+} */
+.cam-singlecontainer {
+    max-width: 1100px !important;
+    margin: 10px auto;
+    
 }
 .singlecampimage {
-    max-width: 640px;
-    max-height: 440px;
+    width: 100%;
+    margin-bottom: 10px;
+   max-width: 640px;
+    max-height: 440px; 
 }
 .cam-singleheader{
-    margin-top:100px;
-    margin-bottom: 100px;
+    color: #4DB965;
+    margin-top:0px;
+    margin-bottom: 30px;
    }
+   .col-9 {
+       margin: 0px !important;
+   }
+   .col-3 {
+    width: 100%;
+    margin-top:75px;
+    padding: 0px;
+    height: auto; 
+     
+   }
+
+  .bg-info {
+    margin-top:140px;
+    height: auto;
+  }
+  .join {
+      margin-bottom: 20px;
+      border: none;
+      background-color: #4DB965;
+      width: 200px;
+  }
+  .share-to-fb {
+      margin-bottom: 50px;
+    border: none;
+    background-color: rgb(77, 124, 185);
+    width: 250px;
+}
+.tweeter {
+    margin-bottom: 50px;
+    border: none;
+    background-color:#1DA1F1;
+    width: 250px;
+}
+.singlemedia-body{
+    width: 300px;
+}

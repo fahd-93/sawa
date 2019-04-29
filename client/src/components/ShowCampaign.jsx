@@ -6,6 +6,7 @@ import { CardColumns, Card, Spinner } from "react-bootstrap";
 import axios from "axios";
 
 
+
 class ShowCampaign extends Component {
 
     state = {};
@@ -46,7 +47,8 @@ class ShowCampaign extends Component {
 
 
     render() {
-
+        
+        //window.location.reload(true);
         if (this.props.campaign === undefined) {
             return (
                 <div className="d-flex mx-auto m-5 align-baseline">
@@ -107,6 +109,7 @@ class ShowCampaign extends Component {
                     )
                     }
                 </CardColumns>
+
             </div>
 
 
@@ -114,12 +117,7 @@ class ShowCampaign extends Component {
     }
 }
 function mapStateToProps(state) {
-    // if (state.campaign.campaign === undefined) { return null }
-    // let arrayCampaign = state.campaign.campaign;
-    // const campaignID = arrayCampaign.map(x => x._id);
-    // console.log(campaignID);
-
-    // console.log('state from props CampaignCards PAGE', state.campaign.campaign);
+   
     return {
         campaign: state.campaign.campaign
     };

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import ControlledCarousel from './ControlledCarousel';
-import { getAllCamp } from "../redux/actions/actionCreator";
+import { getAllCamp, getCampId } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import { Row, Col, Card, CardColumns, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,13 @@ class HomePage extends Component {
 
     componentDidMount() {
         this.props.getAllCamp();
+    }
+    getId = (e) => {
+
+        this.setState({
+            campaignId: e
+        })
+        this.props.getCampId(e)
     }
 
 

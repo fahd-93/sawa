@@ -28,6 +28,7 @@ import HowPage from './HowPage';
 
 
 import Geolocation from "./Geolocation";
+import UserCards from "./UserCards";
 
 class Router extends Component {
     render() {
@@ -67,6 +68,11 @@ class Router extends Component {
                         path="/editprofile"
                         component={EditUserProfile}
                     />
+                    {/* <Route exact
+                        path="/users"
+                        component={UserCards}
+                    /> */}
+
                     <Route path="/geolocation"
                         component={Geolocation}
                     />

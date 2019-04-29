@@ -12,7 +12,7 @@ const campaignSchema = new mongoose.Schema({
     },
     created_by: {
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user.name'
     },
     description: {
         type: String
