@@ -1,58 +1,36 @@
 body {
-    background-color: #FBF8F6;
+	background-color: #fbf8f6;
 }
 
-.cam-container{
-    max-width: 1100px !important;
-    margin: 80px auto;
-    
+.cam-container {
+	max-width: 950px;
+	margin: 40px auto;
 }
 
+// .card-columns{
+//     column-count: 4;
+// }
 
-// .card-columns {
-//     max-width: 850px !important;
-//     margin: 30 auto;
-//     padding: 0;
-    
+//   .card-body {
+//       margin: 0;
+//       padding: 10px 10px 0px 0px;
 //   }
-  .card-body {
-      margin: 0;
-      padding: 10px 10px 0 0;
-  }
-  .card{
-        border: none;
-        background-color: white !important;
-        position: relative !important;
-        
-	    width: 100%;
-	   
-  }
-  .card-title {
-   color: #00B964;
-   padding: 10px 0px;
+.card {
+	border: none;
+	background-color: white !important;
 
-   }
-   .card-text {
-    margin-bottom: 30px;
-    color: rgb(5, 5, 5);
-    font-size: 0.9em;
-   }
-   .cam-header{
-       color: #00B964;
-    margin-bottom: 50px;
-   }
-   .element {
-       width: 100%;
-       height: 100%;
-       position: relative;
-   }
-   .card-img-top {
-      
-       position: relative !important;
-       width: 100% !important;
-       height: 100% !important;
-       border-radius: 0px !important;
-       background-size: cover !important;
-    
- 
-   }
+	width: 100%;
+}
+.card-title {
+	color: #00b964;
+	padding: 10px 0px;
+}
+.card-text {
+	margin-bottom: 30px;
+	color: rgb(5, 5, 5);
+	font-size: 0.9em;
+}
+.cam-header {
+	color: #00b964;
+	margin-bottom: 50px;
+}

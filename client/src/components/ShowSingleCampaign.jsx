@@ -4,6 +4,7 @@ import  { getAllUsers } from '../redux/actions/actionCreator';
 import UserCards from './UserCards';
 import {Button} from 'react-bootstrap';
 
+
 import axios from 'axios';
 
 class ShowSingleCampaign extends Component {
@@ -68,6 +69,7 @@ class ShowSingleCampaign extends Component {
 						<p>Category: {this.state.categories} </p>
 					
 						<p>Created by: {this.state.created_by} </p>
+						
 						<p className="description">
 							Description Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
 							sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
@@ -87,14 +89,8 @@ class ShowSingleCampaign extends Component {
 					</div>
 
 					<div className="col-3">
-						
-                       
-						
 						<Button className = "join">Join Campaign</Button>{' '}
-						
-                          <UserCards userData={this.state.users}/>
-
-                           
+                        <UserCards userData={this.state.users}/>
 					
 					</div>
 				</div>

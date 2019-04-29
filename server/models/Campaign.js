@@ -12,8 +12,12 @@ const campaignSchema = new mongoose.Schema({
     },
     created_by: {
         type: Schema.Types.ObjectId,
-        ref: 'user.name'
+        ref: 'user'
     },
+    volunteer:[{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }],
     description: {
         type: String
     },

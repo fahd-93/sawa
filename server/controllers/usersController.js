@@ -173,10 +173,8 @@ userController.update = async (req, res, next) => {
 //show existing campaigns
 userController.getUserCampaigns = async (req, res) => {
 	const { Id } = req.params;
-	const user = await User.findById(Id).populate({
-		path: 'campaign'
-	});
-
+	const user = await User.findById(Id).populate('created_campaigns');
+	console.log('users', user);
 	res.status(201).json(user.created_campaigns);
 };
 
@@ -204,17 +202,44 @@ userController.createUserCampaign = async (req, res) => {
 	//get user
 	const user = await User.findById(Id);
 	//assign user as campaign creator
-	campaign.created_by = user._id;
+	campaign.created_by = user.Id;
 	//save campaign
 	console.log(user);
-	
+
 	await campaign.save();
 	// add campaign to the users created_by array
 	user.created_campaigns.push(campaign);
 	//save the user
 	await user.save();
-	res.status(201).json({ user, campaign });
+	res.status(201).json({  campaign });
 };
+
+//join campaign
+userController.createCampaignVolunteer = async (req, res) => {
+	const { Id } = req.params;
+	const campaign = await Campaign.findById(Id);
+
+	 /* let user = new User ({
+		name: req.body.name,
+		last_name: req.body.last_name,
+		date_of_birth: req.body.date_of_birth,
+		gender: req.body.gender,
+		image: req.imageFileName
+	}); */ 
+	//get user
+	const user = await User.findById(Id);
+	//assign user as campaign volunteer
+	campaign.volunteer = user;
+	//save volunteer
+	console.log(user);
+
+	await campaign.save();
+	user.joined_campaign.push(campaign);
+
+	await user.save();
+	res.status(201).json({ campaign });
+
+}
 
 //update user campaign
 userController.updateUserCampaign = async (req, res) => {
