@@ -1,22 +1,44 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-#root{
-  position: relative;
-}
-#footer {
+
+.footer-container {
+  display: flex;
+  justify-content: center;
   background: #168d7e;
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    height: 80px;
+  }
+  .component-flex {
+    li{
+          -webkit-transition: .5s all ease;
+          -moz-transition: .5s all ease;
+          transition: .5s all ease;
+          a i {
+            margin-right: 5px;
+            font-size:25px;
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+          }&:hover i{
+              font-size:30px;
+                   }
+        }
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
 }
 
-#footer a {
-  color: #ffffff;
-  text-decoration: none !important;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
 
-#footer ul.social li{
-  padding: 3px 0;
-}
+/*
 #footer ul.social li a i {
   margin-right: 5px;
   font-size:25px;
@@ -25,7 +47,6 @@
   transition: .5s all ease;
 }
 #footer ul.social li:hover a i {
-  font-size:30px;
 }
 #footer ul.social li a,
 #footer ul.quick-links li a{
@@ -47,5 +68,4 @@
 }
 #footer ul.quick-links li:hover a i {
   font-weight: 700;
-}
-
+}*/

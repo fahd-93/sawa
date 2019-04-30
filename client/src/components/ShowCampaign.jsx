@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getAllCamp, getCampId } from "../redux/actions/actionCreator";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Row, Col, CardColumns, Card, Spinner } from "react-bootstrap";
+import { CardColumns, Card, Spinner } from "react-bootstrap";
 
 class ShowCampaign extends Component {
 
@@ -31,42 +31,37 @@ class ShowCampaign extends Component {
         const campaign = this.props.campaign;
         return (
             <React.Fragment>
-            <div className = "cam-container">
-            <Row>
-                    <Col>
-                    <h1 className= "cam-header">Existing Campaigns</h1>
-                    </Col>
-                </Row>
+            <div className = "camp-form-container">
 
-            <CardColumns >
+                <div className="text">
+                    <span>Existing Campaigns</span>
+                </div>
 
-                {campaign.map(user =>
-                
-                    <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
-                        <Card key={user._id}>
-                        <div >
-                            <Card.Img variant="top"  src={`http://localhost:4000/uploads/${user.image}`} />
-                            </div>
-                            <Card.Body>
-                                <Card.Title> {user.title}</Card.Title>
-                                <Card.Text>Created by: {user.created_by}</Card.Text>
-                                <hr></hr>
-                                {/* <Card.Text>Description: {user.description}</Card.Text> */}
-                                <Card.Text>Category: {user.categories}</Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
 
-                                <small className="text-muted">Created at: {user.created_at}</small>
+                <CardColumns >
+                    {campaign.map(user =>
 
-                            </Card.Footer>
+                        <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
+                            <Card key={user._id}>
+                            <div >
+                                <Card.Img variant="top"  src={`http://localhost:4000/uploads/${user.image}`} />
+                                </div>
+                                <Card.Body>
+                                    <Card.Title> {user.title}</Card.Title>
+                                    <Card.Text>Created by: {user.created_by}</Card.Text>
+                                    <hr></hr>
+                                    <Card.Text>Category: {user.categories}</Card.Text>
+                                </Card.Body>
 
-                        </Card>
-                    </Link>
+                                <Card.Footer>
+                                    <small className="text-muted">Created at: {user.created_at}</small>
+                                </Card.Footer>
+                            </Card>
+                        </Link>
 
-                )
-                }
-            </CardColumns>
-
+                    )
+                    }
+                </CardColumns>
             </div>
 
             </React.Fragment>

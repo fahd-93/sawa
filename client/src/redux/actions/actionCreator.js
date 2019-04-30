@@ -33,11 +33,11 @@ export const addCategory = (category) => (dispatch) => {
 };
 
 export const joinCampaign = (userId, campaignId) => (dispatch) => {
-	console.log(userId,'  ' , campaignId);
+
 	let newVolunteer ={
 			userId,
 			campaignId
-	}
+	};
 	
 	axios({
 		method: 'post',
@@ -45,7 +45,6 @@ export const joinCampaign = (userId, campaignId) => (dispatch) => {
 		data:newVolunteer,
 	})
 		.then( (res)=>{
-			console.log(res.data);
 			dispatch({
 				type: "JOIN_VOLUNTEER",
 				payload: res.data.volunteers
@@ -60,7 +59,6 @@ export const getAllCamp = () => (dispatch) => {
 	axios
 		.get('http://localhost:4000/api/campaigns')
 		.then((res) => {
-			console.log('Action Res', res.data);
 		dispatch({
 			type: 'GET_ALL_CAMP',
 			payload: res.data
@@ -79,7 +77,6 @@ export const getAllUsers = () => dispatch => {
     axios
         .get('http://localhost:4000/api/users')
         .then(res => {
-            // console.log('Action all users', res.data)
             dispatch({
                 type: "GET_ALL_USERS",
                 payload: res.data
@@ -95,7 +92,6 @@ export const addLocation = (location) => (dispatch) => {
 };
 
 export const saveCampaign = (inputs, formData) => (dispatch) => {
-	console.log('Inputs', inputs);
 	axios({
 		method: 'post',
 		url: `http://localhost:4000/api/users/${inputs.id}/campaign`,
@@ -105,7 +101,6 @@ export const saveCampaign = (inputs, formData) => (dispatch) => {
 		}
 		})
 		.then((res) => {
-			console.log('res save camp',res.data);
 			dispatch({
 				type: 'ADD_NEW_CAMP',
 				payload: res.data.campaign
@@ -120,9 +115,7 @@ export const saveCampaign = (inputs, formData) => (dispatch) => {
 export const signUp = (data) => {
 	return async (dispatch) => {
 		try {
-			console.log('[ActionCreator] signUp called!');
 			const res = await axios.post('http://localhost:4000/api/users/signup', data);
-			console.log('[ActionCreator] signUp dispatched an action!');
 			dispatch({
 				type: AUTH_SIGN_UP,
 				payload: res.data.token
@@ -135,7 +128,6 @@ export const signUp = (data) => {
 				type: AUTH_ERROR,
 				payload: 'Email is already in use'
 			});
-			//console.log('err', err);
 		}
 	};
 };
@@ -144,16 +136,11 @@ export const signUp = (data) => {
 export const signIn = (data) => {
 	return async (dispatch) => {
 		try {
-			console.log('[ActionCreator] SignIn called!');
 			const res = await axios.post('http://localhost:4000/api/users/signin', data);
-			console.log('[ActionCreator] signIn dispatched an action!');
-
 			dispatch({
 				type: AUTH_SIGN_IN,
 				payload: res.data.token
 			});
-			console.log(res.data);
-
 			localStorage.setItem('JWT_TOKEN', res.data.token);
 			// dispatch({ type: 'SAVE_LOGGED_IN_USER', payload: res.data.user })
 			axios.defaults.headers.common['Authorization'] = res.data.token;
@@ -166,8 +153,6 @@ export const signIn = (data) => {
 				type: AUTH_ERROR,
 				payload: "Email and password combination isn't valid"
 			});
-
-			//console.log('err', err);
 		}
 	};
 };

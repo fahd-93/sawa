@@ -18,7 +18,7 @@ class NavigationBar extends Component {
         return (
             <div>
                 <Navbar className="nav-flex">
-                    <div className={"flex-container"}>
+                    <div className="flex-container">
                         <Navbar.Brand href={"/"}>
                             <h5 className="font-style"><span/>sawa</h5>
                         </Navbar.Brand>

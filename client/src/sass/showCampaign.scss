@@ -1,0 +1,45 @@
+body {
+  background-color: $sawa-background;
+}
+
+.campaigns-container {
+  margin: 0 auto;
+  padding: 40px;
+  max-width: 1000px;
+  background: $sawa-background;
+}
+
+.card-columns {
+  max-width: 900px;
+  padding: 0;
+}
+
+.card-body {
+  margin: auto;
+  padding: 10px 10px 0 0;
+}
+.card{
+  border: none;
+  background-color: white;
+}
+.card-title {
+  color: #00B964;
+}
+.card-text {
+  margin-bottom: 30px;
+  color: rgb(5, 5, 5);
+  font-size: 0.9em;
+}
+.cam-header{
+  margin-bottom: 50px;
+}
+
+.card-img-top {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 2px;
+  display: block;
+  padding-top: 0;
+  width: 100%;
+}

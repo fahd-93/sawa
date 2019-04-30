@@ -51,8 +51,7 @@ class SignInForm extends Component {
                 </div>
 
                 <div>
-                    <form onSubmit={handleSubmit(this.onSubmit)}
-                          className="container">
+                    <form onSubmit={handleSubmit(this.onSubmit)}>
                         <fieldset>
                             <Field
                                 name="email"

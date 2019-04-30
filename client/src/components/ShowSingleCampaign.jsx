@@ -15,11 +15,10 @@ class ShowSingleCampaign extends Component {
 	}
 	componentDidMount() {
 		let id = this.props.campaign_id;
-		console.log('id from show single', id);
+
+
 		if(!id){
-			let url =  window.location.href
-			console.log('href',url);
-			console.log(url.split('campaign/'));
+			let url =  window.location.href;
 			let arr = url.split('campaign/');
 			id = arr[1];
 		}
@@ -27,7 +26,6 @@ class ShowSingleCampaign extends Component {
 		axios
 			.get(`http://localhost:4000/api/users/campaign/${id}`)
 			.then((res) => {
-				console.log('Resssss', res);
 				let campaign = res.data.campaign
 				this.setState({
 					categories: campaign.categories,
@@ -35,7 +33,6 @@ class ShowSingleCampaign extends Component {
 					created_by: campaign.created_by,
 					description: campaign.description,
 					created_at: campaign.created_at,
-					//campaign_location: campaign.campaign_location,
 					country_code: campaign.country_code,
 					num_of_volunteers: campaign.num_of_volunteers,
 					type_of_volunteers: campaign.type_of_volunteers,
@@ -61,41 +58,27 @@ class ShowSingleCampaign extends Component {
 				let user = jwt_decode(jwtToken);
 
 				axios.defaults.headers.common['Authorization'] = jwtToken;
-			
-				console.log('x.sub',user.sub);
 				this.props.joinCampaign(user.sub, this.props.campaign_id);
 			}
 	
 			catch (error) {console.log(error)}
 		}
-	
-
-
-}
+};
 
 	render() {
-		console.log(this.state.volunteers);
-
-		//if (this.props.campaign_id === undefined) {
-		//	return <div>nossssss data</div>;
-		//}
-
-		// const campaign = this.props.campaign;
-        console.log(this.props.campaign_id);
-        console.log('this.props.users', this.props.users)
 
 		return (
 			<div className="cam-singlecontainer">
 				<div className="row" />
 				<div className="row">
-					<div className="col-9 cam-singlecontainer">
-						<h1 className="cam-singleheader">{this.state.title}</h1>
-                        
-						<img
-							className="singlecampimage"
+					<div className="col-9">
+						<div className="text">
+							<span>{this.state.title}</span>
+						</div>
+
+						<img className="singlecampimage"
 							src={`http://localhost:4000/uploads/${this.state.image}`}
-							alt=""
-						/>
+							alt=""/>
                         
                         <Button className = "share-to-fb">{< i className="fa fa-facebook" ></i>}</Button> &nbsp;
                         
@@ -115,8 +98,6 @@ class ShowSingleCampaign extends Component {
 						<hr />
 
 						<p>Created the {this.state.created_at}</p>
-						{/* <p>Located: {this.state.campaign_location}</p> */}
-						<p>Country code: {this.state.country_code}</p>
 						<p>Number of volunteers: {this.state.num_of_volunteers}</p>
 						<p>Type of volunteers: {this.state.type_of_volunteers}</p>
 						<p>Start date: {this.state.start_date}</p>
@@ -125,10 +106,8 @@ class ShowSingleCampaign extends Component {
 					</div>
 
 					<div className="col-3">
-					<Button className = "join" onClick={this.joinCampaign}>Join Campaign</Button>{' '}
-                       {this.state.volunteers && <UserCards volunteers={this.state.volunteers}/> }
-					    
-					
+						<Button className = "join" onClick={this.joinCampaign}>Join Campaign</Button>
+                       	{this.state.volunteers && <UserCards volunteers={this.state.volunteers}/>}
 					</div>
 				</div>
 			</div>

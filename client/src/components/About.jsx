@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image } from 'react-bootstrap';
+// import { Image } from 'react-bootstrap';
 
 class About extends Component {
     render() {
@@ -8,7 +8,7 @@ class About extends Component {
 
             <div>
 
-                <div className="header-wrapper" align="middle">
+              {/*  <div className="header-wrapper" align="middle">
 
                     <Image src="photos/hands.png" className="header-image" />
                     <h1 className="header-title">Our Mission</h1>
@@ -92,7 +92,7 @@ class About extends Component {
                 </div>
                 <br />
 
-
+*/}
             </div>
         )
     }

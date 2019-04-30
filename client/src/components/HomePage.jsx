@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ControlledCarousel from './ControlledCarousel';
 import { getAllCamp, getCampId } from '../redux/actions/actionCreator';
 import { connect } from 'react-redux';
-import { Row, Col, Card, CardColumns, Spinner } from 'react-bootstrap';
+import { Card, CardColumns, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
@@ -39,11 +39,6 @@ class HomePage extends Component {
                        </div>
 
                        <div className="cam-container-home">
-                           <Row>
-                               <Col>
-                                   <h5 className="cam-header">Latest Campaigns</h5>
-                               </Col>
-                           </Row>
                            <CardColumns>
                                {campaignArray.map((user) => (
                                    <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
