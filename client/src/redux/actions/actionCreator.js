@@ -33,22 +33,21 @@ export const addCategory = (category) => (dispatch) => {
 };
 
 export const joinCampaign = (userId, campaignId) => (dispatch) => {
-
 	let newVolunteer ={
 			userId,
 			campaignId
 	};
-	
 	axios({
 		method: 'post',
 		url: `http://localhost:4000/api/users/join/campaign`,
-		data:newVolunteer,
+		data: newVolunteer,
 	})
 		.then( (res)=>{
-			dispatch({
+			document.location.reload();
+		/*	dispatch({
 				type: "JOIN_VOLUNTEER",
 				payload: res.data.volunteers
-			});
+			});*/
 		} )
 		.catch((error) => {
 			console.log(error);
@@ -92,6 +91,10 @@ export const addLocation = (location) => (dispatch) => {
 };
 
 export const saveCampaign = (inputs, formData) => (dispatch) => {
+
+	if(inputs === undefined) {
+		return null;
+	}
 	axios({
 		method: 'post',
 		url: `http://localhost:4000/api/users/${inputs.id}/campaign`,

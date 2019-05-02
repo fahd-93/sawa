@@ -79,6 +79,7 @@ class Router extends Component {
                     <Route path="/create-campaign"
                         component={authGuard(CampaignForm)}
                     />
+
                     <Route path="/construction-form"
                         component={authGuard(ConstructionForm)}
                     />

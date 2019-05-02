@@ -90,9 +90,10 @@ class EditUserProfile extends Component {
     render() {
         return (
             <div className="camp-form-container">
-                <h3><span>Edit Profile</span></h3>
-                <form  className="container"
-                       onChange={e => this.handleInput(e)}>
+                <h3 className="text">
+                    <span>Edit Profile</span>
+                </h3>
+                <form onChange={e => this.handleInput(e)}>
 
                     <label>First Name:</label>
                     <input type="text"

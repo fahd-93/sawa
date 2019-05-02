@@ -180,7 +180,7 @@ userController.getUserCampaigns = async (req, res) => {
 
 userController.createUserCampaign = async (req, res) => {
 	const { Id } = req.params;
-	console.log(req.body.category);
+
 	const campaign = new Campaign({
 		categories: req.body.category,
 		title: req.body.title,

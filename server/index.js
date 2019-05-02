@@ -53,10 +53,10 @@ app.post('/api/users/join/campaign',   (req, res) => {
 	var id = mongoose.Types.ObjectId(userId);
 	
 		Campaign.findById(campaignId, (err, doc)=>{
-			console.log(doc);
+			console.log("DOC", doc);
+
 			let index = doc.volunteers.indexOf(id);
-			if(index !== -1) return res.send('you already joind')
-			console.log('user',index);
+			if(index !== -1) return res.send('you already joind');
 
 			let volunteers = [];
 			volunteers = [...doc.volunteers, id];
@@ -69,6 +69,7 @@ app.post('/api/users/join/campaign',   (req, res) => {
 				 console.log(volunteers);
 				 res.send({error:0, message:'joined successfully', volunteers:volunteers});
 			});
+
 
 			})
 		} 

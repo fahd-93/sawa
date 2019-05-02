@@ -63,7 +63,7 @@ class ConstructionForm extends Component {
         formData.set("category", this.state.category);
         formData.append("image", this.userImageRef.current.files[0]);
 
-        this.props.saveCampaign(this.userId, formData);
+        this.props.saveCampaign(this.state, formData);
     };
 
     render() {

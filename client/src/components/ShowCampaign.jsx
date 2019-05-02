@@ -41,7 +41,8 @@ class ShowCampaign extends Component {
                 <CardColumns >
                     {campaign.map(user =>
 
-                        <Link to={`/users/campaign/${user._id}`} onClick={() => this.getId(user._id)}>
+                        <Link to={`/users/campaign/${user._id}`}
+                              onClick={() => this.getId(user._id)}>
                             <Card key={user._id}>
                             <div >
                                 <Card.Img variant="top"  src={`http://localhost:4000/uploads/${user.image}`} />

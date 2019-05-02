@@ -11,7 +11,10 @@ import axios from 'axios';
 class ShowSingleCampaign extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			joined: false,
+		};
+
 	}
 	componentDidMount() {
 		let id = this.props.campaign_id;
@@ -26,9 +29,10 @@ class ShowSingleCampaign extends Component {
 		axios
 			.get(`http://localhost:4000/api/users/campaign/${id}`)
 			.then((res) => {
-				let campaign = res.data.campaign
+				let campaign = res.data.campaign;
 				this.setState({
 					categories: campaign.categories,
+					campaign_id: campaign._id,
 					title: campaign.title,
 					created_by: campaign.created_by,
 					description: campaign.description,
@@ -48,19 +52,15 @@ class ShowSingleCampaign extends Component {
             this.props.getAllUsers();
 	}
 
-	joinCampaign=()=>{
-
-			
+	joinCampaign = () => {
 		const jwtToken = localStorage.getItem('JWT_TOKEN');
-
 		if (jwtToken) {
 			try {
 				let user = jwt_decode(jwtToken);
 
 				axios.defaults.headers.common['Authorization'] = jwtToken;
-				this.props.joinCampaign(user.sub, this.props.campaign_id);
+				this.props.joinCampaign(user.sub, this.state.campaign_id);
 			}
-	
 			catch (error) {console.log(error)}
 		}
 };
@@ -69,45 +69,53 @@ class ShowSingleCampaign extends Component {
 
 		return (
 			<div className="cam-singlecontainer">
-				<div className="row" />
 				<div className="row">
-					<div className="col-9">
+					<div className="col-9 cam-singlecontainer">
 						<div className="text">
 							<span>{this.state.title}</span>
 						</div>
 
-						<img className="singlecampimage"
-							src={`http://localhost:4000/uploads/${this.state.image}`}
-							alt=""/>
-                        
-                        <Button className = "share-to-fb">{< i className="fa fa-facebook" ></i>}</Button> &nbsp;
-                        
-                        <Button className = "tweeter">{<i className="fab fa-twitter"></i>}</Button>
-                        
-                        
-						<p>Category: {this.state.categories} </p>
-					
-						<p>Created by: {this.state.created_by} </p>
-						
-						<p className="description">
-							Description Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-							sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
-							condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. :{' '}
-							{this.state.description}{' '}
-						</p>
-						<hr />
+						{this.state.image !== undefined &&
+							<img
+								className="singlecampimage"
+								src={`http://localhost:4000/uploads/${this.state.image}`}
+								alt=""/>
+						}
 
-						<p>Created the {this.state.created_at}</p>
-						<p>Number of volunteers: {this.state.num_of_volunteers}</p>
-						<p>Type of volunteers: {this.state.type_of_volunteers}</p>
-						<p>Start date: {this.state.start_date}</p>
-						<p>Materials: {this.state.materials}</p>
-						<p>End date: {this.state.end_date}</p>
+
+
+						<Button className = "share-to-fb">{< i className="fa fa-facebook" ></i>}</Button> &nbsp;
+
+						<Button className = "tweeter">{<i className="fab fa-twitter"></i>}</Button>
+
+						<div className="description">
+							<p>Category: {this.state.categories} </p>
+
+							<p>Created by: {this.state.created_by} </p>
+
+							<p >
+								Description Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+								sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
+								condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. :{' '}
+								{this.state.description}{' '}
+							</p>
+							<hr />
+
+							<p>Created the {this.state.created_at}</p>
+							<p>Country code: {this.state.country_code}</p>
+							<p>Number of volunteers: {this.state.num_of_volunteers}</p>
+							<p>Type of volunteers: {this.state.type_of_volunteers}</p>
+							<p>Start date: {this.state.start_date}</p>
+							<p>Materials: {this.state.materials}</p>
+							<p>End date: {this.state.end_date}</p>
+						</div>
 					</div>
-
 					<div className="col-3">
-						<Button className = "join" onClick={this.joinCampaign}>Join Campaign</Button>
-                       	{this.state.volunteers && <UserCards volunteers={this.state.volunteers}/>}
+						{this.state.joined === false &&
+							<Button className = "join" onClick={this.joinCampaign}>Join Campaign</Button>
+						}
+
+						{this.state.volunteers && <UserCards volunteers={this.state.volunteers}/> }
 					</div>
 				</div>
 			</div>

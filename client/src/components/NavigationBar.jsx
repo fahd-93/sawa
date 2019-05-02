@@ -39,10 +39,10 @@ class NavigationBar extends Component {
                                         Profile Page
                                     </Nav.Link> : null}
                                 {this.props.isAuth ?
-                                    <Nav.Link href="create-campaign"
+                                    <Link to="create-campaign"
                                               className="nav-link">
                                         Create Campaign
-                                    </Nav.Link> : null}
+                                    </Link> : null}
 
 
                                 {!this.props.isAuth ?
