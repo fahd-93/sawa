@@ -5,7 +5,7 @@ This project was created with [ React App](https://github.com/facebook/create-re
 
 ### Clone Project:
 ```
-    git clone "https://github.com/NzrSrd/sawa.git"
+    git clone "https://github.com/fahd-93/sawa.git"
 ```
 
 ### Installation:
